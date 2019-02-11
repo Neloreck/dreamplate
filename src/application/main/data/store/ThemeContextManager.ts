@@ -1,5 +1,5 @@
-import { PaletteOptions } from "@material-ui/core/es/styles/createPalette";
 import { ThemeOptions } from "@material-ui/core/styles/createMuiTheme";
+import { PaletteOptions } from "@material-ui/core/styles/createPalette";
 import { ReactContextManager } from "@redux-cbd/context";
 import { Bind } from "@redux-cbd/utils";
 
