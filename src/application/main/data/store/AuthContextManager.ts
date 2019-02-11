@@ -25,7 +25,7 @@ export class AuthContextManager extends ReactContextManager<IAuthContext> {
     }
   };
 
-  public onProvisionStarted(): void {
+  protected onProvisionStarted(): void {
     // Some kind of state initialization can be there.
   }
 
