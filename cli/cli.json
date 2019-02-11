@@ -1,0 +1,18 @@
+{
+  "config": {
+  },
+  "scripts": {
+    "clean": "npx rimraf ./target && echo 'Target cleaned up.'",
+    "clean:build": "npx rimraf ./target/dist && echo 'Dist cleaned up.'",
+    "purge": "npx rimraf ./target && rimraf ./node_modules && echo 'Project purged.'",
+    "=============================================================================================================": "",
+    "build-client:webpack": "npm run cli clean:build && ts-node --project ./cli/tsconfig.json ./cli/build/BuildRunner.ts",
+    "============================================================================================================": "=",
+    "test": [
+      "npm run cli lint",
+      "npm run cli jest"
+    ],
+    "jest": "npx ts-node --project ./cli/tsconfig.json ./cli/test/TestRunner.ts",
+    "lint": "npx tslint --project ./src/"
+  }
+}

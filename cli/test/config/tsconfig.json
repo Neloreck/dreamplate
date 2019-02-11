@@ -1,0 +1,14 @@
+{
+  "extends": "../../../src/tsconfig.json",
+  "compilerOptions": {
+    "target": "es3",
+    "outDir": ".",
+    "sourceMap": false,
+    "module": "commonjs",
+    "lib": ["es5", "es6", "dom"],
+    "baseUrl": "./"
+  },
+  "include": [
+    "./jest.config.ts"
+  ]
+}

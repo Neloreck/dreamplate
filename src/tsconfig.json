@@ -1,0 +1,49 @@
+{
+  "awesomeTypescriptLoaderOptions": {
+    "babelCore": "@babel/core",
+    "doTypeCheck": true,
+    "forkChecker": true,
+    "isolatedModules": true,
+    "cacheDirectory": "target/ts/cache",
+    "useBabel": true,
+    "useCache": true
+  },
+  "compilerOptions": {
+    "strict": true,
+    "emitDecoratorMetadata": false,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "module": "esnext",
+    "target": "esnext",
+    "moduleResolution": "node",
+    "jsx": "react",
+    "lib": [
+      "es2015",
+      "es2016",
+      "es2017",
+      "es2018",
+      "dom"
+    ],
+    "baseUrl": "./",
+    "outDir": "target/dist:raw",
+    "paths": {
+      "@Application/*": [ "application/*" ],
+      "@Main": [ "application/main/index" ],
+      "@Main/*": [ "application/main/*" ],
+      "@Module/*": [ "application/modules/*" ],
+      "@Module": [ "application/modules/index" ],
+      "@Api/*": [ "api/*" ],
+      "@Lib/*": [ "lib/*" ]
+    }
+  },
+  "types": [
+    "node"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
