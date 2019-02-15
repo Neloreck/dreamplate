@@ -1,7 +1,8 @@
 import { EntryPoint } from "@redux-cbd/utils";
 import { CommandRunner } from "./_cli/CommandRunner";
 
-import cliConfig from "./cli.json";
+// tslint:disable: no-var-requires
+const cliConfig = require("./cli.json");
 
 @EntryPoint()
 export class CliRunner {

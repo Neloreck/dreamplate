@@ -3,10 +3,13 @@
   },
   "scripts": {
     "clean": "npx rimraf ./target && echo 'Target cleaned up.'",
-    "clean:build": "npx rimraf ./target/dist && echo 'Dist cleaned up.'",
+    "clean:build": "npx rimraf ./target/${NODE_ENV:-production} && echo \"Target cleaned up: dist/${NODE_ENV:-production}.\"",
     "purge": "npx rimraf ./target && rimraf ./node_modules && echo 'Project purged.'",
     "=============================================================================================================": "",
-    "build-client:webpack": "npm run cli clean:build && ts-node --project ./cli/tsconfig.json ./cli/build/BuildRunner.ts",
+    "build": [
+      "npm run cli clean:build",
+      "ts-node --project ./cli/tsconfig.json ./cli/build/BuildRunner.ts"
+    ],
     "============================================================================================================": "=",
     "test": [
       "npm run cli lint",

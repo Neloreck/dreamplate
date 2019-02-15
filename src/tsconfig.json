@@ -6,12 +6,68 @@
     "isolatedModules": true,
     "cacheDirectory": "target/ts/cache",
     "useBabel": true,
-    "useCache": true
+    "useCache": true,
+    "babelOptions": {
+      "babelrc": false,
+      "minified": true,
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "targets": {
+              "node": "8",
+              "browsers": [
+                "last 20 versions"
+              ]
+            },
+            "modules": false
+          }
+        ],
+        "@babel/preset-react"
+      ],
+      "plugins": [
+        ["transform-imports", {
+          "@material-ui/icons": {
+            "transform": "@material-ui/icons/${member}",
+            "preventFullImport": true
+          },
+          "@material-ui/core": {
+            "transform": "@material-ui/core/${member}",
+            "preventFullImport": true
+          }
+        }],
+        [
+          "@babel/plugin-transform-runtime",
+          {
+            "corejs": false,
+            "regenerator": true
+          }
+        ],
+        "@babel/plugin-proposal-export-default-from",
+        [
+          "@babel/plugin-proposal-decorators",
+          {
+            "legacy": true
+          }
+        ],
+        "@babel/plugin-proposal-export-namespace-from",
+        "@babel/plugin-proposal-numeric-separator",
+        "@babel/plugin-syntax-dynamic-import",
+        "@babel/plugin-syntax-import-meta",
+        [
+          "@babel/plugin-proposal-class-properties",
+          {
+            "loose": false
+          }
+        ],
+        "@babel/plugin-proposal-json-strings"
+      ]
+    }
   },
   "compilerOptions": {
     "strict": true,
     "emitDecoratorMetadata": false,
-    "esModuleInterop": true,
+    "esModuleInterop": false,
     "experimentalDecorators": true,
     "sourceMap": true,
     "noImplicitAny": true,

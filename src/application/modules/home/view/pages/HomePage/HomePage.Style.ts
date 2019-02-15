@@ -1,5 +1,4 @@
-import { Theme } from "@material-ui/core";
-import { createStyles } from "@material-ui/core/styles";
+import { createStyles, Theme } from "@material-ui/core/styles";
 
 export const homePageStyle = (theme: Theme) => createStyles({
   content: {

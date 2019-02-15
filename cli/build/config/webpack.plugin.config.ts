@@ -1,6 +1,7 @@
 import { CheckerPlugin, TsConfigPathsPlugin } from "awesome-typescript-loader";
 import * as path from "path";
 import { HotModuleReplacementPlugin, NoEmitOnErrorsPlugin, Options, Plugin } from "webpack";
+import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 
 // tslint:disable: no-var-requires typedef
 const DotEnv = require("dotenv-webpack");
@@ -55,6 +56,10 @@ export const PLUGIN_CONFIG: {
     usedExports: true,
   },
   PLUGINS: [
+    new BundleAnalyzerPlugin({
+      analyzerMode: "static",
+      openAnalyzer: false
+    }),
     new TsConfigPathsPlugin({}),
     new CheckerPlugin(),
     new HtmlWebpackPlugin({

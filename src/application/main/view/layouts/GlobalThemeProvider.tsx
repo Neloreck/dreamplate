@@ -1,4 +1,4 @@
-import { createMuiTheme, MuiThemeProvider } from "@material-ui/core";
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import { Consume } from "@redux-cbd/context";
 import * as React from "react";
 import { PureComponent, ReactNode } from "react";

@@ -1,6 +1,7 @@
 import { EntryPoint } from "@redux-cbd/utils";
 import { green, red } from "colors";
-import { Compiler, default as webpack } from "webpack";
+import { Compiler } from "webpack";
+import * as Webpack from "webpack";
 
 import { PROJECT_OUTPUT_PATH, PROJECT_ROOT_PATH, WEBPACK_CONFIG } from "./config";
 
@@ -11,7 +12,7 @@ export class BuildRunner {
 
   public static main(): void {
 
-    const compiler: Compiler = webpack(WEBPACK_CONFIG);
+    const compiler: Compiler = Webpack(WEBPACK_CONFIG);
 
     process.stdout.write(
       `Started building client bundle in ${green(process.env.NODE_ENV || "unselected")} mode. \n` +

@@ -1,65 +1,24 @@
 {
-  "name": "x-core-boilerplate",
+  "name": "x-core-react-boilerplate",
   "version": "1.0.0",
-  "private": true,
-  "repository": "https://github.com/neloreck/x-core-boilerplate",
-  "description": "X-core boilerplate project.",
+  "private": false,
+  "repository": "https://github.com/neloreck/x-core-react-boilerplate",
+  "description": "X-core react boilerplate project.",
   "main": "./src/application/Application.ts",
   "scripts": {
     "start": "npx cross-env NODE_ENV=production npx webpack-dev-server --config ./cli/build/config/webpack.config.ts",
     "start:dev": "npx cross-env NODE_ENV=development npx webpack-dev-server --config ./cli/build/config/webpack.config.ts --inline --inspect $NODE_DEBUG_OPTION",
     "=================================================================": "============================================",
-    "build": "npx cross-env NODE_ENV=production npm run cli build-client:webpack",
-    "build:dev": "npx cross-env NODE_ENV=development npm run cli build-client:webpack",
+    "build": "npx cross-env NODE_ENV=production npm run cli build",
+    "build:dev": "npx cross-env NODE_ENV=development npm run cli build",
     "================================================================": "=============================================",
     "cli": "npx ts-node --project ./cli/tsconfig.json ./cli/CliRunner.ts",
     "test": "npm run cli test"
   },
-  "sideEffects": [],
-  "babel": {
-    "minified": true,
-    "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "targets": {
-            "node": "8",
-            "browsers": [
-              "last 20 versions"
-            ]
-          }
-        }
-      ],
-      "@babel/preset-react"
-    ],
-    "plugins": [
-      [
-        "@babel/plugin-transform-runtime",
-        {
-          "corejs": false,
-          "regenerator": true
-        }
-      ],
-      "@babel/plugin-proposal-export-default-from",
-      [
-        "@babel/plugin-proposal-decorators",
-        {
-          "legacy": true
-        }
-      ],
-      "@babel/plugin-proposal-export-namespace-from",
-      "@babel/plugin-proposal-numeric-separator",
-      "@babel/plugin-syntax-dynamic-import",
-      "@babel/plugin-syntax-import-meta",
-      [
-        "@babel/plugin-proposal-class-properties",
-        {
-          "loose": false
-        }
-      ],
-      "@babel/plugin-proposal-json-strings"
-    ]
-  },
+  "sideEffects": [
+    "*.css",
+    "*.scss"
+  ],
   "author": "Igor Syrotenko",
   "license": "ISC",
   "dependencies": {
@@ -106,12 +65,15 @@
     "@types/react-resize-detector": "^3.1.0",
     "@types/react-router": "^4.4.3",
     "@types/react-router-dom": "^4.3.1",
+    "@types/terser-webpack-plugin": "^1.2.1",
     "@types/webpack": "^4.4.23",
+    "@types/webpack-bundle-analyzer": "^2.13.1",
     "@types/webpack-dev-server": "^3.1.1",
     "autoprefixer": "^9.4.5",
     "awesome-typescript-loader": "^5.2.1",
     "babel-core": "^7.0.0-beta.3",
     "babel-jest": "^23.6.0",
+    "babel-plugin-transform-imports": "^1.5.1",
     "colors": "^1.3.3",
     "css-loader": "^2.1.0",
     "dotenv-webpack": "^1.6.0",
@@ -136,6 +98,7 @@
     "typescript": "^3.3.3",
     "url-loader": "^1.1.2",
     "webpack": "^4.28.4",
+    "webpack-bundle-analyzer": "^3.0.4",
     "webpack-cli": "^3.2.1",
     "webpack-dev-middleware": "^3.5.0",
     "webpack-dev-server": "^3.1.14",
