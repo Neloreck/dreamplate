@@ -1,4 +1,4 @@
-import { ReactContextManager } from "@redux-cbd/context";
+import { ContextManager } from "dreamstate";
 
 // Lib.
 import { Optional } from "@Lib/ts/types";
@@ -13,7 +13,7 @@ export interface IAuthContext {
   };
 }
 
-export class AuthContextManager extends ReactContextManager<IAuthContext> {
+export class AuthContextManager extends ContextManager<IAuthContext> {
 
   public context: IAuthContext = {
     authActions: {

@@ -2,7 +2,7 @@ import * as React from "react";
 import { PureComponent, ReactNode } from "react";
 
 // Lib.
-import { Styled } from "@Lib/mui";
+import { Styled } from "@Lib/decorators";
 
 // Data.
 
@@ -12,8 +12,8 @@ import { mainLoadingProgressStyle } from "./MainLoadingProgress.Style";
 
 // Props.
 export interface IMainLoadingProgressComponentOwnProps {}
-export interface IMainLoadingProgressComponentExternalProps extends WithStyles<typeof mainLoadingProgressStyle> {}
-export interface IMainLoadingProgressComponentProps extends IMainLoadingProgressComponentOwnProps, IMainLoadingProgressComponentExternalProps {}
+export interface IMainLoadingProgressComponentInjectedProps extends WithStyles<typeof mainLoadingProgressStyle> {}
+export interface IMainLoadingProgressComponentProps extends IMainLoadingProgressComponentOwnProps, IMainLoadingProgressComponentInjectedProps {}
 
 @Styled(mainLoadingProgressStyle)
 export class MainLoadingProgressComponent extends PureComponent<IMainLoadingProgressComponentProps> {

@@ -1,1 +1,1 @@
-export { HomeLayout, IHomeLayoutExternalProps } from "./HomeLayout.Component";
+export { HomeLayout, IHomeLayoutInjectedProps } from "./HomeLayout.Component";

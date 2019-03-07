@@ -1,7 +1,6 @@
 import { ThemeOptions } from "@material-ui/core/styles/createMuiTheme";
 import { PaletteOptions } from "@material-ui/core/styles/createPalette";
-import { ReactContextManager } from "@redux-cbd/context";
-import { Bind } from "@redux-cbd/utils";
+import { Bind, ContextManager } from "dreamstate";
 
 export interface IThemeContext {
   themeActions: {
@@ -13,7 +12,7 @@ export interface IThemeContext {
   };
 }
 
-export class ThemeContextManager extends ReactContextManager<IThemeContext> {
+export class ThemeContextManager extends ContextManager<IThemeContext> {
 
   protected context: IThemeContext = {
     themeActions: {

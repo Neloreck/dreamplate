@@ -1,6 +1,6 @@
-import {createStyles} from "@material-ui/core/styles";
+import { createStyles, Theme } from "@material-ui/core/styles";
 
-export const errorPageStyle = createStyles({
+export const errorPageStyle = (theme: Theme) => createStyles({
   content: {
     flexGrow: 24,
     width: "100%"

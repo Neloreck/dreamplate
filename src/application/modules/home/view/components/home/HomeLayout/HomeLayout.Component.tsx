@@ -2,16 +2,16 @@ import * as React from "react";
 import { PureComponent, ReactNode } from "react";
 
 // Lib.
-import { Styled } from "@Lib/mui";
+import { Styled } from "@Lib/decorators";
 
 // View.
 import { Grid, WithStyles } from "@material-ui/core";
 import { homeLayoutStyle } from "./HomeLayout.Style";
 
 // Props.
-export interface IHomeLayoutExternalProps extends WithStyles<typeof homeLayoutStyle> {}
+export interface IHomeLayoutInjectedProps extends WithStyles<typeof homeLayoutStyle> {}
 export interface IHomeLayoutOwnProps {}
-export interface IHomeLayoutProps extends IHomeLayoutExternalProps, IHomeLayoutOwnProps {}
+export interface IHomeLayoutProps extends IHomeLayoutInjectedProps, IHomeLayoutOwnProps {}
 
 @Styled(homeLayoutStyle)
 export class HomeLayout extends PureComponent<IHomeLayoutProps> {
