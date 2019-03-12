@@ -5,6 +5,7 @@ import { Route, Switch } from "react-router-dom";
 
 // Lib.
 import { Wrapped } from "@Lib/decorators";
+import { Logger } from "@Lib/utils";
 
 // Data.
 import { authContextManager, routerContextManager, themeContextManager } from "@Main/data/store";
@@ -22,6 +23,12 @@ const HomePage: ComponentClass = lazyLoadComponentFactory.getComponent(
 @Provide(themeContextManager, authContextManager, routerContextManager)
 @Wrapped(GlobalThemeProvider)
 export class HomeRouter extends PureComponent {
+
+  private readonly log: Logger = new Logger("[HOME]");
+
+  public componentDidMount(): void {
+    this.log.info("Mounted home module.");
+  }
 
   public render(): ReactNode {
 
