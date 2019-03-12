@@ -1,7 +1,5 @@
 import { CommandRunner, EntryPoint } from "./_cli";
-
-// tslint:disable: no-var-requires
-const cliConfig = require("./cli.json");
+import * as cliConfig from "./cli.json";
 
 @EntryPoint()
 export class CliRunner {
@@ -19,9 +17,7 @@ export class CliRunner {
     const commandRunner: CommandRunner = new CommandRunner(cmd, script, config);
 
     try {
-
       await commandRunner.run();
-
       process.exit(0);
     } catch (error) {
       process.exit(1);
