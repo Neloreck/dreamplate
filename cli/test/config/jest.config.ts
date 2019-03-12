@@ -3,7 +3,7 @@ import * as path from "path";
 const ROOT_PATH: string = path.resolve(__dirname, "../../../");
 const TS_CONFIG_PATH: string = path.resolve(ROOT_PATH, "./src/tsconfig.json");
 
-export const JEST_CONFIG: object = {
+export const JEST_CONFIG = {
 
   // automock: false,
 
