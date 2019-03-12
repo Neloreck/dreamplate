@@ -8,7 +8,9 @@ import { lazyLoadComponentFactory } from "@Main/view/utils";
 
 /* Stream routes: */
 
-const HomePage: ComponentClass = lazyLoadComponentFactory.getComponent(() => import(/* webpackChunkName: "home@home-page" */"@Module/home/view/pages/HomePage"));
+const HomePage: ComponentClass = lazyLoadComponentFactory.getComponent(
+  () => import(/* webpackChunkName: "home@home-page" */"@Module/home/view/pages/HomePage")
+);
 
 export class HomeRouter extends PureComponent {
 

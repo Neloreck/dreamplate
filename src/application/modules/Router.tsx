@@ -18,7 +18,9 @@ import { lazyLoadComponentFactory } from "@Main/view/utils";
  * Application submodules:
  */
 
-export const HomeModule: ComponentClass = lazyLoadComponentFactory.getComponent(() => import(/* webpackChunkName: "module@home" */"@Module/home"));
+export const HomeModule: ComponentClass = lazyLoadComponentFactory.getComponent(
+  () => import(/* webpackChunkName: "module@home" */"@Module/home")
+);
 
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
 

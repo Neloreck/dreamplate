@@ -1,8 +1,8 @@
-import { EntryPoint } from "@redux-cbd/utils";
 import { green, red } from "colors";
 import { Compiler } from "webpack";
 import * as Webpack from "webpack";
 
+import { EntryPoint } from "../_cli";
 import { PROJECT_OUTPUT_PATH, PROJECT_ROOT_PATH, WEBPACK_CONFIG } from "./config";
 
 @EntryPoint()

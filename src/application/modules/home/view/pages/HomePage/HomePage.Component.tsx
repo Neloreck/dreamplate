@@ -7,7 +7,6 @@ import { Styled } from "@Lib/decorators";
 // View.
 import { AnimatedMount } from "@Main/view/utils";
 import { Grid, WithStyles } from "@material-ui/core";
-import { HomeLayout, IHomeLayoutInjectedProps } from "@Module/home/view/components/home/HomeLayout";
 import { homePageStyle } from "./HomePage.Style";
 
 // Props.
@@ -23,21 +22,25 @@ export class HomePage extends PureComponent<IHomePageProps> {
     const { classes } = this.props;
 
     return (
-        <Grid className={classes.root} wrap={"nowrap"} container>
+      <Grid className={classes.root} wrap={"nowrap"} container>
 
-          <AnimatedMount>
+        <AnimatedMount>
 
-            <Grid
-              className={classes.content}
-              justify={"space-around"}
-              direction={"column"}
-              alignItems={"stretch"}
-              container
-            >
-              <HomeLayout {...{} as IHomeLayoutInjectedProps}/>
-            </Grid>
+          <Grid
+            className={classes.content}
+            justify={"center"}
+            direction={"column"}
+            alignItems={"center"}
+            container
+          >
 
-          </AnimatedMount>
+            <span>
+              Change some code there and move on. Use flex grid for aligning.
+            </span>
+
+          </Grid>
+
+        </AnimatedMount>
 
       </Grid>
     );
