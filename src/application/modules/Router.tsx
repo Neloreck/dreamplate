@@ -1,7 +1,7 @@
 import { Provide } from "dreamstate";
 import * as React from "react";
 import { ComponentClass, PureComponent, ReactNode } from "react";
-import { Route, Router as ReactRouter } from "react-router";
+import { Route, Router as ReactRouter } from "react-router-dom";
 import { Switch } from "react-router-dom";
 
 // Lib;

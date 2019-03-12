@@ -1,6 +1,6 @@
 import { Consume } from "dreamstate";
 import * as React from "react";
-import { Route, RouteProps } from "react-router";
+import { Route, RouteProps } from "react-router-dom";
 
 // Data.
 import { authContextManager, IAuthContext, IRouterContext, routerContextManager } from "@Main/data/store";

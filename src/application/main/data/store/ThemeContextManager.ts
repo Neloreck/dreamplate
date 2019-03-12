@@ -4,8 +4,8 @@ import { Bind, ContextManager } from "dreamstate";
 
 export interface IThemeContext {
   themeActions: {
-    isDark: () => boolean;
-    setDark: (isDark: boolean) => void;
+    isDark(): boolean;
+    setDark(isDark: boolean): void;
   };
   themeState: {
     options: ThemeOptions;
@@ -34,7 +34,7 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
             light: "#dbdbdb",
             main: "#919191"
           },
-          type: "dark"
+          type: "light"
         },
         typography: {
           useNextVariants: true
@@ -50,13 +50,9 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
 
   @Bind()
   public setDark(isDark: boolean): void {
-    this.context.themeState = Object.assign({}, this.context.themeState);
 
-    if (isDark) {
-      (this.context.themeState.options.palette as PaletteOptions).type = "dark";
-    } else {
-      (this.context.themeState.options.palette as PaletteOptions).type = "light";
-    }
+    this.context.themeState = Object.assign({}, this.context.themeState);
+    (this.context.themeState.options.palette as PaletteOptions).type = isDark ? "dark" : "light";
 
     this.update();
   }
