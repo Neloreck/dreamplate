@@ -35,7 +35,7 @@ export class HomeRouter extends PureComponent {
     return (
       <Switch>
 
-        <Route exact={true} path={`/`} component={HomePage}/>
+        <Route exact={true} path={["/", "/home"]} component={HomePage}/>
         <Route exact={true} path={"*"} component={ErrorPage}/>
 
       </Switch>

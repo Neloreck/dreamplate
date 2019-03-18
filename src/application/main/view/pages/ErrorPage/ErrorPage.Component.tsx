@@ -1,19 +1,24 @@
+import { Bind, Consume } from "dreamstate";
 import * as React from "react";
 import { PureComponent, ReactNode } from "react";
 
 // Lib.
 import { Styled } from "@Lib/decorators";
 
+// Data.
+import { IRouterContext, routerContextManager } from "@Main/data/store";
+
 // View.
-import { WithStyles } from "@material-ui/core";
+import { AppBar, Button, Grid, Typography, WithStyles } from "@material-ui/core";
 import { errorPageStyle } from "./ErrorPage.Style";
 
 // Props.
 export interface IErrorPageOwnProps {}
-export interface IErrorPageInjectedProps extends WithStyles<typeof errorPageStyle> {}
+export interface IErrorPageInjectedProps extends WithStyles<typeof errorPageStyle>, IRouterContext {}
 export interface IErrorPageProps extends IErrorPageOwnProps, IErrorPageInjectedProps {}
 
 @Styled(errorPageStyle)
+@Consume(routerContextManager)
 export class ErrorPage extends PureComponent<IErrorPageProps> {
 
   public render(): ReactNode {
@@ -21,14 +26,40 @@ export class ErrorPage extends PureComponent<IErrorPageProps> {
     const { classes } = this.props;
 
     return (
-      <div className={classes.root}>
+      <Grid className={classes.root} container>
 
-        <div className={classes.content}>
-          This is error page...
-        </div>
+        <AppBar className={classes.appBar}>
+          Boilerplate
+        </AppBar>
 
-      </div>
+        <Grid
+          className={classes.content}
+          justify={"center"}
+          direction={"column"}
+          alignItems={"center"}
+          container
+        >
+
+          <Typography variant={"h4"}>
+            Route has not been found.
+          </Typography>
+
+          <Button variant={"contained"} onClick={this.onHomeNavigated}>
+            Go home.
+          </Button>
+
+        </Grid>
+
+      </Grid>
     );
+  }
+
+  @Bind()
+  private onHomeNavigated(): void {
+
+    const { routingActions } = this.props;
+
+    routingActions.push("/home");
   }
 
 }

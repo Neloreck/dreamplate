@@ -30,7 +30,7 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
     }
   };
 
-  protected log: Logger = new Logger("[🗺️ROUTER]", true);
+  protected log: Logger = new Logger("[🗺️ROUTER]");
 
   @Bind()
   public replace(path: string): void {
