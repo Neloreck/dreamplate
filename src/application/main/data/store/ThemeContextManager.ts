@@ -44,12 +44,12 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
   };
 
   @Bind()
-  public isDark(): boolean {
+  protected isDark(): boolean {
     return (this.context.themeState.options.palette as PaletteOptions).type === "dark";
   }
 
   @Bind()
-  public setDark(isDark: boolean): void {
+  protected setDark(isDark: boolean): void {
 
     this.context.themeState = Object.assign({}, this.context.themeState);
     (this.context.themeState.options.palette as PaletteOptions).type = isDark ? "dark" : "light";

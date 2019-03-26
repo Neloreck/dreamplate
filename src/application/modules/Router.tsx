@@ -1,32 +1,37 @@
+import { Provide } from "dreamstate";
 import * as React from "react";
 import { ComponentClass, PureComponent, ReactNode } from "react";
 import { Route, Router as ReactRouter } from "react-router-dom";
 import { Switch } from "react-router-dom";
 
+// Lib.
+import { Wrapped } from "@Lib/decorators";
+
 // Data
-import { routerContextManager } from "@Main/data/store";
+import { authContextManager, routerContextManager, themeContextManager } from "@Main/data/store";
 
 // View.
-import { lazyLoadComponentFactory } from "@Main/view/utils";
+import { GlobalThemeProvider } from "@Main/view/layouts/GlobalThemeProvider";
+import { LazyLoadComponentFactory } from "@Main/view/utils/LazyLoadComponentFactory";
 
 /*
  * Application submodules with own routes:
  */
 
-export const HomeModule: ComponentClass = lazyLoadComponentFactory.getComponent(
+export const HomeModule: ComponentClass = LazyLoadComponentFactory.getComponent(
   () => import(/* webpackChunkName: "module@home" */"@Module/home")
 );
 
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
 
+@Provide(authContextManager, routerContextManager, themeContextManager)
+@Wrapped(GlobalThemeProvider)
 export class Router extends PureComponent {
 
   public render(): ReactNode {
 
-    const { routingState: { history } } = routerContextManager.context;
-
     return (
-      <ReactRouter history={history}>
+      <ReactRouter history={routerContextManager.getHistory()}>
 
         <Switch>
 

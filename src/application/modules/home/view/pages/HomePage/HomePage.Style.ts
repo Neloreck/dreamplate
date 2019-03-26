@@ -10,8 +10,7 @@ export const homePageStyle = (theme: Theme) => createStyles({
   },
   content: {
     backgroundSize: "cover",
-    flexGrow: 24,
-    flexWrap: "nowrap",
+    flexGrow: 1,
     overflowY: "auto",
     width: "100%"
   },

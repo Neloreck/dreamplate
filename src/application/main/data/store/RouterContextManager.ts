@@ -18,7 +18,7 @@ export interface IRouterContext {
 
 export class RouterContextManager extends ContextManager<IRouterContext> {
 
-  public context: IRouterContext = {
+  protected context: IRouterContext = {
     routingActions: {
       getCurrentLocation: this.getCurrentLocation,
       goBack: this.goBack,
@@ -30,34 +30,36 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
     }
   };
 
-  protected log: Logger = new Logger("[🗺️ROUTER]");
+  protected log: Logger = new Logger("[🗺️ROUTER]", true);
 
   @Bind()
-  public replace(path: string): void {
+  public getHistory(): History {
+    return this.context.routingState.history;
+  }
+
+  @Bind()
+  protected replace(path: string): void {
 
     this.log.info(`Replace path: ${path}.`);
     this.context.routingState.history.replace(path);
-    this.update();
   }
 
   @Bind()
-  public push(path: string): void {
+  protected push(path: string): void {
 
     this.log.info(`Push path: ${path}.`);
     this.context.routingState.history.push(path);
-    this.update();
   }
 
   @Bind()
-  public goBack(): void {
+  protected goBack(): void {
 
-    this.log.info(`Go back.`);
+    this.log.info("Go back.");
     this.context.routingState.history.goBack();
-    this.update();
   }
 
   @Bind()
-  public getCurrentLocation(): string {
+  protected getCurrentLocation(): string {
     return this.context.routingState.history.location.pathname;
   }
 

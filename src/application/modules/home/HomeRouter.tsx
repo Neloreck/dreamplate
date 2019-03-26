@@ -1,27 +1,19 @@
-import { Provide } from "dreamstate";
 import * as React from "react";
 import { ComponentClass, PureComponent, ReactNode } from "react";
 import { Route, Switch } from "react-router-dom";
 
 // Lib.
-import { Wrapped } from "@Lib/decorators";
 import { Logger } from "@Lib/utils";
 
-// Data.
-import { authContextManager, routerContextManager, themeContextManager } from "@Main/data/store";
-
 // View.
-import { GlobalThemeProvider } from "@Main/view/layouts/GlobalThemeProvider";
 import { ErrorPage } from "@Main/view/pages/ErrorPage";
-import { lazyLoadComponentFactory } from "@Main/view/utils";
+import { LazyLoadComponentFactory } from "@Main/view/utils/LazyLoadComponentFactory";
 
 // Submodules.
-const HomePage: ComponentClass = lazyLoadComponentFactory.getComponent(
+const HomePage: ComponentClass = LazyLoadComponentFactory.getComponent(
   () => import(/* webpackChunkName: "home@home-page" */"@Module/home/view/pages/HomePage")
 );
 
-@Provide(themeContextManager, authContextManager, routerContextManager)
-@Wrapped(GlobalThemeProvider)
 export class HomeRouter extends PureComponent {
 
   private readonly log: Logger = new Logger("[HOME]");

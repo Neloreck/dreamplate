@@ -26,7 +26,12 @@ export class ErrorPage extends PureComponent<IErrorPageProps> {
     const { classes } = this.props;
 
     return (
-      <Grid className={classes.root} container>
+      <Grid
+        className={classes.root}
+        direction={"column"}
+        wrap={"nowrap"}
+        container
+      >
 
         <AppBar className={classes.appBar}>
           Boilerplate
@@ -37,15 +42,16 @@ export class ErrorPage extends PureComponent<IErrorPageProps> {
           justify={"center"}
           direction={"column"}
           alignItems={"center"}
+          component={"main"}
           container
         >
 
-          <Typography variant={"h4"}>
-            Route has not been found.
+          <Typography variant={"h5"}>
+            Route page has not been found.
           </Typography>
 
           <Button variant={"contained"} onClick={this.onHomeNavigated}>
-            Go home.
+            Home.
           </Button>
 
         </Grid>

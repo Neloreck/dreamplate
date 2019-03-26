@@ -1,27 +1,21 @@
 @import url('reset.scss');
 
-head,
-body {
-  overflow: hidden;
-}
-
 html,
 body,
-#application-root,
-#application-root > div {
-  font-size: 14px;
+#application-root {
+  width: 100vw;
   height: 100vh;
   min-height: 100vh;
   min-width: 100vw;
-  width: 100vw;
+
+  font-size: 14px;
+
+  overflow: hidden;
 }
 
-#application-root,
-#application-root > div {
-  align-items: center;
+#application-root {
   display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: center;
-  min-width: 400px;
-  overflow: hidden;
 }

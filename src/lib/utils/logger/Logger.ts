@@ -14,6 +14,7 @@ export class Logger {
       this.enabled = enabled;
     }
   }
+
   // Functional methods.
 
   public getPrefixed(prefix: string, enabled?: boolean): Logger {

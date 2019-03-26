@@ -21,9 +21,14 @@ export class HomePage extends PureComponent<IHomePageProps> {
     const { classes } = this.props;
 
     return (
-      <Grid className={classes.root} container>
+      <Grid
+        className={classes.root}
+        direction={"column"}
+        wrap={"nowrap"}
+        container
+      >
 
-        <AppBar className={classes.appBar}>
+        <AppBar className={classes.appBar} position={"relative"}>
           Boilerplate
         </AppBar>
 
@@ -32,6 +37,7 @@ export class HomePage extends PureComponent<IHomePageProps> {
           justify={"center"}
           direction={"column"}
           alignItems={"center"}
+          component={"main"}
           container
         >
 
