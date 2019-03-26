@@ -3,16 +3,16 @@
  * Restricted in non DEV mode.
  */
 
-export const DebugExpose = (name: string): ClassDecorator => (target: any): any => {
+export const DebugExpose = (name: string = "default"): ClassDecorator => (target: any): any => {
 
   if (process.env.NODE_ENV !== "development") {
     throw new Error("Debugging utils are only available for DEV environment.");
   }
 
   // @ts-ignore
-  if (!window.debug) {
+  if (!window.exposed) {
     // @ts-ignore
-    window.debug = {};
+    window.exposed = {};
   }
 
   return class extends target {
@@ -21,7 +21,7 @@ export const DebugExpose = (name: string): ClassDecorator => (target: any): any 
       super(params);
 
       // @ts-ignore
-      window.debug[name] = this;
+      window.exposed[name] = this;
     }
   };
 

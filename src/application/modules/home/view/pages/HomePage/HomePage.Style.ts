@@ -5,6 +5,8 @@ export const homePageStyle = (theme: Theme) => createStyles({
     padding: theme.spacing.unit * 3
   },
   card: {
+    backgroundColor: theme.palette.background.default,
+    color: theme.palette.text.primary,
     margin: theme.spacing.unit * 2,
     padding: theme.spacing.unit * 2
   },
