@@ -21,7 +21,7 @@ export class PrivateRoute extends Route<IPrivateRouteProps> {
 
   private DEFAULT_REDIRECT: string = "/authentication/login";
 
-  public componentWillMount(): void {
+  public componentDidMount(): void {
 
     const { redirect, reversed, routingActions: { replace }, routingState: { history }, authState: { authorized, authorizing } } = this.props;
 

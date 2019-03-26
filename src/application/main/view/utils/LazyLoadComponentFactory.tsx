@@ -22,7 +22,7 @@ export class LazyLoadComponentFactory {
 
       private ready: boolean = false;
 
-      public componentWillMount(): void {
+      public componentDidMount(): void {
 
         this.ready = true;
 
