@@ -1,5 +1,7 @@
 import { Bind, ContextManager } from "dreamstate";
 import { createBrowserHistory, History } from "history";
+import { createElement, ReactNode } from "react";
+import { Router as ReactRouter } from "react-router-dom";
 
 // Lib.
 import { Logger } from "@Lib/utils";
@@ -31,6 +33,14 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
   };
 
   protected log: Logger = new Logger("[🗺️ROUTER]", true);
+
+  public getProvider(): any {
+    // Create router wrapper with provider for app-level.
+    return (props: any): ReactNode =>
+      createElement(ReactRouter, { history: this.context.routingState.history },
+        createElement(super.getProvider(), props, props.children)
+      );
+  }
 
   @Bind()
   public getHistory(): History {

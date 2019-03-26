@@ -1,7 +1,7 @@
 import { Provide } from "dreamstate";
 import * as React from "react";
 import { ComponentClass, PureComponent, ReactNode } from "react";
-import { Route, Router as ReactRouter } from "react-router-dom";
+import { Route } from "react-router-dom";
 import { Switch } from "react-router-dom";
 
 // Lib.
@@ -31,15 +31,11 @@ export class Router extends PureComponent {
   public render(): ReactNode {
 
     return (
-      <ReactRouter history={routerContextManager.getHistory()}>
+      <Switch>
 
-        <Switch>
+        <Route exact={true} path={"*"} component={HomeModule}/>
 
-          <Route exact={true} path={"*"} component={HomeModule}/>
-
-        </Switch>
-
-      </ReactRouter>
+      </Switch>
     );
   }
 
