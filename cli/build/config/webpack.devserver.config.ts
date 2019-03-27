@@ -16,12 +16,5 @@ export const DEV_SERVER_CONFIG: Configuration = {
   hot: !IS_PRODUCTION,
   inline: !IS_PRODUCTION,
   port: DEV_SERVER_PORT,
-  proxy: [
-   {
-      context: ["!/authentication/**", "/auth/**"],
-      secure: false,
-      target: "http://localhost:4000"
-    }
-  ],
   publicPath: BACKEND_PUBLIC_PATH
 };
