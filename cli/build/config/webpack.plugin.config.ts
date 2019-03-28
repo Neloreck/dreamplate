@@ -43,7 +43,7 @@ export const PLUGIN_CONFIG: {
     splitChunks: {
       cacheGroups: {
         vendor: {
-          name: (module: any): string => `package.${module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1].replace("@", "")}`,
+          name: (module: any): string => `pcg.${module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1].replace("@", "")}`,
           test: /[\\/]node_modules[\\/]/
         }
       },

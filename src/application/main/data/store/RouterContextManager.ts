@@ -1,5 +1,5 @@
 import { Bind, ContextManager } from "dreamstate";
-import { createBrowserHistory, History } from "history";
+import { createBrowserHistory, History, Path } from "history";
 import { createElement, ReactNode } from "react";
 import { Router as ReactRouter } from "react-router-dom";
 
@@ -48,14 +48,14 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
   }
 
   @Bind()
-  protected replace(path: string): void {
+  protected replace(path: Path): void {
 
     this.log.info(`Replace path: ${path}.`);
     this.context.routingState.history.replace(path);
   }
 
   @Bind()
-  protected push(path: string): void {
+  protected push(path: Path): void {
 
     this.log.info(`Push path: ${path}.`);
     this.context.routingState.history.push(path);

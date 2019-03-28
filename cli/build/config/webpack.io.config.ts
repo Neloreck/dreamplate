@@ -14,7 +14,7 @@ export const IO_CONFIG: {
     ? [ENTRY_FILE_PATH]
     : ["webpack/hot/dev-server", ENTRY_FILE_PATH],
   OUTPUT: {
-    chunkFilename: "js/chunk:[name].js",
+    chunkFilename: "js/ck:[name].js",
     filename: "js/[name].js",
     path: PROJECT_OUTPUT_PATH,
     publicPath: BACKEND_PUBLIC_PATH,

@@ -2,7 +2,7 @@ import * as path from "path";
 import { Module, Resolve } from "webpack";
 
 // tslint:disable: no-var-requires typedef
-const Autoprefixer = require("autoprefixer");
+const AutoPrefixer = require("autoprefixer");
 
 import { IS_PRODUCTION, PROJECT_ROOT_PATH, TS_CONFIG_PATH } from "./webpack.constants";
 
@@ -31,8 +31,8 @@ export const MODULE_CONFIG: {
             loader: "postcss-loader",
             options: {
               plugins: [
-                Autoprefixer({
-                  browsers: ["ie >= 8", "last 4 version"]
+                AutoPrefixer({
+                  browsers: ["ie >= 11", "last 10 version"]
                 })
               ],
               sourceMap: !IS_PRODUCTION,
@@ -66,7 +66,7 @@ export const MODULE_CONFIG: {
           {
             loader: "url-loader",
             options: {
-              // include <5KB files in bundle file
+              // include < 5KB files in bundle file
               limit: 5000,
               name: "images/[name].[ext]"
             }
