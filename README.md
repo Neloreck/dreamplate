@@ -16,8 +16,8 @@
   
 ### Commands:
 
-  - `npm run start` - start in prod mode with minifications (localhost:3000)
-  - `npm run start:dev` - start in dev mode with hot reload (localhost:3000)
+  - `npm run start` - start in prod mode with minifications (https://localhost:3000)
+  - `npm run start:dev` - start in dev mode with hot reload (https://localhost:3000)
    
   - `npm run build` - build in prod mode with minifications (target/dist/production)
   - `npm run build:dev` - build in dev mode with source maps (target/dist/development)
