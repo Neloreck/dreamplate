@@ -50,7 +50,10 @@ export class ErrorPage extends PureComponent<IErrorPageProps> {
             Route page has not been found.
           </Typography>
 
-          <Button variant={"contained"} onClick={this.onHomeNavigated}>
+          <Button
+            variant={"contained"}
+            onClick={this.onHomeNavigated}
+          >
             Home.
           </Button>
 
