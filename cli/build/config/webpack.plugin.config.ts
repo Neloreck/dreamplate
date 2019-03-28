@@ -1,6 +1,6 @@
 import { CheckerPlugin, TsConfigPathsPlugin } from "awesome-typescript-loader";
 import * as path from "path";
-import { HotModuleReplacementPlugin, NoEmitOnErrorsPlugin, Options, Plugin } from "webpack";
+import { HotModuleReplacementPlugin, Options, Plugin } from "webpack";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 
 // tslint:disable: no-var-requires typedef
@@ -38,6 +38,7 @@ export const PLUGIN_CONFIG: {
         },
       })
     ],
+    noEmitOnErrors: IS_PRODUCTION,
     runtimeChunk: "single",
     splitChunks: {
       cacheGroups: {
@@ -50,7 +51,7 @@ export const PLUGIN_CONFIG: {
       maxAsyncRequests: 20,
       maxInitialRequests: 30,
       maxSize: 500_000,
-      minSize: 5_000,
+      minSize: 10_000,
       name: true
     },
     usedExports: true,
@@ -78,7 +79,10 @@ export const PLUGIN_CONFIG: {
     }),
     new DotEnv({
       path: path.resolve(PROJECT_ROOT_PATH, `cli/build/config/.${ENVIRONMENT}.env`)
-    }),
-    IS_PRODUCTION ? new NoEmitOnErrorsPlugin() : new HotModuleReplacementPlugin()
+    })
   ],
 };
+
+if (!IS_PRODUCTION) {
+  PLUGIN_CONFIG.PLUGINS.push(new HotModuleReplacementPlugin());
+}
