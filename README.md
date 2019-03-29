@@ -10,6 +10,7 @@
   - React (MaterialUI, dreamstate as contextStore)
   - Typescript (decorators, OOP style, newest features, awt loader with babel)
   - Webpack, lazy loading, tree shaking, chunks + modular architecture, aliases
+  - i18next, i18next-react for translations, lazy loaded locale packs
   - Jest
   - SCSS (globals), JSS (components), customized theme
 
