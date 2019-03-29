@@ -8,10 +8,15 @@ import { Switch } from "react-router-dom";
 import { Wrapped } from "@Lib/decorators";
 
 // Data
-import { authContextManager, routerContextManager, themeContextManager } from "@Main/data/store";
+import {
+  authContextManager,
+  languageContextManager,
+  routerContextManager,
+  themeContextManager
+} from "@Main/data/store";
 
 // View.
-import { GlobalThemeProvider } from "@Main/view/layouts/GlobalThemeProvider";
+import { GlobalProvider } from "@Main/view/layouts/GlobalProvider";
 import { LazyLoadComponentFactory } from "@Main/view/utils/LazyLoadComponentFactory";
 
 /*
@@ -24,8 +29,8 @@ export const HomeModule: ComponentClass = LazyLoadComponentFactory.getComponent(
 
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
 
-@Provide(authContextManager, routerContextManager, themeContextManager)
-@Wrapped(GlobalThemeProvider)
+@Provide(authContextManager, routerContextManager, languageContextManager, themeContextManager)
+@Wrapped(GlobalProvider)
 export class Router extends PureComponent {
 
   public render(): ReactNode {

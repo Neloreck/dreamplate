@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Component, ComponentClass, ComponentType, ReactNode } from "react";
+import { ComponentClass, ComponentType, PureComponent, ReactNode } from "react";
 
 // Props.
 interface ILazyComponentState {
@@ -11,7 +11,7 @@ export class LazyLoadComponentFactory {
   public static getComponent(importFunc: () => Promise<any>): ComponentClass {
 
     // tslint:disable-next-line
-    return class extends Component<any, ILazyComponentState> {
+    return class extends PureComponent<any, ILazyComponentState> {
 
       private static COMPONENT_INSTANCE: ComponentType;
 

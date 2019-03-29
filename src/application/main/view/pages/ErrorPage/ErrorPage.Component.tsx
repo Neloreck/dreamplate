@@ -1,9 +1,10 @@
 import { Bind, Consume } from "dreamstate";
 import * as React from "react";
 import { PureComponent, ReactNode } from "react";
+import { WithTranslation } from "react-i18next";
 
 // Lib.
-import { Styled } from "@Lib/decorators";
+import { Styled, Translated } from "@Lib/decorators";
 
 // Data.
 import { IRouterContext, routerContextManager } from "@Main/data/store";
@@ -14,16 +15,17 @@ import { errorPageStyle } from "./ErrorPage.Style";
 
 // Props.
 export interface IErrorPageOwnProps {}
-export interface IErrorPageInjectedProps extends WithStyles<typeof errorPageStyle>, IRouterContext {}
+export interface IErrorPageInjectedProps extends WithStyles<typeof errorPageStyle>, WithTranslation, IRouterContext {}
 export interface IErrorPageProps extends IErrorPageOwnProps, IErrorPageInjectedProps {}
 
+@Translated()
 @Styled(errorPageStyle)
 @Consume(routerContextManager)
 export class ErrorPage extends PureComponent<IErrorPageProps> {
 
   public render(): ReactNode {
 
-    const { classes } = this.props;
+    const { classes, t } = this.props;
 
     return (
       <Grid
@@ -34,7 +36,7 @@ export class ErrorPage extends PureComponent<IErrorPageProps> {
       >
 
         <AppBar className={classes.appBar}>
-          Boilerplate
+          {t("boilerplateLabel")}
         </AppBar>
 
         <Grid
@@ -47,14 +49,14 @@ export class ErrorPage extends PureComponent<IErrorPageProps> {
         >
 
           <Typography variant={"h5"}>
-            Route page has not been found.
+            {t("pageNotFoundLabel")}
           </Typography>
 
           <Button
             variant={"contained"}
             onClick={this.onHomeNavigated}
           >
-            Home.
+            {t("goHomeLabel")}
           </Button>
 
         </Grid>

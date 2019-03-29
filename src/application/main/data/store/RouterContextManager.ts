@@ -73,4 +73,8 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
     return this.context.routingState.history.location.pathname;
   }
 
+  protected onProvisionStarted(): void {
+    this.log.info("Started router context provision.");
+  }
+
 }

@@ -1,8 +1,10 @@
 import * as React from "react";
 import { PureComponent, ReactNode } from "react";
+import { WithTranslation } from "react-i18next";
 
 // Lib.
 import { Styled } from "@Lib/decorators";
+import { Translated } from "@Lib/decorators/Translated";
 
 // View.
 import { AppBar, Card, Grid, WithStyles } from "@material-ui/core";
@@ -10,15 +12,16 @@ import { homePageStyle } from "./HomePage.Style";
 
 // Props.
 export interface IHomePageOwnProps {}
-export interface IHomePageInjectedProps extends WithStyles<typeof homePageStyle> {}
+export interface IHomePageInjectedProps extends WithStyles<typeof homePageStyle>, WithTranslation {}
 export interface IHomePageProps extends IHomePageOwnProps, IHomePageInjectedProps {}
 
+@Translated()
 @Styled(homePageStyle)
 export class HomePage extends PureComponent<IHomePageProps> {
 
   public render(): ReactNode {
 
-    const { classes } = this.props;
+    const { classes, t } = this.props;
 
     return (
       <Grid
@@ -29,7 +32,7 @@ export class HomePage extends PureComponent<IHomePageProps> {
       >
 
         <AppBar className={classes.appBar} position={"relative"}>
-          Boilerplate
+          {t("boilerplateLabel")}
         </AppBar>
 
         <Grid
@@ -42,7 +45,7 @@ export class HomePage extends PureComponent<IHomePageProps> {
         >
 
           <Card className={classes.card}>
-            Change some code there and move on. Use flex grid for aligning.
+            {t("changeSomeCodeLabel")}
           </Card>
 
           <Grid direction={"row"} justify={"center"} container>
@@ -61,6 +64,10 @@ export class HomePage extends PureComponent<IHomePageProps> {
 
             <Card className={classes.card}>
               <a target={"_blank"} href={"https://github.com/Neloreck/dreamstate/"}> DreamState </a>
+            </Card>
+
+            <Card className={classes.card}>
+              <a target={"_blank"} href={"https://www.i18next.com/"}> i18next </a>
             </Card>
 
           </Grid>

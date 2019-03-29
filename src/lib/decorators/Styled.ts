@@ -2,7 +2,7 @@ import { default as withStyles, StyleRules, StyleRulesCallback, WithStylesOption
 import { ClassType, Component, ComponentState } from "react";
 
 export function Styled<P1, T1 extends Component<P1, ComponentState>, ClassKey extends string, Options extends WithStylesOptions<ClassKey> = {}>(
-  style: StyleRulesCallback<ClassKey> | StyleRules<ClassKey>, options?: Options): (target: ClassType<P1, T1, any>) => ClassType<P1, T1, any> {
+  style: StyleRulesCallback<ClassKey> | StyleRules<ClassKey>, options?: Options): ClassDecorator {
 
   return (target: ClassType<P1, T1, any>): ClassType<P1, T1, any> => {
     return withStyles(style, options)(target);

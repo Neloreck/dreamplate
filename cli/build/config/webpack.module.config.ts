@@ -80,6 +80,7 @@ export const MODULE_CONFIG: {
       "@Api": path.resolve(PROJECT_ROOT_PATH, "./src/api/"),
       "@Application": path.resolve(PROJECT_ROOT_PATH, "./src/application/"),
       "@Lib": path.resolve(PROJECT_ROOT_PATH, "./src/lib/"),
+      "@Localization": path.resolve(PROJECT_ROOT_PATH, "./src/localization/"),
       "@Main": path.resolve(PROJECT_ROOT_PATH, "./src/application/main"),
       "@Module": path.resolve(PROJECT_ROOT_PATH, "./src/application/modules/")
     },
@@ -87,7 +88,8 @@ export const MODULE_CONFIG: {
       ".ts",
       ".tsx",
       ".js",
-      "jsx"
+      ".jsx",
+      ".json"
     ],
     modules: [
       path.resolve(PROJECT_ROOT_PATH, "src/application"),

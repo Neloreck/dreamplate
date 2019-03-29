@@ -2,6 +2,9 @@ import { ThemeOptions } from "@material-ui/core/styles/createMuiTheme";
 import { PaletteOptions } from "@material-ui/core/styles/createPalette";
 import { Bind, ContextManager } from "dreamstate";
 
+// Logger.
+import { Logger } from "@Lib/utils";
+
 export interface IThemeContext {
   themeActions: {
     isDark(): boolean;
@@ -43,6 +46,8 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
     }
   };
 
+  private readonly log: Logger = new Logger("[🍬THEME]");
+
   @Bind()
   protected isDark(): boolean {
     return (this.context.themeState.options.palette as PaletteOptions).type === "dark";
@@ -55,6 +60,10 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
     (this.context.themeState.options.palette as PaletteOptions).type = isDark ? "dark" : "light";
 
     this.update();
+  }
+
+  protected onProvisionStarted(): void {
+    this.log.info("Started router context provision.");
   }
 
 }
