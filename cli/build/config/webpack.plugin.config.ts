@@ -15,11 +15,12 @@ export const PLUGIN_CONFIG: {
   OPTIMIZATION: Options.Optimization
 } = {
   OPTIMIZATION: {
+    mergeDuplicateChunks: true,
     minimizer: [
       new TerserPlugin({
         sourceMap: !IS_PRODUCTION,
         terserOptions: {
-          compress: {},
+          compress: true,
           ecma: 6,
           ie8: false,
           keep_classnames: false,
@@ -39,7 +40,8 @@ export const PLUGIN_CONFIG: {
       })
     ],
     noEmitOnErrors: IS_PRODUCTION,
-    runtimeChunk: "single",
+    removeAvailableModules: true,
+    runtimeChunk: "multiple",
     splitChunks: {
       cacheGroups: {
         vendor: {
@@ -48,13 +50,13 @@ export const PLUGIN_CONFIG: {
         }
       },
       chunks: "all" as "all",
-      maxAsyncRequests: 20,
-      maxInitialRequests: 30,
+      maxAsyncRequests: 30,
+      maxInitialRequests: 40,
       maxSize: 500_000,
       minSize: 10_000,
       name: true
     },
-    usedExports: true,
+    usedExports: true
   },
   PLUGINS: [
     new BundleAnalyzerPlugin({
