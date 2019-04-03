@@ -89,6 +89,7 @@ export const MODULE_CONFIG: {
       ".tsx",
       ".js",
       ".jsx",
+      ".wasm",
       ".json"
     ],
     modules: [

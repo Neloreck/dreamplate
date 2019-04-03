@@ -70,6 +70,7 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "module": "esnext",
+    "incremental": true,
     "target": "esnext",
     "moduleResolution": "node",
     "jsx": "react",
