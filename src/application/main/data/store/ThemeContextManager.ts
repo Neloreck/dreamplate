@@ -73,7 +73,7 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
   }
 
   protected onProvisionStarted(): void {
-    this.log.info("Started router context provision.");
+    this.log.info("Started theme context provision.");
   }
 
 }
