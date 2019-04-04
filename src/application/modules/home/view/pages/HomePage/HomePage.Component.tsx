@@ -42,7 +42,6 @@ export class HomePage extends PureComponent<IHomePageProps> {
 
           <Card className={classes.card}>
             Change some code and move on.
-            Change some code and move on.
           </Card>
 
           <Grid direction={"row"} justify={"center"} container>
