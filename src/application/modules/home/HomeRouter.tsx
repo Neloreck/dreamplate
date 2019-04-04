@@ -19,7 +19,9 @@ export class HomeRouter extends PureComponent {
   private readonly log: Logger = new Logger("[HOME]");
 
   public componentDidMount(): void {
+
     this.log.info("Mounted home module.");
+    this.log.pushSeparator();
   }
 
   public render(): ReactNode {

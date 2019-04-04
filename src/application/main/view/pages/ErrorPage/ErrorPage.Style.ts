@@ -1,9 +1,6 @@
 import { createStyles, Theme } from "@material-ui/core/styles";
 
 export const errorPageStyle = (theme: Theme) => createStyles({
-  appBar: {
-    padding: theme.spacing.unit * 3
-  },
   content: {
     backgroundSize: "cover",
     flexGrow: 24,

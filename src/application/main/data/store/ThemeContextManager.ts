@@ -9,7 +9,7 @@ import { Logger } from "@Lib/utils";
 export interface IThemeContext {
   themeActions: {
     isDark(): boolean;
-    setDark(isDark: boolean): void;
+    toggleTheme(): void;
   };
   themeState: {
     theme: Theme;
@@ -18,13 +18,13 @@ export interface IThemeContext {
 
 export class ThemeContextManager extends ContextManager<IThemeContext> {
 
-  private static THEME_OPTIONS: ThemeOptions = {
+  private static readonly THEME_OPTIONS: ThemeOptions = {
     palette: {
       primary: {
         contrastText: "#ffffff",
-        dark: "#324e76",
-        light: "#447fc9",
-        main: "#285e8e"
+        dark: "#465a75",
+        light: "#779bc7",
+        main: "#54728c"
       },
       secondary: {
         contrastText: "#000000",
@@ -42,7 +42,7 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
   protected context: IThemeContext = {
     themeActions: {
       isDark: this.isDark,
-      setDark: this.setDark
+      toggleTheme: this.toggleTheme
     },
     themeState: {
       theme: createMuiTheme(ThemeContextManager.THEME_OPTIONS)
@@ -52,28 +52,24 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
   private readonly log: Logger = new Logger("[🍬THEME]");
   private readonly setState = ContextManager.getSetter(this, "themeState");
 
+  protected onProvisionStarted(): void {
+    this.log.info("Started theme context provision.");
+  }
+
   @Bind()
-  protected isDark(): boolean {
+  private isDark(): boolean {
     return this.context.themeState.theme.palette.type === "dark";
   }
 
   @Bind()
-  protected setDark(isDark: boolean): void {
+  private toggleTheme(): void {
 
     const { theme } = this.context.themeState;
-    const nextThemeType: "light" | "dark" = isDark ? "dark" : "light";
+    const nextThemeType: "light" | "dark" = theme.palette.type === "light" ? "dark" : "light";
 
-    if (nextThemeType !== theme.palette.type) {
-
-      this.log.info(`Switching theme type to '${nextThemeType}'. Creating new sheets.`);
-      (ThemeContextManager.THEME_OPTIONS.palette as PaletteOptions).type = nextThemeType;
-      this.setState({ theme: createMuiTheme(ThemeContextManager.THEME_OPTIONS) });
-    }
-
-  }
-
-  protected onProvisionStarted(): void {
-    this.log.info("Started theme context provision.");
+    this.log.info(`Toggle to '${nextThemeType}'.`);
+    (ThemeContextManager.THEME_OPTIONS.palette as PaletteOptions).type = nextThemeType;
+    this.setState({ theme: createMuiTheme(ThemeContextManager.THEME_OPTIONS) });
   }
 
 }

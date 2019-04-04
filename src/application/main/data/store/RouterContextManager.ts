@@ -32,7 +32,7 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
     }
   };
 
-  protected log: Logger = new Logger("[🗺️ROUTER]", true);
+  private readonly log: Logger = new Logger("[🗺️ROUTER]", true);
 
   public getProvider(): any {
     // Create router wrapper with provider for app-level.
@@ -42,39 +42,34 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
       );
   }
 
-  @Bind()
-  public getHistory(): History {
-    return this.context.routingState.history;
+  protected onProvisionStarted(): void {
+    this.log.info("Started router context provision.");
   }
 
   @Bind()
-  protected replace(path: Path): void {
+  private replace(path: Path): void {
 
     this.log.info(`Replace path: ${path}.`);
     this.context.routingState.history.replace(path);
   }
 
   @Bind()
-  protected push(path: Path): void {
+  private push(path: Path): void {
 
     this.log.info(`Push path: ${path}.`);
     this.context.routingState.history.push(path);
   }
 
   @Bind()
-  protected goBack(): void {
+  private goBack(): void {
 
     this.log.info("Go back.");
     this.context.routingState.history.goBack();
   }
 
   @Bind()
-  protected getCurrentLocation(): string {
+  private getCurrentLocation(): string {
     return this.context.routingState.history.location.pathname;
-  }
-
-  protected onProvisionStarted(): void {
-    this.log.info("Started router context provision.");
   }
 
 }

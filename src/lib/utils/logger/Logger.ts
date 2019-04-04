@@ -8,6 +8,7 @@ export class Logger {
   private readonly enabled: boolean = true;
 
   public constructor(prefix: string, enabled?: boolean) {
+
     this.prefix = prefix;
 
     if (enabled !== undefined) {
@@ -22,12 +23,14 @@ export class Logger {
   }
 
   public debug(...args: Array<any>): void {
+
     if (Logger.IS_DEV && this.enabled) {
       console.debug(`%c${this.prefix}`, "color: #bada53", "[D]", ...args);
     }
   }
 
   public warn(...args: Array<any>): void {
+
     if (Logger.IS_DEV && this.enabled) {
       console.warn(`%c${this.prefix}`, "color: #bada53", ...args);
     }
@@ -38,8 +41,16 @@ export class Logger {
   }
 
   public info(...args: Array<any>): void {
+
     if (Logger.IS_DEV && this.enabled) {
       console.info(`%c${this.prefix}`, "color: #bada53", ...args);
+    }
+  }
+
+  public pushSeparator(): void {
+
+    if (Logger.IS_DEV && this.enabled) {
+      console.info("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
     }
   }
 

@@ -1,10 +1,10 @@
 import { createStyles, Theme } from "@material-ui/core/styles";
 
 export const homePageStyle = (theme: Theme) => createStyles({
-  appBar: {
-    padding: theme.spacing.unit * 3
-  },
   card: {
+    "& a": {
+     color: theme.palette.text.primary
+    },
     backgroundColor: theme.palette.background.default,
     color: theme.palette.text.primary,
     margin: theme.spacing.unit * 2,

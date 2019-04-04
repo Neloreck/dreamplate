@@ -7,6 +7,7 @@ import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 const DotEnv = require("dotenv-webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
+const HtmlWebpackInlineSourcePlugin  = require("html-webpack-inline-source-plugin");
 
 import { ENVIRONMENT, IS_PRODUCTION, PROJECT_ROOT_PATH } from "./webpack.constants";
 
@@ -51,7 +52,7 @@ export const PLUGIN_CONFIG: {
       },
       chunks: "all" as "all",
       maxAsyncRequests: 30,
-      maxInitialRequests: 40,
+      maxInitialRequests: 15,
       maxSize: 500_000,
       minSize: 10_000,
       name: true
@@ -65,11 +66,15 @@ export const PLUGIN_CONFIG: {
     }),
     new TsConfigPathsPlugin({}),
     new CheckerPlugin(),
+    new DotEnv({
+      path: path.resolve(PROJECT_ROOT_PATH, `cli/build/config/.${ENVIRONMENT}.env`)
+    }),
     new HtmlWebpackPlugin({
       ENVIRONMENT,
       favicon: path.resolve(PROJECT_ROOT_PATH, "cli/build/template/favicon.ico"),
       filename: "index.html",
       inject: true,
+      inlineSource: ".(css)$",
       minify: {
         minifyCSS: true,
         preserveLineBreaks: true,
@@ -78,13 +83,12 @@ export const PLUGIN_CONFIG: {
         trimCustomFragments: true
       },
       template: path.resolve(PROJECT_ROOT_PATH, "cli/build/template/index.hbs")
-    }),
-    new DotEnv({
-      path: path.resolve(PROJECT_ROOT_PATH, `cli/build/config/.${ENVIRONMENT}.env`)
     })
   ],
 };
 
-if (!IS_PRODUCTION) {
+if (IS_PRODUCTION) {
+  PLUGIN_CONFIG.PLUGINS.push(new HtmlWebpackInlineSourcePlugin());
+} else {
   PLUGIN_CONFIG.PLUGINS.push(new HotModuleReplacementPlugin());
 }

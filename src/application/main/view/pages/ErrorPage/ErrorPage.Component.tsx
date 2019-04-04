@@ -1,31 +1,30 @@
 import { Bind, Consume } from "dreamstate";
 import * as React from "react";
 import { PureComponent, ReactNode } from "react";
-import { WithTranslation } from "react-i18next";
 
 // Lib.
-import { Styled, Translated } from "@Lib/decorators";
+import { Styled } from "@Lib/decorators";
 
 // Data.
 import { IRouterContext, routerContextManager } from "@Main/data/store";
 
 // View.
-import { AppBar, Button, Grid, Typography, WithStyles } from "@material-ui/core";
+import { IMainHeaderInjectedProps, MainHeader } from "@Main/view/components/MainHeader";
+import { Button, Grid, Typography, WithStyles } from "@material-ui/core";
 import { errorPageStyle } from "./ErrorPage.Style";
 
 // Props.
 export interface IErrorPageOwnProps {}
-export interface IErrorPageInjectedProps extends WithStyles<typeof errorPageStyle>, WithTranslation, IRouterContext {}
+export interface IErrorPageInjectedProps extends WithStyles<typeof errorPageStyle>, IRouterContext {}
 export interface IErrorPageProps extends IErrorPageOwnProps, IErrorPageInjectedProps {}
 
-@Translated()
 @Styled(errorPageStyle)
 @Consume(routerContextManager)
 export class ErrorPage extends PureComponent<IErrorPageProps> {
 
   public render(): ReactNode {
 
-    const { classes, t } = this.props;
+    const { classes } = this.props;
 
     return (
       <Grid
@@ -35,9 +34,7 @@ export class ErrorPage extends PureComponent<IErrorPageProps> {
         container
       >
 
-        <AppBar className={classes.appBar}>
-          {t("boilerplateLabel")}
-        </AppBar>
+        <MainHeader {...{} as IMainHeaderInjectedProps}/>
 
         <Grid
           className={classes.content}
@@ -49,14 +46,14 @@ export class ErrorPage extends PureComponent<IErrorPageProps> {
         >
 
           <Typography variant={"h5"}>
-            {t("pageNotFoundLabel")}
+            Page not found.
           </Typography>
 
           <Button
             variant={"contained"}
             onClick={this.onHomeNavigated}
           >
-            {t("goHomeLabel")}
+            Home
           </Button>
 
         </Grid>

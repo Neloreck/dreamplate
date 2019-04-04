@@ -1,27 +1,25 @@
 import * as React from "react";
 import { PureComponent, ReactNode } from "react";
-import { WithTranslation } from "react-i18next";
 
 // Lib.
 import { Styled } from "@Lib/decorators";
-import { Translated } from "@Lib/decorators/Translated";
 
 // View.
-import { AppBar, Card, Grid, WithStyles } from "@material-ui/core";
+import { IMainHeaderInjectedProps, MainHeader } from "@Main/view/components/MainHeader";
+import { Card, Grid, WithStyles } from "@material-ui/core";
 import { homePageStyle } from "./HomePage.Style";
 
 // Props.
 export interface IHomePageOwnProps {}
-export interface IHomePageInjectedProps extends WithStyles<typeof homePageStyle>, WithTranslation {}
+export interface IHomePageInjectedProps extends WithStyles<typeof homePageStyle> {}
 export interface IHomePageProps extends IHomePageOwnProps, IHomePageInjectedProps {}
 
-@Translated()
 @Styled(homePageStyle)
 export class HomePage extends PureComponent<IHomePageProps> {
 
   public render(): ReactNode {
 
-    const { classes, t } = this.props;
+    const { classes } = this.props;
 
     return (
       <Grid
@@ -31,9 +29,7 @@ export class HomePage extends PureComponent<IHomePageProps> {
         container
       >
 
-        <AppBar className={classes.appBar} position={"relative"}>
-          {t("boilerplateLabel")}
-        </AppBar>
+       <MainHeader {...{} as IMainHeaderInjectedProps}/>
 
         <Grid
           className={classes.content}
@@ -45,7 +41,8 @@ export class HomePage extends PureComponent<IHomePageProps> {
         >
 
           <Card className={classes.card}>
-            {t("changeSomeCodeLabel")}
+            Change some code and move on.
+            Change some code and move on.
           </Card>
 
           <Grid direction={"row"} justify={"center"} container>

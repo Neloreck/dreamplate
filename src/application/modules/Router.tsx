@@ -10,7 +10,6 @@ import { Wrapped } from "@Lib/decorators";
 // Data
 import {
   authContextManager,
-  languageContextManager,
   routerContextManager,
   themeContextManager
 } from "@Main/data/store";
@@ -29,7 +28,7 @@ export const HomeModule: ComponentClass = LazyLoadComponentFactory.getComponent(
 
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
 
-@Provide(authContextManager, routerContextManager, languageContextManager, themeContextManager)
+@Provide(themeContextManager, routerContextManager, authContextManager)
 @Wrapped(GlobalProvider)
 export class Router extends PureComponent {
 

@@ -90,9 +90,7 @@
       "@Module/*": [ "application/modules/*" ],
       "@Module": [ "application/modules/index" ],
       "@Api/*": [ "api/*" ],
-      "@Lib/*": [ "lib/*" ],
-      "@Localization/*": [ "localization/*" ],
-      "@Localization": [ "localization/index" ]
+      "@Lib/*": [ "lib/*" ]
     },
     "resolveJsonModule": true
   },
