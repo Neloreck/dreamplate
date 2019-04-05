@@ -47,23 +47,27 @@ export class HomePage extends PureComponent<IHomePageProps> {
           <Grid direction={"row"} justify={"center"} container>
 
             <Card className={classes.card}>
-              <a target={"_blank"} href={"https://reactjs.org/"}> React </a>
+              <a target={"_blank"} href={"https://reactjs.org/"}>
+                React
+              </a>
             </Card>
 
             <Card className={classes.card}>
-              <a target={"_blank"} href={"https://material-ui.com/"}> MaterialUI </a>
+              <a target={"_blank"} href={"https://material-ui.com/"}>
+                MaterialUI
+              </a>
             </Card>
 
             <Card className={classes.card}>
-              <a target={"_blank"} href={"https://www.typescriptlang.org/"}> Typescript </a>
+              <a target={"_blank"} href={"https://www.typescriptlang.org/"}>
+                Typescript
+              </a>
             </Card>
 
             <Card className={classes.card}>
-              <a target={"_blank"} href={"https://github.com/Neloreck/dreamstate/"}> DreamState </a>
-            </Card>
-
-            <Card className={classes.card}>
-              <a target={"_blank"} href={"https://www.i18next.com/"}> i18next </a>
+              <a target={"_blank"} href={"https://github.com/Neloreck/dreamstate/"}>
+                DreamState
+              </a>
             </Card>
 
           </Grid>

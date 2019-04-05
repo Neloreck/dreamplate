@@ -1,4 +1,3 @@
-/* stylelint-disable */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -7,7 +6,6 @@ small, strike, strong, sub, sup, tt, var,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td {
-  /* stylelint-enable */
   border: 0;
   font-family: inherit;
   font-size: 100%;
@@ -19,14 +17,8 @@ table, caption, tbody, tfoot, thead, tr, th, td {
   vertical-align: baseline;
 }
 
-/* remember to define focus styles! */
 :focus {
   outline: 0;
-}
-
-body {
-  color: black;
-  line-height: 1;
 }
 
 ol,
@@ -34,7 +26,6 @@ ul {
   list-style: none;
 }
 
-/* tables still need 'cellspacing="0"' in the markup */
 table {
   border-collapse: separate;
   border-spacing: 0;
