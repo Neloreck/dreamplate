@@ -11,7 +11,8 @@ import { LazyLoadComponentFactory } from "@Main/view/utils/LazyLoadComponentFact
 
 // Submodules.
 const HomePage: ComponentClass = LazyLoadComponentFactory.getComponent(
-  () => import(/* webpackChunkName: "home@home-page" */"@Module/home/view/pages/HomePage")
+  () => import(/* webpackChunkName: "home@home-page" */"@Module/home/view/pages/HomePage"),
+  <div> Loading... </div> /* Fallback for loading time. */
 );
 
 export class HomeRouter extends PureComponent {

@@ -8,7 +8,7 @@ interface ILazyComponentState {
 
 export class LazyLoadComponentFactory {
 
-  public static getComponent(importFunc: () => Promise<any>): ComponentClass {
+  public static getComponent(importFunc: () => Promise<any>, loadingNode?: ReactNode): ComponentClass {
 
     // tslint:disable-next-line
     return class extends PureComponent<any, ILazyComponentState> {
@@ -42,7 +42,7 @@ export class LazyLoadComponentFactory {
          */
         return RenderItem
           ? <RenderItem {...this.props}/>
-          : null;
+          : loadingNode || null;
       }
 
       private async loadComponent(): Promise<void> {

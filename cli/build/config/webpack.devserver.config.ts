@@ -9,8 +9,9 @@ import {
 } from "./webpack.constants";
 
 export const DEV_SERVER_CONFIG: Configuration = {
-  compress: true,
+  compress: IS_PRODUCTION,
   contentBase: DEV_SERVER_CONTENT_BASE,
+  headers: IS_PRODUCTION ? { "Cache-Control": "public,max-age=31536000" } : undefined,
   historyApiFallback: true,
   host: DEV_SERVER_HOST,
   hot: !IS_PRODUCTION,

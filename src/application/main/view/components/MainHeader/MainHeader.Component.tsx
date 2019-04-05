@@ -47,7 +47,10 @@ export class MainHeader extends PureComponent<IMainHeaderProps> {
     const { themeActions } = this.props;
 
     return (
-      <IconButton onClick={themeActions.toggleTheme}>
+      <IconButton
+        name={"themeToggle"}
+        onClick={themeActions.toggleTheme}
+      >
         { themeActions.isDark() ? <Brightness3/> : <Brightness5/> }
       </IconButton>
     );

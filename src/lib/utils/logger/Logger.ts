@@ -50,7 +50,7 @@ export class Logger {
   public pushSeparator(): void {
 
     if (Logger.IS_DEV && this.enabled) {
-      console.info("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+      console.info("%c=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=", "color: #bada53");
     }
   }
 
