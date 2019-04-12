@@ -23,7 +23,10 @@ import { LazyLoadComponentFactory } from "@Main/view/utils/LazyLoadComponentFact
  */
 
 export const HomeModule: ComponentClass = LazyLoadComponentFactory.getComponent(
-  () => import(/* webpackChunkName: "module@home" */"@Module/home")
+  () => import(
+    /* webpackChunkName: "module@home" */
+    /* webpackPreload: true */
+    "@Module/home")
 );
 
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
