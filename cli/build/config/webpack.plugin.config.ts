@@ -8,6 +8,7 @@ const DotEnv = require("dotenv-webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const HtmlWebpackInlineSourcePlugin  = require("html-webpack-inline-source-plugin");
+const DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack-plugin");
 
 import { ENVIRONMENT, IS_PRODUCTION, PROJECT_ROOT_PATH } from "./webpack.constants";
 
@@ -60,6 +61,9 @@ export const PLUGIN_CONFIG: {
     usedExports: true
   },
   PLUGINS: [
+    new DuplicatePackageCheckerPlugin({
+      verbose: true
+    }),
     new BundleAnalyzerPlugin({
       analyzerMode: "static",
       openAnalyzer: false
