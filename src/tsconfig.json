@@ -22,23 +22,35 @@
             },
             "modules": false,
             "loose": true,
-            "exclude": ["transform-async-to-generator", "transform-regenerator"]
+            "useBuiltIns": "usage",
+            "exclude": [
+              "transform-async-to-generator",
+              "transform-regenerator"
+            ]
           }
         ],
         "@babel/preset-react"
       ],
       "plugins": [
-        ["module:fast-async", { "spec": true }],
-        ["transform-imports", {
-          "@material-ui/icons": {
-            "transform": "@material-ui/icons/${member}",
-            "preventFullImport": true
-          },
+        "@babel/plugin-syntax-dynamic-import",
+        "@babel/plugin-transform-classes",
+        [
+          "babel-plugin-transform-builtin-classes", {
+          "globals": [
+            "LitElement",
+            "UpdatingElement",
+            "HTMLElement"
+          ],
+          "logIfPatched": true
+        }],
+        [ "module:fast-async", { "spec": true } ],
+        [ "transform-imports", {
+          /* Example:
           "@material-ui/core": {
             "transform": "@material-ui/core/${member}",
             "preventFullImport": true
-          }
-        }],
+          }*/
+        } ],
         "@babel/plugin-proposal-export-default-from",
         [
           "@babel/plugin-proposal-decorators",
@@ -48,7 +60,6 @@
         ],
         "@babel/plugin-proposal-export-namespace-from",
         "@babel/plugin-proposal-numeric-separator",
-        "@babel/plugin-syntax-dynamic-import",
         "@babel/plugin-syntax-import-meta",
         [
           "@babel/plugin-proposal-class-properties",
@@ -98,6 +109,5 @@
     "node"
   ],
   "exclude": [
-    "node_modules"
   ]
 }

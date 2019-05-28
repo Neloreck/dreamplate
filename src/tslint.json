@@ -33,7 +33,6 @@
     "typedef": [
       true,
       "array-destructuring",
-      "arrow-call-signature",
       "arrow-parameter",
       "call-signature",
       "parameter",

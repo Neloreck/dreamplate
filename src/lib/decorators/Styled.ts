@@ -1,10 +1,12 @@
-import { default as withStyles, StyleRules, StyleRulesCallback, WithStylesOptions } from "@material-ui/core/styles/withStyles";
 import { ClassType, Component, ComponentState } from "react";
+import { default as withStyles, InjectOptions, StyleCreator, Styles } from "react-jss";
 
-export function Styled<P1, T1 extends Component<P1, ComponentState>, ClassKey extends string, Options extends WithStylesOptions<ClassKey> = {}>(
-  style: StyleRulesCallback<ClassKey> | StyleRules<ClassKey>, options?: Options): ClassDecorator {
+export const Styled = <P extends string, ThemeType extends object, Properties = {}>(
+  style: Styles<P, Properties> | StyleCreator<P, ThemeType, Properties>,
+  options?: InjectOptions
+): ClassDecorator => {
 
-  return (target: ClassType<P1, T1, any>): ClassType<P1, T1, any> => {
+  return (target: ClassType<P, any, any>): ClassType<P, any, any> => {
     return withStyles(style, options)(target);
   };
-}
+};

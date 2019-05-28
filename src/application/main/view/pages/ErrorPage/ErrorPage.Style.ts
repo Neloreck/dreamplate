@@ -1,16 +1,23 @@
-import { createStyles, Theme } from "@material-ui/core/styles";
+import { IApplicationTheme } from "@Main/data/store/theme/ThemeTypes";
 
-export const errorPageStyle = (theme: Theme) => createStyles({
+export const errorPageStyle = ({ palette }: IApplicationTheme) => ({
   content: {
+    alignItems: "center",
     backgroundSize: "cover",
-    flexGrow: 24,
+    display: "flex",
+    flexDirection: "column",
+    flexGrow: 1,
     flexWrap: "nowrap",
+    justifyContent: "center",
     overflowY: "auto",
     width: "100%"
   },
   root: {
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: palette.background.paper,
+    display: "flex",
+    flexDirection: "column",
     height: "100%",
-    width: "100%"
+    width: "100%",
+    transitionDuration: "250ms"
   }
 });

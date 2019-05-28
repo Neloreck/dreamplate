@@ -21,26 +21,6 @@ export const MODULE_CONFIG: {
         },
         test: /\.(ts|tsx)$/
       },
-      // SCSS/CSS.
-      {
-        test: /\.(scss|css)$/,
-        use: [
-          "style-loader",
-          "css-loader",
-          {
-            loader: "postcss-loader",
-            options: {
-              plugins: [
-                AutoPrefixer({
-                  browsers: ["ie >= 11", "last 10 version"]
-                })
-              ],
-              sourceMap: !IS_PRODUCTION,
-            }
-          },
-          "sass-loader"
-        ]
-      },
       // FONTS.
       {
         loader: "url-loader",

@@ -1,6 +1,6 @@
 import { CheckerPlugin, TsConfigPathsPlugin } from "awesome-typescript-loader";
 import * as path from "path";
-import { HotModuleReplacementPlugin, Options, Plugin } from "webpack";
+import { HotModuleReplacementPlugin, Options, Plugin, ProvidePlugin } from "webpack";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 
 // tslint:disable: no-var-requires typedef
@@ -87,6 +87,9 @@ export const PLUGIN_CONFIG: {
         trimCustomFragments: true
       },
       template: path.resolve(PROJECT_ROOT_PATH, "cli/build/template/index.hbs")
+    }),
+    new ProvidePlugin({
+      React: "react"
     })
   ],
 };

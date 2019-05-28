@@ -1,4 +1,3 @@
-import * as React from "react";
 import { ComponentClass } from "react";
 
 // tslint:disable typedef

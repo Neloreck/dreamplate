@@ -1,6 +1,6 @@
 import { Consume } from "dreamstate";
-import * as React from "react";
 import { PureComponent, ReactNode } from "react";
+import { WithSheet } from "react-jss";
 
 // Lib.
 import { Styled } from "@Lib/decorators";
@@ -9,13 +9,13 @@ import { Styled } from "@Lib/decorators";
 import { IThemeContext, themeContextManager } from "@Main/data/store";
 
 // View.
-import { AppBar, IconButton, Typography, WithStyles } from "@material-ui/core";
-import { Brightness3, Brightness5 } from "@material-ui/icons";
 import { mainHeaderStyle } from "./MainHeader.Style";
 
 // Props.
 export interface IMainHeaderOwnProps {}
-export interface IMainHeaderInjectedProps extends WithStyles<typeof mainHeaderStyle>, IThemeContext {}
+
+export interface IMainHeaderInjectedProps extends WithSheet<typeof mainHeaderStyle>, IThemeContext {}
+
 export interface IMainHeaderProps extends IMainHeaderOwnProps, IMainHeaderInjectedProps {}
 
 @Styled(mainHeaderStyle)
@@ -27,32 +27,26 @@ export class MainHeader extends PureComponent<IMainHeaderProps> {
     const { classes } = this.props;
 
     return (
-      <AppBar
-        className={classes.root}
-        position={"relative"}
-      >
+      <div className={classes.root}>
 
-        <Typography variant={"h5"}>
+        <div>
           Boilerplate
-        </Typography>
+        </div>
 
         { this.renderToggleThemeButton() }
 
-      </AppBar>
+      </div>
     );
   }
 
   private renderToggleThemeButton(): ReactNode {
 
-    const { themeActions } = this.props;
+    const { classes, themeActions  } = this.props;
 
     return (
-      <IconButton
-        name={"themeToggle"}
-        onClick={themeActions.toggleTheme}
-      >
-        { themeActions.isDark() ? <Brightness3/> : <Brightness5/> }
-      </IconButton>
+      <button className={classes.switchButton} onClick={themeActions.toggleTheme}>
+        { themeActions.isDark() ? "DARK" : "LIGHT" }
+      </button>
     );
   }
 

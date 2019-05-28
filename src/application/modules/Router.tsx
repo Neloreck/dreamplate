@@ -1,6 +1,5 @@
 import { Provide } from "dreamstate";
-import * as React from "react";
-import { ComponentClass, PureComponent, ReactNode } from "react";
+import { PureComponent, ReactNode } from "react";
 import { Route } from "react-router-dom";
 import { Switch } from "react-router-dom";
 
@@ -8,28 +7,11 @@ import { Switch } from "react-router-dom";
 import { Wrapped } from "@Lib/decorators";
 
 // Data
-import {
-  authContextManager,
-  routerContextManager,
-  themeContextManager
-} from "@Main/data/store";
+import { authContextManager, routerContextManager, themeContextManager } from "@Main/data/store";
 
 // View.
-import { GlobalProvider } from "@Main/view/layouts/GlobalProvider";
-import { LazyLoadComponentFactory } from "@Main/view/utils/LazyLoadComponentFactory";
-
-/*
- * Application submodules with own routes:
- */
-
-export const HomeModule: ComponentClass = LazyLoadComponentFactory.getComponent(
-  () => import(
-    /* webpackChunkName: "module@home" */
-    /* webpackPreload: true */
-    "@Module/home")
-);
-
-/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+import { GlobalProvider } from "@Main/view/layouts";
+import { HomeModule } from "@Module/home";
 
 @Provide(themeContextManager, routerContextManager, authContextManager)
 @Wrapped(GlobalProvider)

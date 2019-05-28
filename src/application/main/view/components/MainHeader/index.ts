@@ -1,1 +1,1 @@
-export { MainHeader, IMainHeaderInjectedProps } from "./MainHeader.Component";
+export * from "./MainHeader.Component";

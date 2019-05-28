@@ -1,22 +1,12 @@
-import * as React from "react";
-import { ComponentClass, PureComponent, ReactNode } from "react";
-import { Route, Switch } from "react-router-dom";
+import { PureComponent, ReactNode } from "react";
+import { Route, Switch } from "react-router";
 
 // Lib.
 import { Logger } from "@Lib/utils";
 
 // View.
 import { ErrorPage } from "@Main/view/pages/ErrorPage";
-import { LazyLoadComponentFactory } from "@Main/view/utils/LazyLoadComponentFactory";
-
-// Submodules.
-const HomePage: ComponentClass = LazyLoadComponentFactory.getComponent(
-  () => import(
-    /* webpackChunkName: "home@home-page" */
-    /* webpackPreload: true */
-    "@Module/home/view/pages/HomePage"),
-  <div> Loading... </div> /* Fallback for loading time. */
-);
+import { HomePage } from "@Module/home/view/pages/HomePage";
 
 export class HomeRouter extends PureComponent {
 

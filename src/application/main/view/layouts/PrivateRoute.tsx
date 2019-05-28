@@ -1,5 +1,4 @@
 import { Consume } from "dreamstate";
-import * as React from "react";
 import { Route, RouteProps } from "react-router-dom";
 
 // Data.
@@ -25,7 +24,7 @@ export class PrivateRoute extends Route<IPrivateRouteProps> {
 
     const { redirect, reversed, routingActions: { replace }, routingState: { history }, authState: { authorized, authorizing } } = this.props;
 
-    if (authorizing === false && (reversed ? authorized : !authorized)) {
+    if (!authorizing && (reversed ? authorized : !authorized)) {
       if (redirect === true) {
         replace(this.DEFAULT_REDIRECT + "?next=" + history.location.pathname);
       } else {
@@ -38,7 +37,7 @@ export class PrivateRoute extends Route<IPrivateRouteProps> {
 
     const { redirect, reversed, authState: { authorizing, authorized }, routingActions: { replace } } = nextProps;
 
-    if (authorizing === false && (reversed ? authorized : !authorized)) {
+    if (!authorizing && (reversed ? authorized : !authorized)) {
 
       // todo: Own NEXT implementation for redirect.
       const next = "/"; // getQueryParams().next;

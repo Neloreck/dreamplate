@@ -1,10 +1,11 @@
-import { createMuiTheme } from "@material-ui/core/styles";
-import { Theme, ThemeOptions } from "@material-ui/core/styles/createMuiTheme";
-import { PaletteOptions } from "@material-ui/core/styles/createPalette";
 import { Bind, ContextManager } from "dreamstate";
 
-// Logger.
+// Lib.
 import { Logger } from "@Lib/utils";
+
+// Data.
+import { EThemeType, IApplicationTheme } from "@Main/data/store/theme/ThemeTypes";
+import { createTheme } from "@Main/data/store/theme/ThemeUtils";
 
 export interface IThemeContext {
   themeActions: {
@@ -12,30 +13,36 @@ export interface IThemeContext {
     toggleTheme(): void;
   };
   themeState: {
-    theme: Theme;
+    theme: IApplicationTheme;
   };
 }
 
 export class ThemeContextManager extends ContextManager<IThemeContext> {
 
-  private static readonly THEME_OPTIONS: ThemeOptions = {
+  private static readonly DEFAULT_THEME_PARAMS: IApplicationTheme = {
     palette: {
+      background: {
+        default: "#FFF",
+        paper: "#EEE"
+      },
       primary: {
-        contrastText: "#ffffff",
-        dark: "#465a75",
-        light: "#779bc7",
-        main: "#54728c"
+        dark: "#4c497c",
+        light: "#9690FC",
+        main: "#a8a5ec",
       },
       secondary: {
-        contrastText: "#000000",
-        dark: "#5a5a5a",
-        light: "#dbdbdb",
-        main: "#919191"
+        dark: "#6b5b71",
+        light: "rgb(166,143,176)",
+        main: "#cfb3dc",
       },
-      type: "light"
+      text: {
+        primary: "#000",
+        secondary: "#333"
+      },
+      type: EThemeType.LIGHT
     },
-    typography: {
-      useNextVariants: true
+    spacing: {
+      unit: 8
     }
   };
 
@@ -45,7 +52,7 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
       toggleTheme: this.toggleTheme
     },
     themeState: {
-      theme: createMuiTheme(ThemeContextManager.THEME_OPTIONS)
+      theme: createTheme(ThemeContextManager.DEFAULT_THEME_PARAMS)
     }
   };
 
@@ -65,11 +72,14 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
   private toggleTheme(): void {
 
     const { theme } = this.context.themeState;
-    const nextThemeType: "light" | "dark" = theme.palette.type === "light" ? "dark" : "light";
+
+    const nextThemeType: EThemeType = (theme.palette.type === EThemeType.LIGHT ? EThemeType.DARK : EThemeType.LIGHT);
+
+    theme.palette.type = nextThemeType;
 
     this.log.info(`Toggle to '${nextThemeType}'.`);
-    (ThemeContextManager.THEME_OPTIONS.palette as PaletteOptions).type = nextThemeType;
-    this.setState({ theme: createMuiTheme(ThemeContextManager.THEME_OPTIONS) });
+
+    this.setState({ theme: createTheme(theme) });
   }
 
 }

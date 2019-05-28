@@ -3,15 +3,19 @@
 ### Install:
 
   - `npm install`
-  
+
+### Size:
+
+  - GZIP - 80KB in total, ±100ms load time, modern features and OOP style
+
 ### What is used:
 
   - Custom CLI
-  - React (MaterialUI, dreamstate as contextStore)
+  - React (pure, dreamstate(1.5KB) as contextStore)
   - Typescript (decorators, OOP style, newest features, awt loader with babel)
   - Webpack, lazy loading, tree shaking, chunks + modular architecture, aliases
   - Jest
-  - SCSS (globals), JSS (components), customized theme
+  - HBS (tamplate, global styles), JSS (components), customized theme with provider
 
   
 ### Commands:

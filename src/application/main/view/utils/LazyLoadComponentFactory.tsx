@@ -1,4 +1,3 @@
-import * as React from "react";
 import { ComponentClass, ComponentType, PureComponent, ReactNode } from "react";
 
 // Props.
