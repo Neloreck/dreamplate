@@ -26,9 +26,9 @@
     "dreamstate": "^1.0.5",
     "fast-async": "^6.3.8",
     "history": "^4.9.0",
+    "jss": "^9.8.7",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "jss": "^9.8.7",
     "react-jss": "^8.6.1",
     "react-router": "^5.0.0"
   },
