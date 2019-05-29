@@ -1,6 +1,6 @@
 import { Bind, Consume } from "dreamstate";
 import { PureComponent, ReactNode } from "react";
-import { WithSheet } from "react-jss";
+import { WithStyles } from "react-jss";
 
 // Lib.
 import { Styled } from "@Lib/decorators";
@@ -14,7 +14,9 @@ import { errorPageStyle } from "./ErrorPage.Style";
 
 // Props.
 export interface IErrorPageOwnProps {}
-export interface IErrorPageInjectedProps extends WithSheet<typeof errorPageStyle>, IRouterContext {}
+
+export interface IErrorPageInjectedProps extends WithStyles<typeof errorPageStyle>, IRouterContext {}
+
 export interface IErrorPageProps extends IErrorPageOwnProps, IErrorPageInjectedProps {}
 
 @Styled(errorPageStyle)

@@ -1,7 +1,6 @@
 import { Provide } from "dreamstate";
 import { PureComponent, ReactNode } from "react";
-import { Route } from "react-router-dom";
-import { Switch } from "react-router-dom";
+import { Route, Switch } from "react-router";
 
 // Lib.
 import { Wrapped } from "@Lib/decorators";

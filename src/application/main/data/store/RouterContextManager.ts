@@ -1,7 +1,7 @@
 import { Bind, ContextManager } from "dreamstate";
 import { createBrowserHistory, History, Path } from "history";
 import { createElement, ReactNode } from "react";
-import { Router as ReactRouter } from "react-router-dom";
+import { Router as ReactRouter } from "react-router";
 
 // Lib.
 import { Logger } from "@Lib/utils";

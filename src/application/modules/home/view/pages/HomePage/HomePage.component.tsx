@@ -1,6 +1,6 @@
 import * as React from "react";
 import { PureComponent, ReactNode } from "react";
-import { WithSheet } from "react-jss";
+import { WithStyles } from "react-jss";
 
 // Lib.
 import { Styled } from "@Lib/decorators";
@@ -12,7 +12,7 @@ import { homePageStyle } from "./HomePage.style";
 // Types.
 export interface IHomePageOwnProps {}
 
-export interface IHomePageInjectedProps extends WithSheet<typeof homePageStyle> {}
+export interface IHomePageInjectedProps extends WithStyles<typeof homePageStyle> {}
 
 export interface IHomePageProps extends IHomePageOwnProps, IHomePageInjectedProps {}
 
