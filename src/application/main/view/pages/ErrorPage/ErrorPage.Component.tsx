@@ -12,7 +12,7 @@ import { IRouterContext, routerContextManager } from "@Main/data/store";
 import { IMainHeaderInjectedProps, MainHeader } from "@Main/view/components/MainHeader";
 import { errorPageStyle } from "./ErrorPage.Style";
 
-// Props.
+// Types.
 export interface IErrorPageOwnProps {}
 
 export interface IErrorPageInjectedProps extends WithSheet<typeof errorPageStyle>, IRouterContext {}
