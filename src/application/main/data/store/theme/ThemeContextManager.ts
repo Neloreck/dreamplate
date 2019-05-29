@@ -1,7 +1,7 @@
 import { Bind, ContextManager } from "dreamstate";
 
 // Lib.
-import { Logger } from "@Lib/utils";
+import { getFromLocalStorage, Logger, setLocalStorageItem } from "@Lib/utils";
 
 // Data.
 import { EThemeType, IApplicationTheme } from "@Main/data/store/theme/ThemeTypes";
@@ -52,7 +52,7 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
       toggleTheme: this.toggleTheme
     },
     themeState: {
-      theme: createTheme(ThemeContextManager.DEFAULT_THEME_PARAMS)
+      theme: createTheme(getFromLocalStorage("theme") || ThemeContextManager.DEFAULT_THEME_PARAMS)
     }
   };
 
@@ -77,9 +77,12 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
 
     theme.palette.type = nextThemeType;
 
-    this.log.info(`Toggle to '${nextThemeType}'.`);
+    const newTheme: IApplicationTheme = createTheme(theme);
 
-    this.setState({ theme: createTheme(theme) });
+    setLocalStorageItem("theme", newTheme);
+
+    this.setState({ theme: newTheme });
+    this.log.info(`Toggle to '${nextThemeType}'.`);
   }
 
 }

@@ -11,4 +11,4 @@ export const HomePage: ComponentClass = LazyLoadComponentFactory.getComponent(
   createElement("div", {}, "Loading...") /* Fallback for loading time. */
 );
 
-export { IHomePageInjectedProps }from "./HomePage.Component";
+export { IHomePageInjectedProps } from "./HomePage.Component";
