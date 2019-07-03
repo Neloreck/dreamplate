@@ -15,7 +15,7 @@ export const DEV_SERVER_CONFIG: Configuration = {
   historyApiFallback: true,
   host: DEV_SERVER_HOST,
   hot: !IS_PRODUCTION,
-  https: true,
+  https: false,
   inline: !IS_PRODUCTION,
   port: DEV_SERVER_PORT,
   publicPath: BACKEND_PUBLIC_PATH

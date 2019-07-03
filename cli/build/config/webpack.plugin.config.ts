@@ -1,4 +1,4 @@
-import { CheckerPlugin, TsConfigPathsPlugin } from "awesome-typescript-loader";
+import { CheckerPlugin } from "awesome-typescript-loader";
 import * as path from "path";
 import { HotModuleReplacementPlugin, Options, Plugin, ProvidePlugin } from "webpack";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
@@ -68,7 +68,6 @@ export const PLUGIN_CONFIG: {
       analyzerMode: "static",
       openAnalyzer: false
     }),
-    new TsConfigPathsPlugin({}),
     new CheckerPlugin(),
     new DotEnv({
       path: path.resolve(PROJECT_ROOT_PATH, `cli/build/config/.${ENVIRONMENT}.env`)

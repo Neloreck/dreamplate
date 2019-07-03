@@ -4,7 +4,7 @@
     "doTypeCheck": true,
     "forkChecker": true,
     "isolatedModules": true,
-    "cacheDirectory": "target/ts/cache",
+    "cacheDirectory": "target/cache",
     "useBabel": true,
     "useCache": true,
     "babelOptions": {
@@ -34,15 +34,6 @@
       "plugins": [
         "@babel/plugin-syntax-dynamic-import",
         "@babel/plugin-transform-classes",
-        [
-          "babel-plugin-transform-builtin-classes", {
-          "globals": [
-            "LitElement",
-            "UpdatingElement",
-            "HTMLElement"
-          ],
-          "logIfPatched": true
-        }],
         [ "module:fast-async", { "spec": true } ],
         [ "transform-imports", {
           /* Example:

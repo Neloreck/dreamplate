@@ -1,10 +1,7 @@
 import * as path from "path";
 import { Module, Resolve } from "webpack";
 
-// tslint:disable: no-var-requires typedef
-const AutoPrefixer = require("autoprefixer");
-
-import { IS_PRODUCTION, PROJECT_ROOT_PATH, TS_CONFIG_PATH } from "./webpack.constants";
+import { PROJECT_ROOT_PATH, TS_CONFIG_PATH } from "./webpack.constants";
 
 export const MODULE_CONFIG: {
   RESOLVE: Resolve,
