@@ -5,11 +5,13 @@ export const mainHeaderStyle = ({ palette, spacing }: IApplicationTheme) => ({
     alignItems: "center",
     background: palette.primary.dark,
     boxShadow: `1px 1px 2px 0 ${palette.primary.dark}`,
+    boxSizing: "border-box",
     color: palette.text.primary,
     display: "flex",
     flexDirection: "row",
     fontSize: spacing.unit * 4,
     justifyContent: "space-between",
+    minWidth: spacing.unit * 30,
     padding: spacing.unit * 2,
     transitionDuration: "250ms"
   },

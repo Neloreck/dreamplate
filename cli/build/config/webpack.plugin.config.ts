@@ -88,7 +88,7 @@ export const PLUGIN_CONFIG: {
       favicon: path.resolve(PROJECT_ROOT_PATH, "cli/build/template/favicon.ico"),
       filename: "index.html",
       inject: true,
-      inlineSource: "(.css)|(.*main.*)|(.*runtime.*)",
+      inlineSource: "(.css)|(.*main.*)|(.*runtime.*)|(.*vendors.*)",
       minify: {
         minifyCSS: true,
         preserveLineBreaks: true,

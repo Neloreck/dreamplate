@@ -60,7 +60,13 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
   private readonly setState = ContextManager.getSetter(this, "themeState");
 
   protected onProvisionStarted(): void {
+
     this.log.info("Started theme context provision.");
+
+    const { theme } = this.context.themeState;
+
+    document.body.style.backgroundColor = theme.palette.background.default;
+    document.body.style.color = theme.palette.text.primary;
   }
 
   @Bind()
