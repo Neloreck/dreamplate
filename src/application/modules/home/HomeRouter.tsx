@@ -10,7 +10,7 @@ import { HomePage } from "@Module/home/view/pages/HomePage";
 
 export class HomeRouter extends PureComponent {
 
-  private readonly log: Logger = new Logger("[HOME]");
+  private readonly log: Logger = new Logger(HomeRouter.name);
 
   public componentDidMount(): void {
 

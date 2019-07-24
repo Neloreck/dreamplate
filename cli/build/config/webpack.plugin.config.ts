@@ -9,8 +9,9 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const HtmlWebpackInlineSourcePlugin  = require("html-webpack-inline-source-plugin");
 const DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
-import { ENVIRONMENT, IS_PRODUCTION, PROJECT_ROOT_PATH } from "./webpack.constants";
+import { BUILD_CONFIGURATION_PATH, ENVIRONMENT, IS_PRODUCTION, PROJECT_ROOT_PATH } from "./webpack.constants";
 
 export const PLUGIN_CONFIG: {
   PLUGINS: Array<Plugin>,
@@ -75,7 +76,8 @@ export const PLUGIN_CONFIG: {
     }),
     new BundleAnalyzerPlugin({
       analyzerMode: "static",
-      openAnalyzer: false
+      openAnalyzer: false,
+      reportFilename: "../info/report.html"
     }),
     new CheckerPlugin(),
     new DotEnv({
@@ -98,7 +100,11 @@ export const PLUGIN_CONFIG: {
     }),
     new ProvidePlugin({
       React: "react"
-    })
+    }),
+    new CopyWebpackPlugin([
+        { from: path.resolve(BUILD_CONFIGURATION_PATH, "seo/robots.txt"), to: "." }
+      ]
+    )
   ],
 };
 

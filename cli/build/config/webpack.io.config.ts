@@ -18,6 +18,6 @@ export const IO_CONFIG: {
     filename: "js/f:[name].js",
     path: PROJECT_OUTPUT_PATH,
     publicPath: BACKEND_PUBLIC_PATH,
-    sourceMapFilename: "js/maps/[name].bundle.map"
+    sourceMapFilename: "js/maps/[name].map"
   }
 };

@@ -32,7 +32,7 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
     }
   };
 
-  private readonly log: Logger = new Logger("[🗺️ROUTER]", true);
+  private readonly log: Logger = new Logger("🗺️ROUTER", true);
 
   public getProvider(): any {
     // Create router wrapper with provider for app-level.

@@ -15,6 +15,7 @@ export const DEV_SERVER_CONFIG: Configuration = {
   historyApiFallback: true,
   host: DEV_SERVER_HOST,
   hot: !IS_PRODUCTION,
+  // http2: true, // Unsupported for node 10+.
   https: false,
   inline: !IS_PRODUCTION,
   port: DEV_SERVER_PORT,

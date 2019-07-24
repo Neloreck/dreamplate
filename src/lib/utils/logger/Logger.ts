@@ -25,25 +25,25 @@ export class Logger {
   public debug(...args: Array<any>): void {
 
     if (Logger.IS_DEV && this.enabled) {
-      console.debug(`%c${this.prefix}`, "color: #bada53", "[D]", ...args);
+      console.debug(`%c[${this.prefix}]`, "color: #bada53", "[D]", ...args);
     }
   }
 
   public warn(...args: Array<any>): void {
 
     if (Logger.IS_DEV && this.enabled) {
-      console.warn(`%c${this.prefix}`, "color: #bada53", ...args);
+      console.warn(`%c[${this.prefix}]`, "color: #bada53", ...args);
     }
   }
 
   public error(...args: Array<any>): void {
-    console.error(`%c${this.prefix}`, "color: #bada53", ...args);
+    console.error(`%c[${this.prefix}]`, "color: #bada53", ...args);
   }
 
   public info(...args: Array<any>): void {
 
     if (Logger.IS_DEV && this.enabled) {
-      console.info(`%c${this.prefix}`, "color: #bada53", ...args);
+      console.info(`%c[${this.prefix}]`, "color: #bada53", ...args);
     }
   }
 

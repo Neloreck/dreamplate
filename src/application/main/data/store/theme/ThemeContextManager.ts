@@ -56,7 +56,7 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
     }
   };
 
-  private readonly log: Logger = new Logger("[🍬THEME]");
+  private readonly log: Logger = new Logger("🍬THEME");
   private readonly setState = ContextManager.getSetter(this, "themeState");
 
   protected onProvisionStarted(): void {

@@ -15,14 +15,16 @@
           "@babel/preset-env",
           {
             "targets": {
-              "node": "8",
+              "node": "10",
               "browsers": [
-                "last 20 versions"
+                "> 0.25%",
+                "not dead"
               ]
             },
             "modules": false,
             "loose": true,
             "useBuiltIns": "usage",
+            "corejs": "3",
             "exclude": [
               "transform-async-to-generator",
               "transform-regenerator"

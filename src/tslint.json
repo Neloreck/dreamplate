@@ -9,24 +9,24 @@
   "linterOptions": {
     "exclude": [
       "target/**",
-      "**/*.Style.ts",
-      "**/*.Spec.ts",
-      "**/*.Test.ts"
+      "**/*.style.ts",
+      "**/*.spec.ts",
+      "**/*.test.ts"
     ]
   },
 
   "jsRules": {},
 
   "rules": {
-    "array-type": [true, "generic"],
-    "object-curly-spacing": [true, "always"],
-    "comma-dangle": ["error", "never"],
+    "array-type": [ true, "generic" ],
+    "object-curly-spacing": [ true, "always" ],
+    "comma-dangle": [ "error", "never" ],
     "semicolon": true,
-    "max-line-length": [false],
+    "max-line-length": [ false ],
     "no-empty-interface": false,
     "trailing-comma": false,
     "no-bitwise": false,
-    "whitespace": [true, "check-rest-spread", "check-module"],
+    "whitespace": [ true, "check-rest-spread", "check-module" ],
     "object-literal-key-quotes": [
       true, "as-needed"
     ],

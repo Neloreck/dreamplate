@@ -27,7 +27,7 @@ export class HomePage extends PureComponent<IHomePageProps> {
 
         <MainHeader {...{} as IMainHeaderInjectedProps}/>
 
-        <div className={classes.content}>
+        <main className={classes.content}>
 
           <div className={classes.card}>
             <a target={"_blank"} href={"https://reactjs.org/"}>
@@ -47,7 +47,7 @@ export class HomePage extends PureComponent<IHomePageProps> {
             </a>
           </div>
 
-        </div>
+        </main>
 
       </div>
     );

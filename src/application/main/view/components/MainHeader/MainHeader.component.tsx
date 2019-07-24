@@ -27,7 +27,7 @@ export class MainHeader extends PureComponent<IMainHeaderProps> {
     const { classes } = this.props;
 
     return (
-      <div className={classes.root}>
+      <header className={classes.root}>
 
         <div>
           Boilerplate
@@ -35,7 +35,7 @@ export class MainHeader extends PureComponent<IMainHeaderProps> {
 
         { this.renderToggleThemeButton() }
 
-      </div>
+      </header>
     );
   }
 
