@@ -1,7 +1,7 @@
 import * as path from "path";
 import { Module, Resolve } from "webpack";
 
-import { PROJECT_ROOT_PATH, TS_CONFIG_PATH } from "./webpack.constants";
+import { BUILD_CONFIGURATION_PATH, PROJECT_ROOT_PATH, TS_CONFIG_PATH } from "./webpack.constants";
 
 export const MODULE_CONFIG: {
   RESOLVE: Resolve,
@@ -56,6 +56,7 @@ export const MODULE_CONFIG: {
     alias: {
       "@Api": path.resolve(PROJECT_ROOT_PATH, "./src/api/"),
       "@Application": path.resolve(PROJECT_ROOT_PATH, "./src/application/"),
+      "@Build": path.resolve(BUILD_CONFIGURATION_PATH),
       "@Lib": path.resolve(PROJECT_ROOT_PATH, "./src/lib/"),
       "@Main": path.resolve(PROJECT_ROOT_PATH, "./src/application/main"),
       "@Module": path.resolve(PROJECT_ROOT_PATH, "./src/application/modules/")

@@ -2,7 +2,7 @@
 
   html,
   body,
-  #application-root {
+  {{ concat "#" htmlWebpackPlugin.options.constants.APPLICATION_ROOT}} {
     width: 100vw;
     height: 100vh;
     min-height: 100vh;
@@ -11,7 +11,7 @@
     overflow: hidden;
   }
 
-  #application-root {
+  {{ concat "#" htmlWebpackPlugin.options.constants.APPLICATION_ROOT}} {
     display: flex;
     align-items: center;
     flex-direction: column;

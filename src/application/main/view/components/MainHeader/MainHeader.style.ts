@@ -2,6 +2,7 @@ import { IApplicationTheme } from "@Main/data/store/theme/ThemeTypes";
 
 export const mainHeaderStyle = ({ palette, spacing }: IApplicationTheme) => ({
   root: {
+    alignSelf: "normal",
     alignItems: "center",
     background: palette.primary.dark,
     boxShadow: `1px 1px 2px 0 ${palette.primary.dark}`,

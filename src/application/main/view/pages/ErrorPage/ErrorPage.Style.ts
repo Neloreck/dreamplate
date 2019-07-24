@@ -3,6 +3,8 @@ import { IApplicationTheme } from "@Main/data/store/theme/ThemeTypes";
 export const errorPageStyle = ({ palette }: IApplicationTheme) => ({
   content: {
     alignItems: "center",
+    alignSelf: "normal",
+    backgroundColor: palette.background.default,
     backgroundSize: "cover",
     display: "flex",
     flexDirection: "column",
@@ -10,14 +12,9 @@ export const errorPageStyle = ({ palette }: IApplicationTheme) => ({
     flexWrap: "nowrap",
     justifyContent: "center",
     overflowY: "auto",
-    width: "100%"
+    transitionDuration: "350ms"
   },
-  root: {
-    backgroundColor: palette.background.paper,
-    display: "flex",
-    flexDirection: "column",
-    height: "100%",
-    width: "100%",
-    transitionDuration: "250ms"
+  label: {
+    color: palette.text.primary
   }
 });

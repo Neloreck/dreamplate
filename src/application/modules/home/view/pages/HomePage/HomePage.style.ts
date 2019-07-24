@@ -10,21 +10,15 @@ export const homePageStyle = ({ palette, spacing }: IApplicationTheme) => ({
     padding: spacing.unit * 2
   },
   content: {
+    alignSelf: "normal",
     alignItems: "center",
+    backgroundColor: palette.background.default,
     backgroundSize: "cover",
     display: "flex",
     flexDirection: "row",
     flexGrow: 1,
     justifyContent: "center",
     overflowY: "auto",
-    width: "100%"
-  },
-  root: {
-    backgroundColor: palette.background.default,
-    display: "flex",
-    flexDirection: "column",
-    height: "100%",
-    transitionDuration: "250ms",
-    width: "100%"
+    transitionDuration: "350ms"
   }
 });

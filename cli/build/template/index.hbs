@@ -10,7 +10,7 @@
 
     {{> resetStyles}}
 
-    <title> X-Core </title>
+    <title> {{ htmlWebpackPlugin.options.constants.APPLICATION_TITLE }} </title>
 
   </head>
 
@@ -18,7 +18,7 @@
 
     <!---->
 
-    <div id="application-root"></div>
+    <div id="{{ htmlWebpackPlugin.options.constants.APPLICATION_ROOT }}"></div>
 
     <!---->
 

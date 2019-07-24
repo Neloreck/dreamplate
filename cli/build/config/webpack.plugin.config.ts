@@ -11,6 +11,7 @@ const HtmlWebpackInlineSourcePlugin  = require("html-webpack-inline-source-plugi
 const DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
+import { APPLICATION_ROOT, APPLICATION_TITLE } from "../BuildConstants";
 import { BUILD_CONFIGURATION_PATH, ENVIRONMENT, IS_PRODUCTION, PROJECT_ROOT_PATH } from "./webpack.constants";
 
 export const PLUGIN_CONFIG: {
@@ -85,14 +86,20 @@ export const PLUGIN_CONFIG: {
     }),
     new HtmlWebpackPlugin({
       ENVIRONMENT,
+      constants: {
+        APPLICATION_ROOT,
+        APPLICATION_TITLE
+      },
       favicon: path.resolve(PROJECT_ROOT_PATH, "cli/build/template/favicon.ico"),
       filename: "index.html",
       inject: true,
       inlineSource: "(.css)|(.*main.*)|(.*runtime.*)|(.*vendors.*)",
       minify: {
+        collapseWhitespace: IS_PRODUCTION,
         minifyCSS: true,
         preserveLineBreaks: true,
         quoteCharacter: "'",
+        removeComments: true,
         removeTagWhitespace: true,
         trimCustomFragments: true
       },

@@ -88,6 +88,7 @@
     "baseUrl": "./",
     "outDir": "target/dist:raw",
     "paths": {
+      "@Build/*": [ "../cli/build/*" ],
       "@Application/*": [ "application/*" ],
       "@Main": [ "application/main/index" ],
       "@Main/*": [ "application/main/*" ],

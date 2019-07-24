@@ -23,7 +23,7 @@ export class HomePage extends PureComponent<IHomePageProps> {
     const { classes } = this.props;
 
     return (
-      <div className={classes.root}>
+      <>
 
         <MainHeader {...{} as IMainHeaderInjectedProps}/>
 
@@ -49,7 +49,7 @@ export class HomePage extends PureComponent<IHomePageProps> {
 
         </main>
 
-      </div>
+      </>
     );
   }
 

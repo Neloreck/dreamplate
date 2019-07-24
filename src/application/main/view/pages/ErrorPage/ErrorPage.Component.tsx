@@ -28,13 +28,13 @@ export class ErrorPage extends PureComponent<IErrorPageProps> {
     const { classes } = this.props;
 
     return (
-      <div className={classes.root}>
+      <>
 
         <MainHeader {...{} as IMainHeaderInjectedProps}/>
 
-        <div className={classes.content}>
+        <main className={classes.content}>
 
-          <div>
+          <div className={classes.label}>
             Page not found.
           </div>
 
@@ -42,9 +42,9 @@ export class ErrorPage extends PureComponent<IErrorPageProps> {
             Home
           </button>
 
-        </div>
+        </main>
 
-      </div>
+      </>
     );
   }
 
