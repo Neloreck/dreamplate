@@ -4,9 +4,11 @@ export const homePageStyle = ({ palette, spacing }: IApplicationTheme) => ({
   card: {
     "& a": {
       color: palette.text.primary,
+      transitionDuration: "750ms"
     },
     backgroundColor: palette.background.paper,
     margin: spacing.unit * 2,
+    transitionDuration: "500ms",
     padding: spacing.unit * 2
   },
   content: {

@@ -22,13 +22,13 @@ export class PrivateRoute extends Route<IPrivateRouteProps> {
 
   public componentDidMount(): void {
 
-    const { redirect, reversed, routingActions: { replace }, routingState: { history }, authState: { authorized, authorizing } } = this.props;
+    const { redirect, reversed, routingActions: { replace }, routingState: { path }, authState: { authorized, authorizing } } = this.props;
 
     if (!authorizing && (reversed ? authorized : !authorized)) {
       if (redirect === true) {
-        replace(this.DEFAULT_REDIRECT + "?next=" + history.location.pathname);
+        replace(this.DEFAULT_REDIRECT + "?next=" + path);
       } else {
-        replace((redirect as string).replace(/%currentPath%/, history.location.pathname));
+        replace((redirect as string).replace(/%currentPath%/, path));
       }
     }
   }

@@ -9,7 +9,6 @@ import { createTheme } from "@Main/data/store/theme/ThemeUtils";
 
 export interface IThemeContext {
   themeActions: {
-    isDark(): boolean;
     toggleTheme(): void;
   };
   themeState: {
@@ -26,20 +25,20 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
         paper: "#EEE"
       },
       primary: {
-        dark: "#4c497c",
-        light: "#9690FC",
-        main: "#a8a5ec",
+        dark: "#718db3",
+        light: "#8ea7c5",
+        main: "#7e9dc6",
       },
       secondary: {
         dark: "#6b5b71",
-        light: "rgb(166,143,176)",
+        light: "#A68FB0",
         main: "#cfb3dc",
       },
       text: {
         primary: "#000",
         secondary: "#333"
       },
-      type: EThemeType.LIGHT
+      type: EThemeType.DARK
     },
     spacing: {
       unit: 8
@@ -48,7 +47,6 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
 
   protected context: IThemeContext = {
     themeActions: {
-      isDark: this.isDark,
       toggleTheme: this.toggleTheme
     },
     themeState: {
@@ -67,11 +65,6 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
 
     document.body.style.backgroundColor = theme.palette.background.default;
     document.body.style.color = theme.palette.text.primary;
-  }
-
-  @Bind()
-  private isDark(): boolean {
-    return this.context.themeState.theme.palette.type === "dark";
   }
 
   @Bind()

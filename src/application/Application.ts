@@ -1,10 +1,8 @@
 import { createElement } from "react";
 import { render } from "react-dom";
 
-// Constants.
-import { APPLICATION_ROOT } from "@Build/BuildConstants";
-
 // Lib.
+import { APPLICATION_ROOT } from "@Build/BuildConstants";
 import { EntryPoint } from "@Lib/decorators";
 
 // View.

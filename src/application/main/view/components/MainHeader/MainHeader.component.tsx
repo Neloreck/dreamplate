@@ -29,9 +29,9 @@ export class MainHeader extends PureComponent<IMainHeaderProps> {
     return (
       <header className={classes.root}>
 
-        <div>
+        <h2>
           Boilerplate
-        </div>
+        </h2>
 
         { this.renderToggleThemeButton() }
 
@@ -45,7 +45,7 @@ export class MainHeader extends PureComponent<IMainHeaderProps> {
 
     return (
       <button className={classes.switchButton} onClick={themeActions.toggleTheme}>
-        { themeActions.isDark() ? "DARK" : "LIGHT" }
+        Toggle
       </button>
     );
   }

@@ -1,5 +1,5 @@
 import { Bind, ContextManager } from "dreamstate";
-import { createBrowserHistory, History, Path } from "history";
+import { createBrowserHistory, History, Location, Path } from "history";
 import { createElement, ReactNode } from "react";
 import { Router as ReactRouter } from "react-router";
 
@@ -14,11 +14,13 @@ export interface IRouterContext {
     getCurrentLocation(): string;
   };
   routingState: {
-    history: History;
+    path: string;
   };
 }
 
 export class RouterContextManager extends ContextManager<IRouterContext> {
+
+  protected readonly history: History = createBrowserHistory();
 
   protected context: IRouterContext = {
     routingActions: {
@@ -28,16 +30,24 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
       replace: this.replace
     },
     routingState: {
-      history: createBrowserHistory()
+     path: this.history.location.pathname
     }
   };
 
+  private readonly setState = ContextManager.getSetter(this, "routingState");
   private readonly log: Logger = new Logger("🗺️ROUTER", true);
+
+  public constructor() {
+
+    super();
+
+    this.history.listen((location: Location) => this.setState({ path: location.pathname }));
+  }
 
   public getProvider(): any {
     // Create router wrapper with provider for app-level.
     return (props: any): ReactNode =>
-      createElement(ReactRouter, { history: this.context.routingState.history },
+      createElement(ReactRouter, { history: this.history },
         createElement(super.getProvider(), props, props.children)
       );
   }
@@ -50,26 +60,26 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
   private replace(path: Path): void {
 
     this.log.info(`Replace path: ${path}.`);
-    this.context.routingState.history.replace(path);
+    this.history.replace(path);
   }
 
   @Bind()
   private push(path: Path): void {
 
     this.log.info(`Push path: ${path}.`);
-    this.context.routingState.history.push(path);
+    this.history.push(path);
   }
 
   @Bind()
   private goBack(): void {
 
     this.log.info("Go back.");
-    this.context.routingState.history.goBack();
+    this.history.goBack();
   }
 
   @Bind()
   private getCurrentLocation(): string {
-    return this.context.routingState.history.location.pathname;
+    return this.history.location.pathname;
   }
 
 }
