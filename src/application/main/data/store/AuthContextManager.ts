@@ -26,7 +26,7 @@ export class AuthContextManager extends ContextManager<IAuthContext> {
     }
   };
 
-  private readonly log: Logger = new Logger("🎛️AUTH", true);
+  private readonly log: Logger = new Logger(AuthContextManager.name, true);
 
   protected onProvisionStarted(): void {
     this.log.info("Started auth context provision.");

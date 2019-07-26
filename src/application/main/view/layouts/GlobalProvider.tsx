@@ -15,6 +15,11 @@ export class GlobalProvider extends PureComponent<IGlobalProviderProps> {
 
     const { children, themeState: { theme } } = this.props;
 
+    /*
+     * For profiling:
+     * <StrictMode> </StrictMode>
+     */
+
     return (
       <ThemeProvider theme={theme}>
         { children as any }

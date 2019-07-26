@@ -1,6 +1,6 @@
 import { Consume } from "dreamstate";
 import { PureComponent, ReactNode } from "react";
-import { WithSheet } from "react-jss";
+import { WithStyles } from "react-jss";
 
 // Lib.
 import { Styled } from "@Lib/decorators";
@@ -14,7 +14,7 @@ import { mainHeaderStyle } from "./MainHeader.Style";
 // Props.
 export interface IMainHeaderOwnProps {}
 
-export interface IMainHeaderInjectedProps extends WithSheet<typeof mainHeaderStyle>, IThemeContext {}
+export interface IMainHeaderInjectedProps extends WithStyles<typeof mainHeaderStyle>, IThemeContext {}
 
 export interface IMainHeaderProps extends IMainHeaderOwnProps, IMainHeaderInjectedProps {}
 

@@ -8,7 +8,7 @@
 
 import { Logger } from "@Lib/utils";
 
-const dmLogger = new Logger("DM");
+const dmLogger: Logger = new Logger("DM");
 
 export const DebugMeasure = (): MethodDecorator => <T>(target: any, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<T>): any => {
 

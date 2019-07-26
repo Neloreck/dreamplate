@@ -9,6 +9,21 @@ export const MODULE_CONFIG: {
 } = {
   MODULE: {
     rules: [
+      // STRIP DEV CODE.
+      {
+        enforce: "pre",
+        exclude: /(node_modules|bower_components|\.spec\.js)/,
+        test: /\.(ts|tsx)$/,
+        use: [
+          {
+            loader: path.resolve(BUILD_CONFIGURATION_PATH, "loaders/trimLoader.ts"),
+            options: {
+              end: "DEV-END",
+              start: "DEV-START",
+            }
+          }
+        ],
+      },
       // TS/TSX.
       {
         exclude: /(node_modules)/,

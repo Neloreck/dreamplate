@@ -30,7 +30,7 @@ export const PLUGIN_CONFIG: {
           ecma: 6,
           ie8: false,
           keep_classnames: false,
-          keep_fnames: true,
+          keep_fnames: false,
           mangle: true,
           module: true,
           nameCache: null,

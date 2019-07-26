@@ -54,7 +54,7 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
     }
   };
 
-  private readonly log: Logger = new Logger("🍬THEME");
+  private readonly log: Logger = new Logger(ThemeContextManager.name);
   private readonly setState = ContextManager.getSetter(this, "themeState");
 
   protected onProvisionStarted(): void {
@@ -82,8 +82,8 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
 
     setLocalStorageItem("theme", newTheme);
 
-    this.setState({ theme: newTheme });
     this.log.info(`Toggle to '${nextThemeType}'.`);
+    this.setState({ theme: newTheme });
   }
 
 }

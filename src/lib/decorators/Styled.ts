@@ -1,12 +1,15 @@
+import { Styles, StyleSheetFactoryOptions } from "jss";
 import { ClassType } from "react";
-import { default as withStyles, InjectOptions, StyleCreator, Styles } from "react-jss";
+import { default as withStyles } from "react-jss";
 
-export const Styled = <P extends string, ThemeType extends object, Properties = {}>(
-  style: Styles<P, Properties> | StyleCreator<P, ThemeType, Properties>,
-  options?: InjectOptions
+type ThemedStyles<Theme> = (theme: Theme) => Styles<string>;
+
+export const Styled = <S extends Styles<string> | ThemedStyles<any>, P>(
+  styles: S,
+  options?: StyleSheetFactoryOptions
 ): ClassDecorator => {
 
   return (target: ClassType<P, any, any>): ClassType<P, any, any> => {
-    return withStyles(style, options)(target);
+    return withStyles(styles, options)(target);
   };
 };
