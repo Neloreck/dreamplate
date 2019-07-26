@@ -1,4 +1,10 @@
-import { ComponentClass, ComponentType, PureComponent, ReactNode } from "react";
+import {
+  ComponentClass,
+  ComponentType,
+  createElement, FunctionComponent,
+  PureComponent,
+  ReactNode,
+} from "react";
 
 // Props.
 interface ILazyComponentState {
@@ -7,7 +13,7 @@ interface ILazyComponentState {
 
 export class LazyLoadComponentFactory {
 
-  public static getComponent(importFunc: () => Promise<any>, loadingNode?: ReactNode): ComponentClass {
+  public static getComponent(importFunc: () => Promise<any>, loadingNode?: FunctionComponent<any>): ComponentClass {
 
     // tslint:disable-next-line
     return class extends PureComponent<any, ILazyComponentState> {
@@ -41,7 +47,7 @@ export class LazyLoadComponentFactory {
          */
         return RenderItem
           ? <RenderItem {...this.props}/>
-          : loadingNode || null;
+          : loadingNode ? createElement(loadingNode) : null;
       }
 
       private async loadComponent(): Promise<void> {

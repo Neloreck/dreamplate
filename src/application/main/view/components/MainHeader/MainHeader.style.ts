@@ -4,6 +4,7 @@ export const mainHeaderStyle = ({ palette, spacing }: IApplicationTheme) => ({
   root: {
     "& > h2": {
       "-webkit-text-stroke": "1px black",
+      cursor: "default",
       fontSize: spacing.unit * 6,
       fontWeight: 600
     },

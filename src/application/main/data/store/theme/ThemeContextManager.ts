@@ -27,12 +27,12 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
       primary: {
         dark: "#718db3",
         light: "#8ea7c5",
-        main: "#7e9dc6",
+        main: "#7e9dc6"
       },
       secondary: {
         dark: "#6b5b71",
         light: "#A68FB0",
-        main: "#cfb3dc",
+        main: "#cfb3dc"
       },
       text: {
         primary: "#000",
@@ -45,7 +45,7 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
     }
   };
 
-  protected context: IThemeContext = {
+  public context: IThemeContext = {
     themeActions: {
       toggleTheme: this.toggleTheme
     },
@@ -63,8 +63,10 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
 
     const { theme } = this.context.themeState;
 
+    // Set correct DOM colors.
     document.body.style.backgroundColor = theme.palette.background.default;
     document.body.style.color = theme.palette.text.primary;
+    document.head.getElementsByTagName("meta")["theme-color" as any].content = theme.palette.primary.main;
   }
 
   @Bind()

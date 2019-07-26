@@ -5,7 +5,7 @@ import * as cliConfig from "./cli.json";
 export class CliRunner {
 
   public static readonly scriptsKey: string = "scripts";
-  public static readonly configKey: string = "BuildConfig.ts";
+  public static readonly configKey: string = "config";
 
   public static async main(args: Array<string>): Promise<void> {
 

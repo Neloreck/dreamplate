@@ -2,10 +2,11 @@ import { PureComponent, ReactNode } from "react";
 import { WithSheet } from "react-jss";
 
 // Lib.
-import { Styled } from "@Lib/decorators";
+import { Styled, Wrapped } from "@Lib/decorators";
 
 // View.
 import { IMainHeaderInjectedProps, MainHeader } from "@Main/view/components/MainHeader";
+import { GlobalProvider } from "@Main/view/layouts";
 import { homePageStyle } from "./HomePage.style";
 
 // Types.
@@ -15,6 +16,7 @@ export interface IHomePageInjectedProps extends WithSheet<typeof homePageStyle> 
 
 export interface IHomePageProps extends IHomePageOwnProps, IHomePageInjectedProps {}
 
+@Wrapped(GlobalProvider)
 @Styled(homePageStyle)
 export class HomePage extends PureComponent<IHomePageProps> {
 

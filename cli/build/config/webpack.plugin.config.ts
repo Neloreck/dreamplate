@@ -10,6 +10,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 const HtmlWebpackInlineSourcePlugin  = require("html-webpack-inline-source-plugin");
 const DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const ScriptExtHtmlPlugin = require("script-ext-html-webpack-plugin");
 
 import { APPLICATION_ROOT, APPLICATION_TITLE } from "../BuildConstants";
 import { BUILD_CONFIGURATION_PATH, ENVIRONMENT, IS_PRODUCTION, PROJECT_ROOT_PATH } from "./webpack.constants";
@@ -19,6 +20,7 @@ export const PLUGIN_CONFIG: {
   OPTIMIZATION: Options.Optimization
 } = {
   OPTIMIZATION: {
+    chunkIds: "natural",
     mergeDuplicateChunks: true,
     minimizer: [
       new TerserPlugin({
@@ -43,9 +45,11 @@ export const PLUGIN_CONFIG: {
         },
       })
     ],
+    moduleIds: "hashed",
     noEmitOnErrors: IS_PRODUCTION,
+    occurrenceOrder: false,
     removeAvailableModules: true,
-    runtimeChunk: "multiple",
+    runtimeChunk: "single",
     splitChunks: {
       cacheGroups: {
         vendors: {
@@ -58,14 +62,15 @@ export const PLUGIN_CONFIG: {
 
               return `p~${cacheGroupKey}-${allChunksNames}-${moduleFileName}`;
             },
+          priority: 10,
           reuseExistingChunk: true,
           test: /[\\/]node_modules[\\/]/
         }
       },
       chunks: "all" as "all",
-      maxAsyncRequests: 30,
-      maxInitialRequests: 15,
-      maxSize: 500_000,
+      maxAsyncRequests: 50,
+      maxInitialRequests: 25,
+      maxSize: 300_000,
       minSize: 10_000,
       name: true
     },
@@ -93,7 +98,7 @@ export const PLUGIN_CONFIG: {
       favicon: path.resolve(PROJECT_ROOT_PATH, "cli/build/template/favicon.ico"),
       filename: "index.html",
       inject: true,
-      inlineSource: "(.css)|(.*main.*)|(.*runtime.*)|(.*vendors.*)",
+      inlineSource: "(.css)|(init)|(.*runtime.*)",
       minify: {
         collapseWhitespace: IS_PRODUCTION,
         minifyCSS: true,
@@ -109,14 +114,19 @@ export const PLUGIN_CONFIG: {
       React: "react"
     }),
     new CopyWebpackPlugin([
-        { from: path.resolve(BUILD_CONFIGURATION_PATH, "seo/robots.txt"), to: "." }
+        { from: path.resolve(BUILD_CONFIGURATION_PATH, "public/robots.txt"), to: "." },
+        { from: path.resolve(BUILD_CONFIGURATION_PATH, "public/manifest.json"), to: "." }
       ]
-    )
+    ),
+    new ScriptExtHtmlPlugin({
+      defaultAttribute: "defer",
+    }),
+    new HtmlWebpackInlineSourcePlugin()
   ],
 };
 
 if (IS_PRODUCTION) {
-  PLUGIN_CONFIG.PLUGINS.push(new HtmlWebpackInlineSourcePlugin());
+  // Push specific plugins.
 } else {
   PLUGIN_CONFIG.PLUGINS.push(new HotModuleReplacementPlugin());
 }

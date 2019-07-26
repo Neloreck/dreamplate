@@ -3,13 +3,14 @@ import { PureComponent, ReactNode } from "react";
 import { WithSheet } from "react-jss";
 
 // Lib.
-import { Styled } from "@Lib/decorators";
+import { Styled, Wrapped } from "@Lib/decorators";
 
 // Data.
 import { IRouterContext, routerContextManager } from "@Main/data/store";
 
 // View.
 import { IMainHeaderInjectedProps, MainHeader } from "@Main/view/components/MainHeader";
+import { GlobalProvider } from "@Main/view/layouts";
 import { errorPageStyle } from "./ErrorPage.Style";
 
 // Types.
@@ -19,6 +20,7 @@ export interface IErrorPageInjectedProps extends WithSheet<typeof errorPageStyle
 
 export interface IErrorPageProps extends IErrorPageOwnProps, IErrorPageInjectedProps {}
 
+@Wrapped(GlobalProvider)
 @Styled(errorPageStyle)
 @Consume(routerContextManager)
 export class ErrorPage extends PureComponent<IErrorPageProps> {

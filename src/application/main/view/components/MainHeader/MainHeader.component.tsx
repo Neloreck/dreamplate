@@ -24,7 +24,7 @@ export class MainHeader extends PureComponent<IMainHeaderProps> {
 
   public render(): ReactNode {
 
-    const { classes } = this.props;
+    const { classes, themeActions } = this.props;
 
     return (
       <header className={classes.root}>
@@ -33,20 +33,11 @@ export class MainHeader extends PureComponent<IMainHeaderProps> {
           Boilerplate
         </h2>
 
-        { this.renderToggleThemeButton() }
+        <button className={classes.switchButton} onClick={themeActions.toggleTheme}>
+          Toggle
+        </button>
 
       </header>
-    );
-  }
-
-  private renderToggleThemeButton(): ReactNode {
-
-    const { classes, themeActions  } = this.props;
-
-    return (
-      <button className={classes.switchButton} onClick={themeActions.toggleTheme}>
-        Toggle
-      </button>
     );
   }
 

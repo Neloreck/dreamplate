@@ -1,14 +1,14 @@
-import { ComponentClass, createElement } from "react";
+import { ComponentClass } from "react";
 
 // View.
-import { LazyLoadComponentFactory } from "@Main/view/utils";
+import { DefaultLoader, LazyLoadComponentFactory } from "@Main/view/utils";
 
 export const HomePage: ComponentClass = LazyLoadComponentFactory.getComponent(
   () => import(
     /* webpackChunkName: "home@home-page" */
-    /* webpackPreload: true */
+    /* webpackPreload: undefined */
     "./HomePage.component"),
-  createElement("div", {}, "Loading...") /* Fallback for loading time. */
+  DefaultLoader
 );
 
 export { IHomePageInjectedProps } from "./HomePage.Component";

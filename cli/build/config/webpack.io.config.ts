@@ -2,7 +2,7 @@ import { Entry, Output } from "webpack";
 
 import {
   BACKEND_PUBLIC_PATH,
-  ENTRY_FILE_PATH,
+  ENTRY_FILE_PATH, INIT_FILE_PATH,
   IS_PRODUCTION, PROJECT_OUTPUT_PATH
 } from "./webpack.constants";
 
@@ -11,8 +11,8 @@ export const IO_CONFIG: {
   OUTPUT: Output
 } = {
   ENTRY: IS_PRODUCTION
-    ? [ ENTRY_FILE_PATH ]
-    : [ "webpack/hot/dev-server", ENTRY_FILE_PATH ],
+    ? { application: ENTRY_FILE_PATH, init: INIT_FILE_PATH }
+    : { application: ENTRY_FILE_PATH, init: INIT_FILE_PATH, dev: "webpack/hot/dev-server" },
   OUTPUT: {
     chunkFilename: "js/c:[name].js",
     filename: "js/f:[name].js",
