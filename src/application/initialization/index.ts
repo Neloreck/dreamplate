@@ -1,10 +1,14 @@
+// Lib.
 import { Logger } from "@Lib/utils";
+
+// Data.
+import { IApplicationTheme } from "@Main/data/store/theme/ThemeTypes";
 
 const rawStr = localStorage.getItem(btoa("theme")) || null;
 
 if (rawStr) {
 
-  const theme = JSON.parse(atob(rawStr));
+  const theme: IApplicationTheme = JSON.parse(atob(rawStr));
 
   document.body.style.backgroundColor = theme.palette.background.default;
   document.body.style.color = theme.palette.text.primary;
