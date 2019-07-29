@@ -35,7 +35,7 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
   };
 
   private readonly setState = ContextManager.getSetter(this, "routingState");
-  private readonly log: Logger = new Logger(RouterContextManager.name, true);
+  private readonly log: Logger = new Logger(this.constructor.name, true);
 
   public constructor() {
 

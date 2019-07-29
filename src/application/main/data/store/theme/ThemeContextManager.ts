@@ -38,7 +38,7 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
         primary: "#000",
         secondary: "#333"
       },
-      type: EThemeType.DARK
+      type: EThemeType.LIGHT
     },
     spacing: {
       unit: 8
@@ -54,19 +54,11 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
     }
   };
 
-  private readonly log: Logger = new Logger(ThemeContextManager.name);
+  private readonly log: Logger = new Logger(this.constructor.name, true);
   private readonly setState = ContextManager.getSetter(this, "themeState");
 
   protected onProvisionStarted(): void {
-
     this.log.info("Started theme context provision.");
-
-    const { theme } = this.context.themeState;
-
-    // Set correct DOM colors.
-    document.body.style.backgroundColor = theme.palette.background.default;
-    document.body.style.color = theme.palette.text.primary;
-    document.head.getElementsByTagName("meta")["theme-color" as any].content = theme.palette.primary.main;
   }
 
   @Bind()
@@ -81,6 +73,10 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
     const newTheme: IApplicationTheme = createTheme(theme);
 
     setLocalStorageItem("theme", newTheme);
+
+    document.body.style.backgroundColor = newTheme.palette.background.default;
+    document.body.style.color = newTheme.palette.text.primary;
+    document.head.getElementsByTagName("meta")["theme-color" as any].content = newTheme.palette.primary.main;
 
     this.log.info(`Toggle to '${nextThemeType}'.`);
     this.setState({ theme: newTheme });

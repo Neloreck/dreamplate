@@ -16,7 +16,7 @@ export const MODULE_CONFIG: {
         test: /\.(ts|tsx)$/,
         use: [
           {
-            loader: path.resolve(BUILD_CONFIGURATION_PATH, "loaders/trimLoader.ts"),
+            loader: path.resolve(BUILD_CONFIGURATION_PATH, "loaders/stripBlockLoader.ts"),
             options: {
               end: "DEV-END",
               start: "DEV-START",

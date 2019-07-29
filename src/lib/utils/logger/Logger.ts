@@ -25,12 +25,13 @@ export class Logger {
   private readonly prefix: string = "LOG";
   private readonly prefixSymbol: string = "X-";
   private readonly enabled: boolean = true;
+  private readonly minified: boolean = true;
 
   public constructor(prefix: string, enabled?: boolean) {
 
     /* <dev> */
 
-    this.prefix = prefix.replace( /[a-z]/g, "");
+    this.prefix = this.minified ? prefix.replace( /[a-z]/g, "") : prefix;
     this.prefixSymbol = Logger.EMOJI_LIST[Math.abs(this.hashCode(prefix)) % Logger.EMOJI_LIST.length];
 
     if (enabled !== undefined) {
@@ -41,7 +42,7 @@ export class Logger {
   }
 
   public getPrefixed(prefix: string, enabled?: boolean): Logger {
-    return new Logger(this.prefix + "@" + prefix, enabled);
+    return new Logger(this.prefix + " @ " + prefix, enabled);
   }
 
   public debug(...args: Array<any>): void {
