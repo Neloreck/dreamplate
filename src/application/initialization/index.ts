@@ -1,19 +1,8 @@
 // Lib.
 import { Logger } from "@Lib/utils";
 
-// Data.
-import { IApplicationTheme } from "@Main/data/store/theme/ThemeTypes";
-
-const rawStr = localStorage.getItem(btoa("theme")) || null;
-
-if (rawStr) {
-
-  const theme: IApplicationTheme = JSON.parse(atob(rawStr));
-
-  document.body.style.backgroundColor = theme.palette.background.default;
-  document.body.style.color = theme.palette.text.primary;
-  document.head.getElementsByTagName("meta")["theme-color" as any].content = theme.palette.primary.main;
-}
+// Init.
+import { initTheme } from "@Application/initialization/initTheme";
 
 /* <dev> */
 
@@ -25,3 +14,9 @@ logger.info("🔶 First init time:", new Date());
 logger.pushSeparator();
 
 /* </dev> */
+
+/* <everything> */
+
+initTheme();
+
+/* </everything> */
