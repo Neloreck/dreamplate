@@ -7,8 +7,7 @@ export const HomePage: ComponentClass = LazyLoadComponentFactory.getComponent(
   () => import(
     /* webpackChunkName: "home@home-page" */
     /* webpackPreload: undefined */
-    "./HomePage.component"),
-  DefaultLoader
+    "./HomePage.component")
 );
 
-export { IHomePageInjectedProps } from "./HomePage.Component";
+export { IHomePageInjectedProps } from "./HomePage.component";

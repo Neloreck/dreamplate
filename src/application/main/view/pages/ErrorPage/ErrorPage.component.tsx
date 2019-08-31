@@ -9,9 +9,8 @@ import { Styled, Wrapped } from "@Lib/decorators";
 import { IRouterContext, routerContextManager } from "@Main/data/store";
 
 // View.
-import { IMainHeaderInjectedProps, MainHeader } from "@Main/view/components/MainHeader";
 import { GlobalProvider } from "@Main/view/layouts";
-import { errorPageStyle } from "./ErrorPage.Style";
+import { errorPageStyle } from "./ErrorPage.style";
 
 // Types.
 export interface IErrorPageOwnProps {}
@@ -31,8 +30,6 @@ export class ErrorPage extends PureComponent<IErrorPageProps> {
 
     return (
       <>
-
-        <MainHeader {...{} as IMainHeaderInjectedProps}/>
 
         <main className={classes.content}>
 

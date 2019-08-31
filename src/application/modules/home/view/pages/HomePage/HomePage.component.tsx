@@ -5,7 +5,7 @@ import { WithStyles } from "react-jss";
 import { Styled, Wrapped } from "@Lib/decorators";
 
 // View.
-import { IMainHeaderInjectedProps, MainHeader } from "@Main/view/components/MainHeader";
+import { IMainHeaderInjectedProps, MainHeader } from "@Module/home/view/components/MainHeader";
 import { GlobalProvider } from "@Main/view/layouts";
 import { homePageStyle } from "./HomePage.style";
 

@@ -1,29 +1,24 @@
-import { Fragment, memo, NamedExoticComponent, useLayoutEffect, useState } from "react";
+import { memo, NamedExoticComponent, useLayoutEffect, useState } from "react";
 
 // Data.
 import { themeContextManager } from "@Main/data/store";
 
 const initialLoad: number = Date.now();
-let lastUpdate: number= 0;
 
 // tslint:disable-next-line
 export const DefaultLoader: NamedExoticComponent<object> = memo(function() {
 
-  const [ show, setShow ]: [ boolean, (value: boolean) => void ] = useState(
-    (Date.now() - initialLoad) > 500 &&
-    (Date.now() - lastUpdate) < 3000
-  );
-
-  const { theme: { palette, spacing } } = themeContextManager.context.themeState;
   const timeout: number = window.setTimeout( () => setShow(true), 510);
 
-  useLayoutEffect(() => { lastUpdate = Date.now(); });
+  const { theme: { palette, spacing } } = themeContextManager.context.themeState;
+  const [ show, setShow ]: [ boolean, (value: boolean) => void ] = useState((Date.now() - initialLoad) > 500);
+
   useLayoutEffect(() => () => window.clearTimeout(timeout));
 
   return (
     show
       ?
-      <Fragment key={"cl"}>
+      <>
         <div className={"cl"}/>
         <style>
           {`
@@ -45,7 +40,7 @@ export const DefaultLoader: NamedExoticComponent<object> = memo(function() {
               }
            `}
         </style>
-      </Fragment>
+      </>
       : null
   );
 });

@@ -1,1 +1,1 @@
-export { ErrorPage, IErrorPageProps } from "./ErrorPage.Component";
+export { ErrorPage, IErrorPageProps } from "./ErrorPage.component";

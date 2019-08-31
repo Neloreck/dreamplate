@@ -9,7 +9,7 @@ import { Styled } from "@Lib/decorators";
 import { IThemeContext, themeContextManager } from "@Main/data/store";
 
 // View.
-import { mainHeaderStyle } from "./MainHeader.Style";
+import { mainHeaderStyle } from "./MainHeader.style";
 
 // Props.
 export interface IMainHeaderOwnProps {}
