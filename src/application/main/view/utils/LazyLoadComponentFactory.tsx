@@ -6,6 +6,9 @@ import {
   ReactNode,
 } from "react";
 
+// Data.
+import { applicationConfig } from "@Main/data/configs/ApplicationConfig";
+
 // Props.
 interface ILazyComponentState {
   component: ComponentType;
@@ -14,9 +17,10 @@ interface ILazyComponentState {
 export class LazyLoadComponentFactory {
 
   public static getComponent(importFunc: () => Promise<any>, loadingNode?: FunctionComponent<any>): ComponentClass {
-
     // tslint:disable-next-line
     return class extends PureComponent<any, ILazyComponentState> {
+
+      public static displayName: string = applicationConfig.isDev ? "LazyLoader" : "LL";
 
       private static COMPONENT_INSTANCE: ComponentType;
 
@@ -67,7 +71,6 @@ export class LazyLoadComponentFactory {
           }
         }
       }
-
     };
   }
 

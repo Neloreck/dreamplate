@@ -1,4 +1,3 @@
-import { Consume } from "dreamstate";
 import { PureComponent, ReactNode } from "react";
 import { WithStyles } from "react-jss";
 
@@ -6,7 +5,7 @@ import { WithStyles } from "react-jss";
 import { Styled } from "@Lib/decorators";
 
 // Data.
-import { IThemeContext, themeContextManager } from "@Main/data/store";
+import { themeContextManager } from "@Main/data/store";
 
 // View.
 import { mainHeaderStyle } from "./MainHeader.style";
@@ -14,17 +13,16 @@ import { mainHeaderStyle } from "./MainHeader.style";
 // Props.
 export interface IMainHeaderOwnProps {}
 
-export interface IMainHeaderInjectedProps extends WithStyles<typeof mainHeaderStyle>, IThemeContext {}
+export interface IMainHeaderInjectedProps extends WithStyles<typeof mainHeaderStyle> {}
 
 export interface IMainHeaderProps extends IMainHeaderOwnProps, IMainHeaderInjectedProps {}
 
 @Styled(mainHeaderStyle)
-@Consume(themeContextManager)
 export class MainHeader extends PureComponent<IMainHeaderProps> {
 
   public render(): ReactNode {
 
-    const { classes, themeActions } = this.props;
+    const { classes } = this.props;
 
     return (
       <header className={classes.root}>
@@ -33,7 +31,7 @@ export class MainHeader extends PureComponent<IMainHeaderProps> {
           Boilerplate
         </h2>
 
-        <button className={classes.switchButton} onClick={themeActions.toggleTheme}>
+        <button className={classes.switchButton} onClick={themeContextManager.toggleTheme}>
           Toggle
         </button>
 

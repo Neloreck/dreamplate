@@ -16,7 +16,7 @@ export interface IAuthContext {
 
 export class AuthContextManager extends ContextManager<IAuthContext> {
 
-  protected context: IAuthContext = {
+  public context: IAuthContext = {
     authActions: {
     },
     authState: {

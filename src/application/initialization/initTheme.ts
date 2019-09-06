@@ -1,5 +1,4 @@
-// Data.
-import { IApplicationTheme } from "@Main/data/store/theme/ThemeTypes";
+import { IApplicationTheme } from "@Lib/theme";
 
 export const initTheme = () => {
 

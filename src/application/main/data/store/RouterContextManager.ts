@@ -1,6 +1,6 @@
 import { Bind, ContextManager } from "dreamstate";
 import { createBrowserHistory, History, Location, Path } from "history";
-import { createElement, ReactNode } from "react";
+import { ComponentType, createElement, ReactNode } from "react";
 import { Router as ReactRouter } from "react-router";
 
 // Lib.
@@ -20,9 +20,9 @@ export interface IRouterContext {
 
 export class RouterContextManager extends ContextManager<IRouterContext> {
 
-  protected readonly history: History = createBrowserHistory();
+  public readonly history: History = createBrowserHistory();
 
-  protected context: IRouterContext = {
+  public context: IRouterContext = {
     routingActions: {
       getCurrentLocation: this.getCurrentLocation,
       goBack: this.goBack,
@@ -34,8 +34,9 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
     }
   };
 
-  private readonly setState = ContextManager.getSetter(this, "routingState");
   private readonly log: Logger = new Logger(this.constructor.name, true);
+
+  private readonly setState = ContextManager.getSetter(this, "routingState");
 
   public constructor() {
 
@@ -45,41 +46,46 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
   }
 
   public getProvider(): any {
-    // Create router wrapper with provider for app-level.
-    return (props: any): ReactNode =>
-      createElement(ReactRouter, { history: this.history },
-        createElement(super.getProvider(), props, props.children)
-      );
-  }
 
-  protected onProvisionStarted(): void {
-    this.log.info("Started router context provision.");
+    const originalProvider: ComponentType = super.getProvider();
+    const originalHistory: History = this.history;
+
+    // Remember node name.
+    const HistoryRouterProvider = function(props: any): ReactNode {
+      return createElement(ReactRouter, { history: originalHistory }, createElement(originalProvider, props, props.children));
+    };
+
+    return HistoryRouterProvider;
   }
 
   @Bind()
-  private replace(path: Path): void {
+  public replace(path: Path): void {
 
     this.log.info(`Replace path: ${path}.`);
     this.history.replace(path);
   }
 
   @Bind()
-  private push(path: Path): void {
+  public push(path: Path): void {
 
     this.log.info(`Push path: ${path}.`);
     this.history.push(path);
   }
 
   @Bind()
-  private goBack(): void {
+  public goBack(): void {
 
     this.log.info("Go back.");
     this.history.goBack();
   }
 
   @Bind()
-  private getCurrentLocation(): string {
+  public getCurrentLocation(): string {
     return this.history.location.pathname;
+  }
+
+  protected onProvisionStarted(): void {
+    this.log.info("Started router context provision.");
   }
 
 }

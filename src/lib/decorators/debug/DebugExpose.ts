@@ -5,9 +5,11 @@
 
 export const DebugExpose = (name: string = "default"): ClassDecorator => (target: any): any => {
 
-  if (process.env.NODE_ENV !== "development") {
-    throw new Error("Debugging utils are only available for DEV environment.");
-  }
+  /* <production> */
+  throw new Error("Debugging utils are only available for DEV environment.");
+  /* </production> */
+
+  /* <dev> */
 
   // @ts-ignore
   if (!window.exposed) {
@@ -24,5 +26,7 @@ export const DebugExpose = (name: string = "default"): ClassDecorator => (target
       window.exposed[name] = this;
     }
   };
+
+  /* </dev> */
 
 };

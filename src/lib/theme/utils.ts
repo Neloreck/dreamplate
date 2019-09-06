@@ -1,8 +1,8 @@
-import { IApplicationTheme } from "@Main/data/store/theme/ThemeTypes";
+import { EThemeType, IApplicationTheme} from "@Lib/theme/types";
 
 export const createTheme = ({ palette, spacing }: IApplicationTheme): IApplicationTheme => {
 
-  const isDark: boolean = (palette.type === "dark");
+  const isDark: boolean = (palette.type === EThemeType.DARK);
 
   return {
     palette: {

@@ -6,15 +6,21 @@
  *
  */
 
-import { Logger } from "@Lib/utils";
+/* <dev> */
+
+import { Logger } from "../../utils/index";
 
 const dmLogger: Logger = new Logger("DM");
 
+/* </dev> */
+
 export const DebugMeasure = (): MethodDecorator => <T>(target: any, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<T>): any => {
 
-  if (process.env.NODE_ENV !== "development") {
-    throw new Error("Debugging utils are only available for DEV environment.");
-  }
+  /* <production> */
+  throw new Error("Debugging utils are only available for DEV environment.");
+  /* </production> */
+
+  /* <dev> */
 
   let originalFunction: any;
 
@@ -43,4 +49,6 @@ export const DebugMeasure = (): MethodDecorator => <T>(target: any, propertyKey:
   }
 
   return descriptor;
+
+  /* </dev> */
 };
