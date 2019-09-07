@@ -15,13 +15,7 @@ export const MODULE_CONFIG: {
         exclude: /(node_modules|bower_components|\.spec\.js)/,
         test: /\.(ts|tsx)$/,
         use: [
-          {
-            loader: path.resolve(BUILD_CONFIGURATION_PATH, "loaders/stripBlockLoader.ts"),
-            options: {
-              end: "DEV-END",
-              start: "DEV-START",
-            }
-          }
+          { loader: path.resolve(BUILD_CONFIGURATION_PATH, "loaders/stripBlockLoader.ts") }
         ],
       },
       // TS/TSX.
@@ -73,8 +67,8 @@ export const MODULE_CONFIG: {
       "@Application": path.resolve(PROJECT_ROOT_PATH, "./src/application/"),
       "@Build": path.resolve(BUILD_CONFIGURATION_PATH),
       "@Lib": path.resolve(PROJECT_ROOT_PATH, "./src/lib/"),
-      "@Main": path.resolve(PROJECT_ROOT_PATH, "./src/application/main"),
-      "@Module": path.resolve(PROJECT_ROOT_PATH, "./src/application/modules/")
+      "@Main": path.resolve(PROJECT_ROOT_PATH, "./src/application/main/"),
+      "@Modules": path.resolve(PROJECT_ROOT_PATH, "./src/application/modules/")
     },
     extensions: [
       ".ts",
@@ -84,7 +78,7 @@ export const MODULE_CONFIG: {
       ".json"
     ],
     modules: [
-      path.resolve(PROJECT_ROOT_PATH, "src/application"),
+      "node_modules",
       path.resolve(PROJECT_ROOT_PATH, "node_modules")
     ]
   }

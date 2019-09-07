@@ -5,7 +5,7 @@ import { WithStyles } from "react-jss";
 import { Styled } from "@Lib/decorators";
 
 // View.
-import { IMainHeaderInjectedProps, MainHeader } from "@Module/home/view/components/MainHeader";
+import { IMainHeaderInjectedProps, MainHeader } from "@Modules/home/view/components/MainHeader";
 import { homePageStyle } from "./HomePage.style";
 
 // Types.
@@ -31,6 +31,7 @@ export class HomePage extends PureComponent<IHomePageProps> {
 
           <div className={classes.card}>
             <a target={"_blank"} href={"https://reactjs.org/"}>
+              React
               React
             </a>
           </div>

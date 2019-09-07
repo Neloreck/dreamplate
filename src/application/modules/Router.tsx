@@ -7,7 +7,7 @@ import { authContextManager, routerContextManager, themeContextManager } from "@
 
 // View.
 import { ErrorPage } from "@Main/view/pages/ErrorPage";
-import { HomeModule } from "@Module/home";
+import { HomeModule } from "@Modules/home";
 
 @Provide(themeContextManager, routerContextManager, authContextManager)
 export class Router extends PureComponent {

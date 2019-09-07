@@ -1,0 +1,10 @@
+{
+  "name": "cli",
+  "private": true,
+  "dependencies": {
+  },
+  "devDependencies": {
+    "colors": "^1.3.3",
+    "typescript": "^3.6.2"
+  }
+}

@@ -6,7 +6,7 @@ import { Logger } from "@Lib/utils";
 
 // View.
 import { ErrorPage } from "@Main/view/pages/ErrorPage";
-import { HomePage } from "@Module/home/view/pages/HomePage";
+import { HomePage } from "@Modules/home/view/pages/HomePage";
 
 export class HomeRouter extends PureComponent {
 

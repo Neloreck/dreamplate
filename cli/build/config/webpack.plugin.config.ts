@@ -12,7 +12,7 @@ const DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ScriptExtHtmlPlugin = require("script-ext-html-webpack-plugin");
 
-import { APPLICATION_ROOT, APPLICATION_TITLE } from "../BuildConstants";
+import { APPLICATION_ROOT, APPLICATION_TITLE } from "../build_constants";
 import { BUILD_CONFIGURATION_PATH, ENVIRONMENT, IS_PRODUCTION, PROJECT_ROOT_PATH } from "./webpack.constants";
 
 export const PLUGIN_CONFIG: {

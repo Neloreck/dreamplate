@@ -2,11 +2,11 @@ import { createElement } from "react";
 import { render } from "react-dom";
 
 // Lib.
-import { APPLICATION_ROOT } from "@Build/BuildConstants";
+import { APPLICATION_ROOT } from "@Build/build_constants";
 import { EntryPoint } from "@Lib/decorators";
 
 // View.
-import { Router } from "@Application/modules/Router";
+import { Router } from "@Modules/Router";
 
 @EntryPoint()
 export class Application {

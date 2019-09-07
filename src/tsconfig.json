@@ -4,7 +4,7 @@
     "doTypeCheck": true,
     "forkChecker": true,
     "isolatedModules": true,
-    "cacheDirectory": "target/cache",
+    "cacheDirectory": "../target/cache",
     "useBabel": true,
     "useCache": true,
     "babelOptions": {
@@ -92,8 +92,8 @@
       "@Application/*": [ "application/*" ],
       "@Main": [ "application/main/index" ],
       "@Main/*": [ "application/main/*" ],
-      "@Module/*": [ "application/modules/*" ],
-      "@Module": [ "application/modules/index" ],
+      "@Modules/*": [ "application/modules/*" ],
+      "@Modules": [ "application/modules/index" ],
       "@Api/*": [ "api/*" ],
       "@Lib/*": [ "lib/*" ]
     },

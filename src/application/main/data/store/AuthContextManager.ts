@@ -1,7 +1,7 @@
 import { ContextManager } from "dreamstate";
 
 // Lib.
-import { Optional } from "@Lib/ts/types";
+import { Optional } from "@Lib/ts";
 import { Logger } from "@Lib/utils";
 
 export interface IAuthContext {

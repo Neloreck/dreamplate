@@ -103,7 +103,7 @@ export const JEST_CONFIG = {
 
   testMatch: [
      "**/__tests__/**/*.ts?(x)",
-     "**/?(*.)+(Spec|__test__).ts?(x)"
+     "**/?(*.)+(spec|__test__).ts?(x)"
    ],
 
   testPathIgnorePatterns: [

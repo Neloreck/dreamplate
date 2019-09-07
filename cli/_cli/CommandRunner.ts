@@ -35,7 +35,9 @@ export class CommandRunner {
         await this.executeCommands(
         Array.isArray(this.script)
             ? this.script
-            : this.script.split("&&").map((it: string) => it.trim()));
+            : [ this.script ]
+        );
+            //: this.script.split("&&").map((it: string) => it.trim()));
 
         this.onSuccess();
 

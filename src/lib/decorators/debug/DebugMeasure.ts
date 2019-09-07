@@ -8,7 +8,7 @@
 
 /* <dev> */
 
-import { Logger } from "../../utils/index";
+import { Logger } from "@Lib/utils";
 
 const dmLogger: Logger = new Logger("DM");
 

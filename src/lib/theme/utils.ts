@@ -1,4 +1,4 @@
-import { EThemeType, IApplicationTheme} from "@Lib/theme/types";
+import { EThemeType, IApplicationTheme } from "@Lib/theme/types";
 
 export const createTheme = ({ palette, spacing }: IApplicationTheme): IApplicationTheme => {
 
