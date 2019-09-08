@@ -1,7 +1,5 @@
 import { Bind, ContextManager } from "dreamstate";
 import { createBrowserHistory, History, Location, Path } from "history";
-import { ComponentType, createElement, ReactNode } from "react";
-import { Router as ReactRouter } from "react-router";
 
 // Lib.
 import { Logger } from "@Lib/utils";
@@ -43,19 +41,6 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
     super();
 
     this.history.listen((location: Location) => this.setState({ path: location.pathname }));
-  }
-
-  public getProvider(): any {
-
-    const originalProvider: ComponentType = super.getProvider();
-    const originalHistory: History = this.history;
-
-    // Remember node name.
-    const HistoryRouterProvider = function(props: any): ReactNode {
-      return createElement(ReactRouter, { history: originalHistory }, createElement(originalProvider, props, props.children));
-    };
-
-    return HistoryRouterProvider;
   }
 
   @Bind()

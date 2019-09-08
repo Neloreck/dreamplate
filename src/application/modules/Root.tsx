@@ -7,21 +7,26 @@ import { authContextManager, routerContextManager, themeContextManager } from "@
 
 // View.
 import { ErrorPage } from "@Main/view/pages/ErrorPage";
+import { ApplicationProvider } from "@Modules/ApplicationProvider";
 import { HomeModule } from "@Modules/home";
 
-@Provide(themeContextManager, routerContextManager, authContextManager)
-export class Router extends PureComponent {
+@Provide(routerContextManager, themeContextManager, authContextManager)
+export class Root extends PureComponent {
 
   public render(): ReactNode {
 
     return (
-      <Switch>
+      <ApplicationProvider>
 
-        <Route exact={true} path={"*"} component={HomeModule}/>
+        <Switch>
 
-        <Route component={ErrorPage}/>
+          <Route exact={true} path={"*"} component={HomeModule}/>
 
-      </Switch>
+          <Route component={ErrorPage}/>
+
+        </Switch>
+
+      </ApplicationProvider>
     );
   }
 

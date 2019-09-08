@@ -22,6 +22,8 @@ export class CommandRunner {
 
     process.on("exit" as any, this.onProcessShutdown.bind(this));
     process.on("disconnect" as any, this.onProcessShutdown.bind(this));
+    process.on("uncaughtException" as any, this.onProcessShutdown.bind(this));
+    process.on("unhandledRejection" as any, this.onProcessShutdown.bind(this));
   }
 
   public async run(): Promise<void> {
@@ -90,6 +92,7 @@ export class CommandRunner {
     return new Promise((resolve: () => void, reject: (error: Error) => void): void => {
 
       try {
+
         this.childProcess = spawn(item, args,  {
           cwd: process.cwd(),
           detached: true,
@@ -105,6 +108,7 @@ export class CommandRunner {
           } else {
             this.childProcess = null;
             reject(new Error("Command exited with non 0 code: " + code + "."));
+            process.exit();
           }
         };
 
@@ -112,6 +116,7 @@ export class CommandRunner {
           (this.childProcess as ChildProcess).kill("1");
           reject(new Error(data.toString()));
         });
+
         this.childProcess.on("close", checkCode);
         this.childProcess.on("exit", checkCode);
 

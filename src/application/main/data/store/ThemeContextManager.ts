@@ -1,7 +1,5 @@
 import { Bind, ContextManager } from "dreamstate";
 import { CreateGenerateIdOptions } from "jss";
-import { ComponentType, Context, createElement, FunctionComponent, ReactElement, useContext } from "react";
-import { JssProvider, ThemeProvider } from "react-jss";
 
 // Lib.
 import { createTheme, EThemeType, IApplicationTheme } from "@Lib/theme";
@@ -20,6 +18,10 @@ export interface IThemeContext {
 }
 
 export class ThemeContextManager extends ContextManager<IThemeContext> {
+
+  public static readonly JSS_CONFIG: CreateGenerateIdOptions = {
+    minify: !applicationConfig.isDev
+  };
 
   private static readonly DEFAULT_THEME_PARAMS: IApplicationTheme = {
     palette: {
@@ -57,33 +59,9 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
     }
   };
 
-  private readonly jssIdConfig: CreateGenerateIdOptions = {
-    minify: !applicationConfig.isDev
-  };
-
   private readonly log: Logger = new Logger(this.constructor.name, true);
 
   private readonly setState = ContextManager.getSetter(this, "themeState");
-
-  public getProvider(): any {
-
-    const originalProvider: ComponentType = super.getProvider();
-    const originalSettings: CreateGenerateIdOptions = this.jssIdConfig;
-    const originalContext: Context<IThemeContext> = this.internalReactContext;
-
-    const ThemeProvision: FunctionComponent = function(props: any): ReactElement {
-
-      const { themeState: { theme } } = useContext(originalContext);
-
-      return createElement(ThemeProvider, { children: undefined as any, theme: theme as any }, props.children);
-    };
-
-    const JssThemeProvider: FunctionComponent = function(props: any): ReactElement {
-      return createElement(originalProvider, {}, createElement(JssProvider, { children: createElement(ThemeProvision, props, props.children), id: originalSettings }));
-    };
-
-    return JssThemeProvider;
-  }
 
   @Bind()
   public toggleTheme(): void {

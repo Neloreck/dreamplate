@@ -9,33 +9,29 @@ import {
 // Data.
 import { applicationConfig } from "@Main/data/configs/ApplicationConfig";
 
-// Props.
-interface ILazyComponentState {
-  component: ComponentType;
-}
-
 export class LazyLoadComponentFactory {
 
   public static getComponent(importFunc: () => Promise<any>, loadingNode?: FunctionComponent<any>): ComponentClass {
-    // tslint:disable-next-line
-    return class extends PureComponent<any, ILazyComponentState> {
 
-      public static displayName: string = applicationConfig.isDev ? "LazyLoader" : "LL";
+    // todo: Functional with suspense.
+    // tslint:disable-next-line
+    return class extends PureComponent {
+
+      public static displayName: string = applicationConfig.isDev ? "LazyLoader" : "ll";
 
       private static COMPONENT_INSTANCE: ComponentType;
 
-      public state: ILazyComponentState = {
-        // @ts-ignore static function props.
-        component: this.constructor.COMPONENT_INSTANCE
-      };
-
       private ready: boolean = false;
 
-      public componentDidMount(): void {
+      public async componentDidMount(): Promise<void> {
 
         this.ready = true;
 
-        this.loadComponent().then();
+        await this.loadComponent();
+
+        if (this.ready) {
+          this.forceUpdate();
+        }
       }
 
       public componentWillUnmount(): void {
@@ -44,7 +40,8 @@ export class LazyLoadComponentFactory {
 
       public render(): ReactNode {
 
-        const { component: RenderItem } = this.state;
+        // @ts-ignore static function props.
+        const RenderItem = this.constructor.COMPONENT_INSTANCE;
 
         /*
          * You can implement custom spinner there or something else instead.
@@ -56,19 +53,14 @@ export class LazyLoadComponentFactory {
 
       private async loadComponent(): Promise<void> {
 
-        const { component } = this.state;
+        // @ts-ignore static function props.
+        const component = this.constructor.COMPONENT_INSTANCE;
 
         if (!component) {
 
           const module: any = await importFunc();
-          const importedRenderComponent: ComponentType = module[Object.keys(module)[0]];
-
-          // @ts-ignore static function props.
-          this.constructor.COMPONENT_INSTANCE = importedRenderComponent;
-
-          if (this.ready) {
-            this.setState({ component: importedRenderComponent });
-          }
+          // @ts-ignore static function props. Todo: Optional param?
+          this.constructor.COMPONENT_INSTANCE = module[Object.keys(module)[0]];
         }
       }
     };
