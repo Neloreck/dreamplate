@@ -2,6 +2,7 @@ import { Bind, ContextManager } from "dreamstate";
 import { createBrowserHistory, History, Location, Path } from "history";
 
 // Lib.
+import { Callable, Optional } from "@Lib/ts";
 import { Logger } from "@Lib/utils";
 
 export interface IRouterContext {
@@ -32,16 +33,11 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
     }
   };
 
-  private readonly log: Logger = new Logger(this.constructor.name, true);
+  private readonly log: Logger = new Logger(RouterContextManager.name);
 
   private readonly setState = ContextManager.getSetter(this, "routingState");
 
-  public constructor() {
-
-    super();
-
-    this.history.listen((location: Location) => this.setState({ path: location.pathname }));
-  }
+  private unregister: Optional<Callable> = null;
 
   @Bind()
   public replace(path: Path): void {
@@ -70,7 +66,19 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
   }
 
   protected onProvisionStarted(): void {
+
     this.log.info("Started router context provision.");
+
+    this.unregister = this.history.listen((location: Location) => this.setState({ path: location.pathname }));
+  }
+
+  protected onProvisionEnded(): void {
+
+    this.log.info("Stopped router context provision.");
+
+    if (this.unregister) {
+      this.unregister();
+    }
   }
 
 }

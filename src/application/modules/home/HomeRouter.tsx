@@ -14,6 +14,7 @@ export class HomeRouter extends PureComponent {
 
   public componentDidMount(): void {
 
+    this.log.pushSeparator();
     this.log.info("Mounted home module.");
     this.log.pushSeparator();
   }

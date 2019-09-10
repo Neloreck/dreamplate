@@ -1,15 +1,26 @@
+/* tslint:disable: no-console */
+
 import { IApplicationTheme } from "@Lib/theme";
+import { Optional } from "@Lib/ts";
 
 export const initTheme = () => {
 
-  const rawStr = localStorage.getItem(btoa("theme")) || null;
+  try {
 
-  if (rawStr) {
+    const rawStr: Optional<string> = localStorage.getItem(btoa("theme")) || null;
 
-    const theme: IApplicationTheme = JSON.parse(atob(rawStr));
+    if (rawStr) {
 
-    document.body.style.backgroundColor = theme.palette.background.default;
-    document.body.style.color = theme.palette.text.primary;
-    document.head.getElementsByTagName("meta")["theme-color" as any].content = theme.palette.primary.main;
+      const theme: IApplicationTheme = JSON.parse(atob(rawStr));
+
+      document.body.style.backgroundColor = theme.palette.background.default;
+      document.body.style.color = theme.palette.text.primary;
+      document.head.getElementsByTagName("meta")["theme-color" as any].content = theme.palette.primary.main;
+    }
+
+  } catch (error) {
+    /* <dev> */
+    console.error("Failed to pre-init default theme:", error);
+    /* </dev> */
   }
 };

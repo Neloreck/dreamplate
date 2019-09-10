@@ -1,4 +1,4 @@
-import { IApplicationTheme } from "@Lib/theme";
+import {BLACK, IApplicationTheme, WHITE} from "@Lib/theme";
 
 export const mainHeaderStyle = ({ palette, spacing }: IApplicationTheme) => ({
   root: {
@@ -13,7 +13,7 @@ export const mainHeaderStyle = ({ palette, spacing }: IApplicationTheme) => ({
     background: palette.primary.dark,
     boxShadow: `0px 2px 4px -1px rgba(0, 0, 0, 0.25), 0px 4px 5px 0px rgba(0, 0, 0, 0.15), 0px 1px 10px 0px rgba(0, 0, 0, 0.10)`,
     boxSizing: "border-box",
-    color: "#FFF",
+    color: WHITE,
     display: "flex",
     flexDirection: "row",
     fontSize: spacing.unit * 4,
@@ -27,8 +27,8 @@ export const mainHeaderStyle = ({ palette, spacing }: IApplicationTheme) => ({
     "&:hover": {
       filter: "brightness(0.85)"
     },
-    border: "1px solid #000",
-    color: "#FFF",
+    border: `1px solid ${BLACK}`,
+    color: BLACK,
     background: palette.primary.light,
     boxShadow: `6px 1px 4px 0px rgba(0, 0, 0, 0.25), 6px 7px 5px 0px rgba(0, 0, 0, 0.2)`,
     cursor: "pointer",

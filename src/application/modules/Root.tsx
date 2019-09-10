@@ -33,4 +33,4 @@ export class Root extends PureComponent {
 
 }
 
-export default hot(Root);
+export const HotRoot: typeof Root = hot(Root);

@@ -16,7 +16,7 @@ export function ApplicationProvider(props: any): ReactElement {
   return (
     <ReactRouter history={routerContextManager.history}>
 
-      <JssProvider id={ThemeContextManager.JSS_CONFIG}>
+      <JssProvider id={ThemeContextManager.JSS_ID_GENERATION_CONFIG}>
 
         <ThemeProvider theme={theme}>
 

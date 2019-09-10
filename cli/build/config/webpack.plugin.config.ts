@@ -1,6 +1,6 @@
 import { CheckerPlugin } from "awesome-typescript-loader";
 import * as path from "path";
-import { Options, Plugin, ProvidePlugin } from "webpack";
+import { DefinePlugin, Options, Plugin, ProvidePlugin } from "webpack";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 
 // tslint:disable: no-var-requires typedef
@@ -109,6 +109,9 @@ export const PLUGIN_CONFIG: {
         trimCustomFragments: true
       },
       template: path.resolve(PROJECT_ROOT_PATH, "cli/build/template/index.hbs")
+    }),
+    new DefinePlugin({
+      IS_DEV: !IS_PRODUCTION
     }),
     new ProvidePlugin({
       React: "react"

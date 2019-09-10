@@ -12,6 +12,8 @@ export function EntryPoint(shouldCall?: boolean) {
     if (targetClass.main) {
       targetClass.main(process.argv);
       called = true;
+    } else if (called && !IS_DEV) {
+      throw new Error("Entrypoint: already called, seems like you are referring it from application.");
     } else if (!targetClass.main) {
       throw new Error("Entrypoint: not found entry - 'public static main(): void'.");
     }
