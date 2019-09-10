@@ -1,6 +1,5 @@
 import { createElement, StrictMode } from "react";
 import { hydrate, render } from "react-dom";
-import { setConfig } from "react-hot-loader";
 
 // Lib.
 import { APPLICATION_ROOT } from "@Build/build_constants";
@@ -42,11 +41,6 @@ export class Application {
    * Render with StrictMode for debug.
    */
   public static renderDevmode(): void {
-
-    setConfig({
-      logLevel: "warn"
-    });
-
     render(createElement(StrictMode, {}, createElement(Root)), document.getElementById(APPLICATION_ROOT));
   }
 
