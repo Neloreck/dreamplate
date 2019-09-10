@@ -6,7 +6,7 @@ import { createTheme, EThemeType, IApplicationTheme } from "@Lib/theme";
 import { getFromLocalStorage, Logger, setLocalStorageItem } from "@Lib/utils";
 
 // Data.
-import { applicationConfig } from "../configs/ApplicationConfig";
+import { applicationConfig } from "@Main/data/configs";
 
 export interface IThemeContext {
   themeActions: {
@@ -59,7 +59,7 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
     }
   };
 
-  private readonly log: Logger = new Logger(this.constructor.name, true);
+  private readonly log: Logger = new Logger(this.constructor.name);
 
   private readonly setState = ContextManager.getSetter(this, "themeState");
 

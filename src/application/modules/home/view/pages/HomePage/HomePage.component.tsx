@@ -29,27 +29,28 @@ export class HomePage extends PureComponent<IHomePageProps> {
 
         <main className={classes.content}>
 
-          <div className={classes.card}>
-            <a target={"_blank"} href={"https://reactjs.org/"}>
-              React
-            </a>
-          </div>
+          { this.renderReferenceCard("React", "https://reactjs.org/") }
 
-          <div className={classes.card}>
-            <a target={"_blank"} href={"https://www.typescriptlang.org/"}>
-              Typescript
-            </a>
-          </div>
+          { this.renderReferenceCard("Typescript", "https://www.typescriptlang.org/") }
 
-          <div className={classes.card}>
-            <a target={"_blank"} href={"https://github.com/Neloreck/dreamstate/"}>
-              DreamState
-            </a>
-          </div>
+          { this.renderReferenceCard("DreamState", "https://github.com/Neloreck/dreamstate/") }
 
         </main>
 
       </>
+    );
+  }
+
+  private renderReferenceCard(label: string, href: string): ReactNode {
+
+    const { classes } = this.props;
+
+    return (
+      <div className={classes.card}>
+        <a target={"_blank"} href={href}>
+          { label }
+        </a>
+      </div>
     );
   }
 

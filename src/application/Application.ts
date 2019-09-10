@@ -38,8 +38,6 @@ export class Application {
     hydrate(createElement(Root), document.getElementById(APPLICATION_ROOT));
   }
 
-  /* <dev> */
-
   /**
    * Render with StrictMode for debug.
    */
@@ -51,7 +49,5 @@ export class Application {
 
     render(createElement(StrictMode, {}, createElement(Root)), document.getElementById(APPLICATION_ROOT));
   }
-
-  /* </dev> */
 
 }
