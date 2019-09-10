@@ -8,8 +8,8 @@ import { authContextManager, routerContextManager, themeContextManager } from "@
 
 // View.
 import { ErrorPage } from "@Main/view/pages/ErrorPage";
-import { ApplicationProvider } from "@Modules/ApplicationProvider";
 import { HomeModule } from "@Modules/home";
+import { RootProvider } from "@Modules/RootProvider";
 
 @Provide(routerContextManager, themeContextManager, authContextManager)
 export class Root extends PureComponent {
@@ -17,7 +17,7 @@ export class Root extends PureComponent {
   public render(): ReactNode {
 
     return (
-      <ApplicationProvider>
+      <RootProvider>
 
         <Switch>
 
@@ -27,7 +27,7 @@ export class Root extends PureComponent {
 
         </Switch>
 
-      </ApplicationProvider>
+      </RootProvider>
     );
   }
 

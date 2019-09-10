@@ -9,7 +9,7 @@ import { routerContextManager, ThemeContextManager, themeContextManager } from "
 // View.
 import { DefaultLoader } from "@Main/view/utils";
 
-export function ApplicationProvider(props: any): ReactElement {
+export function RootProvider(props: any): ReactElement {
 
   const { themeState: { theme } } = useManager(themeContextManager);
 
