@@ -9,12 +9,13 @@ import {
 } from "./webpack.constants";
 
 export const DEV_SERVER_CONFIG: Configuration = {
+  clientLogLevel: "warning",
   compress: IS_PRODUCTION,
   contentBase: DEV_SERVER_CONTENT_BASE,
+  // todo: No-cache for dev?
   headers: IS_PRODUCTION ? { "Cache-Control": "public,max-age=31536000" } : undefined,
   historyApiFallback: true,
   host: DEV_SERVER_HOST,
-  hot: !IS_PRODUCTION,
   // http2: true, // Unsupported for node 10+.
   https: false,
   inline: !IS_PRODUCTION,

@@ -1,11 +1,8 @@
-import { ComponentClass } from "react";
+import { LazyExoticComponent } from "react";
 
-// View.
-import { LazyLoadComponentFactory } from "@Main/view/utils";
+// Lib.
+import { getLazy } from "@Lib/utils";
 
-export const HomePage: ComponentClass = LazyLoadComponentFactory.getComponent(
-  () => import(
-    "./HomePage.component")
-);
+export const HomePage: LazyExoticComponent<any> = getLazy(() => import("./HomePage.component"));
 
 export { IHomePageInjectedProps } from "./HomePage.component";

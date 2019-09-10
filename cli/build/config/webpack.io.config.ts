@@ -12,12 +12,12 @@ export const IO_CONFIG: {
 } = {
   ENTRY: IS_PRODUCTION
     ? { application: ENTRY_FILE_PATH, init: INIT_FILE_PATH }
-    : { application: ENTRY_FILE_PATH, init: INIT_FILE_PATH, dev: "webpack/hot/dev-server" },
+    : { application: [ "react-hot-loader/patch", ENTRY_FILE_PATH ], init: INIT_FILE_PATH },
   OUTPUT: {
     chunkFilename: "js/c:[name].js",
     filename: "js/f:[name].js",
     path: PROJECT_OUTPUT_PATH,
     publicPath: BACKEND_PUBLIC_PATH,
-    sourceMapFilename: "js/maps/[name].map"
+    sourceMapFilename: "js/maps/[name].js.map"
   }
 };

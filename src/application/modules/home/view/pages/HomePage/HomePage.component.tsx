@@ -32,7 +32,6 @@ export class HomePage extends PureComponent<IHomePageProps> {
           <div className={classes.card}>
             <a target={"_blank"} href={"https://reactjs.org/"}>
               React
-              React
             </a>
           </div>
 

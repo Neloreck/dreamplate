@@ -9,11 +9,9 @@ export function EntryPoint(shouldCall?: boolean) {
       return;
     }
 
-    if (targetClass.main && !called) {
+    if (targetClass.main) {
       targetClass.main(process.argv);
       called = true;
-    } else if (called) {
-      throw new Error("Entrypoint: already called.");
     } else if (!targetClass.main) {
       throw new Error("Entrypoint: not found entry - 'public static main(): void'.");
     }

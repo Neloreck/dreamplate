@@ -1,7 +1,7 @@
 import * as path from "path";
 import { Module, Resolve } from "webpack";
 
-import { BUILD_CONFIGURATION_PATH, PROJECT_ROOT_PATH, TS_CONFIG_PATH } from "./webpack.constants";
+import { BUILD_CONFIGURATION_PATH, IS_PRODUCTION, PROJECT_ROOT_PATH, TS_CONFIG_PATH } from "./webpack.constants";
 
 export const MODULE_CONFIG: {
   RESOLVE: Resolve,
@@ -83,3 +83,9 @@ export const MODULE_CONFIG: {
     ]
   }
 };
+
+if (IS_PRODUCTION) {
+  // Production alias.
+} else {
+  (MODULE_CONFIG.RESOLVE.alias as any)["react-dom"] = "@hot-loader/react-dom";
+}

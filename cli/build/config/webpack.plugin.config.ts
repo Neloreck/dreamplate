@@ -1,6 +1,6 @@
 import { CheckerPlugin } from "awesome-typescript-loader";
 import * as path from "path";
-import { HotModuleReplacementPlugin, Options, Plugin, ProvidePlugin } from "webpack";
+import { Options, Plugin, ProvidePlugin } from "webpack";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 
 // tslint:disable: no-var-requires typedef
@@ -124,9 +124,3 @@ export const PLUGIN_CONFIG: {
     new HtmlWebpackInlineSourcePlugin()
   ],
 };
-
-if (IS_PRODUCTION) {
-  // Push specific plugins.
-} else {
-  PLUGIN_CONFIG.PLUGINS.push(new HotModuleReplacementPlugin());
-}

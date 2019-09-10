@@ -1,10 +1,13 @@
 import { useManager } from "dreamstate";
-import { ReactElement } from "react";
+import { ReactElement, Suspense } from "react";
 import { JssProvider, ThemeProvider } from "react-jss";
 import { Router as ReactRouter } from "react-router";
 
 // Data.
 import { routerContextManager, ThemeContextManager, themeContextManager } from "@Main/data/store";
+
+// View.
+import { DefaultLoader } from "@Main/view/utils";
 
 export function ApplicationProvider(props: any): ReactElement {
 
@@ -17,7 +20,11 @@ export function ApplicationProvider(props: any): ReactElement {
 
         <ThemeProvider theme={theme}>
 
-          { props.children }
+          <Suspense fallback={<DefaultLoader/>}>
+
+            { props.children }
+
+          </Suspense>
 
         </ThemeProvider>
 

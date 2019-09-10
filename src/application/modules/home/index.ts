@@ -1,14 +1,12 @@
-import { ComponentClass } from "react";
+import { LazyExoticComponent } from "react";
 
-// View.
-import { DefaultLoader } from "@Main/view/utils";
-import { LazyLoadComponentFactory } from "@Main/view/utils/LazyLoadComponentFactory";
+// Lib.
+import { getLazy } from "@Lib/utils";
 
-export const HomeModule: ComponentClass = LazyLoadComponentFactory.getComponent(
+export const HomeModule: LazyExoticComponent<any> = getLazy(
   () => import(
     /* webpackChunkName: "module@home" */
     /* webpackPreload: undefined */
     "./HomeRouter"
-    ),
-  DefaultLoader
+  )
 );

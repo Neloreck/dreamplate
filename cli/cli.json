@@ -11,7 +11,7 @@
     ],
     "============================================================================================================": "=",
     "start": "npx webpack-dev-server --config ./cli/build/config/webpack.config.ts",
-    "start:dev": "npx webpack-dev-server --config ./cli/build/config/webpack.config.ts --inline --inspect $NODE_DEBUG_OPTION --compress",
+    "start:dev": "npx webpack-dev-server --config ./cli/build/config/webpack.config.ts --inline --inspect $NODE_DEBUG_OPTION --compress --hot",
     "===========================================================================================================": "==",
     "test": [
       "npm run cli lint",

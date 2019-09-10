@@ -1,19 +1,21 @@
 import { memo, NamedExoticComponent, useLayoutEffect, useState } from "react";
 
 // Data.
+import { applicationConfig } from "@Main/data/configs";
 import { themeContextManager } from "@Main/data/store";
-
-const initialLoad: number = Date.now();
 
 // tslint:disable-next-line
 export const DefaultLoader: NamedExoticComponent<object> = memo(function() {
 
-  const timeout: number = window.setTimeout( () => setShow(true), 510);
-
   const { theme: { palette, spacing } } = themeContextManager.context.themeState;
-  const [ show, setShow ]: [ boolean, (value: boolean) => void ] = useState((Date.now() - initialLoad) > 500);
+  const [ show, setShow ]: [ boolean, (value: boolean) => void ] = useState((Date.now() - applicationConfig.initialLoad) > 500);
 
-  useLayoutEffect(() => () => window.clearTimeout(timeout));
+  useLayoutEffect(() => {
+
+    const timeout: number = window.setTimeout( () => setShow(true), 510);
+
+    return () => window.clearTimeout(timeout);
+  }, []);
 
   return (
     show

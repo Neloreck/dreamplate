@@ -1,5 +1,6 @@
 import { Provide } from "dreamstate";
 import { PureComponent, ReactNode } from "react";
+import { hot } from "react-hot-loader/root";
 import { Route, Switch } from "react-router";
 
 // Data
@@ -31,3 +32,5 @@ export class Root extends PureComponent {
   }
 
 }
+
+export default hot(Root);

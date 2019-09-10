@@ -93,6 +93,8 @@ export class Logger {
     /* </dev> */
   }
 
+  /* <dev> */
+
   protected hashCode(target: string): number {
 
     let hash = 0;
@@ -108,5 +110,7 @@ export class Logger {
 
     return hash;
   }
+
+  /* </dev> */
 
 }

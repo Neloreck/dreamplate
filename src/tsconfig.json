@@ -34,6 +34,7 @@
         "@babel/preset-react"
       ],
       "plugins": [
+        "react-hot-loader/babel",
         "@babel/plugin-syntax-dynamic-import",
         "@babel/plugin-transform-classes",
         [ "module:fast-async", { "spec": true } ],
