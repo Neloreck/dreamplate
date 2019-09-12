@@ -135,8 +135,10 @@ export const JEST_CONFIG = {
   // watchman: true,
 
   globals: {
+    IS_DEV: false,
     "ts-jest": {
-      tsConfig: TS_CONFIG_PATH,
+      diagnostics: false,
+      tsConfig: TS_CONFIG_PATH
     }
   }
 

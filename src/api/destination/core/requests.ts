@@ -1,1 +1,2 @@
-export interface IBaseRequest {}
+export interface IBaseRequest {
+}

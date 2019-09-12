@@ -1,4 +1,5 @@
-export interface IBaseResponse {}
+export interface IBaseResponse {
+}
 
 export interface IBaseFailedResponse extends IBaseResponse {
   status: number;

@@ -6,7 +6,7 @@ import { Bind, ContextManager } from "dreamstate";
 import { CreateGenerateIdOptions } from "jss";
 
 // Lib.
-import { DEFAULT_THEME, EThemeType, IApplicationTheme, toggleTheme } from "@Lib/theme";
+import { createDefaultTheme, EThemeType, IApplicationTheme, toggleTheme } from "@Lib/theme";
 import { getFromLocalStorage, Logger, setLocalStorageItem } from "@Lib/utils";
 
 /**
@@ -36,7 +36,7 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
       toggleTheme: this.toggleTheme
     },
     themeState: {
-      theme: getFromLocalStorage("theme") || DEFAULT_THEME
+      theme: getFromLocalStorage("theme") || createDefaultTheme()
     }
   };
 

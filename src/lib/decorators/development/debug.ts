@@ -1,9 +1,8 @@
-/*
+/**
+ * @module lib/decorators
+ *
  * Debugging purposes.
  * Restricted in non DEV mode.
- *
- * @DebugMeasure() => @Bind() for bound methods.
- *
  */
 
 /* <dev> */
@@ -14,6 +13,9 @@ const dmLogger: Logger = new Logger("DM");
 
 /* </dev> */
 
+/**
+ * Measure method execution time and log execution info.
+ */
 export const DebugMeasure = (): MethodDecorator => <T>(target: any, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<T>): any => {
 
   /* <production> */
@@ -53,11 +55,9 @@ export const DebugMeasure = (): MethodDecorator => <T>(target: any, propertyKey:
   /* </dev> */
 };
 
-/*
- * Debugging purposes.
- * Restricted in non DEV mode.
+/**
+ * Expose class to a window for temporary debugging.
  */
-
 export const DebugExpose = (name: string = "default"): ClassDecorator => (target: any): any => {
 
   /* <production> */

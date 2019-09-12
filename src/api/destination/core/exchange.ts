@@ -1,6 +1,8 @@
+// Lib.
 import { ERequestMethod } from "@Lib/api/types";
 
-import { CONFIG } from "./config";
+// Api.
+import { coreApiConfig } from "@Api/destination/core/coreApiConfig";
 
 const doRequest = async (method: ERequestMethod, mapping: string, request?: object | URLSearchParams, headers?: Headers): Promise<object> => {
 
@@ -8,7 +10,7 @@ const doRequest = async (method: ERequestMethod, mapping: string, request?: obje
 
   const rawRequest: RequestInit = {
     body: requestBody,
-    headers: headers || CONFIG.DEFAULT_HEADERS,
+    headers: headers || coreApiConfig.DEFAULT_HEADERS,
     method
   };
 

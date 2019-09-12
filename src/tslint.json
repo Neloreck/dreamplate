@@ -24,9 +24,10 @@
     "semicolon": true,
     "max-line-length": [ false ],
     "no-empty-interface": false,
-    "only-arrow-functions": [ "allow-named-functions" ],
+    "only-arrow-functions": [ true, "allow-named-functions" ],
     "trailing-comma": false,
     "no-bitwise": false,
+    "no-relative-imports": true,
     "whitespace": [ true, "check-rest-spread", "check-module" ],
     "object-literal-key-quotes": [
       true, "as-needed"
@@ -41,6 +42,7 @@
     ]
   },
 
-
-  "rulesDirectory": []
+  "rulesDirectory": [
+    "../node_modules/tslint-microsoft-contrib"
+  ]
 }

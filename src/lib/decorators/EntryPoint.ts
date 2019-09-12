@@ -1,6 +1,14 @@
+/**
+ * @module lib/decorators
+ */
+
 let called: boolean = false;
 
 // tslint:disable typedef
+/**
+ * Entry point decorator.
+ * Takes process args and executes static main method of target.
+ */
 export function EntryPoint(shouldCall?: boolean) {
 
   return (targetClass: { main: (argv: Array<string>) => void } ): void  => {

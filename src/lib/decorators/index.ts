@@ -1,6 +1,9 @@
-export * from "./EntryPoint";
-export * from "./Wrapped";
+/**
+ * @module lib/decorators
+ */
 
-export * from "./development/debug";
+export * from "@Lib/decorators/EntryPoint";
+export * from "@Lib/decorators/Wrapped";
 
-export * from "./styling";
+export * from "@Lib/decorators/styling";
+export * from "@Lib/decorators/development";

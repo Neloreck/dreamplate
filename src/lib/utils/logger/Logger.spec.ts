@@ -1,17 +1,58 @@
-/* tslint:disable: no-console */
-import { Logger } from "./Logger";
+/**
+ * @module lib/utils
+ */
+
+import { Logger } from "@Lib/utils";
+import { IStringIndexed } from "@Lib/ts";
 
 describe("Application Logger behaviour.", () => {
 
-  it("Should have proper prefixing for messages and prefixing concatenation.", () => {
+  const EXPECTED_HASHES_MAP: IStringIndexed<number> = {
+    "FIRST_CHECK": -1931411847,
+    "SECOND_CHECK": -1438293667,
+    "THIRD_CHECK": -798192656
+  };
 
-    let log: Logger = new Logger("Prefix");
-    console.info = jest.fn((...args: Array<any>) => expect(args[0]).toBe("%c[Prefix]"));
-    log.info("Something.");
+  expect(IS_DEV).toBeFalsy();
 
-    log = log.getPrefixed("[Another]");
-    console.info = jest.fn((...args: Array<any>) => expect(args[0]).toBe("%c[Prefix] [Another]"));
-    log.info("Something");
+  it("Should not affect console output in production environment.", () => {
+
+    let log: Logger = new Logger("Test");
+
+    console.log = jest.fn();
+    console.info = jest.fn();
+    console.error = jest.fn();
+    console.debug = jest.fn();
+    console.group = jest.fn();
+    console.groupEnd = jest.fn();
+
+    log.info("1");
+    log.error("1");
+    log.debug("1");
+    log.group("1");
+    log.groupEnd();
+
+    expect(console.log).not.toHaveBeenCalled();
+    expect(console.info).not.toHaveBeenCalled();
+    expect(console.error).not.toHaveBeenCalled();
+    expect(console.debug).not.toHaveBeenCalled();
+    expect(console.group).not.toHaveBeenCalled();
+    expect(console.groupEnd).not.toHaveBeenCalled();
   });
 
+  it("Should return new prefixed instance.", () => {
+
+    let log: Logger = new Logger("Test");
+
+    expect(log.getPrefixed("New prefix")).toBeInstanceOf(Logger);
+  });
+
+  it("Always generate same hashes for same strings.", () => {
+
+    let log: Logger = new Logger("Test");
+
+    for (const [ key, value ] of Object.entries(EXPECTED_HASHES_MAP)) {
+      expect(log["getHashCode"](key)).toBe(value);
+    }
+  });
 });

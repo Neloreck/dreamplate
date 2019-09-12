@@ -26,13 +26,13 @@ export const PLUGIN_CONFIG: {
       new TerserPlugin({
         sourceMap: !IS_PRODUCTION,
         terserOptions: {
-          keep_classnames: !IS_PRODUCTION,
-          keep_fnames: !IS_PRODUCTION,
           compress: {
-            ecma: 6,
             drop_console: IS_PRODUCTION,
+            ecma: 6,
             passes: IS_PRODUCTION ? 3 : 1
           },
+          keep_classnames: !IS_PRODUCTION,
+          keep_fnames: !IS_PRODUCTION,
           output: {
             beautify: false,
             ecma: 6

@@ -6,6 +6,7 @@ export class CommandRunner {
   protected static readonly PARENT?: string = process.env.PARENT;
 
   private readonly cmd: string;
+  private readonly cmdAdditionalArgs: Array<string> = [];
   private readonly script: string | Array<string>;
   private readonly config: any;
 
@@ -14,9 +15,10 @@ export class CommandRunner {
 
   private childProcess: ChildProcess | null = null;
 
-  public constructor(cmd: string, script: string | Array<string>, config?: any) {
+  public constructor(cmd: string, cmdAdditionalArgs: Array<string>, script: string | Array<string>, config?: any) {
 
     this.cmd = cmd;
+    this.cmdAdditionalArgs = cmdAdditionalArgs;
     this.script = script;
     this.config = config;
 
@@ -34,12 +36,11 @@ export class CommandRunner {
 
       try {
 
-        await this.executeCommands(
-        Array.isArray(this.script)
-            ? this.script
-            : [ this.script ]
-        );
-            //: this.script.split("&&").map((it: string) => it.trim()));
+        if (Array.isArray(this.script)) {
+          await this.executeCommands(this.script);
+        } else {
+          await this.executeCommand(this.script);
+        }
 
         this.onSuccess();
 
@@ -57,7 +58,6 @@ export class CommandRunner {
 
       throw new Error(errorMessage);
     }
-
   }
 
   /*
@@ -68,12 +68,16 @@ export class CommandRunner {
 
     const hasMany: boolean = (scriptsToExecute.length > 0);
 
+    if (hasMany && this.cmdAdditionalArgs.length) {
+      throw new Error("Cannot provide additional args for multi-scripts.");
+    }
+
     for (const scriptToExecute of scriptsToExecute) {
 
       try {
 
         const scriptArgs: Array<string> = scriptToExecute.split(" ");
-        await this.runProcess(scriptArgs[0], [...scriptArgs.slice(1)]);
+        await this.runProcess(scriptArgs);
 
         if (hasMany) {
           this.onPartialSuccess(scriptToExecute);
@@ -87,13 +91,27 @@ export class CommandRunner {
     }
   }
 
-  protected runProcess(item: string, args: Array<string>): Promise<void> {
+  protected async executeCommand(scriptToExecute: string): Promise<void> {
+
+    try {
+
+      const scriptArgs: Array<string> = scriptToExecute.split(" ");
+
+      await this.runProcess(scriptArgs);
+
+    } catch (error) {
+      this.onPartialError(scriptToExecute);
+      throw error;
+    }
+  }
+
+  protected runProcess(args: Array<string>): Promise<void> {
 
     return new Promise((resolve: () => void, reject: (error: Error) => void): void => {
 
       try {
 
-        this.childProcess = spawn(item, args,  {
+        this.childProcess = spawn(args[0], args.slice(1).concat(this.cmdAdditionalArgs),  {
           cwd: process.cwd(),
           detached: true,
           env: { ...process.env, PARENT: "X-CORE-CLI" },

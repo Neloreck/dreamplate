@@ -1,7 +1,5 @@
 /**
  * @module lib/theme
- *
- * Colors constants for application.
  */
 
 export * from "./types";

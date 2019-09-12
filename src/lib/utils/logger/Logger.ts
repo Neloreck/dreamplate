@@ -1,5 +1,15 @@
+/**
+ * @module lib/utils
+ */
+
 /* tslint:disable: no-console */
 
+/**
+ * Default logger class.
+ * Shows related messages with random prefix emoji and defined label.
+ *
+ * Minified and disabled in production mode.
+ */
 export class Logger {
 
   /* <dev> */
@@ -18,21 +28,19 @@ export class Logger {
     "🍈", "🍌", "🍐", "🍍", "🍠", "🍆", "🍅", "🌽"
   ];
 
-  private static readonly IS_DEV: boolean = process.env.NODE_ENV === "development";
-
-  /* </dev> */
-
   private readonly prefix: string = "LOG";
   private readonly prefixSymbol: string = "X-";
   private readonly enabled: boolean = true;
   private readonly minified: boolean = true;
+
+  /* </dev> */
 
   public constructor(prefix: string, enabled?: boolean) {
 
     /* <dev> */
 
     this.prefix = this.minified ? prefix.replace( /[a-z]/g, "") : prefix;
-    this.prefixSymbol = Logger.EMOJI_LIST[Math.abs(this.hashCode(prefix)) % Logger.EMOJI_LIST.length];
+    this.prefixSymbol = Logger.EMOJI_LIST[Math.abs(this.getHashCode(prefix)) % Logger.EMOJI_LIST.length];
 
     if (enabled !== undefined) {
       this.enabled = enabled;
@@ -49,7 +57,7 @@ export class Logger {
 
     /* <dev> */
 
-    if (Logger.IS_DEV && this.enabled) {
+    if (IS_DEV && this.enabled) {
       console.debug(`%c[${this.prefixSymbol}${this.prefix}]`, "color: #bada53", "[D]", ...args);
     }
 
@@ -60,7 +68,7 @@ export class Logger {
 
     /* <dev> */
 
-    if (Logger.IS_DEV && this.enabled) {
+    if (IS_DEV && this.enabled) {
       console.warn(`%c[${this.prefixSymbol}${this.prefix}]`, "color: #bada53", ...args);
     }
 
@@ -68,25 +76,57 @@ export class Logger {
   }
 
   public error(...args: Array<any>): void {
-    console.error(`%c[${this.prefixSymbol}${this.prefix}]`, "color: #bada53", ...args);
+
+    /* <dev> */
+
+    if (IS_DEV && this.enabled) {
+      console.error(`%c[${this.prefixSymbol}${this.prefix}]`, "color: #bada53", ...args);
+    }
+
+    /* </dev> */
   }
 
   public info(...args: Array<any>): void {
 
     /* <dev> */
 
-    if (Logger.IS_DEV && this.enabled) {
+    if (IS_DEV && this.enabled) {
       console.info(`%c[${this.prefixSymbol}${this.prefix}]`, "color: #bada53", ...args);
     }
 
     /* </dev> */
   }
 
+  public group(title: string): void {
+
+    /* <dev> */
+
+    if (IS_DEV && this.enabled) {
+      console.group(`%c[${title}]`, "color: #bada53");
+    }
+
+    /* </dev> */
+  }
+
+  public groupEnd(): void {
+
+    /* <dev> */
+
+    if (IS_DEV && this.enabled) {
+      console.groupEnd();
+    }
+
+    /* </dev> */
+  }
+
+  /**
+   * Push separator to make some kind of section in console.
+   */
   public pushSeparator(): void {
 
     /* <dev> */
 
-    if (Logger.IS_DEV && this.enabled) {
+    if (IS_DEV && this.enabled) {
       console.info("%c=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=", "color: #bada53");
     }
 
@@ -95,7 +135,10 @@ export class Logger {
 
   /* <dev> */
 
-  protected hashCode(target: string): number {
+  /**
+   * Generate hashcode from string to define determined prefix indexes.
+   */
+  protected getHashCode(target: string): number {
 
     let hash = 0;
 

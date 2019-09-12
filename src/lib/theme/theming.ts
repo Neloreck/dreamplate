@@ -1,7 +1,5 @@
 /**
  * @module lib/theme
- *
- * Theme constants for application.
  */
 
 import {
@@ -14,8 +12,8 @@ import {
   PURPLE_300,
   PURPLE_400,
   WHITE
-} from "./colors";
-import { EThemeType, IApplicationTheme } from "./types";
+} from "@Lib/theme/colors";
+import { EThemeType } from "@Lib/theme/types";
 
 /*
  * Default theme generation config.
@@ -23,7 +21,7 @@ import { EThemeType, IApplicationTheme } from "./types";
 
 export const DEFAULT_THEME_TYPE: EThemeType = EThemeType.LIGHT;
 
-export const DEFAULT_SPACING_UNIT: number = 8;
+export const DEFAULT_SPACING_UNIT: number = 4;
 
 export const DEFAULT_PRIMARY_LIGHT: string = INDIGO_100;
 
@@ -52,34 +50,3 @@ export const DEFAULT_TEXT_SECONDARY_LIGHT: string = LIGHT_BLACK;
 export const DEFAULT_TEXT_PRIMARY_DARK: string = WHITE;
 
 export const DEFAULT_TEXT_SECONDARY_DARK: string = LIGHT_WHITE;
-
-/*
- * Default theme construction.
- */
-
-export const DEFAULT_THEME: IApplicationTheme = {
-  palette: {
-    background: {
-      default: DEFAULT_BACKGROUND_LIGHT,
-      paper: DEFAULT_BACKGROUND_PAPER_LIGHT
-    },
-    primary: {
-      dark: DEFAULT_PRIMARY_DARK,
-      light: DEFAULT_PRIMARY_LIGHT,
-      main: DEFAULT_PRIMARY_MAIN
-    },
-    secondary: {
-      dark: DEFAULT_SECONDARY_DARK,
-      light: DEFAULT_SECONDARY_LIGHT,
-      main: DEFAULT_SECONDARY_MAIN
-    },
-    text: {
-      primary: DEFAULT_THEME_TYPE === EThemeType.LIGHT ? DEFAULT_TEXT_PRIMARY_LIGHT : DEFAULT_TEXT_PRIMARY_DARK,
-      secondary:  DEFAULT_THEME_TYPE === EThemeType.LIGHT ? DEFAULT_TEXT_SECONDARY_LIGHT : DEFAULT_TEXT_SECONDARY_DARK,
-    },
-    type: DEFAULT_THEME_TYPE
-  },
-  spacing: {
-    unit: DEFAULT_SPACING_UNIT
-  }
-};

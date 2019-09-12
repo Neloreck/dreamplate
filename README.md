@@ -86,6 +86,7 @@
 
  - node_modules
  - @Lib
+ - @Api
  - @Data
  - @View
  - 'styles'
@@ -102,6 +103,4 @@
   - Experiment and comparison with Preact
   - Benchmark for testing?
   - Tests examples with react rendering
-  - Newest node-js + express with http2
   - Build something from wasm as experiment and use wasm-loader
-  - Source-maps fixes and investigation

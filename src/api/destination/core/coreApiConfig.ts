@@ -1,4 +1,4 @@
-export const CONFIG = {
+export const coreApiConfig = {
 
   DEFAULT_HEADERS: new Headers({
     Accept: "application/json",

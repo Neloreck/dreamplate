@@ -13,7 +13,7 @@
     ],
     "============================================================================================================": "=",
     "start": "npx webpack-dev-server --config ./cli/build/config/webpack.config.ts",
-    "start:dev": "npx webpack-dev-server --config ./cli/build/config/webpack.config.ts --inline --inspect $NODE_DEBUG_OPTION --compress --hot",
+    "start:dev": "npx webpack-dev-server --config ./cli/build/config/webpack.config.ts --inline --inspect $NODE_DEBUG_OPTION --hot",
     "===========================================================================================================": "==",
     "docs:generate": [
       "rm -rf ./docs",
@@ -24,7 +24,7 @@
       "npm run cli lint",
       "npm run cli jest"
     ],
-    "jest": "cd ./cli && npx ts-node --project ./tsconfig.json ./test/TestRunner.ts",
-    "lint": "cd ./cli && npx tslint --project ../src/"
+    "jest": "npx ts-node --project ./cli/test/config/tsconfig.json ./cli/test/TestRunner.ts",
+    "lint": "npx tslint --project ./src/"
   }
 }

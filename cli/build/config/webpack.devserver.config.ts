@@ -11,7 +11,7 @@ export const DEV_SERVER_CONFIG: object = {
   compress: IS_PRODUCTION,
   contentBase: DEV_SERVER_CONTENT_BASE,
   // todo: No-cache for dev?
-  headers: IS_PRODUCTION ? { "Cache-Control": "public,max-age=31536000" } : undefined,
+  headers: {},
   historyApiFallback: true,
   host: DEV_SERVER_HOST,
   // http2: true, // Unsupported for node 10+.

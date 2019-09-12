@@ -6,6 +6,17 @@ import { IO_CONFIG } from "./webpack.io.config";
 import { MODULE_CONFIG } from "./webpack.module.config";
 import { PLUGIN_CONFIG } from "./webpack.plugin.config";
 
+/**
+ * Restrict build with environment declaration to prevent unexpected issues.
+ */
+if (!ENVIRONMENT) {
+  throw new Error("Environment must be set for webpack build.");
+}
+
+/**
+ * Project-level webpack configuration.
+ * Bundled from multiple computed scripts.
+ */
 export const WEBPACK_CONFIG: Configuration = {
   devServer: DEV_SERVER_CONFIG,
   devtool: DEVELOPMENT_TOOL,
