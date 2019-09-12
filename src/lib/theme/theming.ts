@@ -1,3 +1,9 @@
+/**
+ * @module lib/theme
+ *
+ * Theme constants for application.
+ */
+
 import {
   BLACK, GRAY_200,
   GRAY_700,

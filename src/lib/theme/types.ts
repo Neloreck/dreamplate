@@ -1,3 +1,9 @@
+/**
+ * @module lib/theme
+ *
+ * Theme types for application.
+ */
+
 export enum EThemeType {
   LIGHT = "light",
   DARK = "dark"

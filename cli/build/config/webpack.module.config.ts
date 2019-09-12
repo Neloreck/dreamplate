@@ -45,7 +45,7 @@ export const MODULE_CONFIG: {
         },
         test: /\.hbs$/
       },
-      // IMAGES.
+      // IMAGES AS B64.
       {
         test: /\.(gif|png|jpe|jpg|svg)$/i,
         use: [
@@ -54,6 +54,18 @@ export const MODULE_CONFIG: {
             options: {
               // include < 5KB files in bundle file
               limit: 5000,
+              name: "images/[name].[ext]"
+            }
+          }
+        ]
+      },
+      // IMAGES AS ASSET.
+      {
+        test: /\.(gif|png|jpe|jpg|svg)$/i,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
               name: "images/[name].[ext]"
             }
           }

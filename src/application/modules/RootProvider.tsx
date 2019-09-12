@@ -1,3 +1,7 @@
+/**
+ * @module main
+ */
+
 import { useManager } from "dreamstate";
 import { ReactElement, Suspense } from "react";
 import { JssProvider, ThemeProvider } from "react-jss";
@@ -9,6 +13,10 @@ import { routerContextManager, ThemeContextManager, themeContextManager } from "
 // View.
 import { DefaultLoader } from "@Main/view/utils";
 
+/**
+ * Root provider of application shared data and context.
+ * Provide application loading fallback.
+ */
 export function RootProvider(props: any): ReactElement {
 
   const { themeState: { theme } } = useManager(themeContextManager);

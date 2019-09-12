@@ -1,3 +1,9 @@
+/**
+ * @module lib/theme
+ *
+ * Theme utils for application.
+ */
+
 import {
   DEFAULT_BACKGROUND_DARK,
   DEFAULT_BACKGROUND_LIGHT,
@@ -10,6 +16,10 @@ import {
 } from "@Lib/theme/theming";
 import { EThemeType, IApplicationTheme } from "@Lib/theme/types";
 
+/**
+ * Create new theme from provided ones.
+ * Theme type is opposite or provided as second param.
+ */
 export const toggleTheme = ({ palette, spacing }: IApplicationTheme, requestedType?: EThemeType): IApplicationTheme => {
 
   const nextType: EThemeType = requestedType || palette.type;

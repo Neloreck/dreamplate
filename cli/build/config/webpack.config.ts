@@ -18,7 +18,7 @@ export const WEBPACK_CONFIG: Configuration = {
   resolve: MODULE_CONFIG.RESOLVE,
   stats: STATS,
   target: TARGET
-};
+} as any; // For dev server.
 
 export * from "./webpack.constants";
 

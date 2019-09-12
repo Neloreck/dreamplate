@@ -1,3 +1,9 @@
+/**
+ * @module lib/theme
+ *
+ * Colors constants for application.
+ */
+
 export const BLACK: string = "#000";
 
 export const LIGHT_BLACK = "#444444";

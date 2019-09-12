@@ -2,17 +2,24 @@
   "config": {
   },
   "scripts": {
-    "clean": "npx rimraf ./target/ && echo 'Target cleaned up.'",
-    "purge": "npx rimraf ./target && rimraf ./node_modules && echo 'Project purged.'",
+    "purge": [
+      "npx rimraf ./target",
+      "echo 'Target cleaned up.'"
+    ],
     "=============================================================================================================": "",
     "build": [
-      "npm run cli clean",
+      "npm run cli purge",
       "ts-node --project ./cli/tsconfig.json ./cli/build/BuildRunner.ts"
     ],
     "============================================================================================================": "=",
     "start": "npx webpack-dev-server --config ./cli/build/config/webpack.config.ts",
     "start:dev": "npx webpack-dev-server --config ./cli/build/config/webpack.config.ts --inline --inspect $NODE_DEBUG_OPTION --compress --hot",
     "===========================================================================================================": "==",
+    "docs:generate": [
+      "rm -rf ./docs",
+      "cd ./cli && npx typedoc --tsconfig ../src/tsconfig.json --readme ../src/README.md ../src/"
+    ],
+    "==========================================================================================================": "===",
     "test": [
       "npm run cli lint",
       "npm run cli jest"

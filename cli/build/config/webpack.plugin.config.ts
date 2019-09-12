@@ -1,13 +1,13 @@
 import { CheckerPlugin } from "awesome-typescript-loader";
 import * as path from "path";
 import { DefinePlugin, Options, Plugin, ProvidePlugin } from "webpack";
-import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 
 // tslint:disable: no-var-requires typedef
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const DotEnv = require("dotenv-webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
-const HtmlWebpackInlineSourcePlugin  = require("html-webpack-inline-source-plugin");
+const HtmlWebpackInlineSourcePlugin = require("html-webpack-inline-source-plugin");
 const DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ScriptExtHtmlPlugin = require("script-ext-html-webpack-plugin");
@@ -26,29 +26,22 @@ export const PLUGIN_CONFIG: {
       new TerserPlugin({
         sourceMap: !IS_PRODUCTION,
         terserOptions: {
-          compress: true,
-          ecma: 6,
-          ie8: false,
           keep_classnames: !IS_PRODUCTION,
           keep_fnames: !IS_PRODUCTION,
-          mangle: true,
-          module: true,
-          nameCache: null,
-          output: {
-            beautify: false
+          compress: {
+            ecma: 6,
+            drop_console: IS_PRODUCTION,
+            passes: IS_PRODUCTION ? 3 : 1
           },
-          parse: {},
-          safari10: false,
-          toplevel: false,
-          unused: false,
-          warnings: false
+          output: {
+            beautify: false,
+            ecma: 6
+          }
         },
       })
     ],
     moduleIds: "hashed",
     noEmitOnErrors: IS_PRODUCTION,
-    occurrenceOrder: false,
-    removeAvailableModules: true,
     runtimeChunk: "single",
     splitChunks: {
       cacheGroups: {
@@ -67,28 +60,23 @@ export const PLUGIN_CONFIG: {
           test: /[\\/]node_modules[\\/]/
         }
       },
-      chunks: "all" as "all",
+      chunks: "async" as "async",
       maxAsyncRequests: 50,
       maxInitialRequests: 25,
-      maxSize: 300_000,
+      maxSize: 244_000,
       minSize: 10_000,
       name: true
-    },
-    usedExports: true
+    }
   },
   PLUGINS: [
-    new DuplicatePackageCheckerPlugin({
-      verbose: true
-    }),
+    new DuplicatePackageCheckerPlugin({ verbose: true }),
     new BundleAnalyzerPlugin({
       analyzerMode: "static",
       openAnalyzer: false,
       reportFilename: "../info/report.html"
     }),
     new CheckerPlugin(),
-    new DotEnv({
-      path: path.resolve(PROJECT_ROOT_PATH, `cli/build/config/.${ENVIRONMENT}.env`)
-    }),
+    new DotEnv({ path: path.resolve(PROJECT_ROOT_PATH, `cli/build/config/.${ENVIRONMENT}.env`) }),
     new HtmlWebpackPlugin({
       ENVIRONMENT,
       constants: {
@@ -121,9 +109,7 @@ export const PLUGIN_CONFIG: {
         { from: path.resolve(BUILD_CONFIGURATION_PATH, "public/manifest.json"), to: "." }
       ]
     ),
-    new ScriptExtHtmlPlugin({
-      defaultAttribute: "defer",
-    }),
+    new ScriptExtHtmlPlugin({ defaultAttribute: "defer" }),
     new HtmlWebpackInlineSourcePlugin()
   ],
 };

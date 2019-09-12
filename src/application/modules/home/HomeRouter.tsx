@@ -1,3 +1,7 @@
+/**
+ * @module home
+ */
+
 import { PureComponent, ReactNode } from "react";
 import { Route, Switch } from "react-router";
 

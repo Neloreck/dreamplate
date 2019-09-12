@@ -1,3 +1,7 @@
+/**
+ * @module main/data
+ */
+
 import { Bind, ContextManager } from "dreamstate";
 import { CreateGenerateIdOptions } from "jss";
 
@@ -5,6 +9,9 @@ import { CreateGenerateIdOptions } from "jss";
 import { DEFAULT_THEME, EThemeType, IApplicationTheme, toggleTheme } from "@Lib/theme";
 import { getFromLocalStorage, Logger, setLocalStorageItem } from "@Lib/utils";
 
+/**
+ * Theme context description.
+ */
 export interface IThemeContext {
   themeActions: {
     toggleTheme(): void;
@@ -14,6 +21,10 @@ export interface IThemeContext {
   };
 }
 
+/**
+ * Context manager related to theme management.
+ * It is responsible for theming, styling and generation configuration.
+ */
 export class ThemeContextManager extends ContextManager<IThemeContext> {
 
   public static readonly JSS_ID_GENERATION_CONFIG: CreateGenerateIdOptions = {
@@ -25,7 +36,7 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
       toggleTheme: this.toggleTheme
     },
     themeState: {
-      theme: toggleTheme(getFromLocalStorage("theme") || DEFAULT_THEME)
+      theme: getFromLocalStorage("theme") || DEFAULT_THEME
     }
   };
 
@@ -33,6 +44,10 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
 
   private readonly setState = ContextManager.getSetter(this, "themeState");
 
+  /**
+   * Toggle application theme mode and save it into local storage.
+   * Apply it to document body.
+   */
   @Bind()
   public toggleTheme(): void {
 
@@ -43,7 +58,13 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
 
     this.log.info(`Toggle theme mode to '${nextThemeType}'.`);
 
-    setLocalStorageItem("theme", nextTheme);
+    try {
+      setLocalStorageItem("theme", nextTheme);
+    } catch (error) {
+      /* <dev> */
+      this.log.warn("Failed to cache application theme:", error);
+      /* </dev> */
+    }
 
     document.body.style.backgroundColor = nextTheme.palette.background.default;
     document.body.style.color = nextTheme.palette.text.primary;
@@ -52,6 +73,9 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
     this.setState({ theme: nextTheme });
   }
 
+  /**
+   * Send generic message on manager provision start.
+   */
   protected onProvisionStarted(): void {
     this.log.info("Started theme context provision.");
   }

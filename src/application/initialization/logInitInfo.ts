@@ -1,5 +1,14 @@
-import { Logger} from "@Lib/utils";
+/**
+ * @module initialization
+ *
+ * Inline initialization greeter and notifier.
+ */
 
+import { Logger } from "@Lib/utils";
+
+/**
+ * Log greeting and page load information.
+ */
 export const logInitInfo = () => {
 
   const logger: Logger = new Logger("INIT");

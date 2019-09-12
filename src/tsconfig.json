@@ -1,70 +1,4 @@
 {
-  "awesomeTypescriptLoaderOptions": {
-    "babelCore": "@babel/core",
-    "doTypeCheck": true,
-    "forkChecker": true,
-    "isolatedModules": true,
-    "cacheDirectory": "../target/cache",
-    "useBabel": true,
-    "useCache": true,
-    "babelOptions": {
-      "babelrc": false,
-      "minified": true,
-      "presets": [
-        [
-          "@babel/preset-env",
-          {
-            "targets": {
-              "node": "10",
-              "browsers": [
-                "> 0.25%",
-                "not dead"
-              ]
-            },
-            "modules": false,
-            "loose": true,
-            "useBuiltIns": "usage",
-            "corejs": "3",
-            "exclude": [
-              "transform-async-to-generator",
-              "transform-regenerator"
-            ]
-          }
-        ],
-        "@babel/preset-react"
-      ],
-      "plugins": [
-        "react-hot-loader/babel",
-        "@babel/plugin-syntax-dynamic-import",
-        "@babel/plugin-transform-classes",
-        [ "module:fast-async", { "spec": true } ],
-        [ "transform-imports", {
-          /* Example:
-          "@material-ui/core": {
-            "transform": "@material-ui/core/${member}",
-            "preventFullImport": true
-          }*/
-        } ],
-        "@babel/plugin-proposal-export-default-from",
-        [
-          "@babel/plugin-proposal-decorators",
-          {
-            "legacy": true
-          }
-        ],
-        "@babel/plugin-proposal-export-namespace-from",
-        "@babel/plugin-proposal-numeric-separator",
-        "@babel/plugin-syntax-import-meta",
-        [
-          "@babel/plugin-proposal-class-properties",
-          {
-            "loose": false
-          }
-        ],
-        "@babel/plugin-proposal-json-strings"
-      ]
-    }
-  },
   "compilerOptions": {
     "strict": true,
     "emitDecoratorMetadata": false,
@@ -75,6 +9,8 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "module": "esnext",
+    "inlineSources": true,
+    "tsBuildInfoFile": "../target/cache/incremental",
     "incremental": true,
     "target": "esnext",
     "moduleResolution": "node",
@@ -104,5 +40,56 @@
     "node"
   ],
   "exclude": [
-  ]
+  ],
+  "typedocOptions": {
+    "out": "../docs",
+    "target": "es6",
+    "exclude": [ "**/node_modules/**" ],
+    "mode": "file",
+    "name": "X-Core-boilerplate"
+  },
+  "awesomeTypescriptLoaderOptions": {
+    "babelCore": "@babel/core",
+    "doTypeCheck": true,
+    "forkChecker": true,
+    "isolatedModules": true,
+    "cacheDirectory": "../target/cache/atl",
+    "useBabel": true,
+    "useCache": true,
+    "babelOptions": {
+      "babelrc": false,
+      "minified": true,
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "targets": {
+              "node": "10",
+              "browsers": [
+                "> 2.0%",
+                "not dead"
+              ]
+            },
+            "modules": false,
+            "loose": true,
+            "useBuiltIns": "usage",
+            "corejs": "3",
+            "exclude": ["transform-async-to-generator", "transform-regenerator"]
+          }
+        ],
+        "@babel/preset-react"
+      ],
+      "plugins": [
+        "react-hot-loader/babel",
+        [ "module:fast-async", { "spec": true } ],
+        [ "transform-imports", {
+          /* Example:
+          "@material-ui/core": {
+            "transform": "@material-ui/core/${member}",
+            "preventFullImport": true
+          }*/
+        } ]
+      ]
+    }
+  }
 }

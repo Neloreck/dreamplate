@@ -1,3 +1,7 @@
+/**
+ * @module main/data
+ */
+
 import { Bind, ContextManager } from "dreamstate";
 import { createBrowserHistory, History, Location, Path } from "history";
 
@@ -5,25 +9,30 @@ import { createBrowserHistory, History, Location, Path } from "history";
 import { Callable, Optional } from "@Lib/ts";
 import { Logger } from "@Lib/utils";
 
+/**
+ * Router context description.
+ */
 export interface IRouterContext {
   routingActions: {
     replace(path: string): void;
     push(path: string): void;
     goBack(): void;
-    getCurrentLocation(): string;
   };
   routingState: {
     path: string;
   };
 }
 
+/**
+ * Context manager related to routing management.
+ * It is responsible for routing, navigation and history.
+ */
 export class RouterContextManager extends ContextManager<IRouterContext> {
 
   public readonly history: History = createBrowserHistory();
 
   public context: IRouterContext = {
     routingActions: {
-      getCurrentLocation: this.getCurrentLocation,
       goBack: this.goBack,
       push: this.push,
       replace: this.replace
@@ -39,6 +48,9 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
 
   private unregister: Optional<Callable> = null;
 
+  /**
+   * Replace path in page history.
+   */
   @Bind()
   public replace(path: Path): void {
 
@@ -46,6 +58,9 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
     this.history.replace(path);
   }
 
+  /**
+   * Push path in page history.
+   */
   @Bind()
   public push(path: Path): void {
 
@@ -53,16 +68,14 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
     this.history.push(path);
   }
 
+  /**
+   * Go back in page history.
+   */
   @Bind()
   public goBack(): void {
 
     this.log.info("Go back.");
     this.history.goBack();
-  }
-
-  @Bind()
-  public getCurrentLocation(): string {
-    return this.history.location.pathname;
   }
 
   protected onProvisionStarted(): void {
