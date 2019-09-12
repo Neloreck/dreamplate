@@ -13,7 +13,7 @@ import { EntryPoint } from "@Lib/decorators";
 import { HotRoot, Root } from "@Modules/Root";
 
 /**
- * Application entrypoint.
+ * Application entry point.
  * Render based on environment mode and conditions.
  */
 @EntryPoint()

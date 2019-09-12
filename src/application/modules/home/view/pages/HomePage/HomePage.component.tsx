@@ -48,9 +48,13 @@ export class HomePage extends PureComponent<IHomePageProps> {
     return (
       <div className={classes.card}>
 
-        <a target={"_blank"} href={href}>
+        <a
+          target={"_blank"}
+          href={href}
+          rel={"noreferrer"}
+        >
           { label }
-          </a>
+        </a>
 
       </div>
     );
