@@ -3,7 +3,7 @@
  */
 
 import { Logger } from "@Lib/utils";
-import { IStringIndexed } from "@Lib/ts";
+import { Callable, IStringIndexed } from "@Lib/ts";
 
 describe("Application Logger behaviour.", () => {
 
@@ -51,8 +51,11 @@ describe("Application Logger behaviour.", () => {
 
     let log: Logger = new Logger("Test");
 
+    // @ts-ignore protected internals usage.
+    const generator: Callable = log["getHashCode"];
+
     for (const [ key, value ] of Object.entries(EXPECTED_HASHES_MAP)) {
-      expect(log["getHashCode"](key)).toBe(value);
+      expect(generator(key)).toBe(value);
     }
   });
 });

@@ -5,7 +5,7 @@ export const mainHeaderStyle = ({ palette, spacing }: IApplicationTheme) => ({
     "& > h2": {
       "-webkit-text-stroke": "1px black",
       cursor: "default",
-      fontSize: spacing.unit * 6,
+      fontSize: spacing.unit * 12,
       fontWeight: 600
     },
     alignSelf: "normal",
@@ -16,10 +16,10 @@ export const mainHeaderStyle = ({ palette, spacing }: IApplicationTheme) => ({
     color: WHITE,
     display: "flex",
     flexDirection: "row",
-    fontSize: spacing.unit * 4,
+    fontSize: spacing.unit * 8,
     justifyContent: "space-between",
-    minWidth: spacing.unit * 30,
-    padding: `${spacing.unit}px ${spacing.unit * 3}px`,
+    minWidth: spacing.unit * 60,
+    padding: `${spacing.unit * 2}px ${spacing.unit * 6}px`,
     position: "relative",
     transitionDuration: "250ms"
   },
@@ -32,9 +32,9 @@ export const mainHeaderStyle = ({ palette, spacing }: IApplicationTheme) => ({
     background: palette.primary.light,
     boxShadow: `6px 1px 4px 0px rgba(0, 0, 0, 0.25), 6px 7px 5px 0px rgba(0, 0, 0, 0.2)`,
     cursor: "pointer",
-    fontSize: spacing.unit * 2,
+    fontSize: spacing.unit * 4,
     fontWeight: "bold",
-    padding: spacing.unit * 1.5,
+    padding: spacing.unit * 3,
     transitionDuration: "250ms"
   }
 });

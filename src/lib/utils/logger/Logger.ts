@@ -28,8 +28,13 @@ export class Logger {
     "🍈", "🍌", "🍐", "🍍", "🍠", "🍆", "🍅", "🌽"
   ];
 
-  private readonly prefix: string = "LOG";
-  private readonly prefixSymbol: string = "X-";
+  /* </dev> */
+
+  private readonly prefix: string = "";
+  private readonly prefixSymbol: string = "";
+
+  /* <dev> */
+
   private readonly enabled: boolean = true;
   private readonly minified: boolean = true;
 

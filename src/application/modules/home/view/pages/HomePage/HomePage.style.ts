@@ -8,9 +8,9 @@ export const homePageStyle = ({ palette, spacing }: IApplicationTheme) => ({
     },
     backgroundColor: palette.background.paper,
     boxShadow: "0px 2px 4px -1px rgba(0, 0, 0, 0.25), 0px 4px 5px 0px rgba(0, 0, 0, 0.15), 0px 1px 10px 0px rgba(0, 0, 0, 0.10)",
-    margin: spacing.unit * 2,
+    margin: spacing.unit * 4,
     transitionDuration: "500ms",
-    padding: spacing.unit * 2
+    padding: spacing.unit * 3
   },
   content: {
     alignSelf: "normal",
