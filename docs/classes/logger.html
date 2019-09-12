@@ -66,6 +66,15 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Default logger class.
+						Shows related messages with random prefix emoji and defined label.</p>
+					</div>
+					<p>Minified and disabled in production mode.</p>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -92,7 +101,6 @@
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="logger.html#prefix" class="tsd-kind-icon">prefix</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="logger.html#prefixsymbol" class="tsd-kind-icon">prefix<wbr>Symbol</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="logger.html#emoji_list" class="tsd-kind-icon">EMOJI_<wbr>LIST</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="logger.html#is_dev" class="tsd-kind-icon">IS_<wbr>DEV</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -100,8 +108,10 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="logger.html#debug" class="tsd-kind-icon">debug</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="logger.html#error" class="tsd-kind-icon">error</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="logger.html#gethashcode" class="tsd-kind-icon">get<wbr>Hash<wbr>Code</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="logger.html#getprefixed" class="tsd-kind-icon">get<wbr>Prefixed</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="logger.html#hashcode" class="tsd-kind-icon">hash<wbr>Code</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="logger.html#group" class="tsd-kind-icon">group</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="logger.html#groupend" class="tsd-kind-icon">group<wbr>End</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="logger.html#info" class="tsd-kind-icon">info</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="logger.html#pushseparator" class="tsd-kind-icon">push<wbr>Separator</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="logger.html#warn" class="tsd-kind-icon">warn</a></li>
@@ -122,7 +132,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Neloreck/x-core-boilerplate/blob/e5423df/src/lib/utils/logger/Logger.ts#L28">src/lib/utils/logger/Logger.ts:28</a></li>
+									<li>Defined in <a href="https://github.com/Neloreck/x-core-boilerplate/blob/0535610/src/lib/utils/logger/Logger.ts#L34">src/lib/utils/logger/Logger.ts:34</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -147,7 +157,7 @@
 					<div class="tsd-signature tsd-kind-icon">enabled<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;true</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Neloreck/x-core-boilerplate/blob/e5423df/src/lib/utils/logger/Logger.ts#L27">src/lib/utils/logger/Logger.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/Neloreck/x-core-boilerplate/blob/0535610/src/lib/utils/logger/Logger.ts#L33">src/lib/utils/logger/Logger.ts:33</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -157,7 +167,7 @@
 					<div class="tsd-signature tsd-kind-icon">minified<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;true</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Neloreck/x-core-boilerplate/blob/e5423df/src/lib/utils/logger/Logger.ts#L28">src/lib/utils/logger/Logger.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/Neloreck/x-core-boilerplate/blob/0535610/src/lib/utils/logger/Logger.ts#L34">src/lib/utils/logger/Logger.ts:34</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -167,7 +177,7 @@
 					<div class="tsd-signature tsd-kind-icon">prefix<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;LOG&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Neloreck/x-core-boilerplate/blob/e5423df/src/lib/utils/logger/Logger.ts#L25">src/lib/utils/logger/Logger.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/Neloreck/x-core-boilerplate/blob/0535610/src/lib/utils/logger/Logger.ts#L31">src/lib/utils/logger/Logger.ts:31</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -177,7 +187,7 @@
 					<div class="tsd-signature tsd-kind-icon">prefix<wbr>Symbol<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;X-&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Neloreck/x-core-boilerplate/blob/e5423df/src/lib/utils/logger/Logger.ts#L26">src/lib/utils/logger/Logger.ts:26</a></li>
+							<li>Defined in <a href="https://github.com/Neloreck/x-core-boilerplate/blob/0535610/src/lib/utils/logger/Logger.ts#L32">src/lib/utils/logger/Logger.ts:32</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -187,17 +197,7 @@
 					<div class="tsd-signature tsd-kind-icon">EMOJI_<wbr>LIST<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[&quot;💀&quot;, &quot;👽&quot;, &quot;💩&quot;, &quot;🔥&quot;, &quot;✨&quot;, &quot;🌟&quot;, &quot;💫&quot;, &quot;💥&quot;, &quot;💢&quot;, &quot;💦&quot;, &quot;💧&quot;, &quot;💤&quot;, &quot;💨&quot;, &quot;👀&quot;, &quot;👊&quot;, &quot;✊&quot;, &quot;👟&quot;, &quot;🌴&quot;, &quot;🌲&quot;, &quot;🌳&quot;,&quot;🌰&quot;, &quot;🌱&quot;, &quot;🌼&quot;, &quot;🌐&quot;, &quot;🌙&quot;, &quot;⛄&quot;, &quot;🌀&quot;, &quot;🌈&quot;, &quot;🌊&quot;, &quot;🎍&quot;, &quot;🎒&quot;, &quot;🎓&quot;, &quot;🎏&quot;, &quot;🎆&quot;, &quot;🎇&quot;, &quot;🎐&quot;, &quot;🎑&quot;, &quot;🎃&quot;, &quot;🎄&quot;, &quot;🎁&quot;,&quot;🎋&quot;, &quot;🎉&quot;, &quot;🎊&quot;, &quot;🎈&quot;, &quot;🎌&quot;, &quot;🔮&quot;, &quot;🎥&quot;, &quot;📷&quot;, &quot;📹&quot;, &quot;📼&quot;, &quot;💿&quot;, &quot;📀&quot;, &quot;💽&quot;, &quot;💾&quot;, &quot;💻&quot;, &quot;📱&quot;, &quot;📠&quot;, &quot;📡&quot;, &quot;📺&quot;, &quot;📻&quot;,&quot;🔊&quot;, &quot;🔉&quot;, &quot;🔈&quot;, &quot;🔇&quot;, &quot;🔔&quot;, &quot;🔕&quot;, &quot;📢&quot;, &quot;📣&quot;, &quot;⏳&quot;, &quot;⌛&quot;, &quot;⏰&quot;, &quot;⌚&quot;, &quot;🔓&quot;, &quot;🔏&quot;, &quot;🔐&quot;, &quot;🔑&quot;, &quot;🔎&quot;, &quot;💡&quot;, &quot;🔦&quot;, &quot;🔆&quot;,&quot;🔌&quot;, &quot;🔋&quot;, &quot;🔍&quot;, &quot;🛁&quot;, &quot;🛀&quot;, &quot;🚿&quot;, &quot;🔧&quot;, &quot;🔩&quot;, &quot;🔨&quot;, &quot;🚪&quot;, &quot;🚬&quot;, &quot;💣&quot;, &quot;🔫&quot;, &quot;🔪&quot;, &quot;💊&quot;, &quot;💉&quot;, &quot;💰&quot;, &quot;💴&quot;, &quot;💵&quot;, &quot;💷&quot;,&quot;💶&quot;, &quot;📋&quot;, &quot;📅&quot;, &quot;📆&quot;, &quot;📇&quot;, &quot;📁&quot;, &quot;📂&quot;, &quot;📌&quot;, &quot;📎&quot;, &quot;🔬&quot;, &quot;🔭&quot;, &quot;📰&quot;, &quot;🎨&quot;, &quot;🎬&quot;, &quot;🎤&quot;, &quot;🎧&quot;, &quot;🎼&quot;, &quot;🎵&quot;, &quot;🎶&quot;, &quot;🎹&quot;,&quot;🎻&quot;, &quot;🎺&quot;, &quot;🎷&quot;, &quot;🎸&quot;, &quot;👾&quot;, &quot;🎮&quot;, &quot;🃏&quot;, &quot;🎴&quot;, &quot;🀄&quot;, &quot;🎲&quot;, &quot;🎯&quot;, &quot;🏈&quot;, &quot;🏀&quot;, &quot;⚽&quot;, &quot;⚾&quot;, &quot;🎾&quot;, &quot;🎱&quot;, &quot;🏉&quot;, &quot;🎳&quot;, &quot;⛳&quot;,&quot;🚵&quot;, &quot;🚴&quot;, &quot;🏁&quot;, &quot;🏇&quot;, &quot;🏆&quot;, &quot;🎿&quot;, &quot;🏂&quot;, &quot;🏊&quot;, &quot;🏄&quot;, &quot;🎣&quot;, &quot;🍵&quot;, &quot;🍶&quot;, &quot;🍼&quot;, &quot;🍺&quot;, &quot;🍻&quot;, &quot;🍸&quot;, &quot;🍹&quot;, &quot;🍷&quot;, &quot;🍴&quot;, &quot;🍕&quot;,&quot;🍔&quot;, &quot;🍟&quot;, &quot;🍗&quot;, &quot;🍖&quot;, &quot;🍝&quot;, &quot;🍛&quot;, &quot;🍤&quot;, &quot;🍱&quot;, &quot;🍣&quot;, &quot;🍥&quot;, &quot;🍙&quot;, &quot;🍘&quot;, &quot;🍚&quot;, &quot;🍜&quot;, &quot;🍲&quot;, &quot;🍢&quot;, &quot;🍡&quot;, &quot;🍳&quot;, &quot;🍞&quot;, &quot;🍩&quot;,&quot;🍮&quot;, &quot;🍦&quot;, &quot;🍨&quot;, &quot;🍧&quot;, &quot;🎂&quot;, &quot;🍰&quot;, &quot;🍪&quot;, &quot;🍫&quot;, &quot;🍬&quot;, &quot;🍭&quot;, &quot;🍯&quot;, &quot;🍎&quot;, &quot;🍏&quot;, &quot;🍊&quot;, &quot;🍋&quot;, &quot;🍒&quot;, &quot;🍇&quot;, &quot;🍉&quot;, &quot;🍓&quot;, &quot;🍑&quot;,&quot;🍈&quot;, &quot;🍌&quot;, &quot;🍐&quot;, &quot;🍍&quot;, &quot;🍠&quot;, &quot;🍆&quot;, &quot;🍅&quot;, &quot;🌽&quot;]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Neloreck/x-core-boilerplate/blob/e5423df/src/lib/utils/logger/Logger.ts#L7">src/lib/utils/logger/Logger.ts:7</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
-					<a name="is_dev" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> IS_<wbr>DEV</h3>
-					<div class="tsd-signature tsd-kind-icon">IS_<wbr>DEV<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;process.env.NODE_ENV &#x3D;&#x3D;&#x3D; &quot;development&quot;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/Neloreck/x-core-boilerplate/blob/e5423df/src/lib/utils/logger/Logger.ts#L21">src/lib/utils/logger/Logger.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/Neloreck/x-core-boilerplate/blob/0535610/src/lib/utils/logger/Logger.ts#L17">src/lib/utils/logger/Logger.ts:17</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -214,7 +214,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Neloreck/x-core-boilerplate/blob/e5423df/src/lib/utils/logger/Logger.ts#L48">src/lib/utils/logger/Logger.ts:48</a></li>
+									<li>Defined in <a href="https://github.com/Neloreck/x-core-boilerplate/blob/0535610/src/lib/utils/logger/Logger.ts#L56">src/lib/utils/logger/Logger.ts:56</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -237,7 +237,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Neloreck/x-core-boilerplate/blob/e5423df/src/lib/utils/logger/Logger.ts#L70">src/lib/utils/logger/Logger.ts:70</a></li>
+									<li>Defined in <a href="https://github.com/Neloreck/x-core-boilerplate/blob/0535610/src/lib/utils/logger/Logger.ts#L78">src/lib/utils/logger/Logger.ts:78</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -247,6 +247,34 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+					<a name="gethashcode" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> get<wbr>Hash<wbr>Code</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Hash<wbr>Code<span class="tsd-signature-symbol">(</span>target<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Neloreck/x-core-boilerplate/blob/0535610/src/lib/utils/logger/Logger.ts#L141">src/lib/utils/logger/Logger.ts:141</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Generate hashcode from string to define determined prefix indexes.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>target: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -260,7 +288,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Neloreck/x-core-boilerplate/blob/e5423df/src/lib/utils/logger/Logger.ts#L44">src/lib/utils/logger/Logger.ts:44</a></li>
+									<li>Defined in <a href="https://github.com/Neloreck/x-core-boilerplate/blob/0535610/src/lib/utils/logger/Logger.ts#L52">src/lib/utils/logger/Logger.ts:52</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -276,26 +304,43 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
-					<a name="hashcode" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagProtected">Protected</span> hash<wbr>Code</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
-						<li class="tsd-signature tsd-kind-icon">hash<wbr>Code<span class="tsd-signature-symbol">(</span>target<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="group" class="tsd-anchor"></a>
+					<h3>group</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">group<span class="tsd-signature-symbol">(</span>title<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Neloreck/x-core-boilerplate/blob/e5423df/src/lib/utils/logger/Logger.ts#L98">src/lib/utils/logger/Logger.ts:98</a></li>
+									<li>Defined in <a href="https://github.com/Neloreck/x-core-boilerplate/blob/0535610/src/lib/utils/logger/Logger.ts#L100">src/lib/utils/logger/Logger.ts:100</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>target: <span class="tsd-signature-type">string</span></h5>
+									<h5>title: <span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="groupend" class="tsd-anchor"></a>
+					<h3>group<wbr>End</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">group<wbr>End<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Neloreck/x-core-boilerplate/blob/0535610/src/lib/utils/logger/Logger.ts#L111">src/lib/utils/logger/Logger.ts:111</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -309,7 +354,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Neloreck/x-core-boilerplate/blob/e5423df/src/lib/utils/logger/Logger.ts#L74">src/lib/utils/logger/Logger.ts:74</a></li>
+									<li>Defined in <a href="https://github.com/Neloreck/x-core-boilerplate/blob/0535610/src/lib/utils/logger/Logger.ts#L89">src/lib/utils/logger/Logger.ts:89</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -332,9 +377,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Neloreck/x-core-boilerplate/blob/e5423df/src/lib/utils/logger/Logger.ts#L85">src/lib/utils/logger/Logger.ts:85</a></li>
+									<li>Defined in <a href="https://github.com/Neloreck/x-core-boilerplate/blob/0535610/src/lib/utils/logger/Logger.ts#L125">src/lib/utils/logger/Logger.ts:125</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Push separator to make some kind of section in console.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -349,7 +399,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Neloreck/x-core-boilerplate/blob/e5423df/src/lib/utils/logger/Logger.ts#L59">src/lib/utils/logger/Logger.ts:59</a></li>
+									<li>Defined in <a href="https://github.com/Neloreck/x-core-boilerplate/blob/0535610/src/lib/utils/logger/Logger.ts#L67">src/lib/utils/logger/Logger.ts:67</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -397,20 +447,23 @@
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
 								<a href="logger.html#emoji_list" class="tsd-kind-icon">EMOJI_<wbr>LIST</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
-								<a href="logger.html#is_dev" class="tsd-kind-icon">IS_<wbr>DEV</a>
-							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="logger.html#debug" class="tsd-kind-icon">debug</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="logger.html#error" class="tsd-kind-icon">error</a>
 							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+								<a href="logger.html#gethashcode" class="tsd-kind-icon">get<wbr>Hash<wbr>Code</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="logger.html#getprefixed" class="tsd-kind-icon">get<wbr>Prefixed</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
-								<a href="logger.html#hashcode" class="tsd-kind-icon">hash<wbr>Code</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="logger.html#group" class="tsd-kind-icon">group</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="logger.html#groupend" class="tsd-kind-icon">group<wbr>End</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="logger.html#info" class="tsd-kind-icon">info</a>
