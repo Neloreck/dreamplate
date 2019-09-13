@@ -43,9 +43,8 @@
   ],
   "typedocOptions": {
     "out": "../docs",
-    "target": "es6",
     "exclude": [ "**/node_modules/**" ],
-    "mode": "file",
+    "mode": "modules",
     "name": "X-Core-boilerplate"
   },
   "awesomeTypescriptLoaderOptions": {
@@ -74,7 +73,7 @@
             "loose": true,
             "useBuiltIns": "usage",
             "corejs": "3",
-            "exclude": ["transform-async-to-generator", "transform-regenerator"]
+            "exclude": [ "transform-async-to-generator", "transform-regenerator" ]
           }
         ],
         "@babel/preset-react"

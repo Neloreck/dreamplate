@@ -1,3 +1,7 @@
+/**
+ * @module home/view
+ */
+
 import { PureComponent, ReactNode } from "react";
 import { WithStyles } from "react-jss";
 

@@ -1,3 +1,7 @@
+/**
+ * @module home/view
+ */
+
 import { LazyExoticComponent } from "react";
 
 // Lib.

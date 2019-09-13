@@ -1,3 +1,7 @@
+/**
+ * @module home/view
+ */
+
 import { IApplicationTheme } from "@Lib/theme";
 
 export const homePageStyle = ({ palette, spacing }: IApplicationTheme) => ({

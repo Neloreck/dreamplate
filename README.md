@@ -104,3 +104,9 @@
   - Benchmark for testing?
   - Tests examples with react rendering
   - Build something from wasm as experiment and use wasm-loader
+
+## Side packages (waiting for)
+
+  - Hooks implementation for react-router
+  - Hooks implementation for react-jss
+  - Modules issue for typedoc package resolve

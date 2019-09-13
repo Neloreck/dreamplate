@@ -1,11 +1,9 @@
 {
   "defaultSeverity": "error",
-
   "extends": [
     "tslint-eslint-rules",
     "tslint:recommended"
   ],
-
   "linterOptions": {
     "exclude": [
       "target/**",
@@ -14,9 +12,8 @@
       "**/*.test.ts"
     ]
   },
-
-  "jsRules": {},
-
+  "jsRules": {
+  },
   "rules": {
     "array-type": [ true, "generic" ],
     "object-curly-spacing": [ true, "always" ],
@@ -32,6 +29,7 @@
     "object-literal-key-quotes": [
       true, "as-needed"
     ],
+    "no-default-export": true,
     "typedef": [
       true,
       "array-destructuring",
@@ -41,7 +39,6 @@
       "property-declaration"
     ]
   },
-
   "rulesDirectory": [
     "../node_modules/tslint-microsoft-contrib"
   ]

@@ -1,8 +1,5 @@
 /**
  * @module initialization
- *
- * Inline theme initialization script.
- * Tries to get theme config and apply it to global body/meta.
  */
 
 /* tslint:disable: no-console */
@@ -31,6 +28,7 @@ export const initTheme = () => {
 
   } catch (error) {
     /* <dev> */
+    /* tslint:disable: no-console */
     console.error("Failed to pre-init default theme:", error);
     /* </dev> */
   }

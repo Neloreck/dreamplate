@@ -1,3 +1,7 @@
+/**
+ * @module main/view
+ */
+
 import { Bind } from "dreamstate";
 import { PureComponent, ReactNode } from "react";
 import { WithStyles } from "react-jss";

@@ -1,3 +1,7 @@
+/**
+ * @module main/view
+ */
+
 import { IApplicationTheme } from "@Lib/theme";
 
 export const errorPageStyle = ({ palette }: IApplicationTheme) => ({

@@ -1,3 +1,11 @@
+/**
+ * @module api/destination
+ */
+
+/**
+ * Core api config.
+ * Should be scoped to separate api modules there.
+ */
 export const coreApiConfig = {
 
   DEFAULT_HEADERS: new Headers({

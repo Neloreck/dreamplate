@@ -1,3 +1,7 @@
+/**
+ * @module api/destination
+ */
+
 export interface IBaseResponse {
 }
 
