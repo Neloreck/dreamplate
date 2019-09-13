@@ -43,7 +43,7 @@
   ],
   "typedocOptions": {
     "out": "../docs",
-    "exclude": [ "**/node_modules/**" ],
+    "exclude": [ "**/node_modules/**", "**/cli/**" ],
     "mode": "modules",
     "name": "X-Core-boilerplate"
   },

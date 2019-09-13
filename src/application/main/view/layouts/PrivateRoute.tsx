@@ -1,3 +1,7 @@
+/**
+ * @module @application/main
+ */
+
 import { useManager } from "dreamstate";
 import { ReactElement, useEffect, useLayoutEffect } from "react";
 import { Route, RouteProps } from "react-router";
@@ -15,6 +19,11 @@ export interface IPrivateRouteProps extends RouteProps {
 
 const DEFAULT_REDIRECT: string = "/authentication/login";
 
+/**
+ * Route subscribed to auth context manager.
+ * Prevent rendering and enforce login if status is not valid.
+ * Render route if everything is okay.
+ */
 export function PrivateRoute({ reversed, redirect = true, ...routeProps }: IPrivateRouteProps): ReactElement {
 
   const { routingActions: { replace }, routingState: { path } } = useManager(routerContextManager);

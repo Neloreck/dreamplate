@@ -1,5 +1,5 @@
 /**
- * @module initialization
+ * @module @initialization
  *
  * Inline initialization greeter and notifier.
  */

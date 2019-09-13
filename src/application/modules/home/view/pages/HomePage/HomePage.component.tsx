@@ -1,5 +1,5 @@
 /**
- * @module home/view
+ * @module @application/home
  */
 
 import { PureComponent, ReactNode } from "react";

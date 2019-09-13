@@ -1,3 +1,7 @@
+/**
+ * @module @application/main
+ */
+
 import { memo, NamedExoticComponent, useLayoutEffect, useState } from "react";
 
 // Data.

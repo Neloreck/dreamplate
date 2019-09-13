@@ -1,5 +1,5 @@
 /**
- * @module lib/decorators
+ * @module  @lib
  */
 
 import { ComponentClass, createElement, ReactElement } from "react";

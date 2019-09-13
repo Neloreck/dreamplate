@@ -1,3 +1,7 @@
+/**
+ * @module @lib
+ */
+
 import { Callable } from "@Lib/ts";
 
 /**

@@ -1,5 +1,5 @@
 /**
- * @module initialization
+ * @module @initialization
  */
 
 /* tslint:disable: no-console */

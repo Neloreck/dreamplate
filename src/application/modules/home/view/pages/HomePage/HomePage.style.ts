@@ -1,5 +1,5 @@
 /**
- * @module home/view
+ * @module @application/home
  */
 
 import { IApplicationTheme } from "@Lib/theme";

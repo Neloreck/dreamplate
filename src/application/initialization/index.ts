@@ -1,5 +1,5 @@
 /**
- * @module initialization
+ * @module @initialization
  */
 
 import { initTheme } from "@Application/initialization/initTheme";

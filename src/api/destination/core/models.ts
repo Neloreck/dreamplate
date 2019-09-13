@@ -1,5 +1,5 @@
 /**
- * @module api/destination
+ * @module @api/destination
  */
 
 export interface IBaseModel {

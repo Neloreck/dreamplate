@@ -1,5 +1,5 @@
 /**
- * @module lib/utils
+ * @module @lib
  */
 
 /* tslint:disable: no-console */

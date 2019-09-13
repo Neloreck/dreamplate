@@ -1,5 +1,5 @@
 /**
- * @module main/data
+ * @module @application/main
  */
 
 import { Bind, ContextManager } from "dreamstate";

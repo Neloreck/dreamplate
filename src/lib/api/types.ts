@@ -1,5 +1,5 @@
 /**
- * @module lib/api
+ * @module @lib
  */
 
 export enum EResponseStatus {

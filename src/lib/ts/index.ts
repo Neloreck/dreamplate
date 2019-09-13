@@ -1,5 +1,5 @@
 /**
- * @module lib/ts
+ * @module @lib
  */
 
 export * from "./types";

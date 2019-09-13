@@ -1,5 +1,5 @@
 /**
- * @module lib/utils
+ * @module  @lib
  */
 
 import { Logger } from "@Lib/utils";

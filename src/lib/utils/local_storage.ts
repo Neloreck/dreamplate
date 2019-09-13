@@ -1,5 +1,5 @@
 /**
- * @module lib/utils
+ * @module @lib
  */
 
 /**

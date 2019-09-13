@@ -1,5 +1,5 @@
 /**
- * @module main
+ * @module @application/main
  */
 
 import { useManager } from "dreamstate";

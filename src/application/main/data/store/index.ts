@@ -1,5 +1,5 @@
 /**
- * @module main/data
+ * @module @application/main
  */
 
 import { AuthContextManager } from "@Main/data/store/AuthContextManager";
