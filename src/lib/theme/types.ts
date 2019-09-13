@@ -1,5 +1,5 @@
 /**
- * @module @lib
+ * @module @lib/theme
  */
 
 export enum EThemeType {

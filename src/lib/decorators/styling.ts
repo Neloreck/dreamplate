@@ -1,5 +1,5 @@
 /**
- * @module @lib
+ * @module @lib/decorators
  */
 
 import { Styles, StyleSheetFactoryOptions } from "jss";

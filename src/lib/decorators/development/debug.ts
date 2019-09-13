@@ -1,5 +1,5 @@
 /**
- * @module @lib
+ * @module @lib/decorators
  *
  * Debugging purposes.
  * Restricted in non DEV mode.

@@ -1,5 +1,5 @@
 /**
- * @module @lib
+ * @module @lib/decorators
  */
 
 let called: boolean = false;

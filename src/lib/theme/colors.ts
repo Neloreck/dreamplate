@@ -1,5 +1,5 @@
 /**
- * @module @lib
+ * @module @lib/theme
  */
 
 export const BLACK: string = "#000";

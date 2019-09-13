@@ -1,5 +1,5 @@
 /**
- * @module @lib
+ * @module @lib/theme
  */
 
 import { EThemeType, IApplicationTheme } from "@Lib/theme/types";

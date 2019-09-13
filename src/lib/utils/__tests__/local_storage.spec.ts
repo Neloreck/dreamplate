@@ -1,5 +1,5 @@
 /**
- * @module @lib
+ * @module @lib/utils
  */
 import { setLocalStorageItem, removeLocalStorageItem, getFromLocalStorage } from "@Lib/utils";
 import { forSeconds } from "@Lib/utils/delay";

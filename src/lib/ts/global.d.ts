@@ -1,5 +1,5 @@
 /**
- * @module @lib
+ * @module @lib/ts
  */
 
 import * as React from "react";

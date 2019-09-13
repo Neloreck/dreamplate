@@ -1,5 +1,5 @@
 /**
- * @module @lib
+ * @module @lib/utils
  */
 
 import { Callable } from "@Lib/ts";

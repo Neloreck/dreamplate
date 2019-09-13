@@ -1,5 +1,5 @@
 /**
- * @module @lib
+ * @module @lib/utils
  */
 
 import { lazy, LazyExoticComponent, } from "react";

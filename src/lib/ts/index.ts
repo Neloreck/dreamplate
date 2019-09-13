@@ -1,5 +1,5 @@
 /**
- * @module @lib
+ * @module @lib/ts
  */
 
-export * from "./types";
+export * from "@Lib/ts/types";

@@ -1,5 +1,5 @@
 /**
- * @module @lib
+ * @module @lib/utils
  */
 
 export * from "@Lib/utils/logger/Logger";
