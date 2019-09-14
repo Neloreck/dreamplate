@@ -12,7 +12,9 @@ import { Styled } from "@Lib/decorators";
 import { IMainHeaderInjectedProps, MainHeader } from "@Modules/home/view/components/MainHeader";
 import { homePageStyle } from "./HomePage.style";
 
-// Types.
+import "@Lib/components/custom/ContentCard";
+
+// Props.
 export interface IHomePageOwnProps {}
 
 export interface IHomePageInjectedProps extends WithStyles<typeof homePageStyle> {}
@@ -50,17 +52,17 @@ export class HomePage extends PureComponent<IHomePageProps> {
     const { classes } = this.props;
 
     return (
-      <div className={classes.card}>
+      <content-card class={classes.card}>
 
         <a
-          target={"_blank"}
           href={href}
+          target={"_blank"}
           rel={"noreferrer"}
         >
           { label }
         </a>
 
-      </div>
+      </content-card>
     );
   }
 

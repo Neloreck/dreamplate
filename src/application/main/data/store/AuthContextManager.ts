@@ -44,7 +44,10 @@ export class AuthContextManager extends ContextManager<IAuthContext> {
   private readonly log: Logger = new Logger(AuthContextManager.name);
 
   protected onProvisionStarted(): void {
-    this.log.info("Started auth context provision.");
+
+    const { authState: { authorized } } = this.context;
+
+    this.log.info(`Auth provision started [${authorized ? "authorized" : "unauthorized"}].`);
   }
 
 }

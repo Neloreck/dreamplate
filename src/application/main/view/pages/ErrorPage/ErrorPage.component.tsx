@@ -15,7 +15,7 @@ import { routerContextManager } from "@Main/data/store";
 // View.
 import { errorPageStyle } from "./ErrorPage.style";
 
-// Types.
+// Props.
 export interface IErrorPageOwnProps {}
 
 export interface IErrorPageInjectedProps extends WithStyles<typeof errorPageStyle> {}

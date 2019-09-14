@@ -6,7 +6,6 @@ import { Bind, ContextManager } from "dreamstate";
 import { createBrowserHistory, History, Location, Path } from "history";
 
 // Lib.
-import { Callable, Optional } from "@Lib/ts";
 import { Logger } from "@Lib/utils";
 
 /**
@@ -46,8 +45,6 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
 
   private readonly setState = ContextManager.getSetter(this, "routingState");
 
-  private unregister: Optional<Callable> = null;
-
   /**
    * Replace path in page history.
    */
@@ -80,18 +77,11 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
 
   protected onProvisionStarted(): void {
 
-    this.log.info("Started router context provision.");
+    const { routingState: { path } } = this.context;
 
-    this.unregister = this.history.listen((location: Location) => this.setState({ path: location.pathname }));
-  }
+    this.log.info(`Routing provision started [${path}].`);
 
-  protected onProvisionEnded(): void {
-
-    this.log.info("Stopped router context provision.");
-
-    if (this.unregister) {
-      this.unregister();
-    }
+    this.history.listen((location: Location) => this.setState({ path: location.pathname }));
   }
 
 }

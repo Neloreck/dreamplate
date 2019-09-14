@@ -77,7 +77,10 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
    * Send generic message on manager provision start.
    */
   protected onProvisionStarted(): void {
-    this.log.info("Started theme context provision.");
+
+    const { themeState: { theme } } = this.context;
+
+    this.log.info(`Theme provision started [${theme.palette.type}].`);
   }
 
 }

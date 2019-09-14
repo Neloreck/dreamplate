@@ -28,12 +28,10 @@ export class Logger {
     "🍈", "🍌", "🍐", "🍍", "🍠", "🍆", "🍅", "🌽"
   ];
 
-  /* </dev> */
-
   private readonly prefix: string = "";
   private readonly prefixSymbol: string = "";
 
-  /* <dev> */
+  private readonly style: string = "color: #bada53";
 
   private readonly enabled: boolean = true;
   private readonly minified: boolean = true;
@@ -54,16 +52,12 @@ export class Logger {
     /* </dev> */
   }
 
-  public getPrefixed(prefix: string, enabled?: boolean): Logger {
-    return new Logger(this.prefix + " @ " + prefix, enabled);
-  }
-
   public debug(...args: Array<any>): void {
 
     /* <dev> */
 
     if (IS_DEV && this.enabled) {
-      console.debug(`%c[${this.prefixSymbol}${this.prefix}]`, "color: #bada53", "[D]", ...args);
+      console.debug(`%c[${this.prefixSymbol}${this.prefix}]`, this.style, "[D]", ...args);
     }
 
     /* </dev> */
@@ -74,7 +68,7 @@ export class Logger {
     /* <dev> */
 
     if (IS_DEV && this.enabled) {
-      console.warn(`%c[${this.prefixSymbol}${this.prefix}]`, "color: #bada53", ...args);
+      console.warn(`%c[${this.prefixSymbol}${this.prefix}]`, this.style, ...args);
     }
 
     /* </dev> */
@@ -85,7 +79,7 @@ export class Logger {
     /* <dev> */
 
     if (IS_DEV && this.enabled) {
-      console.error(`%c[${this.prefixSymbol}${this.prefix}]`, "color: #bada53", ...args);
+      console.error(`%c[${this.prefixSymbol}${this.prefix}]`, this.style, ...args);
     }
 
     /* </dev> */
@@ -96,7 +90,7 @@ export class Logger {
     /* <dev> */
 
     if (IS_DEV && this.enabled) {
-      console.info(`%c[${this.prefixSymbol}${this.prefix}]`, "color: #bada53", ...args);
+      console.info(`%c[${this.prefixSymbol}${this.prefix}]`, this.style, ...args);
     }
 
     /* </dev> */
@@ -107,7 +101,7 @@ export class Logger {
     /* <dev> */
 
     if (IS_DEV && this.enabled) {
-      console.group(`%c[${title}]`, "color: #bada53");
+      console.group(`%c[${title}]`, this.style);
     }
 
     /* </dev> */
@@ -132,7 +126,7 @@ export class Logger {
     /* <dev> */
 
     if (IS_DEV && this.enabled) {
-      console.info("%c=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=", "color: #bada53");
+      console.info("%c=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=", this.style);
     }
 
     /* </dev> */

@@ -40,13 +40,6 @@ describe("Application Logger behaviour.", () => {
     expect(console.groupEnd).not.toHaveBeenCalled();
   });
 
-  it("Should return new prefixed instance.", () => {
-
-    let log: Logger = new Logger("Test");
-
-    expect(log.getPrefixed("New prefix")).toBeInstanceOf(Logger);
-  });
-
   it("Always generate same hashes for same strings.", () => {
 
     let log: Logger = new Logger("Test");

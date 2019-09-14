@@ -14,6 +14,9 @@ import { themeContextManager } from "@Main/data/store";
 // View.
 import { mainHeaderStyle } from "./MainHeader.style";
 
+import "@Lib/components/custom/CustomButton";
+import "@Lib/components/custom/CustomHeading";
+
 // Props.
 export interface IMainHeaderOwnProps {}
 
@@ -31,13 +34,9 @@ export class MainHeader extends PureComponent<IMainHeaderProps> {
     return (
       <header className={classes.root}>
 
-        <h2>
-          Boilerplate
-        </h2>
+        <custom-heading text={"Boilerplate"} size={3}/>
 
-        <button className={classes.switchButton} onClick={themeContextManager.toggleTheme}>
-          Toggle
-        </button>
+        <custom-button label={"Toggle"} onClick={themeContextManager.toggleTheme}/>
 
       </header>
     );

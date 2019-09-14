@@ -28,6 +28,7 @@
     "@babel/runtime": "^7.6.0",
     "core-js": "^3.2.1",
     "fast-async": "^6.3.8",
+    "lit-element": "^2.2.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
   },

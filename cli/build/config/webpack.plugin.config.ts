@@ -28,14 +28,14 @@ export const PLUGIN_CONFIG: {
         terserOptions: {
           compress: {
             drop_console: IS_PRODUCTION,
-            ecma: 6,
+            ecma: 5,
             passes: IS_PRODUCTION ? 3 : 1
           },
           keep_classnames: !IS_PRODUCTION,
           keep_fnames: !IS_PRODUCTION,
           output: {
             beautify: false,
-            ecma: 6
+            ecma: 5
           }
         },
       })

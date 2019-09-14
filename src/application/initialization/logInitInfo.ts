@@ -14,7 +14,7 @@ export const logInitInfo = () => {
   const logger: Logger = new Logger("INIT");
 
   logger.info("🔶 Starting application in DEV mode.");
-  logger.info("🔶 First init time:", new Date());
+  logger.info("🔶 First init timestamp:", Date.now());
 
   logger.pushSeparator();
 };

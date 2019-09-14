@@ -12,6 +12,8 @@ import { EntryPoint } from "@Lib/decorators";
 // View.
 import { HotRoot, Root } from "@Modules/Root";
 
+import "@Lib/components/layout/ApplicationRoot";
+
 /**
  * Application entry point.
  * Render based on environment mode and conditions.

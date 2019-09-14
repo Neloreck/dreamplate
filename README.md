@@ -8,7 +8,7 @@
 
 ### Size and general performance:
 
-  - MIN + GZIP - (< 80KB) in total
+  - MIN + GZIP - (+-80KB) in total
   - load time: 70-100 ms for iMac 2017, 250-300 ms for Acer Nitro 5
   - 5-6.5MB memory heap
   - Optimized react VDOM tree (except react-router and react-jss)
@@ -17,6 +17,7 @@
 
   - Custom CLI
   - Webpack, lazy loading, tree shaking, chunks + modular architecture, aliases
+  - Web components (lit element)
   - React, dreamstate(1.5KB) as contextStore
   - JSS, roject theming with own context management
   - Typescript (decorators, OOP style, newest features, awt loader with babel)
@@ -95,8 +96,6 @@
 ## Futures
 
   - Eslint
-  - Better docs / typedoc
-  - LitElements as UI components lib experiment..? (web-components based)
   - SSR investigations
   - JSS and react-router update with pure VDOM tree (!)
   - Meta tags and general PWA improvements
