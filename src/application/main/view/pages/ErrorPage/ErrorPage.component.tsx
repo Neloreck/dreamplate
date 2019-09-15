@@ -3,14 +3,14 @@
  */
 
 import { Bind } from "dreamstate";
-import { PureComponent, ReactNode } from "react";
+import { Context, PureComponent, ReactNode } from "react";
 import { WithStyles } from "react-jss";
 
 // Lib.
 import { Styled } from "@Lib/decorators";
 
 // Data.
-import { RouterContextManager } from "@Main/data/store";
+import { IRouterContext, RouterContextManager } from "@Main/data/store";
 
 // View.
 import { errorPageStyle } from "./ErrorPage.style";
@@ -23,7 +23,9 @@ export interface IErrorPageInjectedProps extends WithStyles<typeof errorPageStyl
 export interface IErrorPageProps extends IErrorPageOwnProps, IErrorPageInjectedProps {}
 
 @Styled(errorPageStyle)
-export class ErrorPage extends PureComponent<IErrorPageProps> {
+export class ErrorPage extends PureComponent<IErrorPageProps, {}, IRouterContext> {
+
+  public static contextType: Context<IRouterContext> = RouterContextManager.getContextType();
 
   public render(): ReactNode {
 
@@ -51,9 +53,9 @@ export class ErrorPage extends PureComponent<IErrorPageProps> {
   @Bind()
   private onHomeNavigated(): void {
 
-    const routerContextManager: RouterContextManager = RouterContextManager.current();
+    const { routingActions } = this.context;
 
-    routerContextManager.push("/home");
+    routingActions.push("/home");
   }
 
 }

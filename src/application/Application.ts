@@ -13,6 +13,7 @@ import { EntryPoint } from "@Lib/decorators";
 import { HotRoot, Root } from "@Modules/Root";
 
 import "@Lib/components/layout/ApplicationRoot";
+import "@Lib/components/layout/ModalRoot";
 
 /**
  * Application entry point.

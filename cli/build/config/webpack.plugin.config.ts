@@ -12,7 +12,7 @@ const DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ScriptExtHtmlPlugin = require("script-ext-html-webpack-plugin");
 
-import { APPLICATION_ROOT, APPLICATION_TITLE } from "../build_constants";
+import { APPLICATION_ROOT, APPLICATION_TITLE, MODAL_ROOT } from "../build_constants";
 import { BUILD_CONFIGURATION_PATH, ENVIRONMENT, IS_PRODUCTION, PROJECT_ROOT_PATH } from "./webpack.constants";
 
 export const PLUGIN_CONFIG: {
@@ -81,7 +81,8 @@ export const PLUGIN_CONFIG: {
       ENVIRONMENT,
       constants: {
         APPLICATION_ROOT,
-        APPLICATION_TITLE
+        APPLICATION_TITLE,
+        MODAL_ROOT
       },
       favicon: path.resolve(PROJECT_ROOT_PATH, "cli/build/template/favicon.ico"),
       filename: "index.html",
