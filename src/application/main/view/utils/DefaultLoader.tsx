@@ -2,16 +2,17 @@
  * @module @application/main
  */
 
+import { useManager } from "dreamstate";
 import { memo, NamedExoticComponent, useLayoutEffect, useState } from "react";
 
 // Data.
 import { applicationConfig } from "@Main/data/configs";
-import { themeContextManager } from "@Main/data/store";
+import { ThemeContextManager } from "@Main/data/store";
 
 // tslint:disable-next-line
 export const DefaultLoader: NamedExoticComponent<object> = memo(function() {
 
-  const { theme: { palette, spacing } } = themeContextManager.context.themeState;
+  const { themeState: { theme: { palette, spacing } } } = useManager(ThemeContextManager);
   const [ show, setShow ]: [ boolean, (value: boolean) => void ] = useState((Date.now() - applicationConfig.initialLoad) > 500);
 
   useLayoutEffect(() => {

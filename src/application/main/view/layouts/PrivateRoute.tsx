@@ -7,9 +7,7 @@ import { ReactElement, useEffect, useLayoutEffect } from "react";
 import { Route, RouteProps } from "react-router";
 
 // Data.
-import { authContextManager, routerContextManager } from "@Main/data/store";
-
-// View.
+import { AuthContextManager, RouterContextManager } from "@Main/data/store";
 
 // Props.
 export interface IPrivateRouteProps extends RouteProps {
@@ -26,8 +24,8 @@ const DEFAULT_REDIRECT: string = "/authentication/login";
  */
 export function PrivateRoute({ reversed, redirect = true, ...routeProps }: IPrivateRouteProps): ReactElement {
 
-  const { routingActions: { replace }, routingState: { path } } = useManager(routerContextManager);
-  const { authState: { authorized, authorizing } } = useManager(authContextManager);
+  const { routingActions: { replace }, routingState: { path } } = useManager(RouterContextManager);
+  const { authState: { authorized, authorizing } } = useManager(AuthContextManager);
 
   // First mount.
   useLayoutEffect(() => {

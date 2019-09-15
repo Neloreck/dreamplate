@@ -8,7 +8,7 @@ import { hot } from "react-hot-loader/root";
 import { Route, Switch } from "react-router";
 
 // Data
-import { authContextManager, routerContextManager, themeContextManager } from "@Main/data/store";
+import { AuthContextManager, RouterContextManager, ThemeContextManager } from "@Main/data/store";
 
 // View.
 import { ErrorPage } from "@Main/view/pages/ErrorPage";
@@ -19,7 +19,7 @@ import { RootProvider } from "@Modules/RootProvider";
  * Application root.
  * Render global router and provider with data shared for all modules.
  */
-@Provide(routerContextManager, themeContextManager, authContextManager)
+@Provide(ThemeContextManager, RouterContextManager, AuthContextManager)
 export class Root extends PureComponent {
 
   public render(): ReactNode {

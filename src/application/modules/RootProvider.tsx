@@ -8,7 +8,7 @@ import { JssProvider, ThemeProvider } from "react-jss";
 import { Router as ReactRouter } from "react-router";
 
 // Data.
-import { routerContextManager, ThemeContextManager, themeContextManager } from "@Main/data/store";
+import { RouterContextManager, ThemeContextManager } from "@Main/data/store";
 
 // View.
 import { DefaultLoader } from "@Main/view/utils";
@@ -19,7 +19,8 @@ import { DefaultLoader } from "@Main/view/utils";
  */
 export function RootProvider(props: any): ReactElement {
 
-  const { themeState: { theme } } = useManager(themeContextManager);
+  const { themeState: { theme } } = useManager(ThemeContextManager);
+  const routerContextManager: RouterContextManager = RouterContextManager.current();
 
   return (
     <ReactRouter history={routerContextManager.history}>

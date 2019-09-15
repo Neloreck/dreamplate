@@ -10,7 +10,7 @@ import { WithStyles } from "react-jss";
 import { Styled } from "@Lib/decorators";
 
 // Data.
-import { routerContextManager } from "@Main/data/store";
+import { RouterContextManager } from "@Main/data/store";
 
 // View.
 import { errorPageStyle } from "./ErrorPage.style";
@@ -50,6 +50,9 @@ export class ErrorPage extends PureComponent<IErrorPageProps> {
 
   @Bind()
   private onHomeNavigated(): void {
+
+    const routerContextManager: RouterContextManager = RouterContextManager.current();
+
     routerContextManager.push("/home");
   }
 
