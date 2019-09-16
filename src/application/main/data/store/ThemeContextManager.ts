@@ -2,6 +2,7 @@
  * @module @application/main
  */
 
+import { applicationConfig } from "@Main/data/configs";
 import { Bind, ContextManager } from "dreamstate";
 import { CreateGenerateIdOptions } from "jss";
 
@@ -66,8 +67,9 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
       /* </dev> */
     }
 
-    document.body.style.backgroundColor = nextTheme.palette.background.default;
-    document.body.style.color = nextTheme.palette.text.primary;
+    applicationConfig.targetElements.body.style.backgroundColor = nextTheme.palette.background.default;
+    applicationConfig.targetElements.body.style.color = nextTheme.palette.text.primary;
+
     document.head.getElementsByTagName("meta")["theme-color" as any].content = nextTheme.palette.primary.main;
 
     this.setState({ theme: nextTheme });

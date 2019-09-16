@@ -2,11 +2,11 @@
  * @module @application/main
  */
 
+import { applicationConfig } from "@Main/data/configs";
 import { createElement, StrictMode } from "react";
 import { hydrate, render } from "react-dom";
 
 // Lib.
-import { APPLICATION_ROOT } from "@Build/build_constants";
 import { EntryPoint } from "@Lib/decorators";
 
 // View.
@@ -38,21 +38,21 @@ export class Application {
    * Common render in optimized mode.
    */
   public static render(): void {
-    render(createElement(Root),document.getElementById(APPLICATION_ROOT));
+    render(createElement(Root), applicationConfig.targetElements.applicationRoot);
   }
 
   /**
    * Hydrate DOM after SSR pre-render.
    */
   public static hydrate(): void {
-    hydrate(createElement(Root), document.getElementById(APPLICATION_ROOT));
+    hydrate(createElement(Root), applicationConfig.targetElements.applicationRoot);
   }
 
   /**
    * Render with StrictMode for debug and hot root.
    */
   public static renderDevmode(): void {
-    render(createElement(StrictMode, {}, createElement(HotRoot)), document.getElementById(APPLICATION_ROOT));
+    render(createElement(StrictMode, {}, createElement(HotRoot)), applicationConfig.targetElements.applicationRoot);
   }
 
 }
