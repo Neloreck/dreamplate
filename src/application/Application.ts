@@ -3,14 +3,14 @@
  */
 
 import { applicationConfig } from "@Main/data/configs";
-import { createElement, StrictMode } from "react";
+import { createElement } from "react";
 import { hydrate, render } from "react-dom";
 
 // Lib.
 import { EntryPoint } from "@Lib/decorators";
 
 // View.
-import { HotRoot, Root } from "@Modules/Root";
+import { HotRoot, Root } from "@Application/Root";
 
 import "@Lib/components/layout/ApplicationRoot";
 import "@Lib/components/layout/ModalRoot";
@@ -50,9 +50,10 @@ export class Application {
 
   /**
    * Render with StrictMode for debug and hot root.
+   * Reminder: StrictMode forces some components to render twice.
    */
   public static renderDevmode(): void {
-    render(createElement(StrictMode, {}, createElement(HotRoot)), applicationConfig.targetElements.applicationRoot);
+    render(createElement(HotRoot), applicationConfig.targetElements.applicationRoot);
   }
 
 }

@@ -44,27 +44,11 @@ export const PLUGIN_CONFIG: {
     noEmitOnErrors: IS_PRODUCTION,
     runtimeChunk: "single",
     splitChunks: {
-      cacheGroups: {
-        vendors: {
-          name: IS_PRODUCTION
-            ? (module: any, chunks: any, cacheGroupKey: string): string => `p~${cacheGroupKey}`
-            : (module: any, chunks: any, cacheGroupKey: string): string => {
-
-              const moduleFileName: string = module.identifier().split("/").reduceRight((item: string) => item);
-              const allChunksNames: string = chunks.map((item: { name: string }) => item.name).join("~");
-
-              return `p~${cacheGroupKey}-${allChunksNames}-${moduleFileName}`;
-            },
-          priority: 10,
-          reuseExistingChunk: true,
-          test: /[\\/]node_modules[\\/]/
-        }
-      },
       chunks: "async" as "async",
       maxAsyncRequests: 50,
       maxInitialRequests: 25,
       maxSize: 244_000,
-      minSize: 10_000,
+      minSize: 30_000,
       name: true
     }
   },

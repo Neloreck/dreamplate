@@ -5,12 +5,6 @@
 import { LazyExoticComponent } from "react";
 
 // Lib.
-import { getLazy } from "@Lib/utils";
+import { getLazyModule } from "@Lib/utils";
 
-export const HomeModule: LazyExoticComponent<any> = getLazy(
-  () => import(
-    /* webpackChunkName: "module@home" */
-    /* webpackPreload: undefined */
-    "./HomeRouter"
-  )
-);
+export const HomeModule: LazyExoticComponent<any> = getLazyModule(() => import("./HomeRouter"));

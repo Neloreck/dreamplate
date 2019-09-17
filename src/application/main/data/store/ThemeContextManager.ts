@@ -2,13 +2,15 @@
  * @module @application/main
  */
 
-import { applicationConfig } from "@Main/data/configs";
 import { Bind, ContextManager } from "dreamstate";
 import { CreateGenerateIdOptions } from "jss";
 
 // Lib.
 import { createDefaultTheme, EThemeType, IApplicationTheme, toggleTheme } from "@Lib/theme";
 import { getFromLocalStorage, Logger, setLocalStorageItem } from "@Lib/utils";
+
+// Data.
+import { applicationConfig } from "@Main/data/configs";
 
 /**
  * Theme context description.

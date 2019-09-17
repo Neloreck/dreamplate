@@ -28,7 +28,7 @@ export interface IRouterContext {
  */
 export class RouterContextManager extends ContextManager<IRouterContext> {
 
-  public readonly history: History = createBrowserHistory();
+  public static readonly HISTORY: History = createBrowserHistory();
 
   public context: IRouterContext = {
     routingActions: {
@@ -37,9 +37,11 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
       replace: this.replace
     },
     routingState: {
-     path: this.history.location.pathname
+     path: RouterContextManager.HISTORY.location.pathname
     }
   };
+
+  private unsubsribeFromHistory!: () => void;
 
   private readonly log: Logger = new Logger(RouterContextManager.name);
 
@@ -52,7 +54,8 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
   public replace(path: Path): void {
 
     this.log.info(`Replace path: ${path}.`);
-    this.history.replace(path);
+
+    RouterContextManager.HISTORY.replace(path);
   }
 
   /**
@@ -62,7 +65,8 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
   public push(path: Path): void {
 
     this.log.info(`Push path: ${path}.`);
-    this.history.push(path);
+
+    RouterContextManager.HISTORY.push(path);
   }
 
   /**
@@ -72,7 +76,8 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
   public goBack(): void {
 
     this.log.info("Go back.");
-    this.history.goBack();
+
+    RouterContextManager.HISTORY.goBack();
   }
 
   protected onProvisionStarted(): void {
@@ -81,7 +86,16 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
 
     this.log.info(`Routing provision started [${path}].`);
 
-    this.history.listen((location: Location) => this.setState({ path: location.pathname }));
+    this.unsubsribeFromHistory = RouterContextManager.HISTORY.listen((location: Location) => this.setState({ path: location.pathname }));
+  }
+
+  protected onProvisionEnded(): void {
+
+    const { routingState: { path } } = this.context;
+
+    this.log.info(`Routing provision ended [${path}].`);
+
+    this.unsubsribeFromHistory();
   }
 
 }

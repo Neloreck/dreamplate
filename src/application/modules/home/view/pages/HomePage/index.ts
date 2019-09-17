@@ -5,8 +5,8 @@
 import { LazyExoticComponent } from "react";
 
 // Lib.
-import { getLazy } from "@Lib/utils";
+import { getLazyModule } from "@Lib/utils";
 
-export const HomePage: LazyExoticComponent<any> = getLazy(() => import("./HomePage.component"));
+export const HomePage: LazyExoticComponent<any> = getLazyModule(() => import("./HomePage.component"));
 
 export { IHomePageInjectedProps } from "./HomePage.component";
