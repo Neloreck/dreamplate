@@ -38,9 +38,9 @@ export class ApplicationRoot extends LitElement {
     const logger: Logger = new Logger("ROOT");
 
     logger.pushSeparator();
-
     logger.info("🔶 Rendering begun.");
     logger.info("🔶 First render timestamp:", Date.now());
+    logger.pushSeparator();
   }
 
   /* </dev> */
