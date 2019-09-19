@@ -18,13 +18,13 @@ export function RootRouter(): ReactElement {
 
       <ReactRouter history={RouterContextManager.HISTORY}>
 
-      <Switch>
+        <Switch>
 
-        <Route exact={true} path={[ "/", "/home" ]} component={HomeModule}/>
+          <Route exact={true} path={[ "/", "/home" ]} component={HomeModule}/>
 
-        <Route component={ErrorPage}/>
+          <Route component={ErrorPage}/>
 
-      </Switch>
+        </Switch>
 
       </ReactRouter>
 
