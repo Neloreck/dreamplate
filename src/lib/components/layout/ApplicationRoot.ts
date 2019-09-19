@@ -10,7 +10,7 @@ import { CustomElement } from "@Lib/decorators";
 import { Logger } from "@Lib/utils";
 
 // Props.
-export interface IApplicationRootProps extends ICustomElementAttributes {
+export interface IApplicationRootProps extends ICustomElementAttributes<ApplicationRoot> {
 }
 
 /**

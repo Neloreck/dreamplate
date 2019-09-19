@@ -12,7 +12,7 @@ import { BLACK, DEFAULT_PRIMARY_DARK, DEFAULT_PRIMARY_LIGHT, DEFAULT_PRIMARY_MAI
 // Props.
 export type TCustomButtonSize = "xs" | "sm" | "md" | "lg" | "xl";
 
-export interface ICustomButtonProps extends ICustomElementAttributes {
+export interface ICustomButtonProps extends ICustomElementAttributes<CustomButton> {
   label: string;
   size?: TCustomButtonSize;
 }

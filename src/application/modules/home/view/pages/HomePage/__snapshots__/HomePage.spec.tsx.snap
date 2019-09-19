@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home page component rendering. Should match HOC snapshot.: Default HOC layout. 1`] = `
+<ContextConsumer>
+  <Component />
+</ContextConsumer>
+`;
+
+exports[`Home page component rendering. Should match mounted snapshot with default theme.: Mounted with default theme. 1`] = `
+<HomePage
+  classes={
+    Object {
+      "card": "HomePage-card-0-2-1",
+      "content": "HomePage-content-0-2-2",
+    }
+  }
+>
+  <JssContextSubscriber>
+    <WithStyles(MainHeader)
+      innerRef={null}
+      jssContext={
+        Object {
+          "classNamePrefix": "",
+          "disableStylesGeneration": false,
+        }
+      }
+      theme={
+        Object {
+          "palette": Object {
+            "background": Object {
+              "default": "#FFF",
+              "paper": "#eeeeee",
+            },
+            "primary": Object {
+              "dark": "#7986cb",
+              "light": "#d1c4e9",
+              "main": "#9fa8da",
+            },
+            "secondary": Object {
+              "dark": "#ab47bc",
+              "light": "#7986cb",
+              "main": "#ba68c8",
+            },
+            "text": Object {
+              "primary": "#000",
+              "secondary": "#444444",
+            },
+            "type": "light",
+          },
+          "spacing": Object {
+            "unit": 4,
+          },
+        }
+      }
+    >
+      <MainHeader
+        classes={
+          Object {
+            "root": "MainHeader-root-0-2-3",
+          }
+        }
+      >
+        <header
+          className="MainHeader-root-0-2-3"
+        >
+          <custom-heading
+            size={3}
+            text="Boilerplate"
+          />
+          <custom-button
+            label="Toggle"
+            onClick={[Function]}
+          />
+        </header>
+      </MainHeader>
+    </WithStyles(MainHeader)>
+  </JssContextSubscriber>
+  <main
+    className="HomePage-content-0-2-2"
+  >
+    <content-card
+      class="HomePage-card-0-2-1"
+    >
+      <a
+        href="https://reactjs.org/"
+        rel="noreferrer"
+        target="_blank"
+      >
+        React
+      </a>
+    </content-card>
+    <content-card
+      class="HomePage-card-0-2-1"
+    >
+      <a
+        href="https://www.typescriptlang.org/"
+        rel="noreferrer"
+        target="_blank"
+      >
+        Typescript
+      </a>
+    </content-card>
+    <content-card
+      class="HomePage-card-0-2-1"
+    >
+      <a
+        href="https://github.com/Neloreck/dreamstate/"
+        rel="noreferrer"
+        target="_blank"
+      >
+        DreamState
+      </a>
+    </content-card>
+  </main>
+</HomePage>
+`;

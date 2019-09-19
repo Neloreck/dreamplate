@@ -2,7 +2,7 @@
  * @module @application/main
  */
 
-import { Context, PureComponent, ReactNode } from "react";
+import { PureComponent, ReactNode } from "react";
 import { WithStyles } from "react-jss";
 
 // Lib.
@@ -26,22 +26,32 @@ export interface IMainHeaderProps extends IMainHeaderOwnProps, IMainHeaderInject
 @Styled(mainHeaderStyle)
 export class MainHeader extends PureComponent<IMainHeaderProps, {}, IThemeContext> {
 
-  public static contextType: Context<IThemeContext> = ThemeContextManager.getContextType();
-
   public render(): ReactNode {
 
     const { classes } = this.props;
-    const { themeActions } = this.context;
 
     return (
       <header className={classes.root}>
 
-        <custom-heading text={"Boilerplate"} size={3}/>
+        <custom-heading
+          text={"Boilerplate"}
+          size={3}
+        />
 
-        <custom-button label={"Toggle"} onClick={themeActions.toggleTheme}/>
+        <custom-button
+          label={"Toggle"}
+          onClick={this.onThemeToggleClicked}
+        />
 
       </header>
     );
+  }
+
+  private onThemeToggleClicked(): void {
+
+    const themeContextManager: ThemeContextManager = ThemeContextManager.current();
+
+    themeContextManager.toggleTheme();
   }
 
 }

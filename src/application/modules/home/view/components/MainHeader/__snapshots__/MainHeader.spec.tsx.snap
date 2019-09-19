@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main header component rendering. Should match HOC snapshot.: Default HOC layout. 1`] = `
+<ContextConsumer>
+  <Component />
+</ContextConsumer>
+`;
+
+exports[`Main header component rendering. Should match mounted snapshot with default theme.: Mounted with default theme. 1`] = `
+<MainHeader
+  classes={
+    Object {
+      "root": "MainHeader-root-0-2-1",
+    }
+  }
+>
+  <header
+    className="MainHeader-root-0-2-1"
+  >
+    <custom-heading
+      size={3}
+      text="Boilerplate"
+    />
+    <custom-button
+      label="Toggle"
+      onClick={[Function]}
+    />
+  </header>
+</MainHeader>
+`;

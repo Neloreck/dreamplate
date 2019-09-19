@@ -11,7 +11,7 @@ import { IModalRootProps, ModalRoot } from "@Lib/components/layout/ModalRoot";
  * Declare class field for web-components based elements.
  * Non-native elements don't support className property.
  */
-export interface ICustomElementAttributes extends HTMLAttributes<any> {
+export interface ICustomElementAttributes<T> extends HTMLAttributes<T> {
   className?: string;
   class?: string;
 }

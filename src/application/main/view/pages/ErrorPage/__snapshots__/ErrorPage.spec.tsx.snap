@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error page component rendering. Should match HOC snapshot.: Default HOC layout. 1`] = `
+<ContextConsumer>
+  <Component />
+</ContextConsumer>
+`;
+
+exports[`Error page component rendering. Should match mounted snapshot with default theme.: Mounted with default theme. 1`] = `
+<ErrorPage
+  classes={
+    Object {
+      "content": "ErrorPage-content-0-2-1",
+      "label": "ErrorPage-label-0-2-2",
+    }
+  }
+>
+  <main
+    className="ErrorPage-content-0-2-1"
+  >
+    <div
+      className="ErrorPage-label-0-2-2"
+    >
+      Page not found.
+    </div>
+    <button
+      onClick={[Function]}
+    >
+      Home
+    </button>
+  </main>
+</ErrorPage>
+`;

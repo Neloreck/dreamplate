@@ -12,7 +12,7 @@ import { BLACK } from "@Lib/theme";
 // Props.
 export type TCustomHeadingSize = 1 | 2 | 3 | 4 | 5;
 
-export interface ICustomHeadingProps extends ICustomElementAttributes {
+export interface ICustomHeadingProps extends ICustomElementAttributes<CustomHeading> {
   text: string;
   size?: TCustomHeadingSize;
 }

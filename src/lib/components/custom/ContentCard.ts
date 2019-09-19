@@ -9,7 +9,7 @@ import { ICustomElementAttributes } from "@Lib/components";
 import { CustomElement } from "@Lib/decorators";
 
 // Props.
-export interface IContentCardProps extends ICustomElementAttributes {
+export interface IContentCardProps extends ICustomElementAttributes<ContentCard> {
 }
 
 /**

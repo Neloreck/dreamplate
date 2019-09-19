@@ -11,7 +11,12 @@ export class TestRunner {
 
     process.stdout.write(`\nStarting jest testing. \n\n`);
 
-    await jest.run([...args.slice(2), "--all", "--config", JSON.stringify(JEST_CONFIG), "--detectOpenHandles"]);
+    await jest.run([
+      ...args.slice(2),
+      "--all",
+      "--config", JSON.stringify(JEST_CONFIG),
+      "--detectOpenHandles"
+    ]);
   }
 
 }
