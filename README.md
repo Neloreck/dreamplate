@@ -96,16 +96,15 @@
 ## Futures
 
   - Eslint
-  - SSR investigations
-  - JSS and react-router update with pure VDOM tree (!)
-  - Meta tags and general PWA improvements
   - Experiment and comparison with Preact
   - Benchmark for testing?
-  - Tests examples with react rendering
   - Build something from wasm as experiment and use wasm-loader
+  - Workers investigation?
 
 ## Side packages (waiting for)
 
   - Hooks implementation for react-router
   - Hooks implementation for react-jss
   - Modules issue for typedoc package resolve
+  - JSDOM web components support
+  - SSR better support (suspense, lazy and other features)

@@ -80,12 +80,12 @@ export const JEST_CONFIG = {
   snapshotSerializers: [
     "enzyme-to-json/serializer"
   ],
-  testEnvironment: "jest-environment-jsdom-fourteen",
+  testEnvironment: "jest-environment-jsdom-fifteen",
   // testEnvironmentOptions: {},
   // testLocationInResults: false,
   testMatch: [
      "**/__tests__/**/*.ts?(x)",
-     "**/?(*.)+(spec|__test__).ts?(x)"
+     "**/?(*.)+(spec|__test__|__tests__).ts?(x)"
    ],
   testPathIgnorePatterns: [
     "/node_modules/"

@@ -39,9 +39,10 @@ export class MainHeader extends PureComponent<IMainHeaderProps, {}, IThemeContex
         />
 
         <custom-button
-          label={"Toggle"}
           onClick={this.onThemeToggleClicked}
-        />
+        >
+          Toggle
+        </custom-button>
 
       </header>
     );

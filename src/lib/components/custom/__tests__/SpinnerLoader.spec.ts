@@ -1,6 +1,6 @@
 // Lib.
 import { SpinnerLoader } from "@Lib/components/custom/SpinnerLoader";
-import { nestedShadowOf } from "@Lib/components/utils/testing";
+import { nestedShadowValueOf } from "@Lib/components/utils/testing";
 import { forMillis } from "@Lib/utils/delay";
 
 describe("Spinner loader web component.", () => {
@@ -40,7 +40,7 @@ describe("Spinner loader web component.", () => {
     expect(loader.style.height).toBe("50px");
     expect(loader.style.borderWidth).toBe("10px");
 
-    expect(loader.shadowRoot!.innerHTML).toBe(nestedShadowOf(SpinnerLoader));
+    expect(loader.shadowRoot!.innerHTML).toBe(nestedShadowValueOf(SpinnerLoader));
 
     document.body.removeChild(loader);
   });

@@ -13,7 +13,6 @@ import { BLACK, DEFAULT_PRIMARY_DARK, DEFAULT_PRIMARY_LIGHT, DEFAULT_PRIMARY_MAI
 export type TCustomButtonSize = "xs" | "sm" | "md" | "lg" | "xl";
 
 export interface ICustomButtonProps extends ICustomElementAttributes<CustomButton> {
-  label: string;
   size?: TCustomButtonSize;
 }
 
@@ -68,14 +67,11 @@ export class CustomButton extends LitElement {
     `;
   }
 
-  @Property()
-  public label: string = "";
-
-  @Property()
+  @Property({ type: String })
   public size: TCustomButtonSize = "md";
 
   public render(): TemplateResult {
-    return html`${this.label}`;
+    return html`<slot></slot>`;
   }
 
 }

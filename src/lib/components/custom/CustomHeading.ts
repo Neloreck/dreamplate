@@ -52,11 +52,11 @@ export class CustomHeading extends LitElement {
     `;
   }
 
-  @Property()
-  private text: string = "";
+  @Property({ type: String })
+  public text: string = "";
 
-  @Property()
-  private size: TCustomHeadingSize = 1;
+  @Property({ type: Number })
+  public size: TCustomHeadingSize = 1;
 
   public render(): TemplateResult {
     return html`${this.text}`;

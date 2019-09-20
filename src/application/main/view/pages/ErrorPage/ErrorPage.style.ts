@@ -16,9 +16,9 @@ export const errorPageStyle = ({ palette }: IApplicationTheme) => ({
     flexWrap: "nowrap",
     justifyContent: "center",
     overflowY: "auto",
-    transitionDuration: "350ms"
+    transitionDuration: "500ms"
   },
-  label: {
-    color: palette.text.primary
+  labelCard: {
+    backgroundColor: palette.secondary.light
   }
 });

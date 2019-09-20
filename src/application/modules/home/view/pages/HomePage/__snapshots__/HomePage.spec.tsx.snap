@@ -10,7 +10,7 @@ exports[`Home page component rendering. Should match mounted snapshot with defau
 <HomePage
   classes={
     Object {
-      "card": "HomePage-card-0-2-1",
+      "cardLink": "HomePage-cardLink-0-2-1",
       "content": "HomePage-content-0-2-2",
     }
   }
@@ -68,9 +68,10 @@ exports[`Home page component rendering. Should match mounted snapshot with defau
             text="Boilerplate"
           />
           <custom-button
-            label="Toggle"
             onClick={[Function]}
-          />
+          >
+            Toggle
+          </custom-button>
         </header>
       </MainHeader>
     </WithStyles(MainHeader)>
@@ -78,8 +79,8 @@ exports[`Home page component rendering. Should match mounted snapshot with defau
   <main
     className="HomePage-content-0-2-2"
   >
-    <content-card
-      class="HomePage-card-0-2-1"
+    <custom-card
+      class="HomePage-cardLink-0-2-1"
     >
       <a
         href="https://reactjs.org/"
@@ -88,9 +89,9 @@ exports[`Home page component rendering. Should match mounted snapshot with defau
       >
         React
       </a>
-    </content-card>
-    <content-card
-      class="HomePage-card-0-2-1"
+    </custom-card>
+    <custom-card
+      class="HomePage-cardLink-0-2-1"
     >
       <a
         href="https://www.typescriptlang.org/"
@@ -99,9 +100,9 @@ exports[`Home page component rendering. Should match mounted snapshot with defau
       >
         Typescript
       </a>
-    </content-card>
-    <content-card
-      class="HomePage-card-0-2-1"
+    </custom-card>
+    <custom-card
+      class="HomePage-cardLink-0-2-1"
     >
       <a
         href="https://github.com/Neloreck/dreamstate/"
@@ -110,7 +111,7 @@ exports[`Home page component rendering. Should match mounted snapshot with defau
       >
         DreamState
       </a>
-    </content-card>
+    </custom-card>
   </main>
 </HomePage>
 `;

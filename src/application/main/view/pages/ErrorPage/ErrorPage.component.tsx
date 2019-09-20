@@ -13,7 +13,11 @@ import { Styled } from "@Lib/decorators";
 import { IRouterContext, RouterContextManager } from "@Main/data/store";
 
 // View.
+import { IMainHeaderInjectedProps, MainHeader } from "@Modules/home/view/components/MainHeader";
 import { errorPageStyle } from "./ErrorPage.style";
+
+import "@Lib/components/custom/CustomButton";
+import "@Lib/components/custom/CustomCard";
 
 // Props.
 export interface IErrorPageOwnProps {}
@@ -34,15 +38,17 @@ export class ErrorPage extends PureComponent<IErrorPageProps, {}, IRouterContext
     return (
       <>
 
+        <MainHeader {...{} as IMainHeaderInjectedProps}/>
+
         <main className={classes.content}>
 
-          <div className={classes.label}>
-            Page not found.
-          </div>
+          <custom-card class={classes.labelCard}>
+            Page was not found.
+          </custom-card>
 
-          <button onClick={this.onHomeNavigated}>
-            Home
-          </button>
+          <custom-button onClick={this.onHomeNavigated}>
+            Go Home
+          </custom-button>
 
         </main>
 

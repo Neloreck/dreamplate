@@ -12,7 +12,7 @@ import { Styled } from "@Lib/decorators";
 import { IMainHeaderInjectedProps, MainHeader } from "@Modules/home/view/components/MainHeader";
 import { homePageStyle } from "./HomePage.style";
 
-import "@Lib/components/custom/ContentCard";
+import "@Lib/components/custom/CustomCard";
 
 // Props.
 export interface IHomePageOwnProps {}
@@ -52,7 +52,9 @@ export class HomePage extends PureComponent<IHomePageProps> {
     const { classes } = this.props;
 
     return (
-      <content-card class={classes.card}>
+      <custom-card
+        class={classes.cardLink}
+      >
 
         <a
           href={href}
@@ -62,7 +64,7 @@ export class HomePage extends PureComponent<IHomePageProps> {
           { label }
         </a>
 
-      </content-card>
+      </custom-card>
     );
   }
 

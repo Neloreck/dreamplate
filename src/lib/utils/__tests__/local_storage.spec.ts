@@ -1,6 +1,4 @@
-/**
- * @module @lib/utils
- */
+// Lib.
 import { setLocalStorageItem, removeLocalStorageItem, getFromLocalStorage } from "@Lib/utils";
 import { forSeconds } from "@Lib/utils/delay";
 import { Optional } from "@Lib/ts";

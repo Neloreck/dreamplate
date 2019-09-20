@@ -4,11 +4,35 @@
 
 import { CSSResult } from "lit-element";
 
-export const nestedShadowOf = (component: { styles: CSSResult }, ...nested: Array<string>) => {
+/**
+ * Get component shadow content based on parameters and its style.
+ */
+const nestedShadowOf = (component: { styles: CSSResult }, enclosing: { before: string, after: string }, ...nested: Array<string>) => {
 
-  let commented: string = "";
+  const style: string = `<style>${component.styles}</style>`;
 
-  nested.forEach((it: string) => commented += `<!----><!---->${it}<!----><!---->`);
+  if (nested.length === 0) {
+    return style;
+  } else {
 
-  return `${commented}<style>${component.styles}</style>`;
+    let commented: string = "<!---->";
+
+    nested.forEach((it: string) => commented += `${enclosing.before}${it}${enclosing.after}`);
+
+    commented += "<!---->";
+
+    return `${commented}${style}`;
+  }
 };
+
+/**
+ * Expect component shadow to contain value.
+ */
+export const nestedShadowValueOf = (component: { styles: CSSResult }, ...nested: Array<string>) =>
+  nestedShadowOf(component, { after: "<!---->", before: "<!---->" }, ...nested);
+
+/**
+ * Expect component shadow to contain slot.
+ */
+export const nestedShadowSlotOf = (component: { styles: CSSResult }, ...nested: Array<string>) =>
+  nestedShadowOf(component, { after: "</slot>", before: "<slot>" }, ...nested);

@@ -15,8 +15,8 @@ export interface IAuthContext {
   authActions: {
   };
   authState: {
-    authorizing: boolean;
-    authorized: boolean;
+    isAuthorizing: boolean;
+    isAuthorized: boolean;
   };
   authDetailsState: {
     user: Optional<string>;
@@ -36,8 +36,8 @@ export class AuthContextManager extends ContextManager<IAuthContext> {
       user: null
     },
     authState: {
-      authorized: false,
-      authorizing: false,
+      isAuthorized: false,
+      isAuthorizing: false,
     }
   };
 
@@ -45,9 +45,9 @@ export class AuthContextManager extends ContextManager<IAuthContext> {
 
   protected onProvisionStarted(): void {
 
-    const { authState: { authorized } } = this.context;
+    const { authState: { isAuthorized } } = this.context;
 
-    this.log.info(`Auth provision started [${authorized ? "authorized" : "unauthorized"}].`);
+    this.log.info(`Auth provision started [${isAuthorized}].`);
   }
 
 }

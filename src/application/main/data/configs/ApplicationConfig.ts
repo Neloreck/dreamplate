@@ -12,7 +12,6 @@ export const applicationConfig = {
   initialLoad: Date.now(),
   targetElements: {
     applicationRoot: document.getElementById(APPLICATION_ROOT) as HTMLElement,
-    body: document.body,
     modalRoot: document.getElementById(MODAL_ROOT) as HTMLElement
   }
 };

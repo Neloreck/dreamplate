@@ -11,23 +11,84 @@ exports[`Error page component rendering. Should match mounted snapshot with defa
   classes={
     Object {
       "content": "ErrorPage-content-0-2-1",
-      "label": "ErrorPage-label-0-2-2",
+      "labelCard": "ErrorPage-labelCard-0-2-2",
     }
   }
 >
+  <JssContextSubscriber>
+    <WithStyles(MainHeader)
+      innerRef={null}
+      jssContext={
+        Object {
+          "classNamePrefix": "",
+          "disableStylesGeneration": false,
+        }
+      }
+      theme={
+        Object {
+          "palette": Object {
+            "background": Object {
+              "default": "#FFF",
+              "paper": "#eeeeee",
+            },
+            "primary": Object {
+              "dark": "#7986cb",
+              "light": "#d1c4e9",
+              "main": "#9fa8da",
+            },
+            "secondary": Object {
+              "dark": "#ab47bc",
+              "light": "#7986cb",
+              "main": "#ba68c8",
+            },
+            "text": Object {
+              "primary": "#000",
+              "secondary": "#444444",
+            },
+            "type": "light",
+          },
+          "spacing": Object {
+            "unit": 4,
+          },
+        }
+      }
+    >
+      <MainHeader
+        classes={
+          Object {
+            "root": "MainHeader-root-0-2-3",
+          }
+        }
+      >
+        <header
+          className="MainHeader-root-0-2-3"
+        >
+          <custom-heading
+            size={3}
+            text="Boilerplate"
+          />
+          <custom-button
+            onClick={[Function]}
+          >
+            Toggle
+          </custom-button>
+        </header>
+      </MainHeader>
+    </WithStyles(MainHeader)>
+  </JssContextSubscriber>
   <main
     className="ErrorPage-content-0-2-1"
   >
-    <div
-      className="ErrorPage-label-0-2-2"
+    <custom-card
+      class="ErrorPage-labelCard-0-2-2"
     >
-      Page not found.
-    </div>
-    <button
+      Page was not found.
+    </custom-card>
+    <custom-button
       onClick={[Function]}
     >
-      Home
-    </button>
+      Go Home
+    </custom-button>
   </main>
 </ErrorPage>
 `;

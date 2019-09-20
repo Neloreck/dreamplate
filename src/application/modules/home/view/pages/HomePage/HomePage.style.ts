@@ -5,12 +5,12 @@
 import { IApplicationTheme } from "@Lib/theme";
 
 export const homePageStyle = ({ palette }: IApplicationTheme) => ({
-  card: {
+  cardLink: {
     "& a": {
       color: palette.text.primary,
-      transitionDuration: "750ms"
     },
-    backgroundColor: palette.background.paper
+    backgroundColor: palette.background.paper,
+    transitionDuration: "500ms"
   },
   content: {
     alignSelf: "normal",

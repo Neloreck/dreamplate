@@ -1,6 +1,6 @@
 // Lib.
 import { CustomButton } from "@Lib/components/custom/CustomButton";
-import { nestedShadowOf } from "@Lib/components/utils/testing";
+import { nestedShadowSlotOf } from "@Lib/components/utils/testing";
 
 describe("Custom button web component.", () => {
 
@@ -12,9 +12,9 @@ describe("Custom button web component.", () => {
 
     await customButton.updateComplete;
 
-    expect(customButton.label).toBe("");
     expect(customButton.size).toBe("md");
-    expect(customButton.shadowRoot!.innerHTML).toBe(nestedShadowOf(CustomButton, ""));
+    expect(customButton.shadowRoot!.innerHTML).toBe(nestedShadowSlotOf(CustomButton, ""));
+    expect(customButton.innerHTML).toBe("");
 
     document.body.removeChild(customButton);
   });
@@ -22,17 +22,20 @@ describe("Custom button web component.", () => {
   it("Should properly nest children.", async () => {
 
     const mockLabel: string = "Random Label " + Math.random();
+    const mockDiv: HTMLDivElement = document.createElement("div");
+
+    mockDiv.innerHTML = mockLabel;
+
     const customButton: CustomButton = new CustomButton();
 
     document.body.appendChild(customButton);
+    customButton.appendChild(mockDiv);
 
     await customButton.updateComplete;
 
-    customButton.label = mockLabel;
+    expect(customButton.shadowRoot!.innerHTML).toBe(nestedShadowSlotOf(CustomButton, ""));
+    expect(customButton.innerHTML).toBe(`<div>${mockLabel}</div>`);
 
-    await customButton.updateComplete;
-
-    expect(customButton.label).toBe(mockLabel);
-    expect(customButton.shadowRoot!.innerHTML).toBe(nestedShadowOf(CustomButton, mockLabel));
+    document.body.removeChild(customButton);
   });
 });

@@ -22,9 +22,10 @@ exports[`Main header component rendering. Should match mounted snapshot with def
       text="Boilerplate"
     />
     <custom-button
-      label="Toggle"
       onClick={[Function]}
-    />
+    >
+      Toggle
+    </custom-button>
   </header>
 </MainHeader>
 `;

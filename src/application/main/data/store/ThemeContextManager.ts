@@ -69,10 +69,8 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
       /* </dev> */
     }
 
-    applicationConfig.targetElements.body.style.backgroundColor = nextTheme.palette.background.default;
-    applicationConfig.targetElements.body.style.color = nextTheme.palette.text.primary;
-
-    document.head.getElementsByTagName("meta")["theme-color" as any].content = nextTheme.palette.primary.main;
+    document.body.style.backgroundColor = nextTheme.palette.background.default;
+    document.body.style.color = nextTheme.palette.text.primary;
 
     this.setState({ theme: nextTheme });
   }

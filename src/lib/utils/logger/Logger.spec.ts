@@ -7,12 +7,6 @@ import { Callable, IStringIndexed } from "@Lib/ts";
 
 describe("Application Logger behaviour.", () => {
 
-  const EXPECTED_HASHES_MAP: IStringIndexed<number> = {
-    "FIRST_CHECK": -1931411847,
-    "SECOND_CHECK": -1438293667,
-    "THIRD_CHECK": -798192656
-  };
-
   expect(IS_DEV).toBeFalsy();
 
   it("Should not affect console output in production environment.", () => {
@@ -41,6 +35,12 @@ describe("Application Logger behaviour.", () => {
   });
 
   it("Always generate same hashes for same strings.", () => {
+
+    const EXPECTED_HASHES_MAP: IStringIndexed<number> = {
+      "FIRST_CHECK": -1931411847,
+      "SECOND_CHECK": -1438293667,
+      "THIRD_CHECK": -798192656
+    };
 
     let log: Logger = new Logger("Test");
 

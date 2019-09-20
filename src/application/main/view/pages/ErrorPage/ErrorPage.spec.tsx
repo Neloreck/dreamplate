@@ -1,3 +1,5 @@
+import "@Test/utils/mock_custom_elements";
+
 // Test.
 import { getThemedComponent, withMockedTheme } from "@Lib/theme/testing";
 import { shallow } from "enzyme";
