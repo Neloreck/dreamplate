@@ -27,9 +27,9 @@ export class CustomButton extends LitElement {
     return css`
       :host {
         align-self: center;
-        border: 1px solid ${ unsafeCSS(BLACK) };
-        color: ${ unsafeCSS(BLACK) };
-        background: ${ unsafeCSS(DEFAULT_PRIMARY_LIGHT) };
+        border: 1px solid ${unsafeCSS(BLACK)};
+        color: ${unsafeCSS(BLACK)};
+        background: ${unsafeCSS(DEFAULT_PRIMARY_LIGHT)};
         box-shadow: 6px 1px 4px 0px rgba(0, 0, 0, 0.25), 6px 7px 5px 0px rgba(0, 0, 0, 0.2);
         cursor: pointer;
         font-weight: bold;
