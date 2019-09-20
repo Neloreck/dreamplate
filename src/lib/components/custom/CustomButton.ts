@@ -59,11 +59,11 @@ export class CustomButton extends LitElement {
       }
 
       :host(:hover) {
-        background: ${ unsafeCSS(DEFAULT_PRIMARY_MAIN) };
+        background: ${unsafeCSS(DEFAULT_PRIMARY_MAIN)};
       }
 
       :host(:active) {
-        background: ${ unsafeCSS(DEFAULT_PRIMARY_DARK) };
+        background: ${unsafeCSS(DEFAULT_PRIMARY_DARK)};
       }
     `;
   }

@@ -26,7 +26,7 @@ export class CustomHeading extends LitElement {
   public static get styles(): CSSResult {
     return css`
       :host {
-        color: ${ unsafeCSS(BLACK) };
+        color: ${unsafeCSS(BLACK)};
         font-weight: bold;
       }
 

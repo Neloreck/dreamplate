@@ -18,7 +18,7 @@ export const mainHeaderStyle = ({ palette, spacing }: IApplicationTheme) => ({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
-    padding: `${ spacing.unit * 2 }px ${ spacing.unit * 4 }px`,
+    padding: `${spacing.unit * 2}px ${spacing.unit * 4}px`,
     position: "relative",
     transitionDuration: "250ms"
   }
