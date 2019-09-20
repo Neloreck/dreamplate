@@ -80,7 +80,7 @@ export const JEST_CONFIG = {
   snapshotSerializers: [
     "enzyme-to-json/serializer"
   ],
-  // testEnvironment: "jest-environment-jsdom",
+  testEnvironment: "jest-environment-jsdom-fourteen",
   // testEnvironmentOptions: {},
   // testLocationInResults: false,
   testMatch: [

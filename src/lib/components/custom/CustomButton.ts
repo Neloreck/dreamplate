@@ -69,10 +69,10 @@ export class CustomButton extends LitElement {
   }
 
   @Property()
-  private label: string = "";
+  public label: string = "";
 
   @Property()
-  private size: TCustomButtonSize = "md";
+  public size: TCustomButtonSize = "md";
 
   public render(): TemplateResult {
     return html`${this.label}`;
