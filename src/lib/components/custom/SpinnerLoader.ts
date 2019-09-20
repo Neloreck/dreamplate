@@ -13,7 +13,7 @@ import { DEFAULT_PRIMARY_DARK, DEFAULT_PRIMARY_MAIN } from "@Lib/theme";
 export interface ISpinnerLoaderProps extends ICustomElementAttributes<SpinnerLoader> {
   width?: number;
   height?: number;
-  radius?: number;
+  borderWidth?: number;
 }
 
 /**
@@ -43,6 +43,8 @@ export class SpinnerLoader extends LitElement {
     `;
   }
 
+  [index: string]: any;
+
   @Property({ type: Number })
   public width: number = 50;
 
@@ -50,13 +52,10 @@ export class SpinnerLoader extends LitElement {
   public height: number = 50;
 
   @Property({ type: Number })
-  public radius: number = 10;
+  public borderWidth: number = 10;
 
-  protected updated(changedProperties: Map<PropertyKey, any>): void {
-
-    this.style.width = this.width + "px";
-    this.style.height = this.height + "px";
-    this.style.borderWidth = this.radius + "px";
+  protected updated(changedProperties: Map<string, any>): void {
+    changedProperties.forEach((oldValue: number, key: string) => this.style[key as any] = this[key] + "px");
   }
 
   protected firstUpdated(): void {
