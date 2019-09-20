@@ -35,6 +35,7 @@ export class CustomButton extends LitElement {
         font-weight: bold;
         padding: 0.5rem;
         transition-duration: 250ms;
+        user-select: none;
       }
 
       :host([size="xs"]) {
