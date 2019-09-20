@@ -18,7 +18,13 @@
 
     <!---->
 
-    <application-root id="{{ htmlWebpackPlugin.options.constants.APPLICATION_ROOT }}"></application-root>
+    <application-root id="{{ htmlWebpackPlugin.options.constants.APPLICATION_ROOT }}">
+
+      <noscript>
+        This application cannot work without enabled javascript.
+      </noscript>
+
+    </application-root>
 
     <modal-root id="{{ htmlWebpackPlugin.options.constants.MODAL_ROOT }}" hidden></modal-root>
 

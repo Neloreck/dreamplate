@@ -4,23 +4,24 @@ import { Route, Router as ReactRouter, Switch } from "react-router";
 // Data.
 import { RouterContextManager } from "@Main/data/store";
 
-// View.
-import { ErrorPage } from "@Main/view/pages/ErrorPage";
-import { DefaultLoader } from "@Main/view/utils";
-
 // Modules.
 import { HomeModule } from "@Modules/home";
+
+// View.
+import { ErrorPage } from "@Main/view/pages/ErrorPage";
+
+import "@Lib/components/custom/SpinnerLoader";
 
 export function RootRouter(): ReactElement {
 
   return (
-    <Suspense fallback={<DefaultLoader/>}>
+    <Suspense fallback={<spinner-loader width={100} height={100}/>}>
 
       <ReactRouter history={RouterContextManager.HISTORY}>
 
         <Switch>
 
-          <Route exact={true} path={[ "/", "/home" ]} component={HomeModule}/>
+          <Route path={[ "/", "/home" ]} component={HomeModule} exact={true}/>
 
           <Route component={ErrorPage}/>
 
