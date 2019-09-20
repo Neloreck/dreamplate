@@ -29,6 +29,7 @@ export class ModalRoot extends LitElement {
         height: 100%;
         position: absolute;
         top: 0;
+        background-color: #000A;
       }
 
       :host([hidden]) {
@@ -38,7 +39,7 @@ export class ModalRoot extends LitElement {
   }
 
   public render(): TemplateResult {
-    return html``;
+    return html`<slot></slot>`;
   }
 
 }
