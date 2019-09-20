@@ -10,7 +10,7 @@ import { CustomElement, Property } from "@Lib/decorators";
 import { DEFAULT_PRIMARY_DARK, DEFAULT_PRIMARY_MAIN } from "@Lib/theme";
 
 // Props.
-export interface ISpinnerLoaderProps extends ICustomElementAttributes<SpinnerLoader> {
+export interface ICustomLoader extends ICustomElementAttributes<CustomLoader> {
   width?: number;
   height?: number;
   borderWidth?: number;
@@ -19,8 +19,8 @@ export interface ISpinnerLoaderProps extends ICustomElementAttributes<SpinnerLoa
 /**
  * Example of web-components based element for fastest rendering.
  */
-@CustomElement("spinner-loader")
-export class SpinnerLoader extends LitElement {
+@CustomElement("custom-loader")
+export class CustomLoader extends LitElement {
 
   public static readonly LOADER_DISPLAY_DELAY: number = 1000;
 
@@ -59,7 +59,7 @@ export class SpinnerLoader extends LitElement {
   }
 
   protected firstUpdated(): void {
-    window.setTimeout(() => this.setAttribute("loading", "true"), SpinnerLoader.LOADER_DISPLAY_DELAY);
+    window.setTimeout(() => this.setAttribute("loading", "true"), CustomLoader.LOADER_DISPLAY_DELAY);
   }
 
 }

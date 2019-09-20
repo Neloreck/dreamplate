@@ -4,7 +4,7 @@ import { DetailedHTMLProps, HTMLAttributes } from "react";
 import { CustomButton, ICustomButtonProps } from "@Lib/components/custom/CustomButton";
 import { CustomCard, ICustomCardProps } from "@Lib/components/custom/CustomCard";
 import { CustomHeading, ICustomHeadingProps } from "@Lib/components/custom/CustomHeading";
-import { ISpinnerLoaderProps, SpinnerLoader } from "@Lib/components/custom/SpinnerLoader";
+import { CustomLoader, ICustomLoader } from "@Lib/components/custom/CustomLoader";
 import { ApplicationRoot, IApplicationRootProps } from "@Lib/components/layout/ApplicationRoot";
 import { IModalRootProps, ModalRoot } from "@Lib/components/layout/ModalRoot";
 
@@ -26,5 +26,5 @@ export interface ICustomIntrinsicElements {
   "custom-card": DetailedHTMLProps<ICustomCardProps, CustomCard>;
   "custom-button": DetailedHTMLProps<ICustomButtonProps, CustomButton>;
   "custom-heading": DetailedHTMLProps<ICustomHeadingProps, CustomHeading>;
-  "spinner-loader": DetailedHTMLProps<ISpinnerLoaderProps, SpinnerLoader>;
+  "custom-loader": DetailedHTMLProps<ICustomLoader, CustomLoader>;
 }

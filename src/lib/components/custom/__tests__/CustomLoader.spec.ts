@@ -1,13 +1,13 @@
 // Lib.
-import { SpinnerLoader } from "@Lib/components/custom/SpinnerLoader";
+import { CustomLoader } from "@Lib/components/custom/CustomLoader";
 import { nestedShadowValueOf } from "@Lib/components/utils/testing";
 import { forMillis } from "@Lib/utils/delay";
 
-describe("Spinner loader web component.", () => {
+describe("Custom loader web component.", () => {
 
   it("Should have proper default parameters.", async () => {
 
-    const loader: SpinnerLoader = new SpinnerLoader();
+    const loader: CustomLoader = new CustomLoader();
 
     expect(loader.width).toBe(50);
     expect(loader.height).toBe(50);
@@ -26,7 +26,7 @@ describe("Spinner loader web component.", () => {
 
   it("Should properly change width and affect only one property.", async () => {
 
-    const loader: SpinnerLoader = new SpinnerLoader();
+    const loader: CustomLoader = new CustomLoader();
 
     loader.width = 1000;
 
@@ -40,14 +40,14 @@ describe("Spinner loader web component.", () => {
     expect(loader.style.height).toBe("50px");
     expect(loader.style.borderWidth).toBe("10px");
 
-    expect(loader.shadowRoot!.innerHTML).toBe(nestedShadowValueOf(SpinnerLoader));
+    expect(loader.shadowRoot!.innerHTML).toBe(nestedShadowValueOf(CustomLoader));
 
     document.body.removeChild(loader);
   });
 
   it("Should wait for a short time before triggering loader.", async () => {
 
-    const loader: SpinnerLoader = new SpinnerLoader();
+    const loader: CustomLoader = new CustomLoader();
 
     expect(loader.getAttribute("loading")).toBeNull();
 
@@ -57,7 +57,7 @@ describe("Spinner loader web component.", () => {
 
     expect(loader.getAttribute("loading")).toBeNull();
 
-    await forMillis(SpinnerLoader.LOADER_DISPLAY_DELAY);
+    await forMillis(CustomLoader.LOADER_DISPLAY_DELAY);
 
     expect(loader.getAttribute("loading")).toBeTruthy();
 

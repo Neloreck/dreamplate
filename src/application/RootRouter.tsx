@@ -10,12 +10,12 @@ import { HomeModule } from "@Modules/home";
 // View.
 import { ErrorPage } from "@Main/view/pages/ErrorPage";
 
-import "@Lib/components/custom/SpinnerLoader";
+import "@Lib/components/custom/CustomLoader";
 
 export function RootRouter(): ReactElement {
 
   return (
-    <Suspense fallback={<spinner-loader width={100} height={100}/>}>
+    <Suspense fallback={<custom-loader width={100} height={100}/>}>
 
       <ReactRouter history={RouterContextManager.HISTORY}>
 

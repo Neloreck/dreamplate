@@ -15,13 +15,30 @@ const ScriptExtHtmlPlugin = require("script-ext-html-webpack-plugin");
 import { APPLICATION_ROOT, APPLICATION_TITLE, MODAL_ROOT } from "../build_constants";
 import { BUILD_CONFIGURATION_PATH, ENVIRONMENT, IS_PRODUCTION, PROJECT_ROOT_PATH } from "./webpack.constants";
 
+const createChunkGroupNameGenerator = () => {
+  return (
+    IS_PRODUCTION
+      ? (module: any, chunks: any, cacheGroupKey: string): string => {
+        return `${cacheGroupKey}`;
+      }
+      : (module: any, chunks: any, cacheGroupKey: string): string => {
+
+        const moduleFileName: string = module.identifier().split("/").reduceRight((item: string) => item);
+        const allChunksNames: string = chunks.map((item: { name: string }) => item.name).join("~");
+
+        return `${cacheGroupKey}-${allChunksNames}-${moduleFileName}`;
+      }
+  );
+};
+
 export const PLUGIN_CONFIG: {
   PLUGINS: Array<Plugin>,
   OPTIMIZATION: Options.Optimization
 } = {
   OPTIMIZATION: {
-    chunkIds: "natural",
+    chunkIds: "named",
     mergeDuplicateChunks: true,
+    removeEmptyChunks: true,
     minimizer: [
       new TerserPlugin({
         sourceMap: !IS_PRODUCTION,
@@ -44,11 +61,40 @@ export const PLUGIN_CONFIG: {
     noEmitOnErrors: IS_PRODUCTION,
     runtimeChunk: "single",
     splitChunks: {
-      chunks: "async" as "async",
+      cacheGroups: {
+        core: {
+          name: createChunkGroupNameGenerator(),
+          priority: 50,
+          reuseExistingChunk: true,
+          maxSize: 500_000,
+          test: /\/node_modules\/(react|core-js|history|scheduler|dreamstate|jss|lit-)/
+        },
+        npm: {
+          name: createChunkGroupNameGenerator(),
+          priority: 40,
+          reuseExistingChunk: true,
+          test: /\/node_modules\//
+        },
+        api: {
+          name: createChunkGroupNameGenerator(),
+          priority: 30,
+          reuseExistingChunk: false,
+          test: /\/src\/api/
+        },
+        components: {
+          name: createChunkGroupNameGenerator(),
+          priority: 20,
+          reuseExistingChunk: false,
+          test: /\/lib\/components/,
+          minSize: 5_000
+        },
+        default: false
+      },
+      chunks: "all",
       maxAsyncRequests: 50,
       maxInitialRequests: 25,
       maxSize: 244_000,
-      minSize: 30_000,
+      minSize: 20_000,
       name: true
     }
   },

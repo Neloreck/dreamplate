@@ -4,7 +4,7 @@
 
 import { applicationConfig } from "@Main/data/configs";
 import { createElement } from "react";
-import { hydrate, render } from "react-dom";
+import { render } from "react-dom";
 
 // Lib.
 import { EntryPoint } from "@Lib/decorators";
@@ -24,14 +24,17 @@ export class Application {
 
   /**
    * Callable application entry point.
+   * Check current environment state and call needed method.
    */
   public static main(): void {
 
     if (IS_DEV) {
-      this.renderDevmode();
+      /* <dev> */
+      this.renderHot();
+      /* </dev> */
     } else {
       this.render();
-    } // Else if SSR.
+    }
   }
 
   /**
@@ -41,19 +44,16 @@ export class Application {
     render(createElement(Root), applicationConfig.targetElements.applicationRoot);
   }
 
-  /**
-   * Hydrate DOM after SSR pre-render.
-   */
-  public static hydrate(): void {
-    hydrate(createElement(Root), applicationConfig.targetElements.applicationRoot);
-  }
+  /* <dev> */
 
   /**
    * Render with StrictMode for debug and hot root.
    * Reminder: StrictMode forces some components to render twice.
    */
-  public static renderDevmode(): void {
+  public static renderHot(): void {
     render(createElement(HotRoot), applicationConfig.targetElements.applicationRoot);
   }
+
+  /* </dev> */
 
 }
