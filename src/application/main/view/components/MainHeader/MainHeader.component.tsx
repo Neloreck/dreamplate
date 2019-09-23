@@ -49,10 +49,7 @@ export class MainHeader extends PureComponent<IMainHeaderProps, {}, IThemeContex
   }
 
   private onThemeToggleClicked(): void {
-
-    const themeContextManager: ThemeContextManager = ThemeContextManager.current();
-
-    themeContextManager.toggleTheme();
+    (ThemeContextManager.current() as ThemeContextManager).toggleTheme();
   }
 
 }

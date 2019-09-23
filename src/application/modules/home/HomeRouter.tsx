@@ -2,6 +2,7 @@
  * @module @application/home
  */
 
+import { HistoryFallback } from "@Main/view/layouts/HistoryFallback";
 import { ReactElement } from "react";
 import { Route, Switch } from "react-router";
 
@@ -14,10 +15,12 @@ export function HomeRouter(): ReactElement {
   return (
     <Switch>
 
-      <Route exact={true} path={[ "/", "/home" ]} component={HomePage}/>
+      <Route path={[ "/", "/home" ]} component={HomePage} exact={true}/>
 
-      <Route component={ErrorPage}/>
+      <Route path={"/home*"} component={ErrorPage} exact={true}/>
 
-      </Switch>
-    );
-  }
+      <Route component={HistoryFallback}/>
+
+    </Switch>
+  );
+}

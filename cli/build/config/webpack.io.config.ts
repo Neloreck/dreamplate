@@ -1,18 +1,33 @@
+import * as path from "path";
 import { Entry, Output } from "webpack";
 
 import {
-  BACKEND_PUBLIC_PATH,
-  ENTRY_FILE_PATH, INIT_FILE_PATH,
-  IS_PRODUCTION, PROJECT_OUTPUT_PATH
+  BACKEND_PUBLIC_PATH, IModulesDefinition, INIT_FILE_PATH,
+  IS_PRODUCTION, MODULES_CONFIG, MODULES_ROOT_PATH,
+  PROJECT_OUTPUT_PATH
 } from "./webpack.constants";
+
+const generateEntryPoints = (definition: IModulesDefinition) => {
+
+  const entries: { [index: string]: any } = {};
+
+  for (const entry of definition.modules) {
+
+    const entryPath: string = path.resolve(MODULES_ROOT_PATH, entry.folder);
+    entries[entry.name] = IS_PRODUCTION ? entryPath  : [ "react-hot-loader/patch", entryPath ];
+  }
+
+  return entries;
+};
 
 export const IO_CONFIG: {
   ENTRY: Entry | Array<string>,
   OUTPUT: Output
 } = {
-  ENTRY: IS_PRODUCTION
-    ? { application: ENTRY_FILE_PATH, init: INIT_FILE_PATH }
-    : { application: [ "react-hot-loader/patch", ENTRY_FILE_PATH ], init: INIT_FILE_PATH },
+  ENTRY: {
+    initialization: INIT_FILE_PATH,
+    ...generateEntryPoints(MODULES_CONFIG)
+  },
   OUTPUT: {
     chunkFilename: "js/c:[name].js",
     filename: "js/f:[name].js",

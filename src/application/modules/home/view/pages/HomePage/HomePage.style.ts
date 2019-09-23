@@ -4,7 +4,7 @@
 
 import { IApplicationTheme } from "@Lib/theme";
 
-export const homePageStyle = ({ palette }: IApplicationTheme) => ({
+export const homePageStyle = ({ palette, spacing }: IApplicationTheme) => ({
   cardLink: {
     "& a": {
       color: palette.text.primary,
@@ -18,10 +18,15 @@ export const homePageStyle = ({ palette }: IApplicationTheme) => ({
     backgroundColor: palette.background.default,
     backgroundSize: "cover",
     display: "flex",
-    flexDirection: "row",
+    flexDirection: "column",
     flexGrow: 1,
     justifyContent: "center",
     overflowY: "auto",
     transitionDuration: "350ms"
+  },
+  linkCards: {
+    display: "flex",
+    flexDirection: "row",
+    padding: spacing.unit * 10
   }
 });

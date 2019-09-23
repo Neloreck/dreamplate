@@ -7,13 +7,44 @@ const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPl
 const DotEnv = require("dotenv-webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
-const HtmlWebpackInlineSourcePlugin = require("html-webpack-inline-source-plugin");
 const DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ScriptExtHtmlPlugin = require("script-ext-html-webpack-plugin");
 
 import { APPLICATION_ROOT, APPLICATION_TITLE, MODAL_ROOT } from "../build_constants";
-import { BUILD_CONFIGURATION_PATH, ENVIRONMENT, IS_PRODUCTION, PROJECT_ROOT_PATH } from "./webpack.constants";
+import {
+  BUILD_CONFIGURATION_PATH,
+  ENVIRONMENT,
+  IModuleDefinition,
+  IS_PRODUCTION, MODULES_CONFIG,
+  PROJECT_ROOT_PATH
+} from "./webpack.constants";
+
+const createHTMLEntry = (definition: IModuleDefinition) => (
+  new HtmlWebpackPlugin({
+    ENVIRONMENT,
+    chunks: [ "initialization", definition.name ],
+    constants: {
+      APPLICATION_ROOT,
+      APPLICATION_TITLE,
+      MODAL_ROOT
+    },
+    favicon: path.resolve(PROJECT_ROOT_PATH, "cli/build/template/favicon.ico"),
+    filename: `html/${definition.name}.html`,
+    inject: true,
+    // inlineSource: ,
+    minify: {
+      collapseWhitespace: IS_PRODUCTION,
+      minifyCSS: true,
+      preserveLineBreaks: true,
+      quoteCharacter: "'",
+      removeComments: true,
+      removeTagWhitespace: true,
+      trimCustomFragments: true
+    },
+    template: path.resolve(PROJECT_ROOT_PATH, "cli/build/template/index.hbs")
+  })
+);
 
 const createChunkGroupNameGenerator = () => {
   return (
@@ -38,7 +69,6 @@ export const PLUGIN_CONFIG: {
   OPTIMIZATION: {
     chunkIds: "named",
     mergeDuplicateChunks: true,
-    removeEmptyChunks: true,
     minimizer: [
       new TerserPlugin({
         sourceMap: !IS_PRODUCTION,
@@ -59,22 +89,10 @@ export const PLUGIN_CONFIG: {
     ],
     moduleIds: "hashed",
     noEmitOnErrors: IS_PRODUCTION,
+    removeEmptyChunks: true,
     runtimeChunk: "single",
     splitChunks: {
       cacheGroups: {
-        core: {
-          name: createChunkGroupNameGenerator(),
-          priority: 50,
-          reuseExistingChunk: true,
-          maxSize: 500_000,
-          test: /\/node_modules\/(react|core-js|history|scheduler|dreamstate|jss|lit-)/
-        },
-        npm: {
-          name: createChunkGroupNameGenerator(),
-          priority: 40,
-          reuseExistingChunk: true,
-          test: /\/node_modules\//
-        },
         api: {
           name: createChunkGroupNameGenerator(),
           priority: 30,
@@ -82,13 +100,26 @@ export const PLUGIN_CONFIG: {
           test: /\/src\/api/
         },
         components: {
+          minSize: 5_000,
           name: createChunkGroupNameGenerator(),
           priority: 20,
           reuseExistingChunk: false,
-          test: /\/lib\/components/,
-          minSize: 5_000
+          test: /\/lib\/components/
         },
-        default: false
+        core: {
+          maxSize: 500_000,
+          name: createChunkGroupNameGenerator(),
+          priority: 50,
+          reuseExistingChunk: true,
+          test: /\/node_modules\/(react|core-js|history|scheduler|dreamstate|jss|lit-)/
+        },
+        default: false,
+        npm: {
+          name: createChunkGroupNameGenerator(),
+          priority: 40,
+          reuseExistingChunk: true,
+          test: /\/node_modules\//
+        }
       },
       chunks: "all",
       maxAsyncRequests: 50,
@@ -99,48 +130,29 @@ export const PLUGIN_CONFIG: {
     }
   },
   PLUGINS: [
+    ...MODULES_CONFIG.modules.map(createHTMLEntry),
     new DuplicatePackageCheckerPlugin({ verbose: true }),
     new BundleAnalyzerPlugin({
       analyzerMode: "static",
       openAnalyzer: false,
+      // todo: Direct.
       reportFilename: "../info/report.html"
     }),
     new CheckerPlugin(),
     new DotEnv({ path: path.resolve(PROJECT_ROOT_PATH, `cli/build/config/.${ENVIRONMENT}.env`) }),
-    new HtmlWebpackPlugin({
-      ENVIRONMENT,
-      constants: {
-        APPLICATION_ROOT,
-        APPLICATION_TITLE,
-        MODAL_ROOT
-      },
-      favicon: path.resolve(PROJECT_ROOT_PATH, "cli/build/template/favicon.ico"),
-      filename: "index.html",
-      inject: true,
-      inlineSource: "(.css)|(init)|(.*runtime.*)",
-      minify: {
-        collapseWhitespace: IS_PRODUCTION,
-        minifyCSS: true,
-        preserveLineBreaks: true,
-        quoteCharacter: "'",
-        removeComments: true,
-        removeTagWhitespace: true,
-        trimCustomFragments: true
-      },
-      template: path.resolve(PROJECT_ROOT_PATH, "cli/build/template/index.hbs")
-    }),
-    new DefinePlugin({
-      IS_DEV: !IS_PRODUCTION
-    }),
-    new ProvidePlugin({
-      React: "react"
-    }),
+    new DefinePlugin({ IS_DEV: !IS_PRODUCTION }),
+    new ProvidePlugin({ React: "react" }),
     new CopyWebpackPlugin([
         { from: path.resolve(BUILD_CONFIGURATION_PATH, "public/robots.txt"), to: "." },
         { from: path.resolve(BUILD_CONFIGURATION_PATH, "public/manifest.json"), to: "." }
       ]
     ),
-    new ScriptExtHtmlPlugin({ defaultAttribute: "defer" }),
-    new HtmlWebpackInlineSourcePlugin()
+    new ScriptExtHtmlPlugin({
+      defaultAttribute: "defer",
+      inline: [
+        "runtime",
+        "initialization"
+      ]
+    })
   ],
 };

@@ -3,7 +3,7 @@
  */
 
 import { useManager } from "dreamstate";
-import { ReactElement, ReactNode } from "react";
+import { ReactElement, ReactNode, Suspense } from "react";
 import { JssProvider, ThemeProvider } from "react-jss";
 
 // Data.
@@ -21,7 +21,11 @@ export function RootProvider(props: { children: ReactNode }): ReactElement {
 
       <ThemeProvider theme={theme}>
 
-        { props.children }
+        <Suspense fallback={<custom-loader width={100} height={100}/>}>
+
+          { props.children }
+
+        </Suspense>
 
       </ThemeProvider>
 

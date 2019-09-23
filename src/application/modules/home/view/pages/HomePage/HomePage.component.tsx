@@ -2,6 +2,8 @@
  * @module @application/home
  */
 
+import { RouterContextManager } from "@Main/data/store";
+import { Bind } from "dreamstate";
 import { PureComponent, ReactNode } from "react";
 import { WithStyles } from "react-jss";
 
@@ -9,7 +11,7 @@ import { WithStyles } from "react-jss";
 import { Styled } from "@Lib/decorators";
 
 // View.
-import { IMainHeaderInjectedProps, MainHeader } from "@Modules/home/view/components/MainHeader";
+import { IMainHeaderInjectedProps, MainHeader } from "@Main/view/components/MainHeader";
 import { homePageStyle } from "./HomePage.style";
 
 import "@Lib/components/custom/CustomCard";
@@ -35,11 +37,21 @@ export class HomePage extends PureComponent<IHomePageProps> {
 
         <main className={classes.content}>
 
-          { this.renderReferenceCard("React", "https://reactjs.org/") }
+          <div className={classes.linkCards}>
 
-          { this.renderReferenceCard("Typescript", "https://www.typescriptlang.org/") }
+            { this.renderReferenceCard("React", "https://reactjs.org/") }
 
-          { this.renderReferenceCard("DreamState", "https://github.com/Neloreck/dreamstate/") }
+            { this.renderReferenceCard("Typescript", "https://www.typescriptlang.org/") }
+
+            { this.renderReferenceCard("DreamState", "https://github.com/Neloreck/dreamstate/") }
+
+          </div>
+
+          <custom-button
+            onClick={this.onAboutNavigated}
+          >
+            About
+          </custom-button>
 
         </main>
 
@@ -66,6 +78,11 @@ export class HomePage extends PureComponent<IHomePageProps> {
 
       </custom-card>
     );
+  }
+
+  @Bind()
+  private onAboutNavigated(): void {
+    (RouterContextManager.current() as RouterContextManager).hardPush("/about");
   }
 
 }

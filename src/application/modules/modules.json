@@ -1,0 +1,17 @@
+{
+  "modules": [
+    {
+      "folder": "./about",
+      "name": "about",
+      "path": "/about"
+    },
+    {
+      "folder": "./home",
+      "name": "home",
+      "path": [
+        "/",
+        "/home"
+      ]
+    }
+  ]
+}

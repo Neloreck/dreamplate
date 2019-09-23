@@ -13,8 +13,9 @@ import { Logger } from "@Lib/utils";
  */
 export interface IRouterContext {
   routingActions: {
-    replace(path: string): void;
-    push(path: string): void;
+    replace(path: Path): void;
+    hardPush(path: Path): void;
+    push(path: Path): void;
     goBack(): void;
   };
   routingState: {
@@ -33,6 +34,7 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
   public context: IRouterContext = {
     routingActions: {
       goBack: this.goBack,
+      hardPush: this.hardPush,
       push: this.push,
       replace: this.replace
     },
@@ -41,7 +43,7 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
     }
   };
 
-  private unsubsribeFromHistory!: () => void;
+  private unsubscribeFromHistory!: () => void;
 
   private readonly log: Logger = new Logger(RouterContextManager.name);
 
@@ -70,6 +72,18 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
   }
 
   /**
+   * Hard push path in page history with reload.
+   */
+  @Bind()
+  public hardPush(path: Path): void {
+
+    this.log.info(`Hard push path: ${path}.`);
+
+    RouterContextManager.HISTORY.push(path);
+    window.location.reload();
+  }
+
+  /**
    * Go back in page history.
    */
   @Bind()
@@ -86,7 +100,7 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
 
     this.log.info(`Routing provision started [${path}].`);
 
-    this.unsubsribeFromHistory = RouterContextManager.HISTORY.listen((location: Location) => this.setState({ path: location.pathname }));
+    this.unsubscribeFromHistory = RouterContextManager.HISTORY.listen((location: Location) => this.setState({ path: location.pathname }));
   }
 
   protected onProvisionEnded(): void {
@@ -95,7 +109,7 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
 
     this.log.info(`Routing provision ended [${path}].`);
 
-    this.unsubsribeFromHistory();
+    this.unsubscribeFromHistory();
   }
 
 }

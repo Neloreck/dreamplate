@@ -10,10 +10,10 @@ import { WithStyles } from "react-jss";
 import { Styled } from "@Lib/decorators";
 
 // Data.
-import { IRouterContext, RouterContextManager } from "@Main/data/store";
+import { RouterContextManager } from "@Main/data/store";
 
 // View.
-import { IMainHeaderInjectedProps, MainHeader } from "@Modules/home/view/components/MainHeader";
+import { IMainHeaderInjectedProps, MainHeader } from "@Main/view/components/MainHeader";
 import { errorPageStyle } from "./ErrorPage.style";
 
 import "@Lib/components/custom/CustomButton";
@@ -27,9 +27,7 @@ export interface IErrorPageInjectedProps extends WithStyles<typeof errorPageStyl
 export interface IErrorPageProps extends IErrorPageOwnProps, IErrorPageInjectedProps {}
 
 @Styled(errorPageStyle)
-export class ErrorPage extends PureComponent<IErrorPageProps, {}, IRouterContext> {
-
-  public static contextType: Context<IRouterContext> = RouterContextManager.getContextType();
+export class ErrorPage extends PureComponent<IErrorPageProps, {}> {
 
   public render(): ReactNode {
 
@@ -58,10 +56,7 @@ export class ErrorPage extends PureComponent<IErrorPageProps, {}, IRouterContext
 
   @Bind()
   private onHomeNavigated(): void {
-
-    const { routingActions } = this.context;
-
-    routingActions.push("/home");
+    (RouterContextManager.current() as RouterContextManager).hardPush("/home");
   }
 
 }

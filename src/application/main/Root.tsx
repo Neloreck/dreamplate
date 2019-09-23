@@ -5,13 +5,18 @@
 import { Provide } from "dreamstate";
 import { PureComponent, ReactNode } from "react";
 import { hot } from "react-hot-loader/root";
+import { Router as ReactRouter } from "react-router";
 
 // Data
 import { AuthContextManager, RouterContextManager, ThemeContextManager } from "@Main/data/store";
 
 // Application.
-import { RootProvider } from "@Application/RootProvider";
-import { RootRouter } from "@Application/RootRouter";
+import { RootProvider } from "@Main/RootProvider";
+
+// View.
+import "@Lib/components/custom/CustomLoader";
+import "@Lib/components/layout/ApplicationRoot";
+import "@Lib/components/layout/ModalRoot";
 
 /**
  * Application root.
@@ -22,10 +27,16 @@ export class Root extends PureComponent {
 
   public render(): ReactNode {
 
+    const { children } = this.props;
+
     return (
       <RootProvider>
 
-        <RootRouter/>
+        <ReactRouter history={RouterContextManager.HISTORY}>
+
+          { children }
+
+        </ReactRouter>
 
       </RootProvider>
     );
