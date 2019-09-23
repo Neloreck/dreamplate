@@ -36,6 +36,8 @@ export const INDIGO_200: string = "#9fa8da";
 
 export const INDIGO_300: string = "#7986cb";
 
+export const INDIGO_400: string = "#5C6BC0";
+
 export const INDIGO_600: string = "#3949ab";
 
 export const INDIGO_700: string = "#303f9f";

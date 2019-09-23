@@ -48,6 +48,7 @@ export class HomePage extends PureComponent<IHomePageProps> {
           </div>
 
           <custom-button
+            color={"grayscale"}
             onClick={this.onAboutNavigated}
           >
             About

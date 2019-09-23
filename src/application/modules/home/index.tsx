@@ -2,7 +2,7 @@
  * @module @application/home
  */
 
-import { renderRoot } from "@Main/renderRoot";
-import { HomeRouter } from "./HomeRouter";
+import { renderRoot } from "@Main/view/utils";
+import { HomeRouter, HotHomeRouter } from "@Modules/home/HomeRouter";
 
-renderRoot(<HomeRouter/>);
+renderRoot(IS_DEV ? HotHomeRouter : HomeRouter);

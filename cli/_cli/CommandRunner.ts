@@ -114,7 +114,7 @@ export class CommandRunner {
         this.childProcess = spawn(args[0], args.slice(1).concat(this.cmdAdditionalArgs),  {
           cwd: process.cwd(),
           detached: true,
-          env: { ...process.env, PARENT: "X-CORE-CLI" },
+          env: { ...process.env, PARENT: "DREAMPLATE-CLI" },
           shell: true,
           stdio: [process.stdin, process.stdout, process.stderr]
         });

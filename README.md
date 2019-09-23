@@ -1,4 +1,4 @@
-# x-core client application boilerplate
+# dreamplate client application
 
 ### Install:
 
@@ -65,7 +65,7 @@
       - GENERIC_DESTINATION (*)
 
     - _application_[application specific code]
-      - initialization [inlide pre-executed code with first priority]
+      - initialization [inline pre-executed code with first priority]
       - main [application specific code shared between all modules]
       - modules [folder with application modules]
         - GENERIC MODULE (*)
@@ -95,11 +95,16 @@
 
 ## Futures
 
+  - History and separate modules workaround
+  - Calculate bundle size for comparisons
+  - Google closure compiler vs webpack terser?
+  - Minify and optimize as separated flags from env modes
   - Eslint
   - Experiment and comparison with Preact
   - Benchmark for testing?
   - Build something from wasm as experiment and use wasm-loader
   - Workers investigation?
+  - Better docs
 
 ## Side packages (waiting for)
 

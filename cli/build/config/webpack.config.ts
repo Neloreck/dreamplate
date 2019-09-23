@@ -1,7 +1,7 @@
 import { Configuration } from "webpack";
 
-import { DEVELOPMENT_TOOL, ENVIRONMENT, STATS, TARGET } from "./webpack.constants";
-import { DEV_SERVER_CONFIG } from "./webpack.devserver.config";
+import { ENVIRONMENT } from "./webpack.constants";
+import { DEV_CONFIG } from "./webpack.dev.config";
 import { IO_CONFIG } from "./webpack.io.config";
 import { MODULE_CONFIG } from "./webpack.module.config";
 import { PLUGIN_CONFIG } from "./webpack.plugin.config";
@@ -18,8 +18,8 @@ if (!ENVIRONMENT) {
  * Bundled from multiple computed scripts.
  */
 export const WEBPACK_CONFIG: Configuration = {
-  devServer: DEV_SERVER_CONFIG,
-  devtool: DEVELOPMENT_TOOL,
+  devServer: DEV_CONFIG.DEV_SERVER,
+  devtool: DEV_CONFIG.DEV_TOOL,
   entry: IO_CONFIG.ENTRY,
   mode: ENVIRONMENT,
   module: MODULE_CONFIG.MODULE,
@@ -27,10 +27,8 @@ export const WEBPACK_CONFIG: Configuration = {
   output: IO_CONFIG.OUTPUT,
   plugins: PLUGIN_CONFIG.PLUGINS,
   resolve: MODULE_CONFIG.RESOLVE,
-  stats: STATS,
-  target: TARGET
+  stats: DEV_CONFIG.STATS,
+  target: "web"
 } as any; // For dev server.
-
-export * from "./webpack.constants";
 
 export default WEBPACK_CONFIG;

@@ -2,7 +2,7 @@
  * @module @application/main
  */
 
-import { createElement, ReactElement } from "react";
+import { ComponentType, createElement } from "react";
 import { render } from "react-dom";
 
 // Application.
@@ -12,6 +12,6 @@ import { HotRoot, Root } from "@Main/Root";
 /**
  * Render application root node wrapped with global context.
  */
-export const renderRoot = (children: ReactElement): void => {
-  render(createElement(IS_DEV ? HotRoot : Root, {}, children), applicationConfig.targetElements.applicationRoot);
+export const renderRoot = (children: ComponentType): void => {
+  render(createElement(IS_DEV ? HotRoot : Root, {}, createElement(children)), applicationConfig.targetElements.applicationRoot);
 };

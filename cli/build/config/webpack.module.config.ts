@@ -90,8 +90,7 @@ export const MODULE_CONFIG: {
       ".json"
     ],
     modules: [
-      "node_modules",
-      path.resolve(PROJECT_ROOT_PATH, "node_modules")
+      "node_modules"
     ]
   }
 };

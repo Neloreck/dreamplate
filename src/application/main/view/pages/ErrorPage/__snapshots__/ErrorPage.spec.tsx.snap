@@ -32,9 +32,9 @@ exports[`Error page component rendering. Should match mounted snapshot with defa
               "paper": "#eeeeee",
             },
             "primary": Object {
-              "dark": "#7986cb",
-              "light": "#d1c4e9",
-              "main": "#9fa8da",
+              "dark": "#5C6BC0",
+              "light": "#9fa8da",
+              "main": "#7986cb",
             },
             "secondary": Object {
               "dark": "#ab47bc",

@@ -3,7 +3,7 @@
  */
 
 // View.
-import { renderRoot } from "@Main/renderRoot";
-import { AboutRouter  } from "@Modules/about/AboutRouter";
+import { renderRoot } from "@Main/view/utils";
+import { AboutRouter, HotAboutRouter } from "@Modules/about/AboutRouter";
 
-renderRoot(<AboutRouter/>);
+renderRoot(IS_DEV ? HotAboutRouter : AboutRouter);

@@ -1,10 +1,10 @@
 {
-  "name": "boilerplate",
+  "name": "dreamplate",
   "version": "0.0.0",
   "private": true,
   "repository": "https://github.com/neloreck/x-core-react-boilerplate",
-  "description": "X-core react boilerplate project.",
-  "main": "./src/application/Application.ts",
+  "description": "Dreamplate project.",
+  "main": "./src/application/modules/modules.json",
   "scripts": {
     "setup": "npx lerna bootstrap",
     "clean": "npm run cli purge && npx lerna clean -y ",

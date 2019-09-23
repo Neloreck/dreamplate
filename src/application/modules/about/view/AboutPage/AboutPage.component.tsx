@@ -1,3 +1,7 @@
+/**
+ * @module @application/about
+ */
+
 import { RouterContextManager } from "@Main/data/store";
 import { Bind } from "dreamstate";
 import { PureComponent, ReactNode } from "react";

@@ -2,7 +2,7 @@
  * @module @application/main
  */
 
-import { BLACK, IApplicationTheme, WHITE } from "@Lib/theme";
+import { IApplicationTheme, WHITE } from "@Lib/theme";
 
 export const mainHeaderStyle = ({ palette, spacing }: IApplicationTheme) => ({
   root: {

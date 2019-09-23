@@ -5,9 +5,8 @@
 import {
   BLACK, GRAY_200,
   GRAY_700,
-  INDIGO_100,
   INDIGO_200,
-  INDIGO_300, LIGHT_BLACK, LIGHT_WHITE,
+  INDIGO_300, INDIGO_400, LIGHT_BLACK, LIGHT_WHITE,
   PURPLE_200,
   PURPLE_300,
   PURPLE_400,
@@ -23,11 +22,11 @@ export const DEFAULT_THEME_TYPE: EThemeType = EThemeType.LIGHT;
 
 export const DEFAULT_SPACING_UNIT: number = 4;
 
-export const DEFAULT_PRIMARY_LIGHT: string = INDIGO_100;
+export const DEFAULT_PRIMARY_LIGHT: string = INDIGO_200;
 
-export const DEFAULT_PRIMARY_MAIN: string = INDIGO_200;
+export const DEFAULT_PRIMARY_MAIN: string = INDIGO_300;
 
-export const DEFAULT_PRIMARY_DARK: string = INDIGO_300;
+export const DEFAULT_PRIMARY_DARK: string = INDIGO_400;
 
 export const DEFAULT_SECONDARY_LIGHT: string = PURPLE_200;
 

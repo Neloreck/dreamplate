@@ -2,7 +2,7 @@ import * as path from "path";
 import { Entry, Output } from "webpack";
 
 import {
-  BACKEND_PUBLIC_PATH, IModulesDefinition, INIT_FILE_PATH,
+  BACKEND_PUBLIC_PATH, IModulesDefinition, INITIALIZATION_ROOT_PATH,
   IS_PRODUCTION, MODULES_CONFIG, MODULES_ROOT_PATH,
   PROJECT_OUTPUT_PATH
 } from "./webpack.constants";
@@ -25,7 +25,7 @@ export const IO_CONFIG: {
   OUTPUT: Output
 } = {
   ENTRY: {
-    initialization: INIT_FILE_PATH,
+    initialization: INITIALIZATION_ROOT_PATH,
     ...generateEntryPoints(MODULES_CONFIG)
   },
   OUTPUT: {

@@ -2,6 +2,15 @@ import { CheckerPlugin } from "awesome-typescript-loader";
 import * as path from "path";
 import { DefinePlugin, Options, Plugin, ProvidePlugin } from "webpack";
 
+import { APPLICATION_ROOT, APPLICATION_TITLE, MODAL_ROOT } from "../build_constants";
+import {
+  BUILD_CONFIGURATION_PATH,
+  ENVIRONMENT,
+  IModuleDefinition,
+  IS_PRODUCTION, MODULES_CONFIG, PROJECT_OUTPUT_PATH,
+  PROJECT_ROOT_PATH
+} from "./webpack.constants";
+
 // tslint:disable: no-var-requires typedef
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const DotEnv = require("dotenv-webpack");
@@ -10,15 +19,6 @@ const TerserPlugin = require("terser-webpack-plugin");
 const DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ScriptExtHtmlPlugin = require("script-ext-html-webpack-plugin");
-
-import { APPLICATION_ROOT, APPLICATION_TITLE, MODAL_ROOT } from "../build_constants";
-import {
-  BUILD_CONFIGURATION_PATH,
-  ENVIRONMENT,
-  IModuleDefinition,
-  IS_PRODUCTION, MODULES_CONFIG,
-  PROJECT_ROOT_PATH
-} from "./webpack.constants";
 
 const createHTMLEntry = (definition: IModuleDefinition) => (
   new HtmlWebpackPlugin({
@@ -32,7 +32,6 @@ const createHTMLEntry = (definition: IModuleDefinition) => (
     favicon: path.resolve(PROJECT_ROOT_PATH, "cli/build/template/favicon.ico"),
     filename: `html/${definition.name}.html`,
     inject: true,
-    // inlineSource: ,
     minify: {
       collapseWhitespace: IS_PRODUCTION,
       minifyCSS: true,
@@ -46,21 +45,7 @@ const createHTMLEntry = (definition: IModuleDefinition) => (
   })
 );
 
-const createChunkGroupNameGenerator = () => {
-  return (
-    IS_PRODUCTION
-      ? (module: any, chunks: any, cacheGroupKey: string): string => {
-        return `${cacheGroupKey}`;
-      }
-      : (module: any, chunks: any, cacheGroupKey: string): string => {
-
-        const moduleFileName: string = module.identifier().split("/").reduceRight((item: string) => item);
-        const allChunksNames: string = chunks.map((item: { name: string }) => item.name).join("~");
-
-        return `${cacheGroupKey}-${allChunksNames}-${moduleFileName}`;
-      }
-  );
-};
+const createChunkGroupNameGenerator = () => (module: any, chunks: any, cacheGroupKey: string): string => cacheGroupKey;
 
 export const PLUGIN_CONFIG: {
   PLUGINS: Array<Plugin>,
@@ -88,6 +73,7 @@ export const PLUGIN_CONFIG: {
       })
     ],
     moduleIds: "hashed",
+    namedChunks: false,
     noEmitOnErrors: IS_PRODUCTION,
     removeEmptyChunks: true,
     runtimeChunk: "single",
@@ -135,8 +121,7 @@ export const PLUGIN_CONFIG: {
     new BundleAnalyzerPlugin({
       analyzerMode: "static",
       openAnalyzer: false,
-      // todo: Direct.
-      reportFilename: "../info/report.html"
+      reportFilename: path.resolve(PROJECT_OUTPUT_PATH, "info/report.html")
     }),
     new CheckerPlugin(),
     new DotEnv({ path: path.resolve(PROJECT_ROOT_PATH, `cli/build/config/.${ENVIRONMENT}.env`) }),
@@ -149,10 +134,7 @@ export const PLUGIN_CONFIG: {
     ),
     new ScriptExtHtmlPlugin({
       defaultAttribute: "defer",
-      inline: [
-        "runtime",
-        "initialization"
-      ]
+      inline: [ "runtime", "initialization" ]
     })
   ],
 };

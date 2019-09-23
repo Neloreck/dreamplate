@@ -3,6 +3,7 @@
  */
 
 import { ReactElement } from "react";
+import { hot } from "react-hot-loader/root";
 import { Route, Switch } from "react-router";
 
 // View.
@@ -24,3 +25,5 @@ export function AboutRouter(): ReactElement {
     </Switch>
   );
 }
+
+export const HotAboutRouter: typeof AboutRouter = hot(AboutRouter);

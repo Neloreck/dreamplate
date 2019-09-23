@@ -12,9 +12,11 @@ describe("Custom button web component.", () => {
 
     await customButton.updateComplete;
 
-    expect(customButton.size).toBe("md");
     expect(customButton.shadowRoot!.innerHTML).toBe(nestedShadowSlotOf(CustomButton, ""));
     expect(customButton.innerHTML).toBe("");
+
+    expect(customButton.getAttribute("size")).toBeNull();
+    expect(customButton.getAttribute("color")).toBeNull();
 
     document.body.removeChild(customButton);
   });

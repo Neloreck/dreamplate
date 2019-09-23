@@ -4,6 +4,7 @@
 
 import { HistoryFallback } from "@Main/view/layouts/HistoryFallback";
 import { ReactElement } from "react";
+import { hot } from "react-hot-loader/root";
 import { Route, Switch } from "react-router";
 
 // View.
@@ -17,10 +18,12 @@ export function HomeRouter(): ReactElement {
 
       <Route path={[ "/", "/home" ]} component={HomePage} exact={true}/>
 
-      <Route path={"/home*"} component={ErrorPage} exact={true}/>
+      <Route path={[ "/error", "/home*" ]} component={ErrorPage} exact={true}/>
 
       <Route component={HistoryFallback}/>
 
     </Switch>
   );
 }
+
+export const HotHomeRouter: typeof HomeRouter = hot(HomeRouter);
