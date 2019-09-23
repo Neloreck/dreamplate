@@ -121,7 +121,7 @@ export const PLUGIN_CONFIG: {
     new BundleAnalyzerPlugin({
       analyzerMode: "static",
       openAnalyzer: false,
-      reportFilename: path.resolve(PROJECT_OUTPUT_PATH, "info/report.html")
+      reportFilename: path.resolve(PROJECT_OUTPUT_PATH, "../info/report.html")
     }),
     new CheckerPlugin(),
     new DotEnv({ path: path.resolve(PROJECT_ROOT_PATH, `cli/build/config/.${ENVIRONMENT}.env`) }),
