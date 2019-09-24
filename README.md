@@ -9,7 +9,7 @@
 ### Size and general performance:
 
   - MIN + GZIP - (+-85KB) in total
-  - load time: 30-50 ms for iMac 2017, 100 ms for Acer Nitro 5
+  - load time: 20-50 ms for iMac 2017, 70-100 ms for Acer Nitro 5
   - 7MB memory heap
   - Optimized react VDOM tree (except react-router and react-jss)
 
@@ -18,8 +18,8 @@
   - Custom CLI
   - Webpack, lazy loading, tree shaking, chunks + modular architecture, aliases
   - Web components (lit element)
-  - React, dreamstate(1.5KB) as contextStore
-  - JSS, roject theming with own context management
+  - React, dreamstate as contextStore
+  - JSS, project theming with own context management
   - Typescript (decorators, OOP style, newest features, awt loader with babel)
   - Jest
   - TSLint

@@ -2,13 +2,15 @@
  * @module @application/about
  */
 
-import { RouterContextManager } from "@Main/data/store";
 import { Bind } from "dreamstate";
 import { PureComponent, ReactNode } from "react";
 import { WithStyles } from "react-jss";
 
 // Lib.
 import { Styled } from "@Lib/decorators";
+
+// Data.
+import { RouterContextManager } from "@Main/data/store";
 
 // View.
 import { IMainHeaderInjectedProps, MainHeader } from "@Main/view/components/MainHeader";

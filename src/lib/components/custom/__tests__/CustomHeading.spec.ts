@@ -9,6 +9,7 @@ describe("Spinner loader web component.", () => {
     const heading: CustomHeading = new CustomHeading();
 
     heading.text = "Mock";
+    heading.size = 1;
 
     expect(heading.size).toBe(1);
 
