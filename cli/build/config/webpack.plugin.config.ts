@@ -7,7 +7,7 @@ import {
   BUILD_CONFIGURATION_PATH,
   ENVIRONMENT,
   IModuleDefinition,
-  IS_PRODUCTION, MODULES_CONFIG, PROJECT_OUTPUT_PATH,
+  IS_PRODUCTION, MODULES_CONFIG,
   PROJECT_ROOT_PATH
 } from "./webpack.constants";
 
@@ -19,6 +19,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 const DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ScriptExtHtmlPlugin = require("script-ext-html-webpack-plugin");
+const StatsWriterPlugin = require("webpack-stats-plugin").StatsWriterPlugin;
 
 const createHTMLEntry = (definition: IModuleDefinition) => (
   new HtmlWebpackPlugin({
@@ -121,8 +122,27 @@ export const PLUGIN_CONFIG: {
     new DuplicatePackageCheckerPlugin({ verbose: true }),
     new BundleAnalyzerPlugin({
       analyzerMode: "static",
+      defaultSizes: "gzip",
       openAnalyzer: false,
-      reportFilename: path.resolve(PROJECT_OUTPUT_PATH, "../info/report.html")
+      reportFilename: "../info/report.html"
+    }),
+    new StatsWriterPlugin({
+      filename:  "../info/report.json",
+      stats: {
+        all: true,
+        assets: true,
+        assetsByChunkName: true,
+        children: false,
+        chunks: false,
+        entrypoints: true,
+        hash: true,
+        logging: false,
+        modules: false,
+        namedChunkGroups: false,
+        outputPath: false,
+        publicPath: false,
+        version: false
+      }
     }),
     new CheckerPlugin(),
     new DotEnv({ path: path.resolve(PROJECT_ROOT_PATH, `cli/build/config/.${ENVIRONMENT}.env`) }),

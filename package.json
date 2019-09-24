@@ -72,6 +72,7 @@
     "webpack": "4.39.3",
     "webpack-bundle-analyzer": "^3.5.1",
     "webpack-cli": "3.3.8",
-    "webpack-dev-server": "3.8.0"
+    "webpack-dev-server": "3.8.0",
+    "webpack-stats-plugin": "^0.3.0"
   }
 }
