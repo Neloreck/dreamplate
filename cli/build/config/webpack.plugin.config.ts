@@ -75,6 +75,7 @@ export const PLUGIN_CONFIG: {
     moduleIds: "hashed",
     namedChunks: false,
     noEmitOnErrors: IS_PRODUCTION,
+    providedExports: IS_PRODUCTION,
     removeEmptyChunks: true,
     runtimeChunk: "single",
     splitChunks: {
@@ -97,7 +98,7 @@ export const PLUGIN_CONFIG: {
           name: createChunkGroupNameGenerator(),
           priority: 50,
           reuseExistingChunk: true,
-          test: /\/node_modules\/(react|core-js|history|scheduler|dreamstate|jss|lit-)/
+          test: /\/node_modules\/(react|core-js|scheduler|lit-)/
         },
         default: false,
         npm: {
@@ -133,7 +134,7 @@ export const PLUGIN_CONFIG: {
       ]
     ),
     new ScriptExtHtmlPlugin({
-      defaultAttribute: "defer",
+      defaultAttribute: "async",
       inline: [ "runtime", "initialization" ]
     })
   ],

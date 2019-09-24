@@ -9,7 +9,7 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "module": "esnext",
-    "inlineSources": true,
+    "inlineSources": false,
     "tsBuildInfoFile": "../target/cache/incremental",
     "incremental": true,
     "target": "esnext",
@@ -52,7 +52,6 @@
     "babelCore": "@babel/core",
     "doTypeCheck": true,
     "forkChecker": true,
-    "isolatedModules": true,
     "cacheDirectory": "../target/cache/atl",
     "useBabel": true,
     "useCache": true,
@@ -72,7 +71,7 @@
             },
             "modules": false,
             "loose": true,
-            "useBuiltIns": "usage",
+            "useBuiltIns": "entry",
             "corejs": "3",
             "exclude": [ "transform-async-to-generator", "transform-regenerator" ]
           }
