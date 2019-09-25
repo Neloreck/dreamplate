@@ -7,10 +7,7 @@ import { CreateGenerateIdOptions } from "jss";
 
 // Lib.
 import { createDefaultTheme, EThemeType, IApplicationTheme, toggleTheme } from "@Lib/theme";
-import { getFromLocalStorage, Logger, setLocalStorageItem } from "@Lib/utils";
-
-// Data.
-import { applicationConfig } from "@Main/data/configs";
+import { encrypt, getFromLocalStorage, Logger, parse, setLocalStorageItem } from "@Lib/utils";
 
 /**
  * Theme context description.
@@ -76,13 +73,40 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
   }
 
   /**
-   * Send generic message on manager provision start.
+   * Send generic message on manager provision start and subscribe to events.
    */
   protected onProvisionStarted(): void {
 
     const { themeState: { theme } } = this.context;
 
     this.log.info(`Theme provision started [${theme.palette.type}].`);
+
+    window.addEventListener("storage", this.onLocalStorageDataChanged);
+  }
+
+  /**
+   * Unsubscribe from events after provision end.
+   */
+  protected onProvisionEnded(): void {
+    window.removeEventListener("storage", this.onLocalStorageDataChanged);
+  }
+
+  /**
+   * Observe theme configuration changes and set same theme across tabs.
+   */
+  @Bind()
+  private onLocalStorageDataChanged(event: StorageEvent): void {
+
+    const { key, newValue } = event;
+
+    if (key === encrypt("theme")) {
+
+      if (newValue) {
+        this.setState({ theme: parse(newValue) });
+      } else {
+        this.setState({ theme: createDefaultTheme() });
+      }
+    }
   }
 
 }
