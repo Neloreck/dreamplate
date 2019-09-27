@@ -41,6 +41,5 @@ export const CORE_DEPENDENCIES: Array<string> = [
   "loose-envify",
   "object-assign",
   "scheduler",
-  "core-js",
-  "lit-.*"
+  "core-js"
 ];
