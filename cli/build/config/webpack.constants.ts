@@ -34,3 +34,13 @@ export const BACKEND_PUBLIC_PATH: string = "/";
 export const DEV_SERVER_HOST: string = "localhost";
 export const DEV_SERVER_PORT: number = 3000;
 export const DEV_SERVER_CONTENT_BASE: string = "target/dist/";
+
+export const CORE_DEPENDENCIES: Array<string> = [
+  "react",
+  "react-dom",
+  "loose-envify",
+  "object-assign",
+  "scheduler",
+  "core-js",
+  "lit-.*"
+];

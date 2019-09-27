@@ -4,7 +4,7 @@ import { DefinePlugin, Options, Plugin, ProvidePlugin } from "webpack";
 
 import { APPLICATION_ROOT, APPLICATION_TITLE, MODAL_ROOT } from "../build_constants";
 import {
-  BUILD_CONFIGURATION_PATH,
+  BUILD_CONFIGURATION_PATH, CORE_DEPENDENCIES,
   ENVIRONMENT,
   IModuleDefinition,
   IS_PRODUCTION, MODULES_CONFIG,
@@ -83,28 +83,28 @@ export const PLUGIN_CONFIG: {
       cacheGroups: {
         api: {
           name: createChunkGroupNameGenerator(),
-          priority: 30,
+          priority: 80,
           reuseExistingChunk: false,
           test: /\/src\/api/
         },
         components: {
           minSize: 5_000,
           name: createChunkGroupNameGenerator(),
-          priority: 20,
-          reuseExistingChunk: false,
+          priority: 90,
+          reuseExistingChunk: true,
           test: /\/lib\/components/
         },
         core: {
           maxSize: 500_000,
           name: createChunkGroupNameGenerator(),
-          priority: 50,
+          priority: 100,
           reuseExistingChunk: true,
-          test: /\/node_modules\/(react|core-js|scheduler|lit-)/
+          test: new RegExp(`/node_modules/(${CORE_DEPENDENCIES.reduce((accumulator: string, it: string) => accumulator ? accumulator + "|" + it : it )})\/`)
         },
         default: false,
         npm: {
           name: createChunkGroupNameGenerator(),
-          priority: 40,
+          priority: 70,
           reuseExistingChunk: false,
           test: /\/node_modules\//
         }
