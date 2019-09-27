@@ -5,8 +5,7 @@
 import { css, CSSResult, html, LitElement, TemplateResult, unsafeCSS } from "lit-element";
 
 // Lib.
-import { ICustomElementAttributes } from "@Lib/components";
-import { CustomElement, Property } from "@Lib/decorators";
+import { CustomElement, ICustomElementAttributes, Property } from "@Lib/components";
 import { BLACK } from "@Lib/theme";
 
 // Props.

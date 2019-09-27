@@ -1,26 +1,22 @@
 import "@Test/utils/mock_custom_elements";
 
+// Lib.
+import { createMockClasses } from "@Lib/utils/styling_testing";
+
 // Test.
-import { getThemedComponent, withMockedTheme } from "@Lib/theme/testing";
 import { shallow } from "enzyme";
 
 // View.
-import { IMainHeaderInjectedProps, MainHeader } from "./MainHeader.component";
+import { MainHeader } from "./MainHeader.component";
 
 describe("Main header component rendering.", () => {
 
-  it("Should match HOC snapshot.", () => {
+  const mockClasses: Record<string, string> = createMockClasses();
 
-    const wrapper = shallow(<MainHeader {...{} as IMainHeaderInjectedProps}/>);
+  it("Should match snapshot.", () => {
+
+    const wrapper = shallow(<MainHeader classes={mockClasses}/>);
 
     expect(wrapper).toMatchSnapshot("Default HOC layout.");
-  });
-
-  it("Should match mounted snapshot with default theme.", () => {
-
-    const wrapper = shallow(withMockedTheme(<MainHeader {...{} as IMainHeaderInjectedProps}/>));
-    const mounted = getThemedComponent(wrapper);
-
-    expect(mounted).toMatchSnapshot("Mounted with default theme.");
   });
 });

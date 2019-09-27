@@ -6,7 +6,7 @@ import { PureComponent, ReactNode } from "react";
 import { WithStyles } from "react-jss";
 
 // Lib.
-import { Styled } from "@Lib/decorators";
+import { Styled } from "@Lib/utils";
 
 import { IThemeContext, ThemeContextManager } from "@Main/data/store";
 
@@ -34,8 +34,8 @@ export class MainHeader extends PureComponent<IMainHeaderProps, {}, IThemeContex
       <header className={classes.root}>
 
         <custom-heading
-          text={"Boilerplate"}
-          size={3}
+          text={"Dreamplate"}
+          size={4}
         />
 
         <custom-button

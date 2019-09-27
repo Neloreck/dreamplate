@@ -5,8 +5,7 @@
 import { css, CSSResult, html, LitElement, TemplateResult } from "lit-element";
 
 // Lib.
-import { ICustomElementAttributes } from "@Lib/components";
-import { CustomElement } from "@Lib/decorators";
+import { CustomElement, ICustomElementAttributes } from "@Lib/components";
 
 // Props.
 export interface ICustomCardProps extends ICustomElementAttributes<CustomCard> {

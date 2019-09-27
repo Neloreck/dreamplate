@@ -15,6 +15,11 @@ declare global {
   const IS_DEV: boolean;
 
   /**
+   * Global definition for decorator support flag.
+   */
+  const IS_DECORATOR_ENABLED: boolean;
+
+  /**
    * Global definition for react jsx factories.
    */
   const React: typeof React;

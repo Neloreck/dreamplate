@@ -19,6 +19,9 @@ export const Styled = <S extends Styles<string> | TThemedStyles<any>, P>(
   options?: StyleSheetFactoryOptions
 ): ClassDecorator => {
   return (target: ClassType<P, any, any>): ClassType<P, any, any> => {
-    return withStyles(styles, options)(target);
+
+    if (IS_DECORATOR_ENABLED) {
+      return withStyles(styles, options)(target);
+    }
   };
 };

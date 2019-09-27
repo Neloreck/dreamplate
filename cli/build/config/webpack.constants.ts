@@ -15,6 +15,11 @@ export type TEnvironmentType = ("development" | "production");
 export const ENVIRONMENT: TEnvironmentType = process.env.NODE_ENV as TEnvironmentType;
 export const IS_PRODUCTION: boolean = (ENVIRONMENT === "production");
 
+export const RUNTIME_CONSTANTS = {
+  IS_DECORATOR_ENABLED: true,
+  IS_DEV: !IS_PRODUCTION
+};
+
 export const PROJECT_ROOT_PATH: string = path.resolve(__dirname, "../../../");
 export const MODULES_ROOT_PATH: string = path.resolve(PROJECT_ROOT_PATH, "src/application/modules");
 export const INITIALIZATION_ROOT_PATH: string = path.resolve(PROJECT_ROOT_PATH, "src/application/initialization");

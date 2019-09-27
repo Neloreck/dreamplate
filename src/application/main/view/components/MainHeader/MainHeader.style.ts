@@ -2,13 +2,12 @@
  * @module @application/main
  */
 
-import { IApplicationTheme, WHITE } from "@Lib/theme";
+import { BLACK, IApplicationTheme } from "@Lib/theme";
 
 export const mainHeaderStyle = ({ palette, spacing }: IApplicationTheme) => ({
   root: {
     "& > custom-heading": {
-      "-webkit-text-stroke": "1px black",
-      color: WHITE,
+      color: BLACK,
       cursor: "default"
     },
     alignSelf: "normal",

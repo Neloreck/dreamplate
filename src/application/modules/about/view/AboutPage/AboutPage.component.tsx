@@ -7,7 +7,7 @@ import { PureComponent, ReactNode } from "react";
 import { WithStyles } from "react-jss";
 
 // Lib.
-import { Styled } from "@Lib/decorators";
+import { Styled } from "@Lib/utils";
 
 // Data.
 import { RouterContextManager } from "@Main/data/store";
@@ -41,9 +41,7 @@ export class AboutPage extends PureComponent<IAboutPageProps> {
 
           About page.
 
-          <custom-button
-            onClick={this.onHomeNavigated}
-          >
+          <custom-button onClick={this.onHomeNavigated}>
             Go home
           </custom-button>
 

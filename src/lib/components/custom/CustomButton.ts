@@ -5,8 +5,7 @@
 import { css, CSSResult, html, LitElement, TemplateResult, unsafeCSS } from "lit-element";
 
 // Lib.
-import { ICustomElementAttributes } from "@Lib/components";
-import { CustomElement } from "@Lib/decorators";
+import { CustomElement, ICustomElementAttributes } from "@Lib/components";
 import {
   BLACK,
   DEFAULT_PRIMARY_DARK,
@@ -104,7 +103,7 @@ export class CustomButton extends LitElement {
   }
 
   public render(): TemplateResult {
-    return html`<slot></slot>`;
+    return html`<slot/>`;
   }
 
 }

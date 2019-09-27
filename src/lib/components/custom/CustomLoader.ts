@@ -5,8 +5,7 @@
 import { css, CSSResult, LitElement, unsafeCSS } from "lit-element";
 
 // Lib.
-import { ICustomElementAttributes } from "@Lib/components";
-import { CustomElement, Property } from "@Lib/decorators";
+import { CustomElement, ICustomElementAttributes, Property } from "@Lib/components";
 import { DEFAULT_PRIMARY_DARK, DEFAULT_PRIMARY_MAIN } from "@Lib/theme";
 
 // Props.

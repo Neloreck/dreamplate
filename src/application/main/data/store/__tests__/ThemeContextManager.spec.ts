@@ -1,6 +1,6 @@
 // Lib.
 import { createDefaultTheme, DEFAULT_THEME_TYPE, EThemeType, IApplicationTheme, toggleTheme } from "@Lib/theme";
-import { getFromLocalStorage, setLocalStorageItem } from "@Lib/utils";
+import { encrypt, getFromLocalStorage, setLocalStorageItem } from "@Lib/utils";
 
 // Data.
 import { ThemeContextManager } from "@Main/data/store";
@@ -45,5 +45,19 @@ describe("Theme context manager.", () => {
     const manager: ThemeContextManager = new ThemeContextManager();
 
     expect(manager.context.themeState.theme.palette.type).toBe(getFromLocalStorage("theme").palette.type);
+  });
+
+  it("Should handle events from other tabs.", () => {
+
+    const manager: ThemeContextManager = new ThemeContextManager();
+    const defaultThemeValue: EThemeType = manager.context.themeState.theme.palette.type;
+
+    const nextTheme: IApplicationTheme = toggleTheme(manager.context.themeState.theme);
+
+    // @ts-ignore privacy.
+    manager.onLocalStorageDataChanged({ key: encrypt("theme"), newValue: encrypt(JSON.stringify(nextTheme)) });
+
+    expect(manager.context.themeState.theme.palette.type).toBe(nextTheme.palette.type);
+    expect(manager.context.themeState.theme.palette.type).not.toBe(defaultThemeValue);
   });
 });

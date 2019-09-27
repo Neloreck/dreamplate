@@ -7,7 +7,7 @@ import { Context, PureComponent, ReactNode } from "react";
 import { WithStyles } from "react-jss";
 
 // Lib.
-import { Styled } from "@Lib/decorators";
+import { Styled } from "@Lib/utils";
 
 // Data.
 import { RouterContextManager } from "@Main/data/store";

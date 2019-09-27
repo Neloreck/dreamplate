@@ -8,7 +8,7 @@ import {
   ENVIRONMENT,
   IModuleDefinition,
   IS_PRODUCTION, MODULES_CONFIG,
-  PROJECT_ROOT_PATH
+  PROJECT_ROOT_PATH, RUNTIME_CONSTANTS
 } from "./webpack.constants";
 
 // tslint:disable: no-var-requires typedef
@@ -105,7 +105,7 @@ export const PLUGIN_CONFIG: {
         npm: {
           name: createChunkGroupNameGenerator(),
           priority: 40,
-          reuseExistingChunk: true,
+          reuseExistingChunk: false,
           test: /\/node_modules\//
         }
       },
@@ -146,7 +146,7 @@ export const PLUGIN_CONFIG: {
     }),
     new CheckerPlugin(),
     new DotEnv({ path: path.resolve(PROJECT_ROOT_PATH, `cli/build/config/.${ENVIRONMENT}.env`) }),
-    new DefinePlugin({ IS_DEV: !IS_PRODUCTION }),
+    new DefinePlugin(RUNTIME_CONSTANTS),
     new ProvidePlugin({ React: "react" }),
     new CopyWebpackPlugin([
         { from: path.resolve(BUILD_CONFIGURATION_PATH, "public/robots.txt"), to: "." },

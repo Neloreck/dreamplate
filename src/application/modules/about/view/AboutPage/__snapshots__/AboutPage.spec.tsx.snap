@@ -1,82 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`About page component rendering. Should match HOC snapshot.: Default HOC layout. 1`] = `
-<ContextConsumer>
-  <Component />
-</ContextConsumer>
-`;
-
-exports[`About page component rendering. Should match mounted snapshot with default theme.: Mounted with default theme. 1`] = `
-<AboutPage
-  classes={
-    Object {
-      "content": "AboutPage-content-0-2-1",
-    }
-  }
->
-  <JssContextSubscriber>
-    <WithStyles(MainHeader)
-      innerRef={null}
-      jssContext={
-        Object {
-          "classNamePrefix": "",
-          "disableStylesGeneration": false,
-        }
-      }
-      theme={
-        Object {
-          "palette": Object {
-            "background": Object {
-              "default": "#FFF",
-              "paper": "#eeeeee",
-            },
-            "primary": Object {
-              "dark": "#5C6BC0",
-              "light": "#9fa8da",
-              "main": "#7986cb",
-            },
-            "secondary": Object {
-              "dark": "#ab47bc",
-              "light": "#7986cb",
-              "main": "#ba68c8",
-            },
-            "text": Object {
-              "primary": "#000",
-              "secondary": "#444444",
-            },
-            "type": "light",
-          },
-          "spacing": Object {
-            "unit": 4,
-          },
-        }
-      }
-    >
-      <MainHeader
-        classes={
-          Object {
-            "root": "MainHeader-root-0-2-2",
-          }
-        }
-      >
-        <header
-          className="MainHeader-root-0-2-2"
-        >
-          <custom-heading
-            size={3}
-            text="Boilerplate"
-          />
-          <custom-button
-            onClick={[Function]}
-          >
-            Toggle
-          </custom-button>
-        </header>
-      </MainHeader>
-    </WithStyles(MainHeader)>
-  </JssContextSubscriber>
+<Fragment>
+  <MainHeader />
   <main
-    className="AboutPage-content-0-2-1"
+    className="content"
   >
     About page.
     <custom-button
@@ -85,5 +13,5 @@ exports[`About page component rendering. Should match mounted snapshot with defa
       Go home
     </custom-button>
   </main>
-</AboutPage>
+</Fragment>
 `;

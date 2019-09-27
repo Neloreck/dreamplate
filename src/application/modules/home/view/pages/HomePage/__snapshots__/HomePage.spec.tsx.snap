@@ -1,90 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Home page component rendering. Should match HOC snapshot.: Default HOC layout. 1`] = `
-<ContextConsumer>
-  <Component />
-</ContextConsumer>
-`;
-
-exports[`Home page component rendering. Should match mounted snapshot with default theme.: Mounted with default theme. 1`] = `
-<HomePage
-  classes={
-    Object {
-      "cardLink": "HomePage-cardLink-0-2-1",
-      "content": "HomePage-content-0-2-2",
-      "linkCards": "HomePage-linkCards-0-2-3",
-    }
-  }
->
-  <JssContextSubscriber>
-    <WithStyles(MainHeader)
-      innerRef={null}
-      jssContext={
-        Object {
-          "classNamePrefix": "",
-          "disableStylesGeneration": false,
-        }
-      }
-      theme={
-        Object {
-          "palette": Object {
-            "background": Object {
-              "default": "#FFF",
-              "paper": "#eeeeee",
-            },
-            "primary": Object {
-              "dark": "#5C6BC0",
-              "light": "#9fa8da",
-              "main": "#7986cb",
-            },
-            "secondary": Object {
-              "dark": "#ab47bc",
-              "light": "#7986cb",
-              "main": "#ba68c8",
-            },
-            "text": Object {
-              "primary": "#000",
-              "secondary": "#444444",
-            },
-            "type": "light",
-          },
-          "spacing": Object {
-            "unit": 4,
-          },
-        }
-      }
-    >
-      <MainHeader
-        classes={
-          Object {
-            "root": "MainHeader-root-0-2-4",
-          }
-        }
-      >
-        <header
-          className="MainHeader-root-0-2-4"
-        >
-          <custom-heading
-            size={3}
-            text="Boilerplate"
-          />
-          <custom-button
-            onClick={[Function]}
-          >
-            Toggle
-          </custom-button>
-        </header>
-      </MainHeader>
-    </WithStyles(MainHeader)>
-  </JssContextSubscriber>
+exports[`Home page component rendering. Should match snapshot.: Default HOC layout. 1`] = `
+<Fragment>
+  <MainHeader />
   <main
-    className="HomePage-content-0-2-2"
+    className="content"
   >
     <div
-      className="HomePage-linkCards-0-2-3"
+      className="linkCards"
     >
       <custom-card
-        class="HomePage-cardLink-0-2-1"
+        class="cardLink"
       >
         <a
           href="https://reactjs.org/"
@@ -95,7 +21,7 @@ exports[`Home page component rendering. Should match mounted snapshot with defau
         </a>
       </custom-card>
       <custom-card
-        class="HomePage-cardLink-0-2-1"
+        class="cardLink"
       >
         <a
           href="https://www.typescriptlang.org/"
@@ -106,7 +32,7 @@ exports[`Home page component rendering. Should match mounted snapshot with defau
         </a>
       </custom-card>
       <custom-card
-        class="HomePage-cardLink-0-2-1"
+        class="cardLink"
       >
         <a
           href="https://github.com/Neloreck/dreamstate/"
@@ -124,5 +50,5 @@ exports[`Home page component rendering. Should match mounted snapshot with defau
       About
     </custom-button>
   </main>
-</HomePage>
+</Fragment>
 `;

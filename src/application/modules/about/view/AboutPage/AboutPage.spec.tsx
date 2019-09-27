@@ -1,26 +1,21 @@
 import "@Test/utils/mock_custom_elements";
 
-// Test.
-import { getThemedComponent, withMockedTheme } from "@Lib/theme/testing";
 import { shallow } from "enzyme";
 
+// Lib.
+import { createMockClasses } from "@Lib/utils/styling_testing";
+
 // View.
-import { AboutPage, IAboutPageInjectedProps } from "./AboutPage.component";
+import { AboutPage } from "./AboutPage.component";
 
 describe("About page component rendering.", () => {
 
+  const classes: Record<string, string> = createMockClasses();
+
   it("Should match HOC snapshot.", () => {
 
-    const wrapper = shallow(<AboutPage {...{} as IAboutPageInjectedProps}/>);
+    const wrapper = shallow(<AboutPage classes={classes}/>);
 
     expect(wrapper).toMatchSnapshot("Default HOC layout.");
-  });
-
-  it("Should match mounted snapshot with default theme.", () => {
-
-    const wrapper = shallow(withMockedTheme(<AboutPage {...{} as IAboutPageInjectedProps}/>));
-    const mounted = getThemedComponent(wrapper);
-
-    expect(mounted).toMatchSnapshot("Mounted with default theme.");
   });
 });

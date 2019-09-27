@@ -18,6 +18,7 @@ export const JEST_CONFIG = {
     "/node_modules/"
    ],
   globals: {
+    IS_DECORATOR_ENABLED: false,
     IS_DEV: false,
     React,
     "ts-jest": {

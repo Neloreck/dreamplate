@@ -8,7 +8,7 @@ import { PureComponent, ReactNode } from "react";
 import { WithStyles } from "react-jss";
 
 // Lib.
-import { Styled } from "@Lib/decorators";
+import { Styled } from "@Lib/utils";
 
 // View.
 import { IMainHeaderInjectedProps, MainHeader } from "@Main/view/components/MainHeader";
