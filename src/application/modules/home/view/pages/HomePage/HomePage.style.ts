@@ -10,6 +10,9 @@ export const homePageStyle = ({ palette, spacing }: IApplicationTheme) => ({
       color: palette.text.primary,
     },
     backgroundColor: palette.background.paper,
+    display: "flex",
+    justifyContent: "center",
+    minWidth: spacing.unit * 15,
     transitionDuration: "500ms"
   },
   content: {

@@ -12,7 +12,7 @@ export const MODULE_CONFIG: {
       // STRIP DEV CODE.
       {
         enforce: "pre",
-        exclude: /(node_modules|bower_components|\.spec\.js)/,
+        exclude: /(node_modules|\.spec\.js)/,
         test: /\.(ts|tsx)$/,
         use: [
           { loader: path.resolve(BUILD_CONFIGURATION_PATH, "loaders/stripBlockLoader.ts") }

@@ -2,13 +2,15 @@ import { CheckerPlugin } from "awesome-typescript-loader";
 import * as path from "path";
 import { DefinePlugin, Options, Plugin, ProvidePlugin } from "webpack";
 
-import { APPLICATION_ROOT, APPLICATION_TITLE, MODAL_ROOT } from "../build_constants";
+import { APPLICATION_ROOT, MODAL_ROOT } from "../build_constants";
 import {
-  BUILD_CONFIGURATION_PATH, CORE_DEPENDENCIES,
+  BUILD_CONFIGURATION_PATH,
   ENVIRONMENT,
   IModuleDefinition,
-  IS_PRODUCTION, MODULES_CONFIG,
-  PROJECT_ROOT_PATH, RUNTIME_CONSTANTS
+  IS_PRODUCTION,
+  MODULES_CONFIG,
+  PROJECT_ROOT_PATH,
+  RUNTIME_CONSTANTS
 } from "./webpack.constants";
 
 // tslint:disable: no-var-requires typedef
@@ -21,13 +23,24 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ScriptExtHtmlPlugin = require("script-ext-html-webpack-plugin");
 const StatsWriterPlugin = require("webpack-stats-plugin").StatsWriterPlugin;
 
+const CORE_DEPENDENCIES: Array<string> = [
+  "react",
+  "react-dom",
+  "loose-envify",
+  "object-assign",
+  "scheduler",
+  "core-js"
+];
+
+const createChunkGroupNameGenerator = () => (module: any, chunks: any, cacheGroupKey: string): string => cacheGroupKey;
+
 const createHTMLEntry = (definition: IModuleDefinition) => (
   new HtmlWebpackPlugin({
     ENVIRONMENT,
     chunks: [ "initialization", definition.name ],
     constants: {
       APPLICATION_ROOT,
-      APPLICATION_TITLE,
+      APPLICATION_TITLE: definition.title,
       MODAL_ROOT
     },
     favicon: path.resolve(PROJECT_ROOT_PATH, "cli/build/template/favicon.ico"),
@@ -45,8 +58,6 @@ const createHTMLEntry = (definition: IModuleDefinition) => (
     template: path.resolve(PROJECT_ROOT_PATH, "cli/build/template/index.hbs")
   })
 );
-
-const createChunkGroupNameGenerator = () => (module: any, chunks: any, cacheGroupKey: string): string => cacheGroupKey;
 
 export const PLUGIN_CONFIG: {
   PLUGINS: Array<Plugin>,
@@ -92,7 +103,7 @@ export const PLUGIN_CONFIG: {
           name: createChunkGroupNameGenerator(),
           priority: 90,
           reuseExistingChunk: true,
-          test: /(\/lib\/components)|(\/node_modules\/lit-.*)/
+          test: /(\/application\/lib\/components)|(\/node_modules\/lit-.*)/
         },
         core: {
           maxSize: 500_000,
@@ -157,5 +168,5 @@ export const PLUGIN_CONFIG: {
       defaultAttribute: "async",
       inline: [ "runtime", "initialization" ]
     })
-  ],
+  ]
 };

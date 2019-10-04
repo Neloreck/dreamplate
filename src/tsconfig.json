@@ -27,13 +27,13 @@
     "paths": {
       "@Build/*": [ "../cli/build/*" ],
       "@Test/*": [ "../cli/test/*" ],
-      "@Application/*": [ "application/*" ],
-      "@Main": [ "application/main/index" ],
-      "@Main/*": [ "application/main/*" ],
-      "@Modules/*": [ "application/modules/*" ],
-      "@Modules": [ "application/modules/index" ],
-      "@Api/*": [ "api/*" ],
-      "@Lib/*": [ "lib/*" ]
+      "@Application/*": [ "./application/*" ],
+      "@Main": [ "./application/main/index" ],
+      "@Main/*": [ "./application/main/*" ],
+      "@Modules/*": [ "./application/modules/*" ],
+      "@Modules": [ "./application/modules/index" ],
+      "@Api/*": [ "./api/*" ],
+      "@Lib/*": [ "./lib/*" ]
     },
     "resolveJsonModule": true
   },

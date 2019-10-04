@@ -1,7 +1,7 @@
-import { CommandRunner, EntryPoint } from "./_cli";
+import { CommandRunner, Run } from "./_cli";
 import * as cliConfig from "./cli.json";
 
-@EntryPoint()
+@Run()
 export class CliRunner {
 
   public static readonly scriptsKey: string = "scripts";

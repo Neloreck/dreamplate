@@ -1,7 +1,7 @@
 let called: boolean = false;
 
 // tslint:disable typedef
-export function EntryPoint(shouldCall?: boolean) {
+export function Run(shouldCall?: boolean) {
 
   return (targetClass: { main: (argv: Array<string>) => void } ): void  => {
 

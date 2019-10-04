@@ -3,7 +3,8 @@
     {
       "folder": "./about",
       "name": "about",
-      "path": "/about"
+      "path": "/about",
+      "title": "About"
     },
     {
       "folder": "./home",
@@ -11,7 +12,8 @@
       "path": [
         "/",
         "/home"
-      ]
+      ],
+      "title": "Dreamplate"
     }
   ]
 }

@@ -1,12 +1,14 @@
+import { Options } from "webpack";
+
 import {
   BACKEND_PUBLIC_PATH,
   DEV_SERVER_CONTENT_BASE,
   DEV_SERVER_HOST,
-  DEV_SERVER_PORT, IModulesDefinition,
+  DEV_SERVER_PORT,
+  IModulesDefinition,
   IS_PRODUCTION,
   MODULES_CONFIG
 } from "./webpack.constants";
-import { Options }  from "webpack";
 
 /**
  * Generate fallback redirects/urls for dev server history usage.
@@ -31,7 +33,6 @@ const createFallbackRewrites = (definition: IModulesDefinition) => {
   return rewrites;
 };
 
-
 export const DEV_CONFIG: {
   DEV_SERVER: object,
   STATS: Options.Stats,
@@ -53,6 +54,7 @@ export const DEV_CONFIG: {
     port: DEV_SERVER_PORT,
     publicPath: BACKEND_PUBLIC_PATH
   },
+  DEV_TOOL: IS_PRODUCTION ? false : "source-map",
   STATS: {
     assets: true,
     children: false,
@@ -61,6 +63,5 @@ export const DEV_CONFIG: {
     colors: true,
     modules: false,
     timings: true
-  },
-  DEV_TOOL: IS_PRODUCTION ? false : "source-map"
+  }
 };
