@@ -32,6 +32,6 @@ export const MODULES_CONFIG: IModulesDefinition = require(path.resolve(MODULES_R
 
 export const BACKEND_PUBLIC_PATH: string = "/";
 
-export const DEV_SERVER_HOST: string = "localhost";
+export const DEV_SERVER_HOST: string = "0.0.0.0";
 export const DEV_SERVER_PORT: number = 3000;
-export const DEV_SERVER_CONTENT_BASE: string = "target/dist/";
+export const DEV_SERVER_CONTENT_BASE: string = path.resolve(PROJECT_ROOT_PATH, "target/dist/");

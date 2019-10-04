@@ -2,6 +2,8 @@
  * @module @lib/theme
  */
 
+export type TBreakpoint = "xs" | "sm" | "md" | "lg" | "xl";
+
 export enum EThemeType {
   LIGHT = "light",
   DARK = "dark"

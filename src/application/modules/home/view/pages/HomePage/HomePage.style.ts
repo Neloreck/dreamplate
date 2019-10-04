@@ -2,7 +2,7 @@
  * @module @application/home
  */
 
-import { IApplicationTheme } from "@Lib/theme";
+import { down, IApplicationTheme } from "@Lib/theme";
 
 export const homePageStyle = ({ palette, spacing }: IApplicationTheme) => ({
   cardLink: {
@@ -28,6 +28,9 @@ export const homePageStyle = ({ palette, spacing }: IApplicationTheme) => ({
     transitionDuration: "350ms"
   },
   linkCards: {
+    [down("sm")]: {
+      flexDirection: "column"
+    },
     display: "flex",
     flexDirection: "row",
     padding: spacing.unit * 10

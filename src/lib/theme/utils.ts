@@ -20,7 +20,7 @@ import {
   DEFAULT_TEXT_SECONDARY_LIGHT,
   DEFAULT_THEME_TYPE
 } from "@Lib/theme/theming";
-import { EThemeType, IApplicationTheme } from "@Lib/theme/types";
+import { EThemeType, IApplicationTheme, TBreakpoint } from "@Lib/theme/types";
 
 /**
  * Create default theme.
