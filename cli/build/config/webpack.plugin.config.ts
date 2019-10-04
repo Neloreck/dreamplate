@@ -34,6 +34,23 @@ const CORE_DEPENDENCIES: Array<string> = [
 
 const createChunkGroupNameGenerator = () => (module: any, chunks: any, cacheGroupKey: string): string => cacheGroupKey;
 
+const createChunkCacheGroups = (definitions: Array<IModuleDefinition>) => {
+
+  const entries: { [index: string]: any } = {};
+
+  for (const it of definitions) {
+    entries[it.name + "_npm"] = ({
+      maxSize: 900_00,
+      name: createChunkGroupNameGenerator(),
+      priority: 120,
+      reuseExistingChunk: true,
+      test: new RegExp(`\/modules\/${it.name}\/node_modules\/`)
+    });
+  }
+
+  return entries;
+};
+
 const createHTMLEntry = (definition: IModuleDefinition) => (
   new HtmlWebpackPlugin({
     ENVIRONMENT,
@@ -113,12 +130,13 @@ export const PLUGIN_CONFIG: {
           test: new RegExp(`/node_modules/(${CORE_DEPENDENCIES.reduce((accumulator: string, it: string) => accumulator ? accumulator + "|" + it : it )})\/`)
         },
         default: false,
-        npm: {
+        global: {
           name: createChunkGroupNameGenerator(),
           priority: 70,
           reuseExistingChunk: false,
-          test: /\/node_modules\//
-        }
+          test: /\/src\/node_modules\//
+        },
+        ...createChunkCacheGroups(MODULES_CONFIG.modules)
       },
       chunks: "all",
       maxAsyncRequests: 50,

@@ -10,10 +10,19 @@
       "folder": "./home",
       "name": "home",
       "path": [
-        "/",
+        "/$",
         "/home"
       ],
       "title": "Dreamplate"
+    },
+    {
+      "folder": "./error",
+      "name": "error",
+      "path": [
+        "/*",
+        "/error"
+      ],
+      "title": "Error"
     }
   ]
 }

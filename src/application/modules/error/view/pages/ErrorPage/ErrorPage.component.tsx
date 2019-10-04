@@ -1,5 +1,5 @@
 /**
- * @module @application/main
+ * @module @application/error
  */
 
 import { Bind } from "dreamstate";
