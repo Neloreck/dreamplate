@@ -15,6 +15,7 @@ export interface IRouterContext {
   routingActions: {
     replace(path: Path): void;
     hardPush(path: Path): void;
+    hardReplace(path: Path): void;
     push(path: Path): void;
     goBack(): void;
   };
@@ -35,6 +36,7 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
     routingActions: {
       goBack: this.goBack,
       hardPush: this.hardPush,
+      hardReplace: this.hardReplace,
       push: this.push,
       replace: this.replace
     },
@@ -72,15 +74,25 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
   }
 
   /**
-   * Hard push path in page history with reload.
+   * Hard push path in page history with page reload.
    */
   @Bind()
   public hardPush(path: Path): void {
 
     this.log.info(`Hard push path: ${path}.`);
 
-    RouterContextManager.HISTORY.push(path);
-    window.location.reload();
+    window.location.pathname = path;
+  }
+
+  /**
+   * Hard replace path in page history with page reload.
+   */
+  @Bind()
+  public hardReplace(path: Path): void {
+
+    this.log.info(`Hard replace path: ${path}.`);
+
+    window.location.replace(path);
   }
 
   /**
