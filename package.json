@@ -67,7 +67,7 @@
     "tslint": "^5.20.0",
     "tslint-eslint-rules": "^5.4.0",
     "tslint-microsoft-contrib": "^6.2.0",
-    "typescript": "^3.6.3",
+    "typescript": "^3.7.0-beta",
     "url-loader": "^2.1.0",
     "webpack": "4.39.3",
     "webpack-bundle-analyzer": "^3.5.2",
