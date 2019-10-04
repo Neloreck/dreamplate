@@ -120,7 +120,7 @@ export const PLUGIN_CONFIG: {
           name: createChunkGroupNameGenerator(),
           priority: 90,
           reuseExistingChunk: true,
-          test: /(\/application\/lib\/components)|(\/node_modules\/lit-.*)/
+          test: /(\/lib\/components)|(\/node_modules\/lit-.*)/
         },
         core: {
           maxSize: 500_000,
