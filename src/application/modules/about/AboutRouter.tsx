@@ -7,6 +7,7 @@ import { hot } from "react-hot-loader/root";
 import { Route, Switch } from "react-router";
 
 // View.
+import { DefaultErrorFallback } from "@Main/view/layouts";
 import { AboutPage } from "@Modules/about/view/AboutPage";
 
 export function AboutRouter(): ReactElement {
@@ -15,6 +16,8 @@ export function AboutRouter(): ReactElement {
     <Switch>
 
       <Route path={"/about"} component={AboutPage} exact={true}/>
+
+      <Route component={DefaultErrorFallback}/>
 
     </Switch>
   );
