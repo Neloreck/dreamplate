@@ -15,6 +15,7 @@ export interface IAuthContext {
   authActions: {
   };
   authState: {
+    // todo: Generic ILoadable<T> would solve such kind of problems. It can look like <T>{ value: Optional<T>, loading: boolean, error: Optional<Error> }.
     isAuthorizing: boolean;
     isAuthorized: boolean;
   };

@@ -5,7 +5,6 @@
 import { ReactElement, useEffect } from "react";
 
 // Lib.
-import { Optional } from "@Lib/ts";
 import { Redirect } from "react-router";
 
 export function DefaultErrorFallback(): ReactElement {
