@@ -7,13 +7,8 @@
       "echo 'Target cleaned up.'"
     ],
     "=============================================================================================================": "",
-    "build": [
-      "npm run cli purge",
-      "ts-node --project ./cli/tsconfig.json ./cli/build/BuildRunner.ts"
-    ],
-    "============================================================================================================": "=",
-    "start": "npx webpack-dev-server --config ./cli/build/config/webpack.config.ts",
-    "start:dev": "npx webpack-dev-server --config ./cli/build/config/webpack.config.ts --inline --inspect $NODE_DEBUG_OPTION --hot",
+    "start": "ts-node --project ./cli/tsconfig.json ./cli/build/DevRunner.ts",
+    "build": "npm run cli purge && ts-node --project ./cli/tsconfig.json ./cli/build/BuildRunner.ts",
     "===========================================================================================================": "==",
     "docs:generate": [
       "rm -rf ./docs",

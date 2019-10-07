@@ -24,7 +24,6 @@ const createFallbackRewrites = (definition: IModulesDefinition) => {
       for (const from of module.path) {
         rewrites.push({ from: new RegExp(from), to: `/html/${module.name}.html` });
       }
-
     } else {
       rewrites.push({ from: new RegExp(module.path), to: `/html/${module.name}.html` });
     }
@@ -48,6 +47,7 @@ export const DEV_CONFIG: {
       rewrites: createFallbackRewrites(MODULES_CONFIG)
     },
     host: DEV_SERVER_HOST,
+    hot: true,
     // http2: true, // Unsupported for node 10+.
     https: false,
     inline: !IS_PRODUCTION,

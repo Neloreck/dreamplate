@@ -22,10 +22,8 @@ export class CommandRunner {
     this.script = script;
     this.config = config;
 
-    process.on("exit" as any, this.onProcessShutdown.bind(this));
-    process.on("disconnect" as any, this.onProcessShutdown.bind(this));
-    process.on("uncaughtException" as any, this.onProcessShutdown.bind(this));
-    process.on("unhandledRejection" as any, this.onProcessShutdown.bind(this));
+    [ "exit", "uncaughtException", "unhandledRejection", "SIGUSR1", "SIGUSR2", "SIGINT" ]
+      .forEach((it: string) => process.on(<any>it, this.onProcessShutdown.bind(this)));
   }
 
   public async run(): Promise<void> {
@@ -110,16 +108,16 @@ export class CommandRunner {
     return new Promise((resolve: () => void, reject: (error: Error) => void): void => {
 
       try {
-
         this.childProcess = spawn(args[0], args.slice(1).concat(this.cmdAdditionalArgs),  {
           cwd: process.cwd(),
-          detached: true,
+          detached: false,
           env: { ...process.env, PARENT: "DREAMPLATE-CLI" },
           shell: true,
-          stdio: [process.stdin, process.stdout, process.stderr]
+          stdio: [ process.stdin, process.stdout, process.stderr ]
         });
 
-        const checkCode = (code: number): void => {
+        const checkCode = (code: number, ...args: any): void => {
+
           if (code === 0) {
             resolve();
             this.childProcess = null;
@@ -130,12 +128,19 @@ export class CommandRunner {
           }
         };
 
-        this.childProcess.on("error", (data: string) => {
-          (this.childProcess as ChildProcess).kill("1");
+        const checkError = (data: string): void => {
           reject(new Error(data.toString()));
+          (this.childProcess as ChildProcess).kill("99");
+        };
+
+        this.childProcess.on("SIGINT", () => {
+          reject(new Error("Process was interrupted manually."));
+          (this.childProcess as ChildProcess).kill("2");
         });
 
-        this.childProcess.on("close", checkCode);
+        [ "uncaughtException", "unhandledRejection", "SIGUSR1", "SIGUSR2" ]
+          .forEach((it: string) => this.childProcess!.on(<any>it, checkError));
+
         this.childProcess.on("exit", checkCode);
 
       } catch (error) {

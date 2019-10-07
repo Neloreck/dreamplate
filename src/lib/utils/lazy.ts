@@ -2,7 +2,7 @@
  * @module @lib/utils
  */
 
-import { lazy, LazyExoticComponent } from "react";
+import { FunctionComponent, lazy } from "react";
 
 // Lib.
 import { IStringIndexed } from "@Lib/ts";
@@ -13,6 +13,6 @@ import { IStringIndexed } from "@Lib/ts";
  *
  * Warning: only one export from files expected.
  */
-export const getLazyModule = (importFunc: () => Promise<any>): LazyExoticComponent<any> => (
-  lazy(() => importFunc().then((module: IStringIndexed<any>) => ({ default: module[Object.keys(module)[0]] })))
+export const getLazyModule = (importFunc: () => Promise<any>): FunctionComponent<any> => (
+  lazy(() => importFunc().then((module: IStringIndexed<any>) => ({ default: module[Object.keys(module)[0]] }) as any))
 );
