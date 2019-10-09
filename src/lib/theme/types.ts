@@ -4,10 +4,7 @@
 
 export type TBreakpoint = "xs" | "sm" | "md" | "lg" | "xl";
 
-export enum EThemeType {
-  LIGHT = "light",
-  DARK = "dark"
-}
+export type TThemeType = "light" | "dark";
 
 export interface IApplicationTheme {
   palette: {
@@ -29,7 +26,7 @@ export interface IApplicationTheme {
       primary: string;
       secondary: string;
     }
-    type: EThemeType
+    type: TThemeType
   };
   spacing: {
     unit: number;

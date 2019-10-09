@@ -80,6 +80,7 @@
       ],
       "plugins": [
         "react-hot-loader/babel",
+        "@babel/plugin-transform-react-constant-elements",
         [ "module:fast-async", { "spec": true } ],
         [ "transform-imports", {
           /* Example:

@@ -5,6 +5,9 @@
 import { BLACK, IApplicationTheme } from "@Lib/theme";
 
 export const mainHeaderStyle = ({ palette, spacing }: IApplicationTheme) => ({
+  "& > *": {
+    margin: `0 ${spacing.unit * 2}px 0 ${spacing.unit * 2}px`
+  },
   root: {
     "& > custom-heading": {
       color: BLACK,
@@ -17,6 +20,7 @@ export const mainHeaderStyle = ({ palette, spacing }: IApplicationTheme) => ({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
+    minHeight: spacing.unit * 15,
     padding: `${spacing.unit * 2}px ${spacing.unit * 4}px`,
     position: "relative",
     transitionDuration: "250ms"

@@ -16,13 +16,13 @@ import {
   PURPLE_400,
   WHITE
 } from "@Lib/theme/colors";
-import { EThemeType } from "@Lib/theme/types";
+import { TThemeType } from "@Lib/theme/types";
 
 /*
  * Default theme generation config.
  */
 
-export const DEFAULT_THEME_TYPE: EThemeType = EThemeType.LIGHT;
+export const DEFAULT_THEME_TYPE: TThemeType = "light";
 
 export const DEFAULT_SPACING_UNIT: number = 4;
 

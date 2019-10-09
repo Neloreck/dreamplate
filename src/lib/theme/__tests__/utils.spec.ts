@@ -2,7 +2,7 @@
  * @module @lib/theme
  */
 
-import { EThemeType, IApplicationTheme } from "@Lib/theme/types";
+import { TThemeType, IApplicationTheme } from "@Lib/theme/types";
 import { createDefaultTheme, toggleTheme } from "@Lib/theme/utils";
 import {
   DEFAULT_BACKGROUND_DARK,
@@ -25,7 +25,7 @@ describe("Theming utils should work properly.", () => {
 
     const theme: IApplicationTheme = createDefaultTheme();
 
-    expect(DEFAULT_THEME_TYPE).toBe(EThemeType.LIGHT);
+    expect(DEFAULT_THEME_TYPE).toBe("light");
 
     expect(theme.palette.type).toBe(DEFAULT_THEME_TYPE);
 
@@ -52,19 +52,19 @@ describe("Theming utils should work properly.", () => {
 
     for (let it = 0; it < 10; it ++) {
 
-      const previousType: EThemeType = theme.palette.type;
+      const previousType: TThemeType = theme.palette.type;
 
       theme = toggleTheme(theme);
 
-      const currentType: EThemeType = theme.palette.type;
+      const currentType: TThemeType = theme.palette.type;
 
       expect(currentType).not.toBe(previousType);
 
-      expect(theme.palette.background.default).toBe(currentType === EThemeType.LIGHT ? DEFAULT_BACKGROUND_LIGHT : DEFAULT_BACKGROUND_DARK);
-      expect(theme.palette.background.paper).toBe(currentType === EThemeType.LIGHT ? DEFAULT_BACKGROUND_PAPER_LIGHT : DEFAULT_BACKGROUND_PAPER_DARK);
+      expect(theme.palette.background.default).toBe(currentType === "light" ? DEFAULT_BACKGROUND_LIGHT : DEFAULT_BACKGROUND_DARK);
+      expect(theme.palette.background.paper).toBe(currentType === "light" ? DEFAULT_BACKGROUND_PAPER_LIGHT : DEFAULT_BACKGROUND_PAPER_DARK);
 
-      expect(theme.palette.text.primary).toBe(currentType === EThemeType.LIGHT ? DEFAULT_TEXT_PRIMARY_LIGHT : DEFAULT_TEXT_PRIMARY_DARK);
-      expect(theme.palette.text.secondary).toBe(currentType === EThemeType.LIGHT ? DEFAULT_TEXT_SECONDARY_LIGHT : DEFAULT_TEXT_SECONDARY_DARK);
+      expect(theme.palette.text.primary).toBe(currentType === "light" ? DEFAULT_TEXT_PRIMARY_LIGHT : DEFAULT_TEXT_PRIMARY_DARK);
+      expect(theme.palette.text.secondary).toBe(currentType === "light" ? DEFAULT_TEXT_SECONDARY_LIGHT : DEFAULT_TEXT_SECONDARY_DARK);
     }
   });
 });

@@ -24,8 +24,9 @@ export class ApplicationRoot extends LitElement {
         display: flex;
         align-items: center;
         flex-direction: column;
-        justify-content: center;
-        min-height: 100%;
+        max-height: 100vh;
+        min-height: 100vh;
+        overflow: auto;
       }
     `;
   }

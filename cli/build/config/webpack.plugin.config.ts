@@ -94,6 +94,7 @@ export const PLUGIN_CONFIG: {
           },
           keep_classnames: !IS_PRODUCTION,
           keep_fnames: !IS_PRODUCTION,
+          toplevel: IS_PRODUCTION,
           output: {
             beautify: false,
             ecma: 5

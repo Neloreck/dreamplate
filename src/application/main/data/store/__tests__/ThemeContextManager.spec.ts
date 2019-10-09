@@ -1,5 +1,5 @@
 // Lib.
-import { createDefaultTheme, DEFAULT_THEME_TYPE, EThemeType, IApplicationTheme, toggleTheme } from "@Lib/theme";
+import { createDefaultTheme, DEFAULT_THEME_TYPE, TThemeType, IApplicationTheme, toggleTheme } from "@Lib/theme";
 import { encrypt, getFromLocalStorage, setLocalStorageItem } from "@Lib/utils";
 
 // Data.
@@ -29,11 +29,11 @@ describe("Theme context manager.", () => {
     // @ts-ignore privacy.
     manager.setState = (nextState: object) => manager.context.themeState = Object.assign({}, manager.context.themeState, nextState);
 
-    expect(manager.context.themeState.theme.palette.type).toBe(EThemeType.LIGHT);
+    expect(manager.context.themeState.theme.palette.type).toBe("light");
 
     manager.toggleTheme();
 
-    expect(manager.context.themeState.theme.palette.type).toBe(EThemeType.DARK);
+    expect(manager.context.themeState.theme.palette.type).toBe("dark");
   });
 
   it("Should load preset from local storage.", () => {
@@ -50,7 +50,7 @@ describe("Theme context manager.", () => {
   it("Should handle events from other tabs.", () => {
 
     const manager: ThemeContextManager = new ThemeContextManager();
-    const defaultThemeValue: EThemeType = manager.context.themeState.theme.palette.type;
+    const defaultThemeValue: TThemeType = manager.context.themeState.theme.palette.type;
 
     const nextTheme: IApplicationTheme = toggleTheme(manager.context.themeState.theme);
 

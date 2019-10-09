@@ -6,7 +6,7 @@ import { Bind, ContextManager } from "dreamstate";
 import { CreateGenerateIdOptions } from "jss";
 
 // Lib.
-import { createDefaultTheme, EThemeType, IApplicationTheme, toggleTheme } from "@Lib/theme";
+import { createDefaultTheme, IApplicationTheme, toggleTheme, TThemeType } from "@Lib/theme";
 import { encrypt, getFromLocalStorage, Logger, parse, setLocalStorageItem } from "@Lib/utils";
 
 /**
@@ -36,7 +36,7 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
       toggleTheme: this.toggleTheme
     },
     themeState: {
-      theme: getFromLocalStorage("theme") || createDefaultTheme()
+      theme: createDefaultTheme(getFromLocalStorage("theme"))
     }
   };
 
@@ -53,13 +53,13 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
 
     const { theme } = this.context.themeState;
 
-    const nextThemeType: EThemeType = (theme.palette.type === EThemeType.LIGHT ? EThemeType.DARK : EThemeType.LIGHT);
+    const nextThemeType: TThemeType = (theme.palette.type === "light" ? "dark" : "light");
     const nextTheme: IApplicationTheme = toggleTheme(theme, nextThemeType);
 
     this.log.info(`Toggle theme mode to '${nextThemeType}'.`);
 
     try {
-      setLocalStorageItem("theme", nextTheme);
+      setLocalStorageItem("theme", nextThemeType);
     } catch (error) {
       /* <dev> */
       this.log.warn("Failed to cache application theme:", error);
@@ -79,7 +79,7 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
 
     const { themeState: { theme } } = this.context;
 
-    this.log.info(`Theme provision started [${theme.palette.type}].`);
+    this.log.info(`Theme provision started [${theme.palette.type}].`, theme);
 
     window.addEventListener("storage", this.onLocalStorageDataChanged);
   }
@@ -97,12 +97,13 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
   @Bind()
   private onLocalStorageDataChanged(event: StorageEvent): void {
 
+    const { theme } = this.context.themeState;
     const { key, newValue } = event;
 
     if (key === encrypt("theme")) {
 
       if (newValue) {
-        this.setState({ theme: parse(newValue) });
+        this.setState({ theme: toggleTheme(theme, parse(newValue)) });
       } else {
         this.setState({ theme: createDefaultTheme() });
       }

@@ -20,16 +20,16 @@ import {
   DEFAULT_TEXT_SECONDARY_LIGHT,
   DEFAULT_THEME_TYPE
 } from "@Lib/theme/theming";
-import { EThemeType, IApplicationTheme, TBreakpoint } from "@Lib/theme/types";
+import { IApplicationTheme, TThemeType } from "@Lib/theme/types";
 
 /**
  * Create default theme.
  */
-export const createDefaultTheme = (): IApplicationTheme => ({
+export const createDefaultTheme = (themeType: TThemeType = DEFAULT_THEME_TYPE): IApplicationTheme => ({
   palette: {
     background: {
-      default: DEFAULT_BACKGROUND_LIGHT,
-      paper: DEFAULT_BACKGROUND_PAPER_LIGHT
+      default:  (themeType === "dark" ? DEFAULT_BACKGROUND_DARK : DEFAULT_BACKGROUND_LIGHT),
+      paper:  (themeType === "dark" ? DEFAULT_BACKGROUND_PAPER_DARK : DEFAULT_BACKGROUND_PAPER_LIGHT),
     },
     primary: {
       dark: DEFAULT_PRIMARY_DARK,
@@ -42,10 +42,10 @@ export const createDefaultTheme = (): IApplicationTheme => ({
       main: DEFAULT_SECONDARY_MAIN
     },
     text: {
-      primary: (DEFAULT_THEME_TYPE === EThemeType.LIGHT ? DEFAULT_TEXT_PRIMARY_LIGHT : DEFAULT_TEXT_PRIMARY_DARK),
-      secondary: (DEFAULT_THEME_TYPE === EThemeType.LIGHT ? DEFAULT_TEXT_SECONDARY_LIGHT : DEFAULT_TEXT_SECONDARY_DARK),
+      primary: (themeType === "dark" ? DEFAULT_TEXT_PRIMARY_DARK: DEFAULT_TEXT_PRIMARY_LIGHT),
+      secondary: (themeType === "dark" ? DEFAULT_TEXT_SECONDARY_DARK : DEFAULT_TEXT_SECONDARY_LIGHT ),
     },
-    type: DEFAULT_THEME_TYPE
+    type: themeType
   },
   spacing: {
     unit: DEFAULT_SPACING_UNIT
@@ -56,10 +56,10 @@ export const createDefaultTheme = (): IApplicationTheme => ({
  * Create new theme from provided one.
  * Theme type is opposite or provided as second param.
  */
-export const toggleTheme = ({ palette, spacing }: IApplicationTheme, requestedType?: EThemeType): IApplicationTheme => {
+export const toggleTheme = ({ palette, spacing }: IApplicationTheme, requestedType?: TThemeType): IApplicationTheme => {
 
-  const nextType: EThemeType = (requestedType || (palette.type === EThemeType.LIGHT ? EThemeType.DARK : EThemeType.LIGHT));
-  const isDark: boolean = (nextType === EThemeType.DARK);
+  const nextType: TThemeType = (requestedType || (palette.type === "light" ? "dark" : "light"));
+  const isDark: boolean = (nextType === "dark");
 
   return {
     palette: {

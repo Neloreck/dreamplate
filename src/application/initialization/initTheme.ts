@@ -5,7 +5,14 @@
 /* tslint:disable: no-console */
 
 // Lib.
-import { IApplicationTheme } from "@Lib/theme";
+import {
+  DEFAULT_BACKGROUND_DARK,
+  DEFAULT_BACKGROUND_LIGHT,
+  DEFAULT_PRIMARY_MAIN,
+  DEFAULT_TEXT_PRIMARY_DARK,
+  DEFAULT_TEXT_PRIMARY_LIGHT,
+} from "@Lib/theme/theming";
+import { TThemeType } from "@Lib/theme/types";
 import { Optional } from "@Lib/ts";
 
 /**
@@ -20,11 +27,11 @@ export const initTheme = () => {
 
     if (rawStr) {
 
-      const theme: IApplicationTheme = JSON.parse(atob(rawStr));
+      const theme: TThemeType = JSON.parse(atob(rawStr));
 
-      document.body.style.backgroundColor = theme.palette.background.default;
-      document.body.style.color = theme.palette.text.primary;
-      document.head.getElementsByTagName("meta")["theme-color" as any].content = theme.palette.primary.main;
+      document.body.style.backgroundColor = (theme === "dark" ? DEFAULT_BACKGROUND_DARK : DEFAULT_BACKGROUND_LIGHT);
+      document.body.style.color = (theme === "dark" ? DEFAULT_TEXT_PRIMARY_DARK : DEFAULT_TEXT_PRIMARY_LIGHT);
+      document.head.getElementsByTagName("meta")["theme-color" as any].content = DEFAULT_PRIMARY_MAIN;
     }
 
   } catch (error) {
