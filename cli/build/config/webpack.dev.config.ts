@@ -5,10 +5,10 @@ import {
   DEV_SERVER_CONTENT_BASE,
   DEV_SERVER_HOST,
   DEV_SERVER_PORT,
-  IModulesDefinition,
   IS_PRODUCTION,
   MODULES_CONFIG
 } from "./webpack.constants";
+import { IModulesDefinition } from "./webpack.types";
 
 /**
  * Generate fallback redirects/urls for dev server history usage.

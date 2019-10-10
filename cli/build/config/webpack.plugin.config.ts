@@ -4,14 +4,20 @@ import { DefinePlugin, Options, Plugin, ProvidePlugin } from "webpack";
 
 import { APPLICATION_ROOT, MODAL_ROOT } from "../build_constants";
 import {
-  BUILD_CONFIGURATION_PATH,
+  BASE_PROJECT_FAVICON_PATH, BASE_PROJECT_STATIC_FILES,
+  BASE_PROJECT_TEMPLATE_PATH,
+  DOTENV_CONFIG_PATH,
   ENVIRONMENT,
-  IModuleDefinition,
   IS_PRODUCTION,
   MODULES_CONFIG,
-  PROJECT_ROOT_PATH,
+  PROJECT_CORE_DEPENDENCIES,
+  PROJECT_INLINE_MODULES,
+  PROVIDE_MODULES_CONFIG,
+  REPORT_BUNDLE_ANALYZER_PATH,
+  REPORT_BUNDLE_STATS_PATH,
   RUNTIME_CONSTANTS
 } from "./webpack.constants";
+import { IModuleDefinition } from "./webpack.types";
 
 // tslint:disable: no-var-requires typedef
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
@@ -22,15 +28,6 @@ const DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ScriptExtHtmlPlugin = require("script-ext-html-webpack-plugin");
 const StatsWriterPlugin = require("webpack-stats-plugin").StatsWriterPlugin;
-
-const CORE_DEPENDENCIES: Array<string> = [
-  "react",
-  "react-dom",
-  "loose-envify",
-  "object-assign",
-  "scheduler",
-  "core-js"
-];
 
 const createChunkGroupNameGenerator = () => (module: any, chunks: any, cacheGroupKey: string): string => cacheGroupKey;
 
@@ -60,19 +57,19 @@ const createHTMLEntry = (definition: IModuleDefinition) => (
       APPLICATION_TITLE: definition.title,
       MODAL_ROOT
     },
-    favicon: path.resolve(PROJECT_ROOT_PATH, "cli/build/template/favicon.ico"),
+    favicon: BASE_PROJECT_FAVICON_PATH,
     filename: `html/${definition.name}.html`,
     inject: true,
     minify: {
       collapseWhitespace: IS_PRODUCTION,
       minifyCSS: true,
-      preserveLineBreaks: true,
+      preserveLineBreaks: !IS_PRODUCTION,
       quoteCharacter: "'",
       removeComments: true,
       removeTagWhitespace: true,
       trimCustomFragments: true
     },
-    template: path.resolve(PROJECT_ROOT_PATH, "cli/build/template/index.hbs")
+    template: BASE_PROJECT_TEMPLATE_PATH
   })
 );
 
@@ -81,11 +78,9 @@ export const PLUGIN_CONFIG: {
   OPTIMIZATION: Options.Optimization
 } = {
   OPTIMIZATION: {
-    chunkIds: "named",
     minimizer: [
       new TerserPlugin({
         sourceMap: !IS_PRODUCTION,
-        parallel: true,
         terserOptions: {
           compress: {
             drop_console: IS_PRODUCTION,
@@ -102,7 +97,6 @@ export const PLUGIN_CONFIG: {
       })
     ],
     moduleIds: "hashed",
-    namedChunks: false,
     noEmitOnErrors: IS_PRODUCTION,
     runtimeChunk: "single",
     splitChunks: {
@@ -125,7 +119,7 @@ export const PLUGIN_CONFIG: {
           name: createChunkGroupNameGenerator(),
           priority: 100,
           reuseExistingChunk: true,
-          test: new RegExp(`/node_modules/(${CORE_DEPENDENCIES.reduce((accumulator: string, it: string) => accumulator ? accumulator + "|" + it : it )})\/`)
+          test: new RegExp(`/node_modules/(${PROJECT_CORE_DEPENDENCIES.reduce((accumulator: string, it: string) => accumulator ? accumulator + "|" + it : it )})\/`)
         },
         global: {
           name: createChunkGroupNameGenerator(),
@@ -145,15 +139,21 @@ export const PLUGIN_CONFIG: {
   },
   PLUGINS: [
     ...MODULES_CONFIG.modules.map(createHTMLEntry),
+    new CheckerPlugin(),
     new DuplicatePackageCheckerPlugin({ verbose: true }),
+    new DotEnv({ path: DOTENV_CONFIG_PATH }),
+    new DefinePlugin(RUNTIME_CONSTANTS),
+    new ProvidePlugin(PROVIDE_MODULES_CONFIG),
+    new CopyWebpackPlugin(BASE_PROJECT_STATIC_FILES.map((it: string) => ({ from: it, to: "." }))),
+    new ScriptExtHtmlPlugin({ defaultAttribute: "async", inline: PROJECT_INLINE_MODULES }),
     new BundleAnalyzerPlugin({
       analyzerMode: "static",
       defaultSizes: "gzip",
       openAnalyzer: false,
-      reportFilename: "../info/report.html"
+      reportFilename: REPORT_BUNDLE_ANALYZER_PATH
     }),
     new StatsWriterPlugin({
-      filename:  "../info/report.json",
+      filename: REPORT_BUNDLE_STATS_PATH,
       stats: {
         all: true,
         assets: true,
@@ -169,19 +169,6 @@ export const PLUGIN_CONFIG: {
         publicPath: false,
         version: false
       }
-    }),
-    new CheckerPlugin(),
-    new DotEnv({ path: path.resolve(PROJECT_ROOT_PATH, `cli/build/config/.${ENVIRONMENT}.env`) }),
-    new DefinePlugin(RUNTIME_CONSTANTS),
-    new ProvidePlugin({ React: "react" }),
-    new CopyWebpackPlugin([
-        { from: path.resolve(BUILD_CONFIGURATION_PATH, "public/robots.txt"), to: "." },
-        { from: path.resolve(BUILD_CONFIGURATION_PATH, "public/manifest.json"), to: "." }
-      ]
-    ),
-    new ScriptExtHtmlPlugin({
-      defaultAttribute: "async",
-      inline: [ "runtime", "initialization" ]
     })
   ]
 };

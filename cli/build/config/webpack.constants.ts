@@ -1,40 +1,86 @@
 import * as path from "path";
 
-export interface IModuleDefinition {
-  name: string;
-  folder: string;
-  path: Array<string> | string;
-  title: string;
-}
+import { IModulesDefinition, TEnvironmentType } from "./webpack.types";
 
-export interface IModulesDefinition {
-  modules: Array<IModuleDefinition>;
-}
-
-export type TEnvironmentType = ("development" | "production");
+/**
+ * Environment configuration.
+ */
 
 export const ENVIRONMENT: TEnvironmentType = process.env.NODE_ENV as TEnvironmentType;
 export const IS_PRODUCTION: boolean = (ENVIRONMENT === "production");
+
+/**
+ * Project paths configuration.
+ */
+
+export const PROJECT_ROOT_PATH: string = path.resolve(__dirname, "../../../");
+export const BUILD_CONFIGURATION_PATH: string = path.resolve(PROJECT_ROOT_PATH, "cli/build");
+export const TS_CONFIG_PATH: string = path.resolve(PROJECT_ROOT_PATH, "src/tsconfig.json");
+
+export const MODULES_ROOT_PATH: string = path.resolve(PROJECT_ROOT_PATH, "src/application/modules");
+export const INITIALIZATION_ROOT_PATH: string = path.resolve(PROJECT_ROOT_PATH, "src/application/initialization");
+
+export const PROJECT_OUTPUT_PATH: string = path.resolve(PROJECT_ROOT_PATH, "target/");
+export const PROJECT_DIST_PATH: string = path.resolve(PROJECT_OUTPUT_PATH, "dist/");
+
+export const DOTENV_CONFIG_PATH: string = path.resolve(BUILD_CONFIGURATION_PATH, `env/.${ENVIRONMENT}.env`);
+export const BASE_PROJECT_TEMPLATE_PATH: string = path.resolve(BUILD_CONFIGURATION_PATH, "template/index.hbs");
+export const BASE_PROJECT_FAVICON_PATH: string = path.resolve(BUILD_CONFIGURATION_PATH, "template/favicon.ico");
+
+export const BASE_PROJECT_STATIC_FILES: Array<string> = [
+  path.resolve(BUILD_CONFIGURATION_PATH, "public/robots.txt"),
+  path.resolve(BUILD_CONFIGURATION_PATH, "public/manifest.json")
+];
+
+export const BACKEND_PUBLIC_PATH: string = "/";
+
+/**
+ * Report configuration.
+ */
+
+export const REPORT_BUNDLE_ANALYZER_PATH: string = path.resolve(PROJECT_OUTPUT_PATH, "info/report.html");
+export const REPORT_BUNDLE_STATS_PATH: string = "../info/report.json";
+
+/**
+ * Globals configuration.
+ */
 
 export const RUNTIME_CONSTANTS = {
   IS_DECORATOR_ENABLED: true,
   IS_DEV: !IS_PRODUCTION
 };
 
-export const PROJECT_ROOT_PATH: string = path.resolve(__dirname, "../../../");
-export const MODULES_ROOT_PATH: string = path.resolve(PROJECT_ROOT_PATH, "src/application/modules");
-export const INITIALIZATION_ROOT_PATH: string = path.resolve(PROJECT_ROOT_PATH, "src/application/initialization");
-export const PROJECT_OUTPUT_PATH: string = path.resolve(PROJECT_ROOT_PATH, "target/dist/");
+export const PROVIDE_MODULES_CONFIG = {
+  React: "react"
+};
 
-export const SELECTED_ENTRIES: Array<string> | null = process.env.ENTRIES ? JSON.parse(process.env.ENTRIES) : null;
-export const TS_CONFIG_PATH: string = path.resolve(PROJECT_ROOT_PATH, "src/tsconfig.json");
-export const BUILD_CONFIGURATION_PATH = path.resolve(PROJECT_ROOT_PATH, "cli/build");
+export const PROJECT_CORE_DEPENDENCIES: Array<string> = [
+  "react",
+  "react-dom",
+  "loose-envify",
+  "object-assign",
+  "scheduler",
+  "core-js"
+];
 
-export const BACKEND_PUBLIC_PATH: string = "/";
+export const PROJECT_INLINE_MODULES: Array<string> = [
+  "runtime",
+  "initialization"
+];
+
+/**
+ * Dev server configuration.
+ */
 
 export const DEV_SERVER_HOST: string = "0.0.0.0";
 export const DEV_SERVER_PORT: number = 3000;
-export const DEV_SERVER_CONTENT_BASE: string = path.resolve(PROJECT_ROOT_PATH, "target/dist/");
+export const DEV_SERVER_CONTENT_BASE: string = PROJECT_DIST_PATH;
+
+/**
+ * Project modules config.
+ */
+
+export const SELECTED_ENTRIES: Array<string> | null = process.env.ENTRIES ? JSON.parse(process.env.ENTRIES) : null;
 
 export const MODULES_CONFIG: IModulesDefinition = (() => {
 
