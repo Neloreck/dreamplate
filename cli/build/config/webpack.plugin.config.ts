@@ -82,10 +82,10 @@ export const PLUGIN_CONFIG: {
 } = {
   OPTIMIZATION: {
     chunkIds: "named",
-    mergeDuplicateChunks: true,
     minimizer: [
       new TerserPlugin({
         sourceMap: !IS_PRODUCTION,
+        parallel: true,
         terserOptions: {
           compress: {
             drop_console: IS_PRODUCTION,
@@ -94,9 +94,8 @@ export const PLUGIN_CONFIG: {
           },
           keep_classnames: !IS_PRODUCTION,
           keep_fnames: !IS_PRODUCTION,
-          toplevel: IS_PRODUCTION,
           output: {
-            beautify: false,
+            beautify: !IS_PRODUCTION,
             ecma: 5
           }
         },
@@ -105,8 +104,6 @@ export const PLUGIN_CONFIG: {
     moduleIds: "hashed",
     namedChunks: false,
     noEmitOnErrors: IS_PRODUCTION,
-    providedExports: IS_PRODUCTION,
-    removeEmptyChunks: true,
     runtimeChunk: "single",
     splitChunks: {
       cacheGroups: {
@@ -130,7 +127,6 @@ export const PLUGIN_CONFIG: {
           reuseExistingChunk: true,
           test: new RegExp(`/node_modules/(${CORE_DEPENDENCIES.reduce((accumulator: string, it: string) => accumulator ? accumulator + "|" + it : it )})\/`)
         },
-        default: false,
         global: {
           name: createChunkGroupNameGenerator(),
           priority: 70,

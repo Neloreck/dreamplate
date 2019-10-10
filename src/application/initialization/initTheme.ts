@@ -5,13 +5,7 @@
 /* tslint:disable: no-console */
 
 // Lib.
-import {
-  DEFAULT_BACKGROUND_DARK,
-  DEFAULT_BACKGROUND_LIGHT,
-  DEFAULT_PRIMARY_MAIN,
-  DEFAULT_TEXT_PRIMARY_DARK,
-  DEFAULT_TEXT_PRIMARY_LIGHT,
-} from "@Lib/theme/theming";
+import { BLACK, LIGHT_BLACK, WHITE } from "@Lib/theme/colors";
 import { TThemeType } from "@Lib/theme/types";
 import { Optional } from "@Lib/ts";
 
@@ -29,11 +23,9 @@ export const initTheme = () => {
 
       const theme: TThemeType = JSON.parse(atob(rawStr));
 
-      document.body.style.backgroundColor = (theme === "dark" ? DEFAULT_BACKGROUND_DARK : DEFAULT_BACKGROUND_LIGHT);
-      document.body.style.color = (theme === "dark" ? DEFAULT_TEXT_PRIMARY_DARK : DEFAULT_TEXT_PRIMARY_LIGHT);
-      document.head.getElementsByTagName("meta")["theme-color" as any].content = DEFAULT_PRIMARY_MAIN;
+      document.body.style.backgroundColor = (theme === "dark" ? LIGHT_BLACK : WHITE);
+      document.body.style.color = (theme === "dark" ? WHITE : BLACK);
     }
-
   } catch (error) {
     /* <dev> */
     /* tslint:disable: no-console */

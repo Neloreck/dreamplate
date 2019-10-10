@@ -9,7 +9,7 @@
 ### Size and general performance:
 
 - MIN + GZIP - (+-75KB) in total
-- load time: 20-40 ms for iMac 2017, 70-100 ms for Acer Nitro 5
+- load time: 10-15 ms for iMac 2017, 50 ms for Acer Nitro 5
 - +-3.8MB memory heap
 - Optimized react VDOM tree (except react-router and react-jss)
 

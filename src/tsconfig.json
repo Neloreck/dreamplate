@@ -8,13 +8,13 @@
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
-    "module": "esnext",
+    "module": "es6",
     "inlineSources": false,
     "tsBuildInfoFile": "../target/cache/incremental",
     "incremental": true,
     "target": "esnext",
     "moduleResolution": "node",
-    "jsx": "react",
+    "jsx": "preserve",
     "lib": [
       "es2015",
       "es2016",
@@ -23,7 +23,7 @@
       "dom"
     ],
     "baseUrl": "./",
-    "outDir": "target/dist:raw",
+    "outDir": "../target/dist:raw",
     "paths": {
       "@Build/*": [ "../cli/build/*" ],
       "@Test/*": [ "../cli/test/*" ],
