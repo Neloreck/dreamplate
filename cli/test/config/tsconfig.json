@@ -5,6 +5,7 @@
     "outDir": ".",
     "sourceMap": false,
     "module": "commonjs",
+    "jsx": "react",
     "lib": [ "es5", "es6", "dom" ],
     "baseUrl": "./"
   }

@@ -17,15 +17,14 @@ import {
   DEFAULT_TEXT_PRIMARY_DARK,
   DEFAULT_TEXT_PRIMARY_LIGHT,
   DEFAULT_TEXT_SECONDARY_DARK,
-  DEFAULT_TEXT_SECONDARY_LIGHT,
-  DEFAULT_THEME_TYPE
+  DEFAULT_TEXT_SECONDARY_LIGHT
 } from "@Lib/theme/theming";
 import { IApplicationTheme, TThemeType } from "@Lib/theme/types";
 
 /**
  * Create default theme.
  */
-export const createDefaultTheme = (themeType: TThemeType = DEFAULT_THEME_TYPE): IApplicationTheme => ({
+export const createDefaultTheme = (themeType: TThemeType): IApplicationTheme => ({
   palette: {
     background: {
       default:  (themeType === "dark" ? DEFAULT_BACKGROUND_DARK : DEFAULT_BACKGROUND_LIGHT),
@@ -42,8 +41,8 @@ export const createDefaultTheme = (themeType: TThemeType = DEFAULT_THEME_TYPE): 
       main: DEFAULT_SECONDARY_MAIN
     },
     text: {
-      primary: (themeType === "dark" ? DEFAULT_TEXT_PRIMARY_DARK: DEFAULT_TEXT_PRIMARY_LIGHT),
-      secondary: (themeType === "dark" ? DEFAULT_TEXT_SECONDARY_DARK : DEFAULT_TEXT_SECONDARY_LIGHT ),
+      primary: (themeType === "dark" ? DEFAULT_TEXT_PRIMARY_DARK : DEFAULT_TEXT_PRIMARY_LIGHT),
+      secondary: (themeType === "dark" ? DEFAULT_TEXT_SECONDARY_DARK : DEFAULT_TEXT_SECONDARY_LIGHT),
     },
     type: themeType
   },

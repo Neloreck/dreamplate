@@ -6,7 +6,7 @@
  * Get value by key from localstorage.
  * Key and value are encrypted in B64.
  */
-export const getFromLocalStorage = (key: string): any | null => {
+export const getFromLocalStorage = <T>(key: string): T | null => {
 
   const raw: string | null = localStorage.getItem(encrypt(key)) || null;
 
@@ -17,7 +17,7 @@ export const getFromLocalStorage = (key: string): any | null => {
  * Set value by key from localstorage.
  * Key and value are encrypted in B64.
  */
-export const setLocalStorageItem = (key: string, value: any): void => {
+export const setLocalStorageItem = <T>(key: string, value: T): void => {
   localStorage.setItem(encrypt(key), encrypt(JSON.stringify(value)));
 };
 
@@ -40,4 +40,4 @@ export const decrypt = (value: string): string => atob(value);
 /**
  * Decrypt function for local storage.
  */
-export const parse = (value: string): any => JSON.parse(decrypt(value));
+export const parse = <T>(value: string): T | null => JSON.parse(decrypt(value));

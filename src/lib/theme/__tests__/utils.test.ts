@@ -23,7 +23,7 @@ describe("Theming utils should work properly.", () => {
 
   it("Should correctly create default theme based on default colors.", () => {
 
-    const theme: IApplicationTheme = createDefaultTheme();
+    const theme: IApplicationTheme = createDefaultTheme(DEFAULT_THEME_TYPE);
 
     expect(DEFAULT_THEME_TYPE).toBe("light");
 
@@ -48,7 +48,7 @@ describe("Theming utils should work properly.", () => {
 
   it("Should correctly toggle theme colors.", () => {
 
-    let theme: IApplicationTheme = createDefaultTheme();
+    let theme: IApplicationTheme = createDefaultTheme(DEFAULT_THEME_TYPE);
 
     for (let it = 0; it < 10; it ++) {
 

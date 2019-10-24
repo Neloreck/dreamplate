@@ -6,7 +6,7 @@ import { Bind, ContextManager } from "dreamstate";
 import { CreateGenerateIdOptions } from "jss";
 
 // Lib.
-import { createDefaultTheme, IApplicationTheme, toggleTheme, TThemeType } from "@Lib/theme";
+import { createDefaultTheme, DEFAULT_THEME_TYPE, IApplicationTheme, toggleTheme, TThemeType } from "@Lib/theme";
 import { encrypt, getFromLocalStorage, Logger, parse, setLocalStorageItem } from "@Lib/utils";
 
 /**
@@ -36,7 +36,7 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
       toggleTheme: this.toggleTheme
     },
     themeState: {
-      theme: createDefaultTheme(getFromLocalStorage("theme"))
+      theme: createDefaultTheme(getFromLocalStorage("theme_type") || DEFAULT_THEME_TYPE)
     }
   };
 
@@ -59,7 +59,7 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
     this.log.info(`Toggle theme mode to '${nextThemeType}'.`);
 
     try {
-      setLocalStorageItem("theme", nextThemeType);
+      setLocalStorageItem("theme_type", nextThemeType);
     } catch (error) {
       /* <dev> */
       this.log.warn("Failed to cache application theme:", error);
@@ -100,12 +100,12 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
     const { theme } = this.context.themeState;
     const { key, newValue } = event;
 
-    if (key === encrypt("theme")) {
+    if (key === encrypt("theme_type")) {
 
       if (newValue) {
-        this.setState({ theme: toggleTheme(theme, parse(newValue)) });
+        this.setState({ theme: toggleTheme(theme, parse(newValue) as TThemeType) });
       } else {
-        this.setState({ theme: createDefaultTheme() });
+        this.setState({ theme: createDefaultTheme(DEFAULT_THEME_TYPE) });
       }
     }
   }

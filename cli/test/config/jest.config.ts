@@ -86,7 +86,7 @@ export const JEST_CONFIG = {
   // testLocationInResults: false,
   testMatch: [
      "**/__tests__/**/*.ts?(x)",
-     "**/?(*.)+(spec|__test__|__tests__).ts?(x)"
+     "**/?(*.)+(spec|test).ts?(x)"
    ],
   testPathIgnorePatterns: [
     "/node_modules/"

@@ -38,24 +38,22 @@ describe("Theme context manager.", () => {
 
   it("Should load preset from local storage.", () => {
 
-    const theme: IApplicationTheme = createDefaultTheme();
-
-    setLocalStorageItem("theme", toggleTheme(theme));
+    setLocalStorageItem("theme_type", "dark");
 
     const manager: ThemeContextManager = new ThemeContextManager();
 
-    expect(manager.context.themeState.theme.palette.type).toBe(getFromLocalStorage("theme").palette.type);
+    expect(manager.context.themeState.theme.palette.type).toBe("dark");
   });
 
   it("Should handle events from other tabs.", () => {
 
     const manager: ThemeContextManager = new ThemeContextManager();
-    const defaultThemeValue: TThemeType = manager.context.themeState.theme.palette.type;
 
+    const defaultThemeValue: TThemeType = manager.context.themeState.theme.palette.type;
     const nextTheme: IApplicationTheme = toggleTheme(manager.context.themeState.theme);
 
     // @ts-ignore privacy.
-    manager.onLocalStorageDataChanged({ key: encrypt("theme"), newValue: encrypt(JSON.stringify(nextTheme)) });
+    manager.onLocalStorageDataChanged({ key: encrypt("theme_type"), newValue: encrypt(JSON.stringify(nextTheme.palette.type)) });
 
     expect(manager.context.themeState.theme.palette.type).toBe(nextTheme.palette.type);
     expect(manager.context.themeState.theme.palette.type).not.toBe(defaultThemeValue);
