@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`About page component rendering. Should match HOC snapshot.: Default HOC layout. 1`] = `
+<Fragment>
+  <MainHeader />
+  <main
+    className="content"
+  >
+    About page.
+    <custom-button
+      onClick={[Function]}
+    >
+      Go home
+    </custom-button>
+  </main>
+</Fragment>
+`;

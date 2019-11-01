@@ -40,11 +40,10 @@
   "types": [
     "node"
   ],
-  "exclude": [
-  ],
+  "exclude": [],
   "typedocOptions": {
     "out": "../docs",
-    "exclude": [ "**/node_modules/**", "**/cli/**", "**/*+(index|.spec|.e2e).*" ],
+    "exclude": [ "**/node_modules/**", "**/cli/**", "**/*+(index|.spec|.test.|.e2e).*" ],
     "mode": "modules",
     "name": "Dreamplate"
   },

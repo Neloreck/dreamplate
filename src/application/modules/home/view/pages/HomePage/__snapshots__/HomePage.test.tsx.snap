@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home page component rendering. Should match snapshot.: Default HOC layout. 1`] = `
+<Fragment>
+  <MainHeader />
+  <main
+    className="content"
+  >
+    <div
+      className="linkCards"
+    >
+      <custom-card
+        class="cardLink"
+      >
+        <a
+          href="https://reactjs.org/"
+          rel="noreferrer"
+          target="_blank"
+        >
+          React
+        </a>
+      </custom-card>
+      <custom-card
+        class="cardLink"
+      >
+        <a
+          href="https://www.typescriptlang.org/"
+          rel="noreferrer"
+          target="_blank"
+        >
+          Typescript
+        </a>
+      </custom-card>
+      <custom-card
+        class="cardLink"
+      >
+        <a
+          href="https://github.com/Neloreck/dreamstate/"
+          rel="noreferrer"
+          target="_blank"
+        >
+          DreamState
+        </a>
+      </custom-card>
+    </div>
+    <custom-button
+      color="grayscale"
+      onClick={[Function]}
+    >
+      About
+    </custom-button>
+  </main>
+</Fragment>
+`;
