@@ -20,7 +20,7 @@ export const Styled = <S extends Styles<string> | TThemedStyles<any>, P>(
 ): ClassDecorator => {
   return (target: ClassType<P, any, any>): ClassType<P, any, any> => {
 
-    if (IS_DECORATOR_ENABLED) {
+    if (!IS_TEST) {
       return withStyles(styles, options)(target);
     }
   };

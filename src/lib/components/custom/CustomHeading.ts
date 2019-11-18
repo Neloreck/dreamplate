@@ -6,7 +6,6 @@ import { css, CSSResult, html, LitElement, TemplateResult, unsafeCSS } from "lit
 
 // Lib.
 import { CustomElement, ICustomElementAttributes, Property } from "@Lib/components";
-import { BLACK } from "@Lib/theme";
 
 // Props.
 export type TCustomHeadingSize = 1 | 2 | 3 | 4 | 5;
@@ -25,7 +24,7 @@ export class CustomHeading extends LitElement {
   public static get styles(): CSSResult {
     return css`
       :host {
-        color: ${unsafeCSS(BLACK)};
+        color: ${unsafeCSS(GColor.BLACK)};
         font-weight: bold;
       }
 

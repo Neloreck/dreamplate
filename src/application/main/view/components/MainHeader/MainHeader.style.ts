@@ -2,7 +2,7 @@
  * @module @application/main
  */
 
-import { BLACK, IApplicationTheme } from "@Lib/theme";
+import { IApplicationTheme } from "@Lib/theme";
 
 export const mainHeaderStyle = ({ palette, spacing }: IApplicationTheme) => ({
   "& > *": {
@@ -10,7 +10,7 @@ export const mainHeaderStyle = ({ palette, spacing }: IApplicationTheme) => ({
   },
   root: {
     "& > custom-heading": {
-      color: BLACK,
+      color: GColor.BLACK,
       cursor: "default"
     },
     alignSelf: "normal",

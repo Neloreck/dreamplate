@@ -2,23 +2,6 @@
  * @module @lib/theme
  */
 
-import {
-  DEFAULT_BACKGROUND_DARK,
-  DEFAULT_BACKGROUND_LIGHT,
-  DEFAULT_BACKGROUND_PAPER_DARK,
-  DEFAULT_BACKGROUND_PAPER_LIGHT,
-  DEFAULT_PRIMARY_DARK,
-  DEFAULT_PRIMARY_LIGHT,
-  DEFAULT_PRIMARY_MAIN,
-  DEFAULT_SECONDARY_DARK,
-  DEFAULT_SECONDARY_LIGHT,
-  DEFAULT_SECONDARY_MAIN,
-  DEFAULT_SPACING_UNIT,
-  DEFAULT_TEXT_PRIMARY_DARK,
-  DEFAULT_TEXT_PRIMARY_LIGHT,
-  DEFAULT_TEXT_SECONDARY_DARK,
-  DEFAULT_TEXT_SECONDARY_LIGHT
-} from "@Lib/theme/theming";
 import { IApplicationTheme, TThemeType } from "@Lib/theme/types";
 
 /**
@@ -27,27 +10,27 @@ import { IApplicationTheme, TThemeType } from "@Lib/theme/types";
 export const createDefaultTheme = (themeType: TThemeType): IApplicationTheme => ({
   palette: {
     background: {
-      default:  (themeType === "dark" ? DEFAULT_BACKGROUND_DARK : DEFAULT_BACKGROUND_LIGHT),
-      paper:  (themeType === "dark" ? DEFAULT_BACKGROUND_PAPER_DARK : DEFAULT_BACKGROUND_PAPER_LIGHT),
+      default:  (themeType === "dark" ? GTheme.DEFAULT_BACKGROUND_DARK : GTheme.DEFAULT_BACKGROUND_LIGHT),
+      paper:  (themeType === "dark" ? GTheme.DEFAULT_BACKGROUND_PAPER_DARK : GTheme.DEFAULT_BACKGROUND_PAPER_LIGHT),
     },
     primary: {
-      dark: DEFAULT_PRIMARY_DARK,
-      light: DEFAULT_PRIMARY_LIGHT,
-      main: DEFAULT_PRIMARY_MAIN
+      dark: GTheme.DEFAULT_PRIMARY_DARK,
+      light: GTheme.DEFAULT_PRIMARY_LIGHT,
+      main: GTheme.DEFAULT_PRIMARY_MAIN
     },
     secondary: {
-      dark: DEFAULT_SECONDARY_DARK,
-      light: DEFAULT_SECONDARY_LIGHT,
-      main: DEFAULT_SECONDARY_MAIN
+      dark: GTheme.DEFAULT_SECONDARY_DARK,
+      light: GTheme.DEFAULT_SECONDARY_LIGHT,
+      main: GTheme.DEFAULT_SECONDARY_MAIN
     },
     text: {
-      primary: (themeType === "dark" ? DEFAULT_TEXT_PRIMARY_DARK : DEFAULT_TEXT_PRIMARY_LIGHT),
-      secondary: (themeType === "dark" ? DEFAULT_TEXT_SECONDARY_DARK : DEFAULT_TEXT_SECONDARY_LIGHT),
+      primary: (themeType === "dark" ? GTheme.DEFAULT_TEXT_PRIMARY_DARK : GTheme.DEFAULT_TEXT_PRIMARY_LIGHT),
+      secondary: (themeType === "dark" ? GTheme.DEFAULT_TEXT_SECONDARY_DARK : GTheme.DEFAULT_TEXT_SECONDARY_LIGHT),
     },
     type: themeType
   },
   spacing: {
-    unit: DEFAULT_SPACING_UNIT
+    unit: GTheme.DEFAULT_SPACING_UNIT
   }
 });
 
@@ -64,12 +47,12 @@ export const toggleTheme = ({ palette, spacing }: IApplicationTheme, requestedTy
     palette: {
       ...palette,
       background: {
-        default: isDark ? DEFAULT_BACKGROUND_DARK : DEFAULT_BACKGROUND_LIGHT,
-        paper: isDark ? DEFAULT_BACKGROUND_PAPER_DARK : DEFAULT_BACKGROUND_PAPER_LIGHT
+        default: isDark ? GTheme.DEFAULT_BACKGROUND_DARK : GTheme.DEFAULT_BACKGROUND_LIGHT,
+        paper: isDark ? GTheme.DEFAULT_BACKGROUND_PAPER_DARK : GTheme.DEFAULT_BACKGROUND_PAPER_LIGHT
       },
       text: {
-        primary: isDark ? DEFAULT_TEXT_PRIMARY_DARK : DEFAULT_TEXT_PRIMARY_LIGHT,
-        secondary: isDark ? DEFAULT_TEXT_SECONDARY_DARK : DEFAULT_TEXT_SECONDARY_LIGHT
+        primary: isDark ? GTheme.DEFAULT_TEXT_PRIMARY_DARK : GTheme.DEFAULT_TEXT_PRIMARY_LIGHT,
+        secondary: isDark ? GTheme.DEFAULT_TEXT_SECONDARY_DARK : GTheme.DEFAULT_TEXT_SECONDARY_LIGHT
       },
       type: nextType
     },

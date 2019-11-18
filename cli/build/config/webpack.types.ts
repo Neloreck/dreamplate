@@ -9,4 +9,4 @@ export interface IModulesDefinition {
   modules: Array<IModuleDefinition>;
 }
 
-export type TEnvironmentType = ("development" | "production");
+export type TEnvironmentType = ("development" | "production" | "test");

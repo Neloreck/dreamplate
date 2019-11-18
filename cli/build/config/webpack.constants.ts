@@ -1,13 +1,17 @@
 import * as path from "path";
 
 import { IModulesDefinition, TEnvironmentType } from "./webpack.types";
+import { asConstantsObject } from "../globals/utils";
+import * as colors from "../globals/colors";
+import * as theme from "../globals/theme";
 
 /**
  * Environment configuration.
  */
 
 export const ENVIRONMENT: TEnvironmentType = process.env.NODE_ENV as TEnvironmentType;
-export const IS_PRODUCTION: boolean = (ENVIRONMENT === "production");
+export const IS_TEST: boolean = (ENVIRONMENT === "test");
+export const IS_PRODUCTION: boolean = (ENVIRONMENT === "production" || IS_TEST);
 
 /**
  * Project paths configuration.
@@ -46,8 +50,11 @@ export const REPORT_BUNDLE_STATS_PATH: string = "../info/report.json";
  */
 
 export const RUNTIME_CONSTANTS = {
-  IS_DECORATOR_ENABLED: true,
-  IS_DEV: !IS_PRODUCTION
+  IS_DEV: !IS_PRODUCTION,
+  IS_TEST,
+  // Build time constants for inlining.
+  GColor: asConstantsObject(colors),
+  GTheme: asConstantsObject(theme),
 };
 
 export const PROVIDE_MODULES_CONFIG = {

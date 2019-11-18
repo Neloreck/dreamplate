@@ -64,7 +64,7 @@
             "targets": {
               "node": "10",
               "browsers": [
-                "> 2.0%",
+                "> 5.0%",
                 "not dead"
               ]
             },

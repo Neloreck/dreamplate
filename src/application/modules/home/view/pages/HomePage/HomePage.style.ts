@@ -16,8 +16,8 @@ export const homePageStyle = ({ palette, spacing }: IApplicationTheme) => ({
     transitionDuration: "500ms"
   },
   content: {
-    alignSelf: "normal",
     alignItems: "center",
+    alignSelf: "normal",
     backgroundColor: palette.background.default,
     backgroundSize: "cover",
     display: "flex",

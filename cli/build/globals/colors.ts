@@ -1,7 +1,3 @@
-/**
- * @module @lib/theme
- */
-
 export const BLACK: string = "#000";
 
 export const LIGHT_BLACK = "#444444";

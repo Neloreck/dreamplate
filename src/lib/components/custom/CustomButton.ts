@@ -6,13 +6,6 @@ import { css, CSSResult, html, LitElement, TemplateResult, unsafeCSS } from "lit
 
 // Lib.
 import { CustomElement, ICustomElementAttributes } from "@Lib/components";
-import {
-  BLACK,
-  DEFAULT_PRIMARY_DARK,
-  DEFAULT_PRIMARY_LIGHT,
-  DEFAULT_PRIMARY_MAIN, DEFAULT_SECONDARY_DARK,
-  DEFAULT_SECONDARY_LIGHT, DEFAULT_SECONDARY_MAIN, GRAY_400, GRAY_600, GRAY_700, GRAY_800
-} from "@Lib/theme";
 
 // Props.
 export type TCustomButtonSize = "xs" | "sm" | "md" | "lg" | "xl";
@@ -34,8 +27,8 @@ export class CustomButton extends LitElement {
     return css`
       :host {
         align-self: center;
-        border: 1px solid ${unsafeCSS(BLACK)};
-        color: ${unsafeCSS(BLACK)};
+        border: 1px solid ${unsafeCSS(GColor.BLACK)};
+        color: ${unsafeCSS(GColor.BLACK)};
         box-shadow: 6px 1px 4px 0px rgba(0, 0, 0, 0.25), 6px 7px 5px 0px rgba(0, 0, 0, 0.2);
         cursor: pointer;
         font-weight: bold;
@@ -45,39 +38,39 @@ export class CustomButton extends LitElement {
       }
 
       :host, :host([color="primary"]) {
-        background: ${unsafeCSS(DEFAULT_PRIMARY_LIGHT)};
+        background: ${unsafeCSS(GTheme.DEFAULT_PRIMARY_LIGHT)};
       }
 
       :host(:hover), :host([color="primary"]:hover) {
-         background: ${unsafeCSS(DEFAULT_PRIMARY_MAIN)};
+         background: ${unsafeCSS(GTheme.DEFAULT_PRIMARY_MAIN)};
       }
 
       :host(:active), :host([color="primary"]:active) {
-         background: ${unsafeCSS(DEFAULT_PRIMARY_DARK)};
+         background: ${unsafeCSS(GTheme.DEFAULT_PRIMARY_DARK)};
       }
 
       :host([color="secondary"]) {
-        background: ${unsafeCSS(DEFAULT_SECONDARY_LIGHT)};
+        background: ${unsafeCSS(GTheme.DEFAULT_SECONDARY_LIGHT)};
       }
 
       :host([color="secondary"]:hover) {
-         background: ${unsafeCSS(DEFAULT_SECONDARY_MAIN)};
+         background: ${unsafeCSS(GTheme.DEFAULT_SECONDARY_MAIN)};
       }
 
       :host([color="secondary"]:active) {
-         background: ${unsafeCSS(DEFAULT_SECONDARY_DARK)};
+         background: ${unsafeCSS(GTheme.DEFAULT_SECONDARY_DARK)};
       }
 
       :host([color="grayscale"]) {
-        background: ${unsafeCSS(GRAY_400)};
+        background: ${unsafeCSS(GColor.GRAY_400)};
       }
 
       :host([color="grayscale"]:hover) {
-         background: ${unsafeCSS(GRAY_600)};
+         background: ${unsafeCSS(GColor.GRAY_600)};
       }
 
       :host([color="grayscale"]:active) {
-         background: ${unsafeCSS(GRAY_700)};
+         background: ${unsafeCSS(GColor.GRAY_700)};
       }
 
       :host([size="xs"]) {

@@ -19,7 +19,7 @@
       "npm run cli lint",
       "npm run cli jest"
     ],
-    "jest": "npx ts-node --project ./cli/test/config/tsconfig.json ./cli/test/TestRunner.ts",
+    "jest": "npx cross-env NODE_ENV=test ts-node --project ./cli/test/config/tsconfig.json ./cli/test/TestRunner.ts",
     "lint": "npx tslint --project ./src/"
   }
 }

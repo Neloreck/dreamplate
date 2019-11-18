@@ -7,6 +7,10 @@ import * as React from "react";
 // Lib.
 import { ICustomIntrinsicElements } from "@Lib/components/types";
 
+// Constants.
+import * as colors from "@Build/globals/colors";
+import * as theme from "@Build/globals/theme";
+
 declare global {
 
   /**
@@ -15,14 +19,24 @@ declare global {
   const IS_DEV: boolean;
 
   /**
-   * Global definition for decorator support flag.
+   * Global definition for test mode flag.
    */
-  const IS_DECORATOR_ENABLED: boolean;
+  const IS_TEST: boolean | undefined;
 
   /**
    * Global definition for react jsx factories.
    */
   const React: typeof React;
+
+  /**
+   * Global colors definitions for build time evaluation.
+   */
+  const GColor: typeof colors;
+
+  /**
+   * Global colors definitions for build time evaluation.
+   */
+  const GTheme: typeof theme;
 
   /**
    * Declare JSX elements to globals.

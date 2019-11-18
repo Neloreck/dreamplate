@@ -1,7 +1,3 @@
-/**
- * @module @lib/theme
- */
-
 import {
   BLACK,
   GRAY_200,
@@ -15,14 +11,13 @@ import {
   PURPLE_300,
   PURPLE_400,
   WHITE
-} from "@Lib/theme/colors";
-import { TThemeType } from "@Lib/theme/types";
+} from "./colors";
 
 /*
  * Default theme generation config.
  */
 
-export const DEFAULT_THEME_TYPE: TThemeType = "light";
+export const DEFAULT_THEME_TYPE: "light" | "dark" = "light";
 
 export const DEFAULT_SPACING_UNIT: number = 4;
 

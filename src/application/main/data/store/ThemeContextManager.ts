@@ -6,7 +6,7 @@ import { Bind, ContextManager } from "dreamstate";
 import { CreateGenerateIdOptions } from "jss";
 
 // Lib.
-import { createDefaultTheme, DEFAULT_THEME_TYPE, IApplicationTheme, toggleTheme, TThemeType } from "@Lib/theme";
+import { createDefaultTheme, IApplicationTheme, toggleTheme, TThemeType } from "@Lib/theme";
 import { encrypt, getFromLocalStorage, Logger, parse, setLocalStorageItem } from "@Lib/utils";
 
 /**
@@ -36,7 +36,7 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
       toggleTheme: this.toggleTheme
     },
     themeState: {
-      theme: createDefaultTheme(getFromLocalStorage("theme_type") || DEFAULT_THEME_TYPE)
+      theme: createDefaultTheme(getFromLocalStorage("theme_type") || GTheme.DEFAULT_THEME_TYPE)
     }
   };
 
@@ -79,7 +79,7 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
 
     const { themeState: { theme } } = this.context;
 
-    this.log.info(`Theme provision started [${theme.palette.type}].`, theme);
+    this.log.info(`Theme provision started [${theme.palette.type}].`);
 
     window.addEventListener("storage", this.onLocalStorageDataChanged);
   }
@@ -105,7 +105,7 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
       if (newValue) {
         this.setState({ theme: toggleTheme(theme, parse(newValue) as TThemeType) });
       } else {
-        this.setState({ theme: createDefaultTheme(DEFAULT_THEME_TYPE) });
+        this.setState({ theme: createDefaultTheme(GTheme.DEFAULT_THEME_TYPE) });
       }
     }
   }

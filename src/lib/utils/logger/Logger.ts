@@ -147,7 +147,7 @@ export class Logger {
 
     for (let it = 0; it < target.length; it ++) {
       hash  = ((hash << 5) - hash) + target.charCodeAt(it);
-      hash |= 0; // Convert to 32bit integer
+      hash |= 0; // Convert to 32bit integer.
     }
 
     return hash;
