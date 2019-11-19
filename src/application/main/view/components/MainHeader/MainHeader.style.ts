@@ -2,12 +2,12 @@
  * @module @application/main
  */
 
+import { createUseStyles } from "react-jss";
+
+// Lib.
 import { IApplicationTheme } from "@Lib/theme";
 
-export const mainHeaderStyle = ({ palette, spacing }: IApplicationTheme) => ({
-  "& > *": {
-    margin: `0 ${spacing.unit * 2}px 0 ${spacing.unit * 2}px`
-  },
+export const useStyles = createUseStyles(({ palette, spacing }: IApplicationTheme) => ({
   root: {
     "& > custom-heading": {
       color: GColor.BLACK,
@@ -25,4 +25,4 @@ export const mainHeaderStyle = ({ palette, spacing }: IApplicationTheme) => ({
     position: "relative",
     transitionDuration: "250ms"
   }
-});
+}));

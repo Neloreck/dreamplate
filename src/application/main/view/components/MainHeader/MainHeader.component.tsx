@@ -2,54 +2,30 @@
  * @module @application/main
  */
 
-import { PureComponent, ReactNode } from "react";
-import { WithStyles } from "react-jss";
+import { useManager } from "dreamstate";
+import { ReactElement } from "react";
 
-// Lib.
-import { Styled } from "@Lib/utils";
-
-import { IThemeContext, ThemeContextManager } from "@Main/data/store";
+// Data.
+import { ThemeContextManager } from "@Main/data/store";
 
 // View.
-import { mainHeaderStyle } from "./MainHeader.style";
+import { useStyles } from "./MainHeader.style";
 
 import "@Lib/components/custom/CustomButton";
 import "@Lib/components/custom/CustomHeading";
 
-// Props.
-export interface IMainHeaderOwnProps {}
+export function MainHeader(): ReactElement {
 
-export interface IMainHeaderInjectedProps extends WithStyles<typeof mainHeaderStyle> {}
+  const { themeActions: { toggleTheme } } = useManager(ThemeContextManager);
+  const { root } = useStyles();
 
-export interface IMainHeaderProps extends IMainHeaderOwnProps, IMainHeaderInjectedProps {}
+  return (
+    <header className={root}>
 
-@Styled(mainHeaderStyle)
-export class MainHeader extends PureComponent<IMainHeaderProps, {}, IThemeContext> {
+      <custom-heading text={"Dreamplate"} size={4}/>
 
-  public render(): ReactNode {
+      <custom-button onClick={toggleTheme}> Toggle </custom-button>
 
-    const { classes } = this.props;
-
-    return (
-      <header className={classes.root}>
-
-        <custom-heading
-          text={"Dreamplate"}
-          size={4}
-        />
-
-        <custom-button
-          onClick={this.onThemeToggleClicked}
-        >
-          Toggle
-        </custom-button>
-
-      </header>
-    );
-  }
-
-  private onThemeToggleClicked(): void {
-    (ThemeContextManager.current() as ThemeContextManager).toggleTheme();
-  }
-
+    </header>
+  );
 }

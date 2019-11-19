@@ -27,8 +27,8 @@
   "dependencies": {
     "core-js": "^3.4.1",
     "fast-async": "^7.0.6",
-    "react": "16.11.0",
-    "react-dom": "^16.11.0"
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.7.0",
@@ -41,7 +41,7 @@
     "@types/enzyme": "^3.10.3",
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "^24.0.18",
-    "@types/react": "16.9.9",
+    "@types/react": "^16.9.11",
     "@types/react-dom": "^16.9.2",
     "@types/webpack": "^4.39.7",
     "@types/webpack-dev-server": "^3.4.0",
@@ -61,7 +61,7 @@
     "jest": "^24.9.0",
     "jest-environment-jsdom-fifteen": "^1.0.0",
     "lerna": "^3.18.3",
-    "react-hot-loader": "^4.12.17",
+    "react-hot-loader": "^4.12.18",
     "script-ext-html-webpack-plugin": "^2.1.4",
     "terser-webpack-plugin": "^2.2.1",
     "ts-jest": "^24.1.0",

@@ -2,58 +2,41 @@
  * @module @application/about
  */
 
-import { Bind } from "dreamstate";
-import { PureComponent, ReactNode } from "react";
-import { WithStyles } from "react-jss";
-
-// Lib.
-import { Styled } from "@Lib/utils";
+import { useManager } from "dreamstate";
+import { ReactElement, useCallback } from "react";
 
 // Data.
 import { RouterContextManager } from "@Main/data/store";
 
 // View.
-import { IMainHeaderInjectedProps, MainHeader } from "@Main/view/components/MainHeader";
-import { aboutPageStyle } from "./AboutPage.style";
+import { MainHeader } from "@Main/view/components/MainHeader";
+import { useStyles } from "./AboutPage.style";
 
 import "@Lib/components/custom/CustomButton";
 
-// Props.
-export interface IAboutPageOwnProps {}
+export function AboutPage(): ReactElement {
 
-export interface IAboutPageInjectedProps extends WithStyles<typeof aboutPageStyle> {}
+  const { routingActions: { hardPush } } = useManager(RouterContextManager);
+  const { content } = useStyles();
 
-export interface IAboutPageProps extends IAboutPageOwnProps, IAboutPageInjectedProps {}
+  const onHomeNavigated = useCallback(() => hardPush("/home"), []);
 
-@Styled(aboutPageStyle)
-export class AboutPage extends PureComponent<IAboutPageProps> {
+  return (
+    <>
 
-  public render(): ReactNode {
+      <MainHeader/>
 
-    const { classes } = this.props;
+      <main className={content}>
 
-    return (
-      <>
+        About page.
 
-        <MainHeader {...{} as IMainHeaderInjectedProps}/>
+        <custom-button onClick={onHomeNavigated}>
+          Go home
+        </custom-button>
 
-        <main className={classes.content}>
+      </main>
 
-          About page.
-
-          <custom-button onClick={this.onHomeNavigated}>
-            Go home
-          </custom-button>
-
-        </main>
-
-      </>
-    );
-  }
-
-  @Bind()
-  private onHomeNavigated(): void {
-    (RouterContextManager.current() as RouterContextManager).hardPush("/home");
-  }
+    </>
+  );
 
 }

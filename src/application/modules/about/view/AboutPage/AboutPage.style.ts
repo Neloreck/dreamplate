@@ -2,9 +2,12 @@
  * @module @application/about
  */
 
+import { createUseStyles } from "react-jss";
+
+// Lib.
 import { IApplicationTheme } from "@Lib/theme";
 
-export const aboutPageStyle = ({ palette }: IApplicationTheme) => ({
+export const useStyles = createUseStyles(({ palette }: IApplicationTheme) => ({
   content: {
     alignItems: "center",
     alignSelf: "normal",
@@ -17,4 +20,4 @@ export const aboutPageStyle = ({ palette }: IApplicationTheme) => ({
     overflowY: "auto",
     transitionDuration: "350ms"
   }
-});
+}));

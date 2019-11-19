@@ -3,87 +3,62 @@
  */
 
 import { RouterContextManager } from "@Main/data/store";
-import { Bind } from "dreamstate";
-import { PureComponent, ReactNode } from "react";
-import { WithStyles } from "react-jss";
-
-// Lib.
-import { Styled } from "@Lib/utils";
+import { useManager } from "dreamstate";
+import { ReactElement, ReactNode, useCallback } from "react";
 
 // View.
-import { IMainHeaderInjectedProps, MainHeader } from "@Main/view/components/MainHeader";
-import { homePageStyle } from "./HomePage.style";
+import { MainHeader } from "@Main/view/components/MainHeader";
+import { useStyles } from "./HomePage.style";
 
 import "@Lib/components/custom/CustomCard";
 
-// Props.
-export interface IHomePageOwnProps {}
+export function HomePage(): ReactElement {
 
-export interface IHomePageInjectedProps extends WithStyles<typeof homePageStyle> {}
+  const { routingActions: { hardPush } } = useManager(RouterContextManager);
+  const { content, cardLink, linkCard } = useStyles();
 
-export interface IHomePageProps extends IHomePageOwnProps, IHomePageInjectedProps {}
+  const onAboutNavigated = useCallback(() => hardPush("/about"), []);
 
-@Styled(homePageStyle)
-export class HomePage extends PureComponent<IHomePageProps> {
+  return (
+    <>
 
-  public render(): ReactNode {
+      <MainHeader/>
 
-    const { classes } = this.props;
+      <main className={content}>
 
-    return (
-      <>
+        <div className={linkCard}>
 
-        <MainHeader {...{} as IMainHeaderInjectedProps}/>
+          { renderReferenceCard(cardLink, "React", "https://reactjs.org/") }
 
-        <main className={classes.content}>
+          { renderReferenceCard(cardLink, "Typescript", "https://www.typescriptlang.org/") }
 
-          <div className={classes.linkCards}>
+          {renderReferenceCard(cardLink, "DreamState", "https://github.com/Neloreck/dreamstate/") }
 
-            { this.renderReferenceCard("React", "https://reactjs.org/") }
+        </div>
 
-            { this.renderReferenceCard("Typescript", "https://www.typescriptlang.org/") }
-
-            { this.renderReferenceCard("DreamState", "https://github.com/Neloreck/dreamstate/") }
-
-          </div>
-
-          <custom-button
-            color={"grayscale"}
-            onClick={this.onAboutNavigated}
-          >
-            About
-          </custom-button>
-
-        </main>
-
-      </>
-    );
-  }
-
-  private renderReferenceCard(label: string, href: string): ReactNode {
-
-    const { classes } = this.props;
-
-    return (
-      <custom-card
-        class={classes.cardLink}
-      >
-
-        <a
-          href={href}
-          target={"_blank"}
-          rel={"noreferrer"}
+        <custom-button
+          color={"grayscale"}
+          onClick={onAboutNavigated}
         >
-          { label }
-        </a>
+          About
+        </custom-button>
 
-      </custom-card>
-    );
-  }
+      </main>
 
-  @Bind()
-  private onAboutNavigated(): void {
-    (RouterContextManager.current() as RouterContextManager).hardPush("/about");
-  }
-
+    </>
+  );
 }
+
+const renderReferenceCard = (className: string, label: string, href: string): ReactNode => (
+  <custom-card class={className}>
+
+    <a
+      href={href}
+      target={"_blank"}
+      rel={"noreferrer"}
+    >
+      { label }
+    </a>
+
+  </custom-card>
+);
