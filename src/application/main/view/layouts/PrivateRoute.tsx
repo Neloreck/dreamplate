@@ -46,7 +46,7 @@ export function PrivateRoute({ reversed, redirect = true, ...routeProps }: IPriv
     if (!isAuthorizing && (reversed ? isAuthorized : !isAuthorized)) {
 
       // todo: Own NEXT implementation for redirect.
-      const next = "/"; // getQueryParams().next;
+      const next: string = "/"; // getQueryParams().next;
 
       replace(typeof next === "string" ? next as string : (typeof redirect === "string" ? redirect as string : "/todo"));
     }

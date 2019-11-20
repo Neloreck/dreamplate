@@ -2,7 +2,7 @@
  * @module @application/main
  */
 
-import { Bind, ContextManager } from "dreamstate";
+import { Bind, ContextManager, TStateSetter } from "dreamstate";
 import { CreateGenerateIdOptions } from "jss";
 
 // Lib.
@@ -42,7 +42,7 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
 
   private readonly log: Logger = new Logger(ThemeContextManager.name);
 
-  private readonly setState = ContextManager.getSetter(this, "themeState");
+  private readonly setState: TStateSetter<IThemeContext, "themeState"> = ContextManager.getSetter(this, "themeState");
 
   /**
    * Toggle application theme mode and save it into local storage.

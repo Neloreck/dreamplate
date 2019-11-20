@@ -2,7 +2,7 @@
  * @module @application/main
  */
 
-import { Bind, ContextManager } from "dreamstate";
+import { Bind, ContextManager, TStateSetter } from "dreamstate";
 import { createBrowserHistory, History, Location, Path } from "history";
 
 // Lib.
@@ -49,7 +49,7 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
 
   private readonly log: Logger = new Logger(RouterContextManager.name);
 
-  private readonly setState = ContextManager.getSetter(this, "routingState");
+  private readonly setState: TStateSetter<IRouterContext, "routingState"> = ContextManager.getSetter(this, "routingState");
 
   /**
    * Replace path in page history.

@@ -2,9 +2,10 @@
  * @module @lib/ts
  */
 
-import * as React from "react";
+import * as GlobalReact from "react";
 
 // Lib.
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { ICustomIntrinsicElements } from "@Lib/components/types";
 
 // Constants.
@@ -26,7 +27,7 @@ declare global {
   /**
    * Global definition for react jsx factories.
    */
-  const React: typeof React;
+  const React: typeof GlobalReact;
 
   /**
    * Global colors definitions for build time evaluation.
@@ -43,7 +44,6 @@ declare global {
    */
   namespace JSX {
 
-    // tslint:disable-next-line
     interface IntrinsicElements extends ICustomIntrinsicElements {
     }
   }

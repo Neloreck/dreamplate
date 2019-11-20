@@ -2,15 +2,32 @@
  * @module @application/home
  */
 
-import { RouterContextManager } from "@Main/data/store";
 import { useManager } from "dreamstate";
 import { ReactElement, ReactNode, useCallback } from "react";
+
+// Data.
+import { RouterContextManager } from "@Main/data/store";
 
 // View.
 import { MainHeader } from "@Main/view/components/MainHeader";
 import { useStyles } from "./HomePage.style";
 
 import "@Lib/components/custom/CustomCard";
+
+// Sub-render util.
+const renderReferenceCard = (className: string, label: string, href: string): ReactNode => (
+  <custom-card class={className}>
+
+    <a
+      href={href}
+      target={"_blank"}
+      rel={"noreferrer"}
+    >
+      { label }
+    </a>
+
+  </custom-card>
+);
 
 export function HomePage(): ReactElement {
 
@@ -48,17 +65,3 @@ export function HomePage(): ReactElement {
     </>
   );
 }
-
-const renderReferenceCard = (className: string, label: string, href: string): ReactNode => (
-  <custom-card class={className}>
-
-    <a
-      href={href}
-      target={"_blank"}
-      rel={"noreferrer"}
-    >
-      { label }
-    </a>
-
-  </custom-card>
-);

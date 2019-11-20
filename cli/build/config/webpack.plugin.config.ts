@@ -19,7 +19,6 @@ import {
 } from "./webpack.constants";
 import { IModuleDefinition } from "./webpack.types";
 
-// tslint:disable: no-var-requires typedef
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const DotEnv = require("dotenv-webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");

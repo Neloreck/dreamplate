@@ -11,7 +11,7 @@ describe("Application Logger behaviour.", () => {
 
   it("Should not affect console output in production environment.", () => {
 
-    let log: Logger = new Logger("Test");
+    const log: Logger = new Logger("Test");
 
     console.log = jest.fn();
     console.info = jest.fn();
@@ -42,7 +42,7 @@ describe("Application Logger behaviour.", () => {
       "THIRD_CHECK": -798192656
     };
 
-    let log: Logger = new Logger("Test");
+    const log: Logger = new Logger("Test");
 
     // @ts-ignore protected internals usage.
     const generator: Callable = log["getHashCode"];

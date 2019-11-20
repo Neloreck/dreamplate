@@ -1,0 +1,59 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint",
+    "react",
+    "import"
+  ],
+  "settings": {
+    "react": {
+      "createClass": "createReactClass",
+      "pragma": "React",
+      "version": "detect"
+    }
+  },
+  "parserOptions": {
+    "project": "./src/tsconfig.json"
+  },
+  "rules": {
+    "no-console": [ "error" ],
+    "semi": "error",
+    "import/no-unresolved": 0,
+    "import/default": 0,
+    "react/react-in-jsx-scope": 0,
+    "react/jsx-curly-spacing": [
+      "error",
+      "never",
+      {
+        "allowMultiline": false,
+        "spacing": {
+          "objectLiterals": "always"
+        }
+      }
+    ],
+    "react/prop-types": 0,
+    "@typescript-eslint/ban-ts-ignore": 0,
+    "@typescript-eslint/no-non-null-assertion": 0,
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/no-inferrable-types": 0,
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/interface-name-prefix": 0,
+    "@typescript-eslint/no-empty-interface": 0,
+    "@typescript-eslint/typedef": [
+      "error",
+      {
+        "arrowParameter": true,
+        "variableDeclaration": false,
+        "propertyDeclaration": true
+      }
+    ]
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/errors",
+    "plugin:import/typescript"
+  ]
+}

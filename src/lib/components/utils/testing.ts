@@ -7,7 +7,7 @@ import { CSSResult } from "lit-element";
 /**
  * Get component shadow content based on parameters and its style.
  */
-const nestedShadowOf = (component: { styles: CSSResult }, enclosing: { before: string, after: string }, ...nested: Array<string>) => {
+const nestedShadowOf = (component: { styles: CSSResult }, enclosing: { before: string; after: string }, ...nested: Array<string>) => {
 
   const style: string = `<style>${component.styles}</style>`;
 

@@ -22,7 +22,6 @@
 - JSS, project theming with own context management
 - Typescript (decorators, OOP style, newest features, awt loader with babel)
 - Jest
-- TSLint
 - HMR with live editing
 - HBS (template, global styles)
 
@@ -114,12 +113,12 @@ Typically module is separated as VIEW and DATA sub-modules. Each one includes on
 ## Futures
 
 - Minify and optimize as separated flags from env modes
-- Eslint
 - Benchmark for testing?
 - Build something from wasm as experiment and use wasm-loader
 - Workers investigation?
 - Better docs
 - Translations experiments
+- Better config for eslint
 
 ## Side packages (waiting for)
 

@@ -22,4 +22,4 @@ export const withMockedTheme = (element: ReactElement) => createElement(ThemePro
 /**
  * Utility to get nested in @Styled element.
  */
-export const getThemedComponent = (element: ShallowWrapper<any>) => mount(element.getElement()).children().children();
+export const getThemedComponent = <T>(element: ShallowWrapper<T>) => mount(element.getElement()).children().children();
