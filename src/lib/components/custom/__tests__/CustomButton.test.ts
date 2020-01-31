@@ -1,6 +1,6 @@
 // Lib.
 import { CustomButton } from "@Lib/components/custom/CustomButton";
-import { nestedShadowSlotOf } from "@Lib/components/utils/testing";
+import { nestedShadowSlotOf } from "@Lib/testing";
 
 describe("Custom button web component.", () => {
 

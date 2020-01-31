@@ -1,6 +1,6 @@
 // Lib.
 import { CustomCard } from "@Lib/components/custom/CustomCard";
-import { nestedShadowSlotOf } from "@Lib/components/utils/testing";
+import { nestedShadowSlotOf } from "@Lib/testing";
 
 describe("Spinner loader web component.", () => {
 

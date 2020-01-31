@@ -36,8 +36,8 @@ export const IO_CONFIG: {
     ...generateEntryPoints(MODULES_CONFIG)
   },
   OUTPUT: {
-    chunkFilename: "js/c:[name].js",
-    filename: "js/f:[name].js",
+    chunkFilename: "js/c_[name].js",
+    filename: "js/f_[name].js",
     path: PROJECT_DIST_PATH,
     publicPath: BACKEND_PUBLIC_PATH,
     sourceMapFilename: "js/maps/[name].js.map"

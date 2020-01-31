@@ -15,10 +15,10 @@ import { useStyles } from "./ErrorPage.style";
 import "@Lib/components/custom/CustomButton";
 import "@Lib/components/custom/CustomCard";
 
-export function ErrorPage(): ReactElement {
-
-  const { routingActions: { hardPush } } = useManager(RouterContextManager);
-  const { content, labelCard } = useStyles();
+export function ErrorPage({
+  classes: { content, labelCard } = useStyles(),
+  routerContext: { routingActions: { hardPush } } = useManager(RouterContextManager)
+}): ReactElement {
 
   const onHomeNavigated = useCallback(() => hardPush("/home"), []);
 

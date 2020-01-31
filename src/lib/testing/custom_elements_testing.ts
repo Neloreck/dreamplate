@@ -1,5 +1,5 @@
 /**
- * @module @lib/components
+ * @module @lib/testing
  */
 
 import { CSSResult } from "lit-element";

@@ -1,6 +1,6 @@
 // Lib.
 import { CustomHeading } from "@Lib/components/custom/CustomHeading";
-import { nestedShadowValueOf } from "@Lib/components/utils/testing";
+import { nestedShadowValueOf } from "@Lib/testing";
 
 describe("Spinner loader web component.", () => {
 

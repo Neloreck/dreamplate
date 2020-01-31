@@ -15,7 +15,7 @@ export interface ICustomLoader extends ICustomElementAttributes<CustomLoader> {
 }
 
 /**
- * Example of web-components based element for fastest rendering.
+ * Custom element representing spinner.
  */
 @CustomElement("custom-loader")
 export class CustomLoader extends LitElement {

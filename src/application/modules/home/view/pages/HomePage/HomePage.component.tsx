@@ -29,10 +29,10 @@ const renderReferenceCard = (className: string, label: string, href: string): Re
   </custom-card>
 );
 
-export function HomePage(): ReactElement {
-
-  const { routingActions: { hardPush } } = useManager(RouterContextManager);
-  const { content, cardLink, linkCard } = useStyles();
+export function HomePage({
+  classes: { content, cardLink, linkCard } = useStyles(),
+  routerContext: { routingActions: { hardPush } } = useManager(RouterContextManager)
+}): ReactElement {
 
   const onAboutNavigated = useCallback(() => hardPush("/about"), []);
 
@@ -49,7 +49,7 @@ export function HomePage(): ReactElement {
 
           { renderReferenceCard(cardLink, "Typescript", "https://www.typescriptlang.org/") }
 
-          {renderReferenceCard(cardLink, "DreamState", "https://github.com/Neloreck/dreamstate/") }
+          { renderReferenceCard(cardLink, "DreamState", "https://github.com/Neloreck/dreamstate/") }
 
         </div>
 

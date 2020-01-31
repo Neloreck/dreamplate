@@ -3,10 +3,11 @@ import "@Test/utils/mock_custom_elements";
 import { shallow } from "enzyme";
 
 // Lib.
-import { createMockClasses } from "@Lib/utils/styling_testing";
+import { createMockClasses } from "@Lib/testing/styling_testing";
 
 // View.
 import { AboutPage } from "./AboutPage.component";
+import {createMockContext} from "@Lib/testing";
 
 describe("About page component rendering.", () => {
 
@@ -14,7 +15,7 @@ describe("About page component rendering.", () => {
 
   it("Should match HOC snapshot.", () => {
 
-    const wrapper = shallow(<AboutPage classes={classes}/>);
+    const wrapper = shallow(<AboutPage classes={classes} routerContext={createMockContext()}/>);
 
     expect(wrapper).toMatchSnapshot("Default HOC layout.");
   });

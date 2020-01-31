@@ -1,8 +1,9 @@
 import "@Test/utils/mock_custom_elements";
 
-// Test.
-import { createMockClasses } from "@Lib/utils/styling_testing";
 import { shallow } from "enzyme";
+
+// Test.
+import { createMockClasses, createMockContext } from "@Lib/testing";
 
 // View.
 import { HomePage } from "./HomePage.component";
@@ -13,7 +14,7 @@ describe("Home page component rendering.", () => {
 
   it("Should match snapshot.", () => {
 
-    const wrapper = shallow(<HomePage classes={classes}/>);
+    const wrapper = shallow(<HomePage classes={classes} routerContext={createMockContext()}/>);
 
     expect(wrapper).toMatchSnapshot("Default HOC layout.");
   });

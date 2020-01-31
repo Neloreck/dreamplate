@@ -112,11 +112,12 @@ Typically module is separated as VIEW and DATA sub-modules. Each one includes on
 
 ## Futures
 
+- List commands for CLI
 - Minify and optimize as separated flags from env modes
 - Benchmark for testing?
 - Build something from wasm as experiment and use wasm-loader
 - Workers investigation?
-- Better docs
+- Better docs [fix modules]
 - Translations experiments
 - Better config for eslint
 

@@ -11,7 +11,7 @@ exports[`Main header component rendering. Should match snapshot.: Default HOC la
   <custom-button
     onClick={[Function]}
   >
-    Toggle
+     Toggle 
   </custom-button>
 </header>
 `;

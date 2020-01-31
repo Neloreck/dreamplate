@@ -14,10 +14,10 @@ import { useStyles } from "./AboutPage.style";
 
 import "@Lib/components/custom/CustomButton";
 
-export function AboutPage(): ReactElement {
-
-  const { routingActions: { hardPush } } = useManager(RouterContextManager);
-  const { content } = useStyles();
+export function AboutPage({
+  classes: { content } = useStyles(),
+  routerContext: { routingActions: { hardPush } } = useManager(RouterContextManager)
+}): ReactElement {
 
   const onHomeNavigated = useCallback(() => hardPush("/home"), []);
 
@@ -38,5 +38,4 @@ export function AboutPage(): ReactElement {
 
     </>
   );
-
 }

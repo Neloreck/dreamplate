@@ -14,10 +14,10 @@ import { useStyles } from "./MainHeader.style";
 import "@Lib/components/custom/CustomButton";
 import "@Lib/components/custom/CustomHeading";
 
-export function MainHeader(): ReactElement {
-
-  const { themeActions: { toggleTheme } } = useManager(ThemeContextManager);
-  const { root } = useStyles();
+export function MainHeader({
+  classes: { root } = useStyles(),
+  themeContext: { themeActions: { toggleTheme } } = useManager(ThemeContextManager)
+}): ReactElement {
 
   return (
     <header className={root}>
