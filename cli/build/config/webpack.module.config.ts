@@ -9,25 +9,25 @@ export const MODULE_CONFIG: {
 } = {
   MODULE: {
     rules: [
-      // STRIP DEV CODE.
+      // Strip DEV code.
       {
         enforce: "pre",
         exclude: /(node_modules|\.spec\.js)/,
-        test: /\.(ts|tsx)$/,
+        test: /\.(ts|tsx|js|jsx)$/,
         use: [
           { loader: path.resolve(BUILD_CONFIGURATION_PATH, "loaders/stripBlockLoader.ts") }
         ],
       },
-      // TS/TSX.
+      // TS/TSX/JS/JSX.
       {
         exclude: /(node_modules)/,
-        loader: "awesome-typescript-loader",
-        query: {
-          configFileName: TS_CONFIG_PATH
+        loader: "babel-loader",
+        options: {
+          extends: path.resolve(PROJECT_ROOT_PATH, "src/.babelrc")
         },
-        test: /\.(ts|tsx)$/
+        test: /\.(js|jsx|ts|tsx)$/
       },
-      // FONTS.
+      // Fonts.
       {
         loader: "url-loader",
         query: {
@@ -40,8 +40,8 @@ export const MODULE_CONFIG: {
       {
         loader: "handlebars-loader",
         options: {
-          helperDirs: path.resolve(PROJECT_ROOT_PATH, "./cli/build/template/helpers"),
-          partialDirs: path.resolve(PROJECT_ROOT_PATH, "./cli/build/template/partials")
+          helperDirs: path.resolve(PROJECT_ROOT_PATH, "cli/build/template/helpers"),
+          partialDirs: path.resolve(PROJECT_ROOT_PATH, "cli/build/template/partials")
         },
         test: /\.hbs$/
       },
@@ -59,7 +59,7 @@ export const MODULE_CONFIG: {
           }
         ]
       },
-      // IMAGES AS ASSET.
+      // Images as assets.
       {
         test: /\.(gif|png|jpe|jpg|svg)$/i,
         use: [
@@ -75,12 +75,12 @@ export const MODULE_CONFIG: {
   },
   RESOLVE: {
     alias: {
-      "@Api": path.resolve(PROJECT_ROOT_PATH, "./src/api/"),
-      "@Application": path.resolve(PROJECT_ROOT_PATH, "./src/application/"),
+      "@Api": path.resolve(PROJECT_ROOT_PATH, "src/api/"),
+      "@Application": path.resolve(PROJECT_ROOT_PATH, "src/application/"),
       "@Build": path.resolve(BUILD_CONFIGURATION_PATH),
-      "@Lib": path.resolve(PROJECT_ROOT_PATH, "./src/lib/"),
-      "@Main": path.resolve(PROJECT_ROOT_PATH, "./src/application/main/"),
-      "@Modules": path.resolve(PROJECT_ROOT_PATH, "./src/application/modules/")
+      "@Lib": path.resolve(PROJECT_ROOT_PATH, "src/lib/"),
+      "@Main": path.resolve(PROJECT_ROOT_PATH, "src/application/main/"),
+      "@Modules": path.resolve(PROJECT_ROOT_PATH, "src/application/modules/")
     },
     extensions: [
       ".ts",

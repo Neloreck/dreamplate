@@ -16,10 +16,12 @@
     ],
     "==========================================================================================================": "===",
     "test": [
+      "npm run cli typecheck",
       "npm run cli lint",
       "npm run cli jest"
     ],
     "jest": "npx cross-env NODE_ENV=test ts-node --project ./cli/test/config/tsconfig.json ./cli/test/TestRunner.ts",
-    "lint": "npx eslint src/**/*.ts src/**/*.tsx"
+    "lint": "npx eslint src/**/*.ts src/**/*.tsx",
+    "typecheck": "npx tsc -p src"
   }
 }

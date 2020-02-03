@@ -41,8 +41,6 @@ export class CustomLoader extends LitElement {
     `;
   }
 
-  [index: string]: any;
-
   @Property({ type: Number })
   public width: number = 50;
 
@@ -53,7 +51,7 @@ export class CustomLoader extends LitElement {
   public borderWidth: number = 10;
 
   protected updated(changedProperties: Map<string, any>): void {
-    changedProperties.forEach((oldValue: number, key: string) => this.style[key as any] = this[key] + "px");
+    changedProperties.forEach((oldValue: number, key: string) => this.style[key as any] = (this as any)[key] + "px");
   }
 
   protected firstUpdated(): void {

@@ -1,5 +1,3 @@
-import { CheckerPlugin } from "awesome-typescript-loader";
-import * as path from "path";
 import { DefinePlugin, Options, Plugin, ProvidePlugin } from "webpack";
 
 import { APPLICATION_ROOT, MODAL_ROOT } from "../build_constants";
@@ -138,10 +136,9 @@ export const PLUGIN_CONFIG: {
   },
   PLUGINS: [
     ...MODULES_CONFIG.modules.map(createHTMLEntry),
-    new CheckerPlugin(),
     new DuplicatePackageCheckerPlugin({ verbose: true }),
     new DotEnv({ path: DOTENV_CONFIG_PATH }),
-    new DefinePlugin(RUNTIME_CONSTANTS),
+    new DefinePlugin(RUNTIME_CONSTANTS as {}),
     new ProvidePlugin(PROVIDE_MODULES_CONFIG),
     new CopyWebpackPlugin(BASE_PROJECT_STATIC_FILES.map((it: string) => ({ from: it, to: "." }))),
     new ScriptExtHtmlPlugin({ defaultAttribute: "async", inline: PROJECT_INLINE_MODULES }),
