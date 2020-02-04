@@ -1,4 +1,5 @@
 /**
+ * @packageDocumentation
  * @module @application/main
  */
 
@@ -7,7 +8,7 @@ import { PureComponent, ReactNode } from "react";
 import { hot } from "react-hot-loader/root";
 import { Router as ReactRouter } from "react-router";
 
-// Data
+// Data.
 import { AuthContextManager, RouterContextManager, ThemeContextManager } from "@Main/data/store";
 
 // Application.

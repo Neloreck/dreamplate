@@ -1,5 +1,6 @@
 /**
- * @module main/view
+ * @packageDocumentation
+ * @module @application/main
  */
 
 import { ReactElement, useEffect } from "react";

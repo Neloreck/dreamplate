@@ -1,89 +1,68 @@
 /**
+ * @packageDocumentation
  * @module @application/home
  */
 
-import { RouterContextManager } from "@Main/data/store";
-import { Bind } from "dreamstate";
-import { PureComponent, ReactNode } from "react";
-import { WithStyles } from "react-jss";
+import { useManager } from "dreamstate";
+import { ReactElement, ReactNode, useCallback } from "react";
 
-// Lib.
-import { Styled } from "@Lib/utils";
+// Data.
+import { RouterContextManager } from "@Main/data/store";
 
 // View.
-import { IMainHeaderInjectedProps, MainHeader } from "@Main/view/components/MainHeader";
-import { homePageStyle } from "./HomePage.style";
+import { MainHeader } from "@Main/view/components/MainHeader";
+import { useStyles } from "./HomePage.style";
 
 import "@Lib/components/custom/CustomCard";
 
-// Props.
-export interface IHomePageOwnProps {}
+// Sub-render util.
+const renderReferenceCard = (className: string, label: string, href: string): ReactNode => (
+  <custom-card class={className}>
 
-export interface IHomePageInjectedProps extends WithStyles<typeof homePageStyle> {}
+    <a
+      href={href}
+      target={"_blank"}
+      rel={"noreferrer"}
+    >
+      { label }
+    </a>
 
-export interface IHomePageProps extends IHomePageOwnProps, IHomePageInjectedProps {}
+  </custom-card>
+);
 
-@Styled(homePageStyle)
-export class HomePage extends PureComponent<IHomePageProps> {
+export function HomePage({
+  classes: { content, cardLink, linkCard } = useStyles(),
+  routerContext: { routingActions: { hardPush } } = useManager(RouterContextManager)
+}): ReactElement {
 
-  public render(): ReactNode {
+  const onAboutNavigated = useCallback(() => hardPush("/about"), []);
 
-    const { classes } = this.props;
+  return (
+    <>
 
-    return (
-      <>
+      <MainHeader/>
 
-        <MainHeader {...{} as IMainHeaderInjectedProps}/>
+      <main className={content}>
 
-        <main className={classes.content}>
+        <div className={linkCard}>
 
-          <div className={classes.linkCards}>
+          { renderReferenceCard(cardLink, "React", "https://reactjs.org/") }
 
-            { this.renderReferenceCard("React", "https://reactjs.org/") }
+          { renderReferenceCard(cardLink, "Typescript", "https://www.typescriptlang.org/") }
 
-            { this.renderReferenceCard("Typescript", "https://www.typescriptlang.org/") }
+          { renderReferenceCard(cardLink, "DreamState", "https://github.com/Neloreck/dreamstate/") }
 
-            { this.renderReferenceCard("DreamState", "https://github.com/Neloreck/dreamstate/") }
+        </div>
 
-          </div>
-
-          <custom-button
-            color={"grayscale"}
-            onClick={this.onAboutNavigated}
-          >
-            About
-          </custom-button>
-
-        </main>
-
-      </>
-    );
-  }
-
-  private renderReferenceCard(label: string, href: string): ReactNode {
-
-    const { classes } = this.props;
-
-    return (
-      <custom-card
-        class={classes.cardLink}
-      >
-
-        <a
-          href={href}
-          target={"_blank"}
-          rel={"noreferrer"}
+        <custom-button
+          color={"grayscale"}
+          onClick={onAboutNavigated}
         >
-          { label }
-        </a>
+          About
+        </custom-button>
 
-      </custom-card>
-    );
-  }
+      </main>
 
-  @Bind()
-  private onAboutNavigated(): void {
-    (RouterContextManager.current() as RouterContextManager).hardPush("/about");
-  }
-
+    </>
+  );
 }

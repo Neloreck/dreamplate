@@ -1,3 +1,8 @@
+/**
+ * @packageDocumentation
+ * @module @lib/theme
+ */
+
 import { TBreakpoint } from "@Lib/theme/types";
 
 export const BREAKPOINT = {

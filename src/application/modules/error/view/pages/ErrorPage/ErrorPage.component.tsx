@@ -1,62 +1,45 @@
 /**
+ * @packageDocumentation
  * @module @application/error
  */
 
-import { Bind } from "dreamstate";
-import { Context, PureComponent, ReactNode } from "react";
-import { WithStyles } from "react-jss";
-
-// Lib.
-import { Styled } from "@Lib/utils";
+import { useManager } from "dreamstate";
+import { ReactElement, useCallback } from "react";
 
 // Data.
 import { RouterContextManager } from "@Main/data/store";
 
 // View.
-import { IMainHeaderInjectedProps, MainHeader } from "@Main/view/components/MainHeader";
-import { errorPageStyle } from "./ErrorPage.style";
+import { MainHeader } from "@Main/view/components/MainHeader";
+import { useStyles } from "./ErrorPage.style";
 
 import "@Lib/components/custom/CustomButton";
 import "@Lib/components/custom/CustomCard";
 
-// Props.
-export interface IErrorPageOwnProps {}
+export function ErrorPage({
+  classes: { content, labelCard } = useStyles(),
+  routerContext: { routingActions: { hardPush } } = useManager(RouterContextManager)
+}): ReactElement {
 
-export interface IErrorPageInjectedProps extends WithStyles<typeof errorPageStyle> {}
+  const onHomeNavigated = useCallback(() => hardPush("/home"), []);
 
-export interface IErrorPageProps extends IErrorPageOwnProps, IErrorPageInjectedProps {}
+  return (
+    <>
 
-@Styled(errorPageStyle)
-export class ErrorPage extends PureComponent<IErrorPageProps, {}> {
+      <MainHeader/>
 
-  public render(): ReactNode {
+      <main className={content}>
 
-    const { classes } = this.props;
+        <custom-card class={labelCard}>
+          Page was not found.
+        </custom-card>
 
-    return (
-      <>
+        <custom-button onClick={onHomeNavigated}>
+          Go Home
+        </custom-button>
 
-        <MainHeader {...{} as IMainHeaderInjectedProps}/>
+      </main>
 
-        <main className={classes.content}>
-
-          <custom-card class={classes.labelCard}>
-            Page was not found.
-          </custom-card>
-
-          <custom-button onClick={this.onHomeNavigated}>
-            Go Home
-          </custom-button>
-
-        </main>
-
-      </>
-    );
-  }
-
-  @Bind()
-  private onHomeNavigated(): void {
-    (RouterContextManager.current() as RouterContextManager).hardPush("/home");
-  }
-
+    </>
+  );
 }

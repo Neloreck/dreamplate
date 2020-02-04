@@ -1,5 +1,6 @@
 /**
- * @module @api/destination
+ * @packageDocumentation
+ * @module @lib/api
  */
 
 // Lib.
@@ -40,10 +41,10 @@ const doRequest = async (method: ERequestMethod, mapping: string, request?: obje
   }
 };
 
-export const getRequest = async (mapping: string, urlParams?: {}, headers?: Headers): Promise<object> => await doRequest(ERequestMethod.GET, mapping);
+export const getRequest = async (mapping: string, urlParams?: {}, headers?: Headers): Promise<object> => await doRequest(ERequestMethod.GET, mapping, urlParams, headers);
 
 export const postRequest = async (mapping: string, request: object | URLSearchParams, headers?: Headers): Promise<object> => await doRequest(ERequestMethod.POST, mapping, request, headers);
 
-export const deleteRequest = async (mapping: string, request: object | URLSearchParams, headers?: Headers): Promise<object> => await doRequest(ERequestMethod.DELETE, mapping, request);
+export const deleteRequest = async (mapping: string, request: object | URLSearchParams, headers?: Headers): Promise<object> => await doRequest(ERequestMethod.DELETE, mapping, request, headers);
 
-export const putRequest = async (mapping: string, request: object | URLSearchParams, headers?: Headers): Promise<object> => await doRequest(ERequestMethod.PUT, mapping, request);
+export const putRequest = async (mapping: string, request: object | URLSearchParams, headers?: Headers): Promise<object> => await doRequest(ERequestMethod.PUT, mapping, request, headers);

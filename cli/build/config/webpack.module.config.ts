@@ -1,7 +1,7 @@
 import * as path from "path";
 import { Module, Resolve } from "webpack";
 
-import { BUILD_CONFIGURATION_PATH, IS_PRODUCTION, PROJECT_ROOT_PATH, TS_CONFIG_PATH } from "./webpack.constants";
+import { BUILD_CONFIGURATION_PATH, IS_PRODUCTION, PROJECT_ROOT_PATH } from "./webpack.constants";
 
 export const MODULE_CONFIG: {
   RESOLVE: Resolve,
@@ -9,25 +9,69 @@ export const MODULE_CONFIG: {
 } = {
   MODULE: {
     rules: [
-      // STRIP DEV CODE.
+      // Strip DEV code.
       {
         enforce: "pre",
         exclude: /(node_modules|\.spec\.js)/,
-        test: /\.(ts|tsx)$/,
+        test: /\.(ts|tsx|js|jsx)$/,
         use: [
           { loader: path.resolve(BUILD_CONFIGURATION_PATH, "loaders/stripBlockLoader.ts") }
         ],
       },
-      // TS/TSX.
+      // TS/TSX/JS/JSX.
       {
         exclude: /(node_modules)/,
-        loader: "awesome-typescript-loader",
-        query: {
-          configFileName: TS_CONFIG_PATH
+        loader: "babel-loader",
+        options: {
+          minified: true,
+          presets: [
+            "@babel/preset-typescript",
+            [
+              "@babel/preset-env",
+              {
+                "targets": {
+                  "node": "10",
+                  "browsers": [
+                    "> 5.0%",
+                    "not dead"
+                  ]
+                },
+                "modules": false,
+                "loose": true,
+                "useBuiltIns": "entry",
+                "corejs": "3",
+                "exclude": [ "transform-async-to-generator", "transform-regenerator" ]
+              }
+            ],
+            "@babel/preset-react"
+          ],
+          plugins: [
+            [
+              "module-resolver",
+              {
+                "alias": {
+                  "@Macro": path.resolve(BUILD_CONFIGURATION_PATH, "macroses")
+                }
+              }
+            ],
+            "macros",
+            "react-hot-loader/babel",
+            "@babel/plugin-transform-react-constant-elements",
+            [ "@babel/plugin-proposal-decorators", { "legacy": true } ],
+            [ "@babel/plugin-proposal-class-properties", { "loose": true } ],
+            [ "module:fast-async", { "spec": true } ],
+            [ "transform-imports", {
+              /* Example:
+              "@material-ui/core": {
+                "transform": "@material-ui/core/${member}",
+                "preventFullImport": true
+              }*/
+            } ]
+          ]
         },
-        test: /\.(ts|tsx)$/
+        test: /\.(js|jsx|ts|tsx)$/
       },
-      // FONTS.
+      // Fonts.
       {
         loader: "url-loader",
         query: {
@@ -40,8 +84,8 @@ export const MODULE_CONFIG: {
       {
         loader: "handlebars-loader",
         options: {
-          helperDirs: path.resolve(PROJECT_ROOT_PATH, "./cli/build/template/helpers"),
-          partialDirs: path.resolve(PROJECT_ROOT_PATH, "./cli/build/template/partials")
+          helperDirs: path.resolve(PROJECT_ROOT_PATH, "cli/build/template/helpers"),
+          partialDirs: path.resolve(PROJECT_ROOT_PATH, "cli/build/template/partials")
         },
         test: /\.hbs$/
       },
@@ -59,7 +103,7 @@ export const MODULE_CONFIG: {
           }
         ]
       },
-      // IMAGES AS ASSET.
+      // Images as assets.
       {
         test: /\.(gif|png|jpe|jpg|svg)$/i,
         use: [
@@ -75,12 +119,12 @@ export const MODULE_CONFIG: {
   },
   RESOLVE: {
     alias: {
-      "@Api": path.resolve(PROJECT_ROOT_PATH, "./src/api/"),
-      "@Application": path.resolve(PROJECT_ROOT_PATH, "./src/application/"),
+      "@Api": path.resolve(PROJECT_ROOT_PATH, "src/api/"),
+      "@Application": path.resolve(PROJECT_ROOT_PATH, "src/application/"),
       "@Build": path.resolve(BUILD_CONFIGURATION_PATH),
-      "@Lib": path.resolve(PROJECT_ROOT_PATH, "./src/lib/"),
-      "@Main": path.resolve(PROJECT_ROOT_PATH, "./src/application/main/"),
-      "@Modules": path.resolve(PROJECT_ROOT_PATH, "./src/application/modules/")
+      "@Lib": path.resolve(PROJECT_ROOT_PATH, "src/lib/"),
+      "@Main": path.resolve(PROJECT_ROOT_PATH, "src/application/main/"),
+      "@Modules": path.resolve(PROJECT_ROOT_PATH, "src/application/modules/")
     },
     extensions: [
       ".ts",

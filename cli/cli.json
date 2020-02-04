@@ -2,6 +2,7 @@
   "config": {
   },
   "scripts": {
+    "list": "ts-node --project ./cli/tsconfig.json ./cli/utils/print_commands_list.ts",
     "purge": [
       "npx rimraf ./target",
       "echo 'Target cleaned up.'"
@@ -16,10 +17,12 @@
     ],
     "==========================================================================================================": "===",
     "test": [
+      "npm run cli typecheck",
       "npm run cli lint",
       "npm run cli jest"
     ],
-    "jest": "npx ts-node --project ./cli/test/config/tsconfig.json ./cli/test/TestRunner.ts",
-    "lint": "npx tslint --project ./src/"
+    "jest": "npx cross-env NODE_ENV=test ts-node --project ./cli/test/config/tsconfig.json ./cli/test/TestRunner.ts",
+    "lint": "npx eslint src/**/*.ts src/**/*.tsx",
+    "typecheck": "npx tsc -p src"
   }
 }

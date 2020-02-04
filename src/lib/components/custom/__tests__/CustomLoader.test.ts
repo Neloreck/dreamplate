@@ -1,6 +1,6 @@
 // Lib.
 import { CustomLoader } from "@Lib/components/custom/CustomLoader";
-import { nestedShadowValueOf } from "@Lib/components/utils/testing";
+import { nestedShadowValueOf } from "@Lib/testing";
 import { forMillis } from "@Lib/utils/delay";
 
 describe("Custom loader web component.", () => {

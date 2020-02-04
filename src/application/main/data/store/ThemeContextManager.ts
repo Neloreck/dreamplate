@@ -1,13 +1,15 @@
 /**
+ * @packageDocumentation
  * @module @application/main
  */
 
-import { Bind, ContextManager } from "dreamstate";
+import { Bind, ContextManager, TStateSetter } from "dreamstate";
 import { CreateGenerateIdOptions } from "jss";
 
 // Lib.
-import { createDefaultTheme, DEFAULT_THEME_TYPE, IApplicationTheme, toggleTheme, TThemeType } from "@Lib/theme";
-import { encrypt, getFromLocalStorage, Logger, parse, setLocalStorageItem } from "@Lib/utils";
+import { log } from "@Macro/log.macro";
+import { createDefaultTheme, IApplicationTheme, toggleTheme, TThemeType } from "@Lib/theme";
+import { encrypt, getFromLocalStorage, parse, setLocalStorageItem } from "@Lib/utils";
 
 /**
  * Theme context description.
@@ -36,13 +38,11 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
       toggleTheme: this.toggleTheme
     },
     themeState: {
-      theme: createDefaultTheme(getFromLocalStorage("theme_type") || DEFAULT_THEME_TYPE)
+      theme: createDefaultTheme(getFromLocalStorage("theme_type") || GTheme.DEFAULT_THEME_TYPE)
     }
   };
 
-  private readonly log: Logger = new Logger(ThemeContextManager.name);
-
-  private readonly setState = ContextManager.getSetter(this, "themeState");
+  private readonly setState: TStateSetter<IThemeContext, "themeState"> = ContextManager.getSetter(this, "themeState");
 
   /**
    * Toggle application theme mode and save it into local storage.
@@ -56,13 +56,13 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
     const nextThemeType: TThemeType = (theme.palette.type === "light" ? "dark" : "light");
     const nextTheme: IApplicationTheme = toggleTheme(theme, nextThemeType);
 
-    this.log.info(`Toggle theme mode to '${nextThemeType}'.`);
+    log.info(`Toggle theme mode to '${nextThemeType}'.`);
 
     try {
       setLocalStorageItem("theme_type", nextThemeType);
     } catch (error) {
       /* <dev> */
-      this.log.warn("Failed to cache application theme:", error);
+      log.warn("Failed to cache application theme:", error);
       /* </dev> */
     }
 
@@ -79,7 +79,7 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
 
     const { themeState: { theme } } = this.context;
 
-    this.log.info(`Theme provision started [${theme.palette.type}].`, theme);
+    log.info(`Theme provision started [${theme.palette.type}].`);
 
     window.addEventListener("storage", this.onLocalStorageDataChanged);
   }
@@ -105,7 +105,7 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
       if (newValue) {
         this.setState({ theme: toggleTheme(theme, parse(newValue) as TThemeType) });
       } else {
-        this.setState({ theme: createDefaultTheme(DEFAULT_THEME_TYPE) });
+        this.setState({ theme: createDefaultTheme(GTheme.DEFAULT_THEME_TYPE) });
       }
     }
   }

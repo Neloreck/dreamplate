@@ -1,16 +1,17 @@
 /**
+ * @packageDocumentation
  * @module @application/main
  */
 
-import { BLACK, IApplicationTheme } from "@Lib/theme";
+import { createUseStyles } from "react-jss";
 
-export const mainHeaderStyle = ({ palette, spacing }: IApplicationTheme) => ({
-  "& > *": {
-    margin: `0 ${spacing.unit * 2}px 0 ${spacing.unit * 2}px`
-  },
+// Lib.
+import { IApplicationTheme } from "@Lib/theme";
+
+export const useStyles = createUseStyles(({ palette, spacing }: IApplicationTheme) => ({
   root: {
     "& > custom-heading": {
-      color: BLACK,
+      color: GColor.BLACK,
       cursor: "default"
     },
     alignSelf: "normal",
@@ -25,4 +26,4 @@ export const mainHeaderStyle = ({ palette, spacing }: IApplicationTheme) => ({
     position: "relative",
     transitionDuration: "250ms"
   }
-});
+}));

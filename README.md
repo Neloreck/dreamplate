@@ -9,7 +9,7 @@
 ### Size and general performance:
 
 - MIN + GZIP - (+-75KB) in total
-- load time: 10-15 ms for iMac 2017, 50 ms for Acer Nitro 5
+- load time: 10-15 ms for iMac 2017, 50 ms for Acer Nitro 5 (2017)
 - +-3.8MB memory heap
 - Optimized react VDOM tree (except react-router and react-jss)
 
@@ -22,7 +22,6 @@
 - JSS, project theming with own context management
 - Typescript (decorators, OOP style, newest features, awt loader with babel)
 - Jest
-- TSLint
 - HMR with live editing
 - HBS (template, global styles)
 
@@ -113,18 +112,17 @@ Typically module is separated as VIEW and DATA sub-modules. Each one includes on
 
 ## Futures
 
+- Extended format for cli scripts (objects instead of strings)
 - Minify and optimize as separated flags from env modes
-- Eslint
 - Benchmark for testing?
 - Build something from wasm as experiment and use wasm-loader
 - Workers investigation?
-- Better docs
 - Translations experiments
+- Better config for eslint
 
 ## Side packages (waiting for)
 
 - Hooks implementation for react-router
 - Hooks implementation for react-jss
-- Modules issue for typedoc package resolve
 - JSDOM web components support
 - SSR better support (suspense, lazy and other features)

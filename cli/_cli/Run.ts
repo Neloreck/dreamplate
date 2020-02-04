@@ -1,6 +1,5 @@
 let called: boolean = false;
 
-// tslint:disable typedef
 export function Run(shouldCall?: boolean) {
 
   return (targetClass: { main: (argv: Array<string>) => void } ): void  => {

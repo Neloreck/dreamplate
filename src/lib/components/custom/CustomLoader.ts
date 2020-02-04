@@ -1,4 +1,5 @@
 /**
+ * @packageDocumentation
  * @module @lib/components
  */
 
@@ -6,7 +7,6 @@ import { css, CSSResult, LitElement, unsafeCSS } from "lit-element";
 
 // Lib.
 import { CustomElement, ICustomElementAttributes, Property } from "@Lib/components";
-import { DEFAULT_PRIMARY_DARK, DEFAULT_PRIMARY_MAIN } from "@Lib/theme";
 
 // Props.
 export interface ICustomLoader extends ICustomElementAttributes<CustomLoader> {
@@ -16,7 +16,7 @@ export interface ICustomLoader extends ICustomElementAttributes<CustomLoader> {
 }
 
 /**
- * Example of web-components based element for fastest rendering.
+ * Custom element representing spinner.
  */
 @CustomElement("custom-loader")
 export class CustomLoader extends LitElement {
@@ -28,7 +28,7 @@ export class CustomLoader extends LitElement {
       :host([loading="true"]) {
         border-radius: 50%;
         border-style: solid;
-        border-color: ${unsafeCSS(DEFAULT_PRIMARY_MAIN)} transparent ${unsafeCSS(DEFAULT_PRIMARY_DARK)} transparent;
+        border-color: ${unsafeCSS(GTheme.DEFAULT_PRIMARY_MAIN)} transparent ${unsafeCSS(GTheme.DEFAULT_PRIMARY_DARK)} transparent;
         animation: sl-rotation 2s linear infinite;
       }
 
@@ -42,8 +42,6 @@ export class CustomLoader extends LitElement {
     `;
   }
 
-  [index: string]: any;
-
   @Property({ type: Number })
   public width: number = 50;
 
@@ -54,7 +52,7 @@ export class CustomLoader extends LitElement {
   public borderWidth: number = 10;
 
   protected updated(changedProperties: Map<string, any>): void {
-    changedProperties.forEach((oldValue: number, key: string) => this.style[key as any] = this[key] + "px");
+    changedProperties.forEach((oldValue: number, key: string) => this.style[key as any] = (this as any)[key] + "px");
   }
 
   protected firstUpdated(): void {

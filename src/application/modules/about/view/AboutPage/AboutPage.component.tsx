@@ -1,59 +1,42 @@
 /**
+ * @packageDocumentation
  * @module @application/about
  */
 
-import { Bind } from "dreamstate";
-import { PureComponent, ReactNode } from "react";
-import { WithStyles } from "react-jss";
-
-// Lib.
-import { Styled } from "@Lib/utils";
+import { useManager } from "dreamstate";
+import { ReactElement, useCallback } from "react";
 
 // Data.
 import { RouterContextManager } from "@Main/data/store";
 
 // View.
-import { IMainHeaderInjectedProps, MainHeader } from "@Main/view/components/MainHeader";
-import { aboutPageStyle } from "./AboutPage.style";
+import { MainHeader } from "@Main/view/components/MainHeader";
+import { useStyles } from "./AboutPage.style";
 
 import "@Lib/components/custom/CustomButton";
 
-// Props.
-export interface IAboutPageOwnProps {}
+export function AboutPage({
+  classes: { content } = useStyles(),
+  routerContext: { routingActions: { hardPush } } = useManager(RouterContextManager)
+}): ReactElement {
 
-export interface IAboutPageInjectedProps extends WithStyles<typeof aboutPageStyle> {}
+  const onHomeNavigated = useCallback(() => hardPush("/home"), []);
 
-export interface IAboutPageProps extends IAboutPageOwnProps, IAboutPageInjectedProps {}
+  return (
+    <>
 
-@Styled(aboutPageStyle)
-export class AboutPage extends PureComponent<IAboutPageProps> {
+      <MainHeader/>
 
-  public render(): ReactNode {
+      <main className={content}>
 
-    const { classes } = this.props;
+        About page.
 
-    return (
-      <>
+        <custom-button onClick={onHomeNavigated}>
+          Go home
+        </custom-button>
 
-        <MainHeader {...{} as IMainHeaderInjectedProps}/>
+      </main>
 
-        <main className={classes.content}>
-
-          About page.
-
-          <custom-button onClick={this.onHomeNavigated}>
-            Go home
-          </custom-button>
-
-        </main>
-
-      </>
-    );
-  }
-
-  @Bind()
-  private onHomeNavigated(): void {
-    (RouterContextManager.current() as RouterContextManager).hardPush("/home");
-  }
-
+    </>
+  );
 }

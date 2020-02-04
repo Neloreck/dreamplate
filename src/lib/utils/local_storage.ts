@@ -1,6 +1,22 @@
 /**
+ * @packageDocumentation
  * @module @lib/utils
  */
+
+/**
+ * Encrypt function for local storage.
+ */
+export const encrypt = (value: string): string => btoa(value);
+
+/**
+ * Decrypt function for local storage.
+ */
+export const decrypt = (value: string): string => atob(value);
+
+/**
+ * Decrypt function for local storage.
+ */
+export const parse = <T>(value: string): T | null => JSON.parse(decrypt(value));
 
 /**
  * Get value by key from localstorage.
@@ -26,18 +42,3 @@ export const setLocalStorageItem = <T>(key: string, value: T): void => {
  * Key and value are encrypted in B64.
  */
 export const removeLocalStorageItem = (key: string): void => localStorage.removeItem(encrypt(key));
-
-/**
- * Encrypt function for local storage.
- */
-export const encrypt = (value: string): string => btoa(value);
-
-/**
- * Decrypt function for local storage.
- */
-export const decrypt = (value: string): string => atob(value);
-
-/**
- * Decrypt function for local storage.
- */
-export const parse = <T>(value: string): T | null => JSON.parse(decrypt(value));

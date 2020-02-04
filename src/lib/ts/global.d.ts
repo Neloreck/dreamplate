@@ -1,11 +1,17 @@
 /**
+ * @packageDocumentation
  * @module @lib/ts
  */
 
-import * as React from "react";
+import * as GlobalReact from "react";
 
 // Lib.
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { ICustomIntrinsicElements } from "@Lib/components/types";
+
+// Constants.
+import * as colors from "@Build/globals/colors";
+import * as theme from "@Build/globals/theme";
 
 declare global {
 
@@ -15,21 +21,30 @@ declare global {
   const IS_DEV: boolean;
 
   /**
-   * Global definition for decorator support flag.
+   * Global definition for test mode flag.
    */
-  const IS_DECORATOR_ENABLED: boolean;
+  const IS_TEST: boolean | undefined;
 
   /**
    * Global definition for react jsx factories.
    */
-  const React: typeof React;
+  const React: typeof GlobalReact;
+
+  /**
+   * Global colors definitions for build time evaluation.
+   */
+  const GColor: typeof colors;
+
+  /**
+   * Global colors definitions for build time evaluation.
+   */
+  const GTheme: typeof theme;
 
   /**
    * Declare JSX elements to globals.
    */
   namespace JSX {
 
-    // tslint:disable-next-line
     interface IntrinsicElements extends ICustomIntrinsicElements {
     }
   }

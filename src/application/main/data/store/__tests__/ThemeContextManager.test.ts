@@ -1,6 +1,6 @@
 // Lib.
-import { createDefaultTheme, DEFAULT_THEME_TYPE, TThemeType, IApplicationTheme, toggleTheme } from "@Lib/theme";
-import { encrypt, getFromLocalStorage, setLocalStorageItem } from "@Lib/utils";
+import { TThemeType, IApplicationTheme, toggleTheme } from "@Lib/theme";
+import { encrypt, setLocalStorageItem } from "@Lib/utils";
 
 // Data.
 import { ThemeContextManager } from "@Main/data/store";
@@ -13,7 +13,7 @@ describe("Theme context manager.", () => {
 
     const { themeState: { theme } } = manager.context;
 
-    expect(theme.palette.type).toBe(DEFAULT_THEME_TYPE);
+    expect(theme.palette.type).toBe(GTheme.DEFAULT_THEME_TYPE);
 
     // @ts-ignore privacy.
     manager.onProvisionStarted();

@@ -1,5 +1,6 @@
 /**
- * @module @api/destination
+ * @packageDocumentation
+ * @module @lib/api
  */
 
 /**

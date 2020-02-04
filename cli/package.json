@@ -3,10 +3,9 @@
   "private": true,
   "dependencies": {
     "colors": "^1.4.0",
-    "typedoc": "^0.15.0",
-    "typedoc-plugin-external-module-name": "^2.1.0",
-    "typescript": "^3.6.4"
+    "typedoc": "^0.17.0-3",
+    "typedoc-plugin-external-module-name": "^3.0.0",
+    "typescript": "^3.7.5"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }

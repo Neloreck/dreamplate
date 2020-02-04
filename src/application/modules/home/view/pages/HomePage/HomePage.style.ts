@@ -1,10 +1,14 @@
 /**
+ * @packageDocumentation
  * @module @application/home
  */
 
+import { createUseStyles } from "react-jss";
+
+// Lib.
 import { down, IApplicationTheme } from "@Lib/theme";
 
-export const homePageStyle = ({ palette, spacing }: IApplicationTheme) => ({
+export const useStyles = createUseStyles(({ palette, spacing }: IApplicationTheme) => ({
   cardLink: {
     "& a": {
       color: palette.text.primary,
@@ -16,8 +20,8 @@ export const homePageStyle = ({ palette, spacing }: IApplicationTheme) => ({
     transitionDuration: "500ms"
   },
   content: {
-    alignSelf: "normal",
     alignItems: "center",
+    alignSelf: "normal",
     backgroundColor: palette.background.default,
     backgroundSize: "cover",
     display: "flex",
@@ -27,7 +31,7 @@ export const homePageStyle = ({ palette, spacing }: IApplicationTheme) => ({
     overflowY: "auto",
     transitionDuration: "350ms"
   },
-  linkCards: {
+  linkCard: {
     [down("sm")]: {
       flexDirection: "column"
     },
@@ -35,4 +39,4 @@ export const homePageStyle = ({ palette, spacing }: IApplicationTheme) => ({
     flexDirection: "row",
     padding: spacing.unit * 10
   }
-});
+}));

@@ -1,20 +1,19 @@
 /**
+ * @packageDocumentation
  * @module @initialization
  *
  * Inline initialization greeter and notifier.
  */
 
-import { Logger } from "@Lib/utils";
+import { log } from "@Macro/log.macro";
 
 /**
  * Log greeting and page load information.
  */
 export const logInitInfo = () => {
 
-  const logger: Logger = new Logger("INIT");
+  log.info("🔶 Starting application in DEV mode.");
+  log.info("🔶 First init timestamp:", Date.now());
 
-  logger.info("🔶 Starting application in DEV mode.");
-  logger.info("🔶 First init timestamp:", Date.now());
-
-  logger.pushSeparator();
+  log.pushSeparator();
 };

@@ -1,54 +1,41 @@
 /**
+ * @packageDocumentation
  * @module @lib/theme
  */
 
 import { TThemeType, IApplicationTheme } from "@Lib/theme/types";
 import { createDefaultTheme, toggleTheme } from "@Lib/theme/utils";
-import {
-  DEFAULT_BACKGROUND_DARK,
-  DEFAULT_BACKGROUND_LIGHT, DEFAULT_BACKGROUND_PAPER_DARK,
-  DEFAULT_BACKGROUND_PAPER_LIGHT,
-  DEFAULT_PRIMARY_DARK,
-  DEFAULT_PRIMARY_LIGHT,
-  DEFAULT_PRIMARY_MAIN,
-  DEFAULT_SECONDARY_DARK,
-  DEFAULT_SECONDARY_LIGHT,
-  DEFAULT_SECONDARY_MAIN, DEFAULT_SPACING_UNIT, DEFAULT_TEXT_PRIMARY_DARK,
-  DEFAULT_TEXT_PRIMARY_LIGHT, DEFAULT_TEXT_SECONDARY_DARK,
-  DEFAULT_TEXT_SECONDARY_LIGHT,
-  DEFAULT_THEME_TYPE
-} from "@Lib/theme/theming";
 
 describe("Theming utils should work properly.", () => {
 
   it("Should correctly create default theme based on default colors.", () => {
 
-    const theme: IApplicationTheme = createDefaultTheme(DEFAULT_THEME_TYPE);
+    const theme: IApplicationTheme = createDefaultTheme(GTheme.DEFAULT_THEME_TYPE);
 
-    expect(DEFAULT_THEME_TYPE).toBe("light");
+    expect(GTheme.DEFAULT_THEME_TYPE).toBe("light");
 
-    expect(theme.palette.type).toBe(DEFAULT_THEME_TYPE);
+    expect(theme.palette.type).toBe(GTheme.DEFAULT_THEME_TYPE);
 
-    expect(theme.palette.primary.light).toBe(DEFAULT_PRIMARY_LIGHT);
-    expect(theme.palette.primary.main).toBe(DEFAULT_PRIMARY_MAIN);
-    expect(theme.palette.primary.dark).toBe(DEFAULT_PRIMARY_DARK);
+    expect(theme.palette.primary.light).toBe(GTheme.DEFAULT_PRIMARY_LIGHT);
+    expect(theme.palette.primary.main).toBe(GTheme.DEFAULT_PRIMARY_MAIN);
+    expect(theme.palette.primary.dark).toBe(GTheme.DEFAULT_PRIMARY_DARK);
 
-    expect(theme.palette.secondary.light).toBe(DEFAULT_SECONDARY_LIGHT);
-    expect(theme.palette.secondary.main).toBe(DEFAULT_SECONDARY_MAIN);
-    expect(theme.palette.secondary.dark).toBe(DEFAULT_SECONDARY_DARK);
+    expect(theme.palette.secondary.light).toBe(GTheme.DEFAULT_SECONDARY_LIGHT);
+    expect(theme.palette.secondary.main).toBe(GTheme.DEFAULT_SECONDARY_MAIN);
+    expect(theme.palette.secondary.dark).toBe(GTheme.DEFAULT_SECONDARY_DARK);
 
-    expect(theme.palette.background.default).toBe(DEFAULT_BACKGROUND_LIGHT);
-    expect(theme.palette.background.paper).toBe(DEFAULT_BACKGROUND_PAPER_LIGHT);
+    expect(theme.palette.background.default).toBe(GTheme.DEFAULT_BACKGROUND_LIGHT);
+    expect(theme.palette.background.paper).toBe(GTheme.DEFAULT_BACKGROUND_PAPER_LIGHT);
 
-    expect(theme.palette.text.primary).toBe(DEFAULT_TEXT_PRIMARY_LIGHT);
-    expect(theme.palette.text.secondary).toBe(DEFAULT_TEXT_SECONDARY_LIGHT);
+    expect(theme.palette.text.primary).toBe(GTheme.DEFAULT_TEXT_PRIMARY_LIGHT);
+    expect(theme.palette.text.secondary).toBe(GTheme.DEFAULT_TEXT_SECONDARY_LIGHT);
 
-    expect(theme.spacing.unit).toBe(DEFAULT_SPACING_UNIT);
+    expect(theme.spacing.unit).toBe(GTheme.DEFAULT_SPACING_UNIT);
   });
 
   it("Should correctly toggle theme colors.", () => {
 
-    let theme: IApplicationTheme = createDefaultTheme(DEFAULT_THEME_TYPE);
+    let theme: IApplicationTheme = createDefaultTheme(GTheme.DEFAULT_THEME_TYPE);
 
     for (let it = 0; it < 10; it ++) {
 
@@ -60,11 +47,11 @@ describe("Theming utils should work properly.", () => {
 
       expect(currentType).not.toBe(previousType);
 
-      expect(theme.palette.background.default).toBe(currentType === "light" ? DEFAULT_BACKGROUND_LIGHT : DEFAULT_BACKGROUND_DARK);
-      expect(theme.palette.background.paper).toBe(currentType === "light" ? DEFAULT_BACKGROUND_PAPER_LIGHT : DEFAULT_BACKGROUND_PAPER_DARK);
+      expect(theme.palette.background.default).toBe(currentType === "light" ? GTheme.DEFAULT_BACKGROUND_LIGHT : GTheme.DEFAULT_BACKGROUND_DARK);
+      expect(theme.palette.background.paper).toBe(currentType === "light" ? GTheme.DEFAULT_BACKGROUND_PAPER_LIGHT : GTheme.DEFAULT_BACKGROUND_PAPER_DARK);
 
-      expect(theme.palette.text.primary).toBe(currentType === "light" ? DEFAULT_TEXT_PRIMARY_LIGHT : DEFAULT_TEXT_PRIMARY_DARK);
-      expect(theme.palette.text.secondary).toBe(currentType === "light" ? DEFAULT_TEXT_SECONDARY_LIGHT : DEFAULT_TEXT_SECONDARY_DARK);
+      expect(theme.palette.text.primary).toBe(currentType === "light" ? GTheme.DEFAULT_TEXT_PRIMARY_LIGHT : GTheme.DEFAULT_TEXT_PRIMARY_DARK);
+      expect(theme.palette.text.secondary).toBe(currentType === "light" ? GTheme.DEFAULT_TEXT_SECONDARY_LIGHT : GTheme.DEFAULT_TEXT_SECONDARY_DARK);
     }
   });
 });

@@ -1,10 +1,14 @@
 /**
+ * @packageDocumentation
  * @module @application/error
  */
 
+import { createUseStyles } from "react-jss";
+
+// Lib.
 import { IApplicationTheme } from "@Lib/theme";
 
-export const errorPageStyle = ({ palette }: IApplicationTheme) => ({
+export const useStyles = createUseStyles(({ palette }: IApplicationTheme) => ({
   content: {
     alignItems: "center",
     alignSelf: "normal",
@@ -21,4 +25,4 @@ export const errorPageStyle = ({ palette }: IApplicationTheme) => ({
   labelCard: {
     backgroundColor: palette.secondary.light
   }
-});
+}));

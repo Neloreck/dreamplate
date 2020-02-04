@@ -1,3 +1,8 @@
+/**
+ * @packageDocumentation
+ * @module @lib/components
+ */
+
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
 // @Lib.

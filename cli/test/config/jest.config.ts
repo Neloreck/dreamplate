@@ -1,6 +1,8 @@
 import * as path from "path";
 import * as React from "react";
 
+import { RUNTIME_CONSTANTS } from "../../build/config";
+
 const ROOT_PATH: string = path.resolve(__dirname, "../../../");
 const TS_CONFIG_PATH: string = path.resolve(__dirname, "./tsconfig.json");
 const BABEL_TRANSFORMER_PATH: string = path.resolve(__dirname, "./babel_transformer.ts");
@@ -18,7 +20,8 @@ export const JEST_CONFIG = {
     "/node_modules/"
    ],
   globals: {
-    IS_DECORATOR_ENABLED: false,
+    ...RUNTIME_CONSTANTS,
+    IS_TEST: true,
     IS_DEV: false,
     React,
     "ts-jest": {

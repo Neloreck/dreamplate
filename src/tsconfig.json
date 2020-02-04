@@ -26,6 +26,7 @@
     "outDir": "../target/dist:raw",
     "paths": {
       "@Build/*": [ "../cli/build/*" ],
+      "@Macro/*": [ "../cli/build/macroses/*" ],
       "@Test/*": [ "../cli/test/*" ],
       "@Application/*": [ "./application/*" ],
       "@Main": [ "./application/main/index" ],
@@ -43,52 +44,8 @@
   "exclude": [],
   "typedocOptions": {
     "out": "../docs",
-    "exclude": [ "**/node_modules/**", "**/cli/**", "**/*+(index|.spec|.test.|.e2e).*" ],
+    "exclude": [ "**/node_modules/**", "**/cli/**", "**/*.test.*", "**/index*", "/**/__tests__/**" ],
     "mode": "modules",
     "name": "Dreamplate"
-  },
-  "awesomeTypescriptLoaderOptions": {
-    "babelCore": "@babel/core",
-    "doTypeCheck": true,
-    "forkChecker": true,
-    "cacheDirectory": "../target/cache/atl",
-    "useBabel": true,
-    "useCache": true,
-    "babelOptions": {
-      "babelrc": false,
-      "minified": true,
-      "presets": [
-        [
-          "@babel/preset-env",
-          {
-            "targets": {
-              "node": "10",
-              "browsers": [
-                "> 2.0%",
-                "not dead"
-              ]
-            },
-            "modules": false,
-            "loose": true,
-            "useBuiltIns": "entry",
-            "corejs": "3",
-            "exclude": [ "transform-async-to-generator", "transform-regenerator" ]
-          }
-        ],
-        "@babel/preset-react"
-      ],
-      "plugins": [
-        "react-hot-loader/babel",
-        "@babel/plugin-transform-react-constant-elements",
-        [ "module:fast-async", { "spec": true } ],
-        [ "transform-imports", {
-          /* Example:
-          "@material-ui/core": {
-            "transform": "@material-ui/core/${member}",
-            "preventFullImport": true
-          }*/
-        } ]
-      ]
-    }
   }
 }

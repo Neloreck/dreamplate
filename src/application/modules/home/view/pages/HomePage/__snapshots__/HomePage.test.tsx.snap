@@ -7,7 +7,7 @@ exports[`Home page component rendering. Should match snapshot.: Default HOC layo
     className="content"
   >
     <div
-      className="linkCards"
+      className="linkCard"
     >
       <custom-card
         class="cardLink"

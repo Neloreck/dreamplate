@@ -1,10 +1,9 @@
 import "@Test/utils/mock_custom_elements";
 
-// Lib.
-import { createMockClasses } from "@Lib/utils/styling_testing";
-
-// Test.
 import { shallow } from "enzyme";
+
+// Lib.
+import { createMockClasses, createMockContext } from "@Lib/testing";
 
 // View.
 import { MainHeader } from "./MainHeader.component";
@@ -15,7 +14,7 @@ describe("Main header component rendering.", () => {
 
   it("Should match snapshot.", () => {
 
-    const wrapper = shallow(<MainHeader classes={mockClasses}/>);
+    const wrapper = shallow(<MainHeader classes={mockClasses} themeContext={createMockContext()}/>);
 
     expect(wrapper).toMatchSnapshot("Default HOC layout.");
   });
