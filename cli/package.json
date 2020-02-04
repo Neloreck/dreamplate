@@ -7,6 +7,5 @@
     "typedoc-plugin-external-module-name": "^3.0.0",
     "typescript": "^3.7.5"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }

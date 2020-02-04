@@ -6,8 +6,9 @@ import { Bind, ContextManager, TStateSetter } from "dreamstate";
 import { CreateGenerateIdOptions } from "jss";
 
 // Lib.
+import { log } from "@Macro/log.macro";
 import { createDefaultTheme, IApplicationTheme, toggleTheme, TThemeType } from "@Lib/theme";
-import { encrypt, getFromLocalStorage, Logger, parse, setLocalStorageItem } from "@Lib/utils";
+import { encrypt, getFromLocalStorage, parse, setLocalStorageItem } from "@Lib/utils";
 
 /**
  * Theme context description.
@@ -40,8 +41,6 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
     }
   };
 
-  private readonly log: Logger = new Logger(ThemeContextManager.name);
-
   private readonly setState: TStateSetter<IThemeContext, "themeState"> = ContextManager.getSetter(this, "themeState");
 
   /**
@@ -56,13 +55,13 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
     const nextThemeType: TThemeType = (theme.palette.type === "light" ? "dark" : "light");
     const nextTheme: IApplicationTheme = toggleTheme(theme, nextThemeType);
 
-    this.log.info(`Toggle theme mode to '${nextThemeType}'.`);
+    log.info(`Toggle theme mode to '${nextThemeType}'.`);
 
     try {
       setLocalStorageItem("theme_type", nextThemeType);
     } catch (error) {
       /* <dev> */
-      this.log.warn("Failed to cache application theme:", error);
+      log.warn("Failed to cache application theme:", error);
       /* </dev> */
     }
 
@@ -79,7 +78,7 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
 
     const { themeState: { theme } } = this.context;
 
-    this.log.info(`Theme provision started [${theme.palette.type}].`);
+    log.info(`Theme provision started [${theme.palette.type}].`);
 
     window.addEventListener("storage", this.onLocalStorageDataChanged);
   }

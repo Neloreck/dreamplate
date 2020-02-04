@@ -52,6 +52,8 @@
     "@typescript-eslint/parser": "^2.18.0",
     "babel-jest": "^25.1.0",
     "babel-loader": "^8.0.6",
+    "babel-plugin-macros": "^2.8.0",
+    "babel-plugin-module-resolver": "^4.0.0",
     "babel-plugin-transform-imports": "^2.0.0",
     "copy-webpack-plugin": "^5.1.1",
     "document-register-element": "^1.14.3",

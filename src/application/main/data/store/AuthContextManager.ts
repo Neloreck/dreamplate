@@ -5,8 +5,8 @@
 import { ContextManager } from "dreamstate";
 
 // Lib.
+import { log } from "@Macro/log.macro";
 import { Optional } from "@Lib/ts";
-import { Logger } from "@Lib/utils";
 
 /**
  * Auth context description.
@@ -42,13 +42,11 @@ export class AuthContextManager extends ContextManager<IAuthContext> {
     }
   };
 
-  private readonly log: Logger = new Logger(AuthContextManager.name);
-
   protected onProvisionStarted(): void {
 
     const { authState: { isAuthorized } } = this.context;
 
-    this.log.info(`Auth provision started [${isAuthorized}].`);
+    log.info(`Auth provision started [${isAuthorized}].`);
   }
 
 }

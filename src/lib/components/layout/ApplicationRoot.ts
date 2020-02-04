@@ -5,8 +5,8 @@
 import { css, CSSResult, html, LitElement, TemplateResult } from "lit-element";
 
 // Lib.
+import { log } from "@Macro/log.macro"
 import { CustomElement, ICustomElementAttributes } from "@Lib/components";
-import { Logger } from "@Lib/utils";
 
 // Props.
 export interface IApplicationRootProps extends ICustomElementAttributes<ApplicationRoot> {
@@ -31,19 +31,13 @@ export class ApplicationRoot extends LitElement {
     `;
   }
 
-  /* <dev> */
-
   public firstUpdated(): void {
 
-    const logger: Logger = new Logger("ROOT");
-
-    logger.pushSeparator();
-    logger.info("🔶 Rendering begun.");
-    logger.info("🔶 First render timestamp:", Date.now());
-    logger.pushSeparator();
+    log.pushSeparator();
+    log.info("🔶 Rendering begun.");
+    log.info("🔶 First render timestamp:", Date.now());
+    log.pushSeparator();
   }
-
-  /* </dev> */
 
   public render(): TemplateResult {
     return html`<slot/>`;

@@ -19,7 +19,6 @@ export const IS_PRODUCTION: boolean = (ENVIRONMENT === "production" || IS_TEST);
 
 export const PROJECT_ROOT_PATH: string = path.resolve(__dirname, "../../../");
 export const BUILD_CONFIGURATION_PATH: string = path.resolve(PROJECT_ROOT_PATH, "cli/build");
-export const TS_CONFIG_PATH: string = path.resolve(PROJECT_ROOT_PATH, "src/tsconfig.json");
 
 export const MODULES_ROOT_PATH: string = path.resolve(PROJECT_ROOT_PATH, "src/application/modules");
 export const INITIALIZATION_ROOT_PATH: string = path.resolve(PROJECT_ROOT_PATH, "src/application/initialization");

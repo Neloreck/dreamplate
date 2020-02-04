@@ -6,7 +6,7 @@ import { Bind, ContextManager, TStateSetter } from "dreamstate";
 import { createBrowserHistory, History, Location, Path } from "history";
 
 // Lib.
-import { Logger } from "@Lib/utils";
+import { log } from "@Macro/log.macro";
 
 /**
  * Router context description.
@@ -47,8 +47,6 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
 
   private unsubscribeFromHistory!: () => void;
 
-  private readonly log: Logger = new Logger(RouterContextManager.name);
-
   private readonly setState: TStateSetter<IRouterContext, "routingState"> = ContextManager.getSetter(this, "routingState");
 
   /**
@@ -57,7 +55,7 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
   @Bind()
   public replace(path: Path): void {
 
-    this.log.info(`Replace path: ${path}.`);
+    log.info(`Replace path: ${path}.`);
 
     RouterContextManager.HISTORY.replace(path);
   }
@@ -68,7 +66,7 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
   @Bind()
   public push(path: Path): void {
 
-    this.log.info(`Push path: ${path}.`);
+    log.info(`Push path: ${path}.`);
 
     RouterContextManager.HISTORY.push(path);
   }
@@ -79,7 +77,7 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
   @Bind()
   public hardPush(path: Path): void {
 
-    this.log.info(`Hard push path: ${path}.`);
+    log.info(`Hard push path: ${path}.`);
 
     window.location.pathname = path;
   }
@@ -90,7 +88,7 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
   @Bind()
   public hardReplace(path: Path): void {
 
-    this.log.info(`Hard replace path: ${path}.`);
+    log.info(`Hard replace path: ${path}.`);
 
     window.location.replace(path);
   }
@@ -101,7 +99,7 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
   @Bind()
   public goBack(): void {
 
-    this.log.info("Go back.");
+    log.info("Go back.");
 
     RouterContextManager.HISTORY.goBack();
   }
@@ -110,7 +108,7 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
 
     const { routingState: { path } } = this.context;
 
-    this.log.info(`Routing provision started [${path}].`);
+    log.info(`Routing provision started [${path}].`);
 
     this.unsubscribeFromHistory = RouterContextManager.HISTORY.listen((location: Location) => this.setState({ path: location.pathname }));
   }
@@ -119,7 +117,7 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
 
     const { routingState: { path } } = this.context;
 
-    this.log.info(`Routing provision ended [${path}].`);
+    log.info(`Routing provision ended [${path}].`);
 
     this.unsubscribeFromHistory();
   }

@@ -5,13 +5,7 @@
  * Restricted in non DEV mode.
  */
 
-/* <dev> */
-
-import { Logger } from "@Lib/utils";
-
-const dmLogger: Logger = new Logger("DM");
-
-/* </dev> */
+import { log } from "@Macro/log.macro";
 
 /**
  * Measure method execution time and log execution info.
@@ -38,7 +32,7 @@ export const DebugMeasure = (): MethodDecorator => <T>(target: any, propertyKey:
     const returnValue = originalFunction(...params);
     const duration: number = Date.now() - start;
 
-    dmLogger.info(`${target.constructor.name}[${propertyKey.toString()}]: ${duration ? duration : "±0"}ms.`);
+    log.info(`${target.constructor.name}[${propertyKey.toString()}]: ${duration ? duration : "±0"}ms.`);
 
     return returnValue;
   };
