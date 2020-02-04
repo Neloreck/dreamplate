@@ -71,17 +71,14 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Classes</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_lib_utils.logger.html" class="tsd-kind-icon">Logger</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_lib_utils.html#decrypt" class="tsd-kind-icon">decrypt</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_lib_utils.html#encrypt" class="tsd-kind-icon">encrypt</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_lib_utils.html#formillis" class="tsd-kind-icon">for<wbr>Millis</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_lib_utils.html#forseconds" class="tsd-kind-icon">for<wbr>Seconds</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter"><a href="_lib_utils.html#getfromlocalstorage" class="tsd-kind-icon">get<wbr>From<wbr>Local<wbr>Storage</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_lib_utils.html#getlazymodule" class="tsd-kind-icon">get<wbr>Lazy<wbr>Module</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter"><a href="_lib_utils.html#parse" class="tsd-kind-icon">parse</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_lib_utils.html#removelocalstorageitem" class="tsd-kind-icon">remove<wbr>Local<wbr>Storage<wbr>Item</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter"><a href="_lib_utils.html#setlocalstorageitem" class="tsd-kind-icon">set<wbr>Local<wbr>Storage<wbr>Item</a></li>
@@ -102,7 +99,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Neloreck/dreamplate/blob/749481e/src/lib/utils/local_storage.ts#L13">src/lib/utils/local_storage.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/Neloreck/dreamplate/blob/25cff72/src/lib/utils/local_storage.ts#L14">src/lib/utils/local_storage.ts:14</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -130,7 +127,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Neloreck/dreamplate/blob/749481e/src/lib/utils/local_storage.ts#L8">src/lib/utils/local_storage.ts:8</a></li>
+									<li>Defined in <a href="https://github.com/Neloreck/dreamplate/blob/25cff72/src/lib/utils/local_storage.ts#L9">src/lib/utils/local_storage.ts:9</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -148,6 +145,64 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="formillis" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> for<wbr>Millis</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">for<wbr>Millis<span class="tsd-signature-symbol">(</span>time<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Neloreck/dreamplate/blob/25cff72/src/lib/utils/delay.ts#L18">src/lib/utils/delay.ts:18</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Resolve promise after millis provided.
+									Used like &#39;await forMillis(200)&#39;.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>time: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="forseconds" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> for<wbr>Seconds</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">for<wbr>Seconds<span class="tsd-signature-symbol">(</span>time<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Neloreck/dreamplate/blob/25cff72/src/lib/utils/delay.ts#L12">src/lib/utils/delay.ts:12</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Resolve promise after seconds provided.
+									Used like &#39;await forSeconds(5)&#39;.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>time: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
 					<a name="getfromlocalstorage" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> get<wbr>From<wbr>Local<wbr>Storage</h3>
@@ -158,7 +213,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Neloreck/dreamplate/blob/749481e/src/lib/utils/local_storage.ts#L24">src/lib/utils/local_storage.ts:24</a></li>
+									<li>Defined in <a href="https://github.com/Neloreck/dreamplate/blob/25cff72/src/lib/utils/local_storage.ts#L25">src/lib/utils/local_storage.ts:25</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -183,6 +238,48 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="getlazymodule" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> get<wbr>Lazy<wbr>Module</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Lazy<wbr>Module<span class="tsd-signature-symbol">(</span>importFunc<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">FunctionComponent</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Neloreck/dreamplate/blob/25cff72/src/lib/utils/lazy.ts#L17">src/lib/utils/lazy.ts:17</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Create lazy react component and get non-default export from this file.
+									If named imports will be needed - modify it.</p>
+								</div>
+								<p>Warning: only one export from files expected.</p>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>importFunc: <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-signature">
+											<ul class="tsd-signatures tsd-kind-type-literal">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">FunctionComponent</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
 					<a name="parse" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> parse</h3>
@@ -193,7 +290,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Neloreck/dreamplate/blob/749481e/src/lib/utils/local_storage.ts#L18">src/lib/utils/local_storage.ts:18</a></li>
+									<li>Defined in <a href="https://github.com/Neloreck/dreamplate/blob/25cff72/src/lib/utils/local_storage.ts#L19">src/lib/utils/local_storage.ts:19</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -227,7 +324,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Neloreck/dreamplate/blob/749481e/src/lib/utils/local_storage.ts#L43">src/lib/utils/local_storage.ts:43</a></li>
+									<li>Defined in <a href="https://github.com/Neloreck/dreamplate/blob/25cff72/src/lib/utils/local_storage.ts#L44">src/lib/utils/local_storage.ts:44</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -256,7 +353,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Neloreck/dreamplate/blob/749481e/src/lib/utils/local_storage.ts#L35">src/lib/utils/local_storage.ts:35</a></li>
+									<li>Defined in <a href="https://github.com/Neloreck/dreamplate/blob/25cff72/src/lib/utils/local_storage.ts#L36">src/lib/utils/local_storage.ts:36</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -292,6 +389,39 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
+					<li class=" tsd-kind-module">
+						<a href="_application_about.html">@application/about</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_application_error.html">@application/error</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_application_home.html">@application/home</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_application_main.html">@application/main</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_initialization.html">@initialization</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_lib_api.html">@lib/api</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_lib_components.html">@lib/components</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_lib_decorators.html">@lib/decorators</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_lib_testing.html">@lib/testing</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_lib_theme.html">@lib/theme</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_lib_ts.html">@lib/ts</a>
+					</li>
 					<li class="current tsd-kind-module">
 						<a href="_lib_utils.html">@lib/utils</a>
 					</li>
@@ -299,17 +429,23 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class tsd-parent-kind-module">
-						<a href="../classes/_lib_utils.logger.html" class="tsd-kind-icon">Logger</a>
-					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="_lib_utils.html#decrypt" class="tsd-kind-icon">decrypt</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="_lib_utils.html#encrypt" class="tsd-kind-icon">encrypt</a>
 					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_lib_utils.html#formillis" class="tsd-kind-icon">for<wbr>Millis</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_lib_utils.html#forseconds" class="tsd-kind-icon">for<wbr>Seconds</a>
+					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
 						<a href="_lib_utils.html#getfromlocalstorage" class="tsd-kind-icon">get<wbr>From<wbr>Local<wbr>Storage</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_lib_utils.html#getlazymodule" class="tsd-kind-icon">get<wbr>Lazy<wbr>Module</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
 						<a href="_lib_utils.html#parse" class="tsd-kind-icon">parse</a>

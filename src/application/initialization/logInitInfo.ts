@@ -1,4 +1,5 @@
 /**
+ * @packageDocumentation
  * @module @initialization
  *
  * Inline initialization greeter and notifier.

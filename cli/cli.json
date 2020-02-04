@@ -2,6 +2,7 @@
   "config": {
   },
   "scripts": {
+    "list": "ts-node --project ./cli/tsconfig.json ./cli/utils/print_commands_list.ts",
     "purge": [
       "npx rimraf ./target",
       "echo 'Target cleaned up.'"
