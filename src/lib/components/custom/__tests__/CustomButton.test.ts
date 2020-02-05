@@ -1,6 +1,5 @@
 // Lib.
 import { CustomButton } from "@Lib/components/custom/CustomButton";
-import { nestedShadowSlotOf } from "@Lib/testing";
 
 describe("Custom button web component.", () => {
 
@@ -12,7 +11,6 @@ describe("Custom button web component.", () => {
 
     await customButton.updateComplete;
 
-    expect(customButton.shadowRoot!.innerHTML).toBe(nestedShadowSlotOf(CustomButton, ""));
     expect(customButton.innerHTML).toBe("");
 
     expect(customButton.getAttribute("size")).toBeNull();
@@ -35,7 +33,6 @@ describe("Custom button web component.", () => {
 
     await customButton.updateComplete;
 
-    expect(customButton.shadowRoot!.innerHTML).toBe(nestedShadowSlotOf(CustomButton, ""));
     expect(customButton.innerHTML).toBe(`<div>${mockLabel}</div>`);
 
     document.body.removeChild(customButton);

@@ -4,7 +4,6 @@ import * as React from "react";
 import { RUNTIME_CONSTANTS } from "../../build/config";
 
 const ROOT_PATH: string = path.resolve(__dirname, "../../../");
-const TS_CONFIG_PATH: string = path.resolve(__dirname, "./tsconfig.json");
 const BABEL_TRANSFORMER_PATH: string = path.resolve(__dirname, "./babel_transformer.ts");
 
 export const JEST_CONFIG = {
@@ -23,11 +22,7 @@ export const JEST_CONFIG = {
     ...RUNTIME_CONSTANTS,
     IS_TEST: true,
     IS_DEV: false,
-    React,
-    "ts-jest": {
-      diagnostics: false,
-      tsConfig: TS_CONFIG_PATH
-    }
+    React
   },
   // coverageReporters: [
   //   "json",
@@ -56,6 +51,7 @@ export const JEST_CONFIG = {
     "@Application/(.*)$": "<rootDir>/src/application/$1",
     "@Build/(.*)$": "<rootDir>/cli/build/$1",
     "@Lib/(.*)$": "<rootDir>/src/lib/$1",
+    "@Macro/(.*)$": "<rootDir>/cli/build/macroses/$1",
     "@Main/(.*)$": "<rootDir>/src/application/main/$1",
     "@Modules/(.*)$": "<rootDir>/src/application/modules/$1",
     "@Test/(.*)$": "<rootDir>/cli/test/$1",
@@ -84,7 +80,7 @@ export const JEST_CONFIG = {
   snapshotSerializers: [
     "enzyme-to-json/serializer"
   ],
-  testEnvironment: "jest-environment-jsdom-fifteen",
+  testEnvironment: "jest-environment-jsdom-sixteen",
   // testEnvironmentOptions: {},
   // testLocationInResults: false,
   testMatch: [
@@ -99,8 +95,7 @@ export const JEST_CONFIG = {
   // testURL: "about:blank",
   // timers: "real",
   transform: {
-    "^.+\\.(js|jsx)$": BABEL_TRANSFORMER_PATH,
-    "^.+\\.tsx?$": "ts-jest"
+    "^.+\\.(j|t)sx?$": BABEL_TRANSFORMER_PATH
   },
   transformIgnorePatterns: [
     "/node_modules/(?!(lit-element|lit-html)).+\\.js$"

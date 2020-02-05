@@ -5,7 +5,7 @@
     "dreamstate": "^2.2.2",
     "history": "^4.10.1",
     "jss": "^10.0.4",
-    "lit-element": "^2.2.1",
+    "lit-element": "2.0.0",
     "react-jss": "^10.0.4",
     "react-router": "^5.1.2"
   },

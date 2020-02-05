@@ -13,18 +13,19 @@ import { ThemeContextManager } from "@Main/data/store";
 /**
  * Root provider for application.
  */
-export function RootProvider(props: { children: ReactNode }): ReactElement {
-
-  const { themeState: { theme } } = useManager(ThemeContextManager);
+export function RootProvider({
+  children = null as ReactNode,
+  themeContext: { themeState } = useManager(ThemeContextManager)
+}): ReactElement {
 
   return (
     <JssProvider id={ThemeContextManager.JSS_ID_GENERATION_CONFIG}>
 
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={themeState.theme}>
 
         <Suspense fallback={<custom-loader width={100} height={100}/>}>
 
-          { props.children }
+          { children }
 
         </Suspense>
 

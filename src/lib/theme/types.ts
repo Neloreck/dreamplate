@@ -3,8 +3,6 @@
  * @module @lib/theme
  */
 
-export type TBreakpoint = "xs" | "sm" | "md" | "lg" | "xl";
-
 export type TThemeType = "light" | "dark";
 
 export interface IApplicationTheme {

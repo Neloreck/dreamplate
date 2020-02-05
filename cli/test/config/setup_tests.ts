@@ -1,10 +1,9 @@
-import * as Enzyme from "enzyme";
-import * as Adapter from "enzyme-adapter-react-16";
 import * as React from "react";
+import { configure } from "enzyme";
 
 import "document-register-element";
 
-Enzyme.configure({ adapter: new Adapter() });
+configure({ adapter: new (require("enzyme-adapter-react-16"))() });
 
 // @ts-ignore globals.
 global.React = React;

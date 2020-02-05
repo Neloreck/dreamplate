@@ -22,7 +22,7 @@ const renderReferenceCard = (className: string, label: string, href: string): Re
     <a
       href={href}
       target={"_blank"}
-      rel={"noreferrer"}
+      rel={"noopener noreferrer"}
     >
       { label }
     </a>

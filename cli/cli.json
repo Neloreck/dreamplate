@@ -2,27 +2,54 @@
   "config": {
   },
   "scripts": {
-    "list": "ts-node --project ./cli/tsconfig.json ./cli/utils/print_commands_list.ts",
-    "purge": [
-      "npx rimraf ./target",
-      "echo 'Target cleaned up.'"
-    ],
+    "list": {
+      "exec": "ts-node --project ./cli/tsconfig.json ./cli/utils/print_commands_list.ts",
+      "description": "Show custom CLI commands list."
+    },
+    "purge": {
+      "exec": [
+        "npx rimraf ./target",
+        "echo 'Target cleaned up.'"
+      ],
+      "description": "Remove project built assets."
+    },
     "=============================================================================================================": "",
-    "start": "ts-node --project ./cli/tsconfig.json ./cli/build/DevRunner.ts",
-    "build": "npm run cli purge && ts-node --project ./cli/tsconfig.json ./cli/build/BuildRunner.ts",
+    "start": {
+      "exec": "ts-node --project ./cli/tsconfig.json ./cli/build/DevRunner.ts",
+      "description": "Start project serving (webpack dev server)."
+    },
+    "build": {
+      "exec": "npm run cli purge && ts-node --project ./cli/tsconfig.json ./cli/build/BuildRunner.ts",
+      "description": "Build project assets and related source files. Following arguments can include module names."
+    },
     "===========================================================================================================": "==",
-    "docs:generate": [
-      "rm -rf ./docs",
-      "cd ./cli && npx typedoc --tsconfig ../src/tsconfig.json --readme ../src/README.md ../src/"
-    ],
+    "docs:generate": {
+      "exec": [
+        "rm -rf ./docs",
+        "cd ./cli && npx typedoc --tsconfig ../src/tsconfig.json --readme ../src/README.md ../src/"
+      ],
+      "description": "Generate project sources docs with typedoc."
+    },
     "==========================================================================================================": "===",
-    "test": [
-      "npm run cli typecheck",
-      "npm run cli lint",
-      "npm run cli jest"
-    ],
-    "jest": "npx cross-env NODE_ENV=test ts-node --project ./cli/test/config/tsconfig.json ./cli/test/TestRunner.ts",
-    "lint": "npx eslint src/**/*.ts src/**/*.tsx",
-    "typecheck": "npx tsc -p src"
+    "test": {
+      "exec": [
+        "npm run cli typecheck",
+        "npm run cli lint",
+        "npm run cli jest"
+      ],
+      "description": "Run full tests that include unit tests, linting and typechecks."
+    },
+    "jest": {
+      "exec": "npx cross-env NODE_ENV=test ts-node --project ./cli/test/config/tsconfig.json ./cli/test/TestRunner.ts",
+      "description": "Run jest unit tests."
+    },
+    "lint": {
+      "exec": "npx eslint src/**/*.ts src/**/*.tsx",
+      "description": "Run eslint for project codestyle checking."
+    },
+    "typecheck": {
+      "exec": "npx tsc -p src",
+      "description": "Run TS typechecks."
+    }
   }
 }

@@ -2,6 +2,7 @@ import * as path from "path";
 import { Module, Resolve } from "webpack";
 
 import { BUILD_CONFIGURATION_PATH, IS_PRODUCTION, PROJECT_ROOT_PATH } from "./webpack.constants";
+import { BABEL_CONFIG } from "./babel.config";
 
 export const MODULE_CONFIG: {
   RESOLVE: Resolve,
@@ -22,53 +23,7 @@ export const MODULE_CONFIG: {
       {
         exclude: /(node_modules)/,
         loader: "babel-loader",
-        options: {
-          minified: true,
-          presets: [
-            "@babel/preset-typescript",
-            [
-              "@babel/preset-env",
-              {
-                "targets": {
-                  "node": "10",
-                  "browsers": [
-                    "> 5.0%",
-                    "not dead"
-                  ]
-                },
-                "modules": false,
-                "loose": true,
-                "useBuiltIns": "entry",
-                "corejs": "3",
-                "exclude": [ "transform-async-to-generator", "transform-regenerator" ]
-              }
-            ],
-            "@babel/preset-react"
-          ],
-          plugins: [
-            [
-              "module-resolver",
-              {
-                "alias": {
-                  "@Macro": path.resolve(BUILD_CONFIGURATION_PATH, "macroses")
-                }
-              }
-            ],
-            "macros",
-            "react-hot-loader/babel",
-            "@babel/plugin-transform-react-constant-elements",
-            [ "@babel/plugin-proposal-decorators", { "legacy": true } ],
-            [ "@babel/plugin-proposal-class-properties", { "loose": true } ],
-            [ "module:fast-async", { "spec": true } ],
-            [ "transform-imports", {
-              /* Example:
-              "@material-ui/core": {
-                "transform": "@material-ui/core/${member}",
-                "preventFullImport": true
-              }*/
-            } ]
-          ]
-        },
+        options: BABEL_CONFIG,
         test: /\.(js|jsx|ts|tsx)$/
       },
       // Fonts.

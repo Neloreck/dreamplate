@@ -48,7 +48,6 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
    * Toggle application theme mode and save it into local storage.
    * Apply it to document body.
    */
-  @Bind()
   public toggleTheme(): void {
 
     const { theme } = this.context.themeState;
@@ -94,7 +93,6 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
   /**
    * Observe theme configuration changes and set same theme across tabs.
    */
-  @Bind()
   private onLocalStorageDataChanged(event: StorageEvent): void {
 
     const { theme } = this.context.themeState;

@@ -6,7 +6,7 @@
 import { css, CSSResult, html, LitElement, TemplateResult } from "lit-element";
 
 // Lib.
-import { log } from "@Macro/log.macro"
+import { log } from "@Macro/log.macro";
 import { CustomElement, ICustomElementAttributes } from "@Lib/components";
 
 // Props.

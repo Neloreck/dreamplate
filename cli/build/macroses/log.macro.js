@@ -1,7 +1,7 @@
 const path = require("path");
 const { createMacro } = require("babel-plugin-macros");
 
-const IS_DEV = (process.env.NODE_ENV !== "production");
+const IS_DEV = (process.env.NODE_ENV === "development");
 const PREFIX_COLOR = "color: #bada53";
 const EMOJI_LIST = [
   "💀", "👽", "🔥", "✨", "🌟", "💫", "💥", "💢", "💦", "💧", "💤", "💨", "👀", "👊", "✊", "👟", "🌴", "🌲", "🌳",

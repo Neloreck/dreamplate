@@ -9,7 +9,7 @@
 export const createMockContextProperty = (dataKey: string) => new Proxy({}, { get: (target: {}, property: string) => {
   // Create mock prop based on container-object naming.
   if (dataKey.includes("Actions")) {
-    return () => {};
+    return new Function();
   } else if (dataKey.includes("State")) {
     return "test-prop";
   } else {

@@ -10,4 +10,13 @@ const scripts: Array<string> = Object
 
 process.stdout.write("\n");
 
-scripts.forEach((it: string, index: number) => process.stdout.write(`${green((index + 1).toString())}) ${it} \n`));
+scripts.forEach((it: string, index: number) => {
+
+  const executablePart = cliConfig.scripts[it];
+
+  process.stdout.write(`${index + 1}) ${green(it)} \n`);
+
+  if (typeof executablePart === "object" && executablePart.description) {
+    process.stdout.write(`  - ${executablePart.description}\n`);
+  }
+});

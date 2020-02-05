@@ -3,8 +3,8 @@
  * @module @application/main
  */
 
-import { Provide } from "dreamstate";
-import { PureComponent, ReactNode } from "react";
+import {Provide, createLoadable, createProvider} from "dreamstate";
+import {createElement, PureComponent, ReactNode} from "react";
 import { hot } from "react-hot-loader/root";
 import { Router as ReactRouter } from "react-router";
 
@@ -19,11 +19,20 @@ import "@Lib/components/custom/CustomLoader";
 import "@Lib/components/layout/ApplicationRoot";
 import "@Lib/components/layout/ModalRoot";
 
+const PPPP = createProvider(ThemeContextManager, RouterContextManager, AuthContextManager);
+
+const PR = (...sources: any) => (classDescriptor: any) => ({
+  ...classDescriptor,
+  finisher: (Component: any) => {
+    return (props: object) => createElement(PPPP, {}, createElement(Component, props))
+  }
+});
+
 /**
  * Application root.
  * Render global router and provider with data shared for all modules.
  */
-@Provide(ThemeContextManager, RouterContextManager, AuthContextManager)
+@PR(ThemeContextManager, RouterContextManager, AuthContextManager)
 export class Root extends PureComponent {
 
   public render(): ReactNode {

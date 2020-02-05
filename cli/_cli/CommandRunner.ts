@@ -1,13 +1,19 @@
 import { ChildProcess, spawn } from "child_process";
 import { green, red } from "colors";
 
+export interface IExecutableScriptDescriptor {
+  exec: string;
+}
+
+export type TExecutableScript = string | Array<string>;
+
 export class CommandRunner {
 
   protected static readonly PARENT?: string = process.env.PARENT;
 
   private readonly cmd: string;
   private readonly cmdAdditionalArgs: Array<string> = [];
-  private readonly script: string | Array<string>;
+  private readonly script: TExecutableScript;
   private readonly config: any;
 
   private finished: boolean = false;
@@ -15,11 +21,11 @@ export class CommandRunner {
 
   private childProcess: ChildProcess | null = null;
 
-  public constructor(cmd: string, cmdAdditionalArgs: Array<string>, script: string | Array<string>, config?: any) {
+  public constructor(cmd: string, cmdAdditionalArgs: Array<string>, script: TExecutableScript | IExecutableScriptDescriptor, config?: any) {
 
     this.cmd = cmd;
     this.cmdAdditionalArgs = cmdAdditionalArgs;
-    this.script = script;
+    this.script = typeof script === "object" ? (script as IExecutableScriptDescriptor).exec : script;
     this.config = config;
 
     [ "exit", "uncaughtException", "unhandledRejection", "SIGUSR1", "SIGUSR2", "SIGINT" ]
