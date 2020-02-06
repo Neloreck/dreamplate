@@ -17,11 +17,11 @@
     
 - Custom CLI
 - Webpack, lazy loading, tree shaking, chunks + modular architecture, aliases
-- Web components (lit element)
+- Web components (lit-element, lit-html)
 - React, dreamstate as contextStore
-- JSS, project theming with own context management
-- Typescript (decorators, OOP style, newest features, awt loader with babel)
-- Jest
+- JSS, theming with own context management
+- Typescript (proposal decorators, OOP style, newest features, babel loader)
+- Jest for unit testing (enzyme-react, web-components tests)
 - HMR with live editing
 - HBS (template, global styles)
 
@@ -112,7 +112,6 @@ Typically module is separated as VIEW and DATA sub-modules. Each one includes on
 
 ## Futures
 
-- Extended format for cli scripts (objects instead of strings)
 - Minify and optimize as separated flags from env modes
 - Benchmark for testing?
 - Build something from wasm as experiment and use wasm-loader
@@ -122,7 +121,5 @@ Typically module is separated as VIEW and DATA sub-modules. Each one includes on
 
 ## Side packages (waiting for)
 
-- Hooks implementation for react-router
-- Hooks implementation for react-jss
-- JSDOM web components support
+- Hooks implementation for react-router (less VDOM tree pollution)
 - SSR better support (suspense, lazy and other features)
