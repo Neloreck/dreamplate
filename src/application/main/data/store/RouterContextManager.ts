@@ -3,7 +3,7 @@
  * @module @application/main
  */
 
-import { Bind, ContextManager, TStateSetter } from "dreamstate";
+import { ContextManager, TStateSetter } from "dreamstate";
 import { createBrowserHistory, History, Location, Path } from "history";
 
 // Lib.

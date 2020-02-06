@@ -3,7 +3,7 @@
  * @module @application/main
  */
 
-import { Bind, ContextManager, TStateSetter } from "dreamstate";
+import { ContextManager, TStateSetter } from "dreamstate";
 import { CreateGenerateIdOptions } from "jss";
 
 // Lib.
