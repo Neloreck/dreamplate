@@ -35,7 +35,7 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
 
   public context: IThemeContext = {
     themeActions: {
-      toggleTheme: this.toggleTheme
+      toggleTheme: this.toggleTheme.bind(this)
     },
     themeState: {
       theme: createDefaultTheme(getFromLocalStorage("theme_type") || GTheme.DEFAULT_THEME_TYPE)
@@ -60,9 +60,7 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
     try {
       setLocalStorageItem("theme_type", nextThemeType);
     } catch (error) {
-      /* <dev> */
       log.warn("Failed to cache application theme:", error);
-      /* </dev> */
     }
 
     document.body.style.backgroundColor = nextTheme.palette.background.default;

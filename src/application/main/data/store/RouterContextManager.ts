@@ -35,11 +35,11 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
 
   public context: IRouterContext = {
     routingActions: {
-      goBack: this.goBack,
-      hardPush: this.hardPush,
-      hardReplace: this.hardReplace,
-      push: this.push,
-      replace: this.replace
+      goBack: this.goBack.bind(this),
+      hardPush: this.hardPush.bind(this),
+      hardReplace: this.hardReplace.bind(this),
+      push: this.push.bind(this),
+      replace: this.replace.bind(this)
     },
     routingState: {
      path: RouterContextManager.HISTORY.location.pathname
