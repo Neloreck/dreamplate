@@ -3,7 +3,7 @@
  * @module @application/main
  */
 
-import { Bind, ContextManager, TStateSetter } from "dreamstate";
+import { ContextManager, TStateSetter } from "dreamstate";
 import { createBrowserHistory, History, Location, Path } from "history";
 
 // Lib.
@@ -35,11 +35,11 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
 
   public context: IRouterContext = {
     routingActions: {
-      goBack: this.goBack,
-      hardPush: this.hardPush,
-      hardReplace: this.hardReplace,
-      push: this.push,
-      replace: this.replace
+      goBack: this.goBack.bind(this),
+      hardPush: this.hardPush.bind(this),
+      hardReplace: this.hardReplace.bind(this),
+      push: this.push.bind(this),
+      replace: this.replace.bind(this)
     },
     routingState: {
      path: RouterContextManager.HISTORY.location.pathname
@@ -53,7 +53,6 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
   /**
    * Replace path in page history.
    */
-  @Bind()
   public replace(path: Path): void {
 
     log.info(`Replace path: ${path}.`);
@@ -64,7 +63,6 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
   /**
    * Push path in page history.
    */
-  @Bind()
   public push(path: Path): void {
 
     log.info(`Push path: ${path}.`);
@@ -75,7 +73,6 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
   /**
    * Hard push path in page history with page reload.
    */
-  @Bind()
   public hardPush(path: Path): void {
 
     log.info(`Hard push path: ${path}.`);
@@ -86,7 +83,6 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
   /**
    * Hard replace path in page history with page reload.
    */
-  @Bind()
   public hardReplace(path: Path): void {
 
     log.info(`Hard replace path: ${path}.`);
@@ -97,7 +93,6 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
   /**
    * Go back in page history.
    */
-  @Bind()
   public goBack(): void {
 
     log.info("Go back.");

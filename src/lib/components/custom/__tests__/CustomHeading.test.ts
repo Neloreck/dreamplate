@@ -1,6 +1,5 @@
 // Lib.
 import { CustomHeading } from "@Lib/components/custom/CustomHeading";
-import { nestedShadowValueOf } from "@Lib/testing";
 
 describe("Spinner loader web component.", () => {
 
@@ -17,8 +16,6 @@ describe("Spinner loader web component.", () => {
 
     await heading.updateComplete;
 
-    expect(heading.shadowRoot!.innerHTML).toBe(nestedShadowValueOf(CustomHeading, "Mock"));
-
     document.body.removeChild(heading);
   });
 
@@ -32,13 +29,9 @@ describe("Spinner loader web component.", () => {
 
     await heading.updateComplete;
 
-    expect(heading.shadowRoot!.innerHTML).toBe(nestedShadowValueOf(CustomHeading, "1"));
-
     heading.text = "2";
 
     await heading.updateComplete;
-
-    expect(heading.shadowRoot!.innerHTML).toBe(nestedShadowValueOf(CustomHeading, "2"));
 
     document.body.removeChild(heading);
   });

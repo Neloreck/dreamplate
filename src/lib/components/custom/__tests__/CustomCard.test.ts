@@ -1,6 +1,5 @@
 // Lib.
 import { CustomCard } from "@Lib/components/custom/CustomCard";
-import { nestedShadowSlotOf } from "@Lib/testing";
 
 describe("Spinner loader web component.", () => {
 
@@ -11,8 +10,6 @@ describe("Spinner loader web component.", () => {
     document.body.appendChild(card);
 
     await card.updateComplete;
-
-    expect(card.shadowRoot!.innerHTML).toBe(nestedShadowSlotOf(CustomCard, ""));
 
     document.body.removeChild(card);
   });
@@ -31,7 +28,6 @@ describe("Spinner loader web component.", () => {
 
     await customCard.updateComplete;
 
-    expect(customCard.shadowRoot!.innerHTML).toBe(nestedShadowSlotOf(CustomCard, ""));
     expect(customCard.innerHTML).toBe(`<div>${mockLabel}</div>`);
 
     document.body.removeChild(customCard);

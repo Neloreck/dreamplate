@@ -1,6 +1,5 @@
 // Lib.
 import { CustomLoader } from "@Lib/components/custom/CustomLoader";
-import { nestedShadowValueOf } from "@Lib/testing";
 import { forMillis } from "@Lib/utils/delay";
 
 describe("Custom loader web component.", () => {
@@ -39,8 +38,6 @@ describe("Custom loader web component.", () => {
     expect(loader.style.width).toBe("1000px");
     expect(loader.style.height).toBe("50px");
     expect(loader.style.borderWidth).toBe("10px");
-
-    expect(loader.shadowRoot!.innerHTML).toBe(nestedShadowValueOf(CustomLoader));
 
     document.body.removeChild(loader);
   });

@@ -3,7 +3,7 @@
  * @module @application/main
  */
 
-import { Bind, ContextManager, TStateSetter } from "dreamstate";
+import { ContextManager, TStateSetter } from "dreamstate";
 import { CreateGenerateIdOptions } from "jss";
 
 // Lib.
@@ -35,7 +35,7 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
 
   public context: IThemeContext = {
     themeActions: {
-      toggleTheme: this.toggleTheme
+      toggleTheme: this.toggleTheme.bind(this)
     },
     themeState: {
       theme: createDefaultTheme(getFromLocalStorage("theme_type") || GTheme.DEFAULT_THEME_TYPE)
@@ -48,7 +48,6 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
    * Toggle application theme mode and save it into local storage.
    * Apply it to document body.
    */
-  @Bind()
   public toggleTheme(): void {
 
     const { theme } = this.context.themeState;
@@ -61,9 +60,7 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
     try {
       setLocalStorageItem("theme_type", nextThemeType);
     } catch (error) {
-      /* <dev> */
       log.warn("Failed to cache application theme:", error);
-      /* </dev> */
     }
 
     document.body.style.backgroundColor = nextTheme.palette.background.default;
@@ -94,7 +91,6 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
   /**
    * Observe theme configuration changes and set same theme across tabs.
    */
-  @Bind()
   private onLocalStorageDataChanged(event: StorageEvent): void {
 
     const { theme } = this.context.themeState;

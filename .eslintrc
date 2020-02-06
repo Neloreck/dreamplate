@@ -16,6 +16,7 @@
     "project": "./src/tsconfig.json"
   },
   "rules": {
+    "react/jsx-no-target-blank": 0,
     "no-console": [ "error" ],
     "semi": "error",
     "import/no-unresolved": 0,
@@ -44,7 +45,8 @@
       {
         "arrowParameter": true,
         "variableDeclaration": false,
-        "propertyDeclaration": true
+        "propertyDeclaration": true,
+        "parameter": false
       }
     ]
   },

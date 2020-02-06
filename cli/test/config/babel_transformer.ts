@@ -1,24 +1,20 @@
 import { createTransformer } from "babel-jest";
+import { BABEL_CONFIG } from "../../build/config/babel.config";
+
+const CONFIG = {
+  babelrc: false,
+  presets: [
+    "@babel/preset-env",
+    "@babel/preset-typescript",
+    "@babel/preset-react"
+  ],
+  plugins: [
+    "@babel/plugin-transform-runtime",
+    ...BABEL_CONFIG.plugins
+  ]
+};
 
 /**
  * Custom transformer for jest tests with provided config.
  */
-
-/**
- * todo: Remove babel config from tsconfig and reuse it?
- */
-
-const transformerConfig = {
-  babelrc: false,
-  plugins: [
-    "@babel/plugin-transform-runtime"
-  ],
-  presets: [
-    "@babel/env",
-    "@babel/react"
-  ]
-};
-
-const transformer = createTransformer(transformerConfig);
-
-module.exports = transformer;
+module.exports = createTransformer(CONFIG);

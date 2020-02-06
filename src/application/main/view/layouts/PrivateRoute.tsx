@@ -8,12 +8,14 @@ import { ReactElement, useEffect, useLayoutEffect } from "react";
 import { Route, RouteProps } from "react-router";
 
 // Data.
-import { AuthContextManager, RouterContextManager } from "@Main/data/store";
+import { AuthContextManager, IAuthContext, IRouterContext, RouterContextManager } from "@Main/data/store";
 
 // Props.
 export interface IPrivateRouteProps extends RouteProps {
+  authContext: IAuthContext;
   reversed?: boolean;
   redirect: string | boolean;
+  routerContext: IRouterContext;
 }
 
 const DEFAULT_REDIRECT: string = "/authentication/login";
@@ -23,10 +25,13 @@ const DEFAULT_REDIRECT: string = "/authentication/login";
  * Prevent rendering and enforce login if status is not valid.
  * Render route if everything is okay.
  */
-export function PrivateRoute({ reversed, redirect = true, ...routeProps }: IPrivateRouteProps): ReactElement {
-
-  const { routingActions: { replace }, routingState: { path } } = useManager(RouterContextManager);
-  const { authState: { isAuthorizing, isAuthorized } } = useManager(AuthContextManager);
+export function PrivateRoute({
+  reversed = false,
+  redirect = true,
+  authContext: { authState: { isAuthorizing, isAuthorized } } = useManager(AuthContextManager),
+  routerContext: { routingActions: { replace }, routingState: { path } } = useManager(RouterContextManager),
+  ...routeProps
+}: IPrivateRouteProps): ReactElement {
 
   // First mount.
   useLayoutEffect(() => {
