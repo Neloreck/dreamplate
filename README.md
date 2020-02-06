@@ -6,6 +6,25 @@
 
 - `npm run setup` [project packages sync]
 
+### NPM Scripts
+
+- `npm run setup` [project packages sync, install all package.json sub-projects dependencies]
+
+- `npm run clean` [purge project-built files, uninstall all sub-projects dependencies]
+
+- `npm run build` [build project in production mode]
+
+- `npm run build:dev` [build project in development mode]
+
+- `npm run start` [start project in production mode]
+
+- `npm run start:dev` [build project in production mode]
+
+- `npm run test` [run unit tests, linter and type checker]
+
+- `npm run cli COMMAND_NAME` [run specific cli script]
+
+
 ### Size and general performance:
 
 - MIN + GZIP - (+-75KB) in total
