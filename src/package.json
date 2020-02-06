@@ -5,12 +5,12 @@
     "dreamstate": "^2.3.2",
     "history": "^4.10.1",
     "jss": "^10.0.4",
-    "lit-element": "2.0.0",
+    "lit-element": "^2.2.1",
     "react-jss": "^10.0.4",
     "react-router": "^5.1.2"
   },
   "devDependencies": {
-    "@types/history": "^4.7.4",
+    "@types/history": "^4.7.5",
     "@types/react-router": "^5.1.4"
   }
 }
