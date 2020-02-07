@@ -25,6 +25,9 @@ export const withMockedTheme = (element: ReactElement) => createElement(ThemePro
  */
 export const getThemedComponent = <T>(element: ShallowWrapper<T>) => mount(element.getElement()).children().children();
 
+/**
+ * Utility for class component with @styled testing.
+ */
 export const withMockedJss = (element: ReactElement, wrapper?: any) => {
 
   const sheets: SheetsRegistry = new SheetsRegistry();

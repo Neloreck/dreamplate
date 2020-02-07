@@ -13,11 +13,11 @@ import { log } from "@Macro/log.macro";
  */
 export const DebugMeasure = (): MethodDecorator => <T>(target: any, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<T>): any => {
 
+  // todo: Update.
+
   /* <production> */
   throw new Error("Debugging utils are only available for DEV environment.");
   /* </production> */
-
-  /* <dev> */
 
   let originalFunction: any;
 
@@ -46,20 +46,16 @@ export const DebugMeasure = (): MethodDecorator => <T>(target: any, propertyKey:
   }
 
   return descriptor;
-
-  /* </dev> */
 };
 
 /**
  * Expose class to a window for temporary debugging.
  */
-export const DebugExpose = (name: string = "default"): ClassDecorator => (target: any): any => {
+export const DebugExpose = (name?: string): ClassDecorator => (descriptor: object): any => {
 
   /* <production> */
   throw new Error("Debugging utils are only available for DEV environment.");
   /* </production> */
-
-  /* <dev> */
 
   // @ts-ignore
   if (!window.exposed) {
@@ -67,16 +63,19 @@ export const DebugExpose = (name: string = "default"): ClassDecorator => (target
     window.exposed = {};
   }
 
-  return class extends target {
 
-    constructor(...params: Array<any>) {
-      super(params);
+  return {
+    ...descriptor,
+    finisher: (target: any) => (
+      class extends target {
 
-      // @ts-ignore
-      window.exposed[name] = this;
-    }
+        constructor(...params: Array<any>) {
+          super(params);
+
+          // @ts-ignore
+          window.exposed[name || target.name] = this;
+        }
+      }
+    )
   };
-
-  /* </dev> */
-
 };
