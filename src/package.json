@@ -2,7 +2,7 @@
   "name": "boilerplate-root",
   "private": true,
   "dependencies": {
-    "dreamstate": "^2.3.2",
+    "dreamstate": "^2.3.3",
     "history": "^4.10.1",
     "jss": "^10.0.4",
     "lit-element": "^2.2.1",

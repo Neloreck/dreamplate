@@ -3,7 +3,7 @@
  * @module @application/main
  */
 
-import { ContextManager, TStateSetter } from "dreamstate";
+import { Bind, ContextManager, TStateSetter } from "dreamstate";
 import { CreateGenerateIdOptions } from "jss";
 
 // Lib.
@@ -91,6 +91,7 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
   /**
    * Observe theme configuration changes and set same theme across tabs.
    */
+  @Bind()
   private onLocalStorageDataChanged(event: StorageEvent): void {
 
     const { theme } = this.context.themeState;

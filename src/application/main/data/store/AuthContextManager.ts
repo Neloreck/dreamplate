@@ -3,11 +3,11 @@
  * @module @application/main
  */
 
-import { ContextManager } from "dreamstate";
+import { ContextManager, createLoadable, ILoadable } from "dreamstate";
 
 // Lib.
-import { log } from "@Macro/log.macro";
 import { Optional } from "@Lib/ts";
+import { log } from "@Macro/log.macro";
 
 /**
  * Auth context description.
@@ -16,12 +16,7 @@ export interface IAuthContext {
   authActions: {
   };
   authState: {
-    // todo: Generic ILoadable<T> would solve such kind of problems. It can look like <T>{ value: Optional<T>, loading: boolean, error: Optional<Error> }.
-    isAuthorizing: boolean;
-    isAuthorized: boolean;
-  };
-  authDetailsState: {
-    user: Optional<string>;
+    user: ILoadable<Optional<string>>;
   };
 }
 
@@ -34,20 +29,16 @@ export class AuthContextManager extends ContextManager<IAuthContext> {
   public context: IAuthContext = {
     authActions: {
     },
-    authDetailsState: {
-      user: null
-    },
     authState: {
-      isAuthorized: false,
-      isAuthorizing: false,
+      user: createLoadable(null)
     }
   };
 
   protected onProvisionStarted(): void {
 
-    const { authState: { isAuthorized } } = this.context;
+    const { authState: { user } } = this.context;
 
-    log.info(`Auth provision started [${isAuthorized}].`);
+    log.info(`Auth provision started [${user.value} | ${user.isLoading}].`);
   }
 
 }
