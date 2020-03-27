@@ -5,6 +5,7 @@ import { DEV_CONFIG } from "./webpack.dev.config";
 import { IO_CONFIG } from "./webpack.io.config";
 import { MODULE_CONFIG } from "./webpack.module.config";
 import { PLUGIN_CONFIG } from "./webpack.plugin.config";
+import { PERFORMANCE_CONFIG } from "./webpack.performance.config";
 
 /**
  * Restrict build with environment declaration to prevent unexpected issues.
@@ -28,7 +29,8 @@ export const WEBPACK_CONFIG: Configuration = {
   plugins: PLUGIN_CONFIG.PLUGINS,
   resolve: MODULE_CONFIG.RESOLVE,
   stats: DEV_CONFIG.STATS,
+  performance: PERFORMANCE_CONFIG,
   target: "web"
-} as any; // For dev server.
+} as any; // For dev server, todo;
 
 export default WEBPACK_CONFIG;

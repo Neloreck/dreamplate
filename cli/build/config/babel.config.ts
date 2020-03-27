@@ -37,8 +37,17 @@ export const BABEL_CONFIG = {
     ],
     "macros",
     "react-hot-loader/babel",
-    "@babel/plugin-transform-react-constant-elements",
     [ "@babel/plugin-proposal-decorators", { "decoratorsBeforeExport": true } ],
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        "corejs": 3,
+        "regenerator": false,
+        "useESModules": true,
+        "version": "7.9.2"
+      }
+    ],
+    "@babel/plugin-transform-react-constant-elements",
     [ "@babel/plugin-proposal-class-properties", { "loose": true } ],
     [ "module:fast-async", { "spec": true } ],
     [ "transform-imports", {
