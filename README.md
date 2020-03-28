@@ -1,10 +1,8 @@
 # Dreamplate client application starter
 
 ### Install:
-    
-- `npm install` [fist time only]
 
-- `npm run setup` [project packages sync]
+- `npm run setup` [project packages installation]
 
 ### NPM Scripts
 
@@ -24,13 +22,7 @@
 
 - `npm run cli COMMAND_NAME` [run specific cli script]
 
-
-### Size and general performance:
-
-- MIN + GZIP - (+-75KB) in total
-- load time: 10-15 ms for iMac 2017, 50 ms for Acer Nitro 5 (2017)
-- +-3.8MB memory heap
-- Optimized react VDOM tree (except react-router and react-jss)
+- `npm run cli COMMAND_NAME` [print cli commands list]
 
 ### What is used:
     
@@ -61,24 +53,6 @@ Such approach allows to:
 * Shared reusable api logic: src/api 
 * Shared application level code: src/application/main
 * Specific module code: src/application/modules/{MODULE_NAME}
-
-### Commands:
-
-- `npm run setup` - install all project dependencies (each package.json) via lerna
-
-- `npm run start` - start in prod mode with minifications (https://localhost:3000)
-
-- `npm run start:dev` - start in dev mode with hot reload (https://localhost:3000)
-
-- `npm run build` - build in prod mode with minifications (target/dist/production)
-
-- `npm run build:dev` - build in dev mode with source maps (target/dist/development)
-
-- `npm run test` - test project, lint ts files
-
-- `npm run cli ${SCRIPT_NAME_THERE}` - run cli script, use cli.json for scripts adding
-
-- `npm run cli docs:generate` - generate project docs
 
 ### General project structure tree
 
@@ -131,14 +105,13 @@ Typically module is separated as VIEW and DATA sub-modules. Each one includes on
 
 ## Futures
 
-- Minify and optimize as separated flags from env modes
+- Config type and production/dev as separated flags from env modes
 - Benchmark for testing?
 - Build something from wasm as experiment and use wasm-loader
-- Workers investigation?
+- Workers investigation
 - Translations experiments
 - Better config for eslint
 
 ## Side packages (waiting for)
 
 - Hooks implementation for react-router (less VDOM tree pollution)
-- SSR better support (suspense, lazy and other features)
