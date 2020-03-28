@@ -2,21 +2,13 @@ import { DefinePlugin, Options, Plugin, ProvidePlugin } from "webpack";
 
 import { APPLICATION_ROOT, MODAL_ROOT } from "../build_constants";
 import {
-  BASE_PROJECT_FAVICON_PATH, BASE_PROJECT_STATIC_FILES,
-  BASE_PROJECT_TEMPLATE_PATH,
-  DOTENV_CONFIG_PATH,
-  ENVIRONMENT,
-  IS_PRODUCTION,
-  MODULES_CONFIG,
-  PROJECT_CORE_DEPENDENCIES,
-  PROJECT_INLINE_MODULES,
-  PROVIDE_MODULES_CONFIG,
-  REPORT_BUNDLE_ANALYZER_PATH,
-  REPORT_BUNDLE_STATS_PATH,
-  RUNTIME_CONSTANTS
+  BASE_PROJECT_FAVICON_PATH, BASE_PROJECT_STATIC_FILES, BASE_PROJECT_TEMPLATE_PATH, DOTENV_CONFIG_PATH, ENVIRONMENT,
+  IS_PRODUCTION, MODULES_CONFIG, PROJECT_CORE_DEPENDENCIES, PROJECT_INLINE_MODULES, PROVIDE_MODULES_CONFIG,
+  REPORT_BUNDLE_ANALYZER_PATH, REPORT_BUNDLE_STATS_PATH, RUNTIME_CONSTANTS, TS_CONFIG_PATH
 } from "./webpack.constants";
 import { IModuleDefinition } from "./webpack.types";
 
+// CJS way to import most plugins.
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const DotEnv = require("dotenv-webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -25,6 +17,7 @@ const DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ScriptExtHtmlPlugin = require("script-ext-html-webpack-plugin");
 const StatsWriterPlugin = require("webpack-stats-plugin").StatsWriterPlugin;
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const createChunkGroupNameGenerator = () => (module: any, chunks: any, cacheGroupKey: string): string => cacheGroupKey;
 
@@ -135,13 +128,20 @@ export const PLUGIN_CONFIG: {
     }
   },
   PLUGINS: [
+    // Generate HTML for each modules.
     ...MODULES_CONFIG.modules.map(createHTMLEntry),
     new DuplicatePackageCheckerPlugin({ verbose: true }),
     new DotEnv({ path: DOTENV_CONFIG_PATH }),
     new DefinePlugin(RUNTIME_CONSTANTS as {}),
     new ProvidePlugin(PROVIDE_MODULES_CONFIG),
     new CopyWebpackPlugin(BASE_PROJECT_STATIC_FILES.map((it: string) => ({ from: it, to: "." }))),
+    new ForkTsCheckerWebpackPlugin({
+      eslint: true,
+      tsconfig: TS_CONFIG_PATH
+    }),
+    // Async scripts load and inlining.
     new ScriptExtHtmlPlugin({ defaultAttribute: "async", inline: PROJECT_INLINE_MODULES }),
+   // Bundle analyzers/debug.
     new BundleAnalyzerPlugin({
       analyzerMode: "static",
       defaultSizes: "gzip",
