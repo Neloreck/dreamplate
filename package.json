@@ -26,8 +26,6 @@
   "license": "ISC",
   "dependencies": {
     "@babel/runtime": "7.9.2",
-    "core-js": "^3.6.4",
-    "fast-async": "^7.0.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },

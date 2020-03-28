@@ -2,15 +2,14 @@ import { createTransformer } from "babel-jest";
 import { BABEL_CONFIG } from "../../build/config/babel.config";
 
 const CONFIG = {
-  babelrc: false,
-  presets: [
-    "@babel/preset-env",
-    "@babel/preset-typescript",
-    "@babel/preset-react"
-  ],
+  ...BABEL_CONFIG,
   plugins: [
-    "@babel/plugin-transform-runtime",
     ...BABEL_CONFIG.plugins
+      .filter((it) =>
+        typeof it === "string"
+          ? it !== "@babel/plugin-transform-runtime"
+          : it[0] !== "@babel/plugin-transform-runtime"
+      )
   ]
 };
 

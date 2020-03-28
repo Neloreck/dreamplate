@@ -28,7 +28,7 @@ const DEFAULT_REDIRECT: string = "/authentication/login";
 export function PrivateRoute({
   reversed = false,
   redirect = true,
-  authContext: { authState: { isAuthorizing, isAuthorized } } = useManager(AuthContextManager),
+  authContext: { authState: { user } } = useManager(AuthContextManager),
   routerContext: { routingActions: { replace }, routingState: { path } } = useManager(RouterContextManager),
   ...routeProps
 }: IPrivateRouteProps): ReactElement {
@@ -36,7 +36,7 @@ export function PrivateRoute({
   // First mount.
   useLayoutEffect(() => {
 
-    if (!isAuthorizing && (reversed ? isAuthorized : !isAuthorized)) {
+    if (!user.isLoading && (reversed ? user.value : !user.value)) {
 
       if (redirect === true) {
         replace(DEFAULT_REDIRECT + "?next=" + path);
@@ -49,7 +49,7 @@ export function PrivateRoute({
   // Every update.
   useEffect(() => {
 
-    if (!isAuthorizing && (reversed ? isAuthorized : !isAuthorized)) {
+    if (!user.isLoading && (reversed ? user.value : !user.value)) {
 
       // todo: Own NEXT implementation for redirect.
       const next: string = "/"; // getQueryParams().next;

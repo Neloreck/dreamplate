@@ -1,7 +1,7 @@
 // Lib.
 import { setLocalStorageItem, removeLocalStorageItem, getFromLocalStorage } from "@Lib/utils";
 import { forSeconds } from "@Lib/utils/delay";
-import { Optional } from "@Lib/ts";
+import { TOptional } from "@Lib/ts";
 
 describe("Local storage utils test.", () => {
 
@@ -41,7 +41,7 @@ describe("Local storage utils test.", () => {
 
     setLocalStorageItem(EXPECTED_KEY, EXPECTED_DATA);
 
-    const receivedFromLocalStorage: Optional<string> = localStorage.getItem(EXPECTED_KEY);
+    const receivedFromLocalStorage: TOptional<string> = localStorage.getItem(EXPECTED_KEY);
 
     expect(receivedFromLocalStorage).not.toBe(EXPECTED_DATA);
 

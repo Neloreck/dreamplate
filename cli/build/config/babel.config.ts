@@ -1,6 +1,7 @@
 import * as path from "path";
 
 import { IS_PRODUCTION, IS_TEST } from "./webpack.constants";
+import * as packageConfig from "../../../package.json";
 
 export const BABEL_CONFIG = {
   babelrc: false,
@@ -10,23 +11,24 @@ export const BABEL_CONFIG = {
       "@babel/preset-env",
       {
         "targets": {
-          "node": "10",
           "browsers": [
             "> 5.0%",
             "not dead"
           ]
-        },
-        "modules": false,
-        "loose": true,
-        "useBuiltIns": "entry",
-        "corejs": "3",
-        "exclude": [ "transform-async-to-generator", "transform-regenerator" ]
+        }
       }
     ],
     "@babel/preset-typescript",
     "@babel/preset-react"
   ],
   plugins: [
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        "useESModules": true,
+        "version": packageConfig.devDependencies["@babel/plugin-transform-runtime"]
+      }
+    ],
     [
       "module-resolver",
       {
@@ -37,19 +39,9 @@ export const BABEL_CONFIG = {
     ],
     "macros",
     "react-hot-loader/babel",
-    [ "@babel/plugin-proposal-decorators", { "decoratorsBeforeExport": true } ],
-    [
-      "@babel/plugin-transform-runtime",
-      {
-        "corejs": 3,
-        "regenerator": false,
-        "useESModules": true,
-        "version": "7.9.2"
-      }
-    ],
     "@babel/plugin-transform-react-constant-elements",
+    [ "@babel/plugin-proposal-decorators", { "decoratorsBeforeExport": true } ],
     [ "@babel/plugin-proposal-class-properties", { "loose": true } ],
-    [ "module:fast-async", { "spec": true } ],
     [ "transform-imports", {
       /* Example:
       "@material-ui/core": {

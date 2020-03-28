@@ -6,7 +6,7 @@
 import { ContextManager, createLoadable, ILoadable } from "dreamstate";
 
 // Lib.
-import { Optional } from "@Lib/ts";
+import { TOptional } from "@Lib/ts";
 import { log } from "@Macro/log.macro";
 
 /**
@@ -16,7 +16,7 @@ export interface IAuthContext {
   authActions: {
   };
   authState: {
-    user: ILoadable<Optional<string>>;
+    user: ILoadable<TOptional<string>>;
   };
 }
 
@@ -38,7 +38,7 @@ export class AuthContextManager extends ContextManager<IAuthContext> {
 
     const { authState: { user } } = this.context;
 
-    log.info(`Auth provision started [${user.value} | ${user.isLoading}].`);
+    log.info("Auth provision started @", user.value);
   }
 
 }

@@ -55,7 +55,7 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
    */
   public replace(path: Path): void {
 
-    log.info(`Replace path: ${path}.`);
+    log.info("Replace path:", path);
 
     RouterContextManager.HISTORY.replace(path);
   }
@@ -65,7 +65,7 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
    */
   public push(path: Path): void {
 
-    log.info(`Push path: ${path}.`);
+    log.info("Push path:", path);
 
     RouterContextManager.HISTORY.push(path);
   }
@@ -75,7 +75,7 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
    */
   public hardPush(path: Path): void {
 
-    log.info(`Hard push path: ${path}.`);
+    log.info("Hard push path:", path);
 
     window.location.pathname = path;
   }
@@ -85,7 +85,7 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
    */
   public hardReplace(path: Path): void {
 
-    log.info(`Hard replace path: ${path}.`);
+    log.info("Hard replace path:", path);
 
     window.location.replace(path);
   }
@@ -104,7 +104,7 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
 
     const { routingState: { path } } = this.context;
 
-    log.info(`Routing provision started [${path}].`);
+    log.info("Routing provision started @", path);
 
     this.unsubscribeFromHistory = RouterContextManager.HISTORY.listen((location: Location) => this.setState({ path: location.pathname }));
   }
@@ -113,7 +113,7 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
 
     const { routingState: { path } } = this.context;
 
-    log.info(`Routing provision ended [${path}].`);
+    log.info("Routing provision ended @", path);
 
     this.unsubscribeFromHistory();
   }

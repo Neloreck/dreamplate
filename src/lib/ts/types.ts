@@ -4,14 +4,14 @@
  */
 
 /**
- * Callable method with generic params and retutn.
+ * Callable method with generic params and return.
  */
-export type Callable<A = any, R = any> = (...args: Array<A>) => R;
+export type TCallable<A = any, R = any> = (...args: Array<A>) => R;
 
 /**
  * Optional generic.
  */
-export type Optional<T> = T | null;
+export type TOptional<T> = T | null;
 
 /**
  * String indexed generic.

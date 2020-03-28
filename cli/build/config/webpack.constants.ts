@@ -18,6 +18,7 @@ export const IS_PRODUCTION: boolean = (ENVIRONMENT === "production" || IS_TEST);
  */
 
 export const PROJECT_ROOT_PATH: string = path.resolve(__dirname, "../../../");
+export const PROJECT_ROOT_NODE_MODULES_PATH: string = path.resolve(__dirname, "../../../node_modules");
 export const BUILD_CONFIGURATION_PATH: string = path.resolve(PROJECT_ROOT_PATH, "cli/build");
 
 export const MODULES_ROOT_PATH: string = path.resolve(PROJECT_ROOT_PATH, "src/application/modules");
@@ -65,13 +66,12 @@ export const PROJECT_CORE_DEPENDENCIES: Array<string> = [
   "react-dom",
   "loose-envify",
   "object-assign",
-  "scheduler",
-  "core-js"
+  "scheduler"
 ];
 
-export const PROJECT_INLINE_MODULES: Array<string> = [
-  "runtime",
-  "initialization"
+export const PROJECT_INLINE_MODULES: Array<string | RegExp> = [
+ /.*\/runtime.*\.js$/, // Webpack runtime support.
+ /.*\/initialization.*\.js$/, // Critical application code for inlining.
 ];
 
 /**

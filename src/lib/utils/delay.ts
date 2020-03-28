@@ -3,13 +3,13 @@
  * @module @lib/utils
  */
 
-import { Callable } from "@Lib/ts";
+import { TCallable } from "@Lib/ts";
 
 /**
  * Resolve promise after millis provided.
  * Used like 'await forMillis(200)'.
  */
-export const forMillis = (time: number) => new Promise((resolve: Callable) => setTimeout(resolve, time));
+export const forMillis = (time: number) => new Promise((resolve: TCallable) => setTimeout(resolve, time));
 
 /**
  * Resolve promise after seconds provided.

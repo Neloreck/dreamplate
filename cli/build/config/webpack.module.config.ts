@@ -1,8 +1,26 @@
 import * as path from "path";
 import { Module, Resolve } from "webpack";
 
-import { BUILD_CONFIGURATION_PATH, IS_PRODUCTION, PROJECT_ROOT_PATH } from "./webpack.constants";
+import {
+  BUILD_CONFIGURATION_PATH,
+  IS_PRODUCTION,
+  PROJECT_ROOT_NODE_MODULES_PATH,
+  PROJECT_ROOT_PATH
+} from "./webpack.constants";
 import { BABEL_CONFIG } from "./babel.config";
+import * as packageConfig from "../../../package.json";
+
+interface IAliasDescription {
+  [index: string]: string;
+}
+
+const generateGlobalDependenciesAlias = (): IAliasDescription => {
+  return Object
+    .keys(packageConfig.dependencies)
+    .reduce((acc: { [idx: string]: string }, pkg: string) =>
+      (acc[pkg] = path.resolve(PROJECT_ROOT_NODE_MODULES_PATH, pkg), acc), {}
+    );
+};
 
 export const MODULE_CONFIG: {
   RESOLVE: Resolve,
@@ -79,7 +97,9 @@ export const MODULE_CONFIG: {
       "@Build": path.resolve(BUILD_CONFIGURATION_PATH),
       "@Lib": path.resolve(PROJECT_ROOT_PATH, "src/lib/"),
       "@Main": path.resolve(PROJECT_ROOT_PATH, "src/application/main/"),
-      "@Modules": path.resolve(PROJECT_ROOT_PATH, "src/application/modules/")
+      "@Modules": path.resolve(PROJECT_ROOT_PATH, "src/application/modules/"),
+      // Make explicit global-level dependencies.
+      ...generateGlobalDependenciesAlias()
     },
     extensions: [
       ".ts",

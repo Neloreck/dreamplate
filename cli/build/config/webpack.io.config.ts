@@ -40,6 +40,6 @@ export const IO_CONFIG: {
     filename: "js/[name].[hash:5].js",
     path: PROJECT_DIST_PATH,
     publicPath: BACKEND_PUBLIC_PATH,
-    sourceMapFilename: "js/maps/[name].[hash:5].js.map"
+    sourceMapFilename: "source_maps/[name].js.map"
   }
 };

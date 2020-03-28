@@ -7,9 +7,8 @@ describe("Auth context manager.", () => {
 
     const manager: AuthContextManager = new AuthContextManager();
 
-    expect(manager.context.authState.isAuthorized).toBeFalsy();
-    expect(manager.context.authState.isAuthorizing).toBeFalsy();
-    expect(manager.context.authDetailsState.user).toBeNull();
+    expect(manager.context.authState.user.value).toBeNull();
+    expect(manager.context.authState.user.isLoading).toBeFalsy();
 
     // @ts-ignore privacy.
     manager.onProvisionStarted();
