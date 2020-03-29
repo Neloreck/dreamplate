@@ -4,8 +4,7 @@
   "dependencies": {
     "colors": "^1.4.0",
     "typedoc": "^0.17.3",
-    "typedoc-plugin-external-module-name": "^3.0.0",
-    "typescript": "^3.8.3"
+    "typedoc-plugin-external-module-name": "^3.0.0"
   },
   "devDependencies": {}
 }
