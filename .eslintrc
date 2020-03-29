@@ -19,6 +19,7 @@
     "react/jsx-no-target-blank": 0,
     "no-console": [ "error" ],
     "semi": "error",
+    "quotes": [ "error", "double" ],
     "import/no-unresolved": 0,
     "import/default": 0,
     "react/react-in-jsx-scope": 0,

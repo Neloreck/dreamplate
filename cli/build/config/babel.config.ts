@@ -60,12 +60,15 @@ export const BABEL_CONFIG = {
         },
       }
     ],
-    [ "transform-imports", {
-      /* Example:
-      "@material-ui/core": {
-        "transform": "@material-ui/core/${member}",
-        "preventFullImport": true
-      }*/
-    } ]
+    [
+      "transform-imports",
+      {
+        /* Example:
+        "@material-ui/core": {
+          "transform": "@material-ui/core/${member}",
+          "preventFullImport": true
+        }*/
+      }
+    ]
   ]
 };

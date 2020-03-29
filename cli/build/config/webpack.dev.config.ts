@@ -41,8 +41,9 @@ export const DEV_CONFIG: {
     clientLogLevel: "error",
     compress: IS_PRODUCTION,
     contentBase: DEV_SERVER_CONTENT_BASE,
-    // todo: No-cache for dev?
-    headers: {},
+    headers: {
+      // "Cache-Control": "max-age=60"
+    },
     historyApiFallback: {
       rewrites: createFallbackRewrites(MODULES_CONFIG)
     },
