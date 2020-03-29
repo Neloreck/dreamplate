@@ -48,7 +48,7 @@
       "description": "Run eslint for project codestyle checking."
     },
     "typecheck": {
-      "exec": "npx tsc -p src",
+      "exec": "npx tsc -p src --noEmit",
       "description": "Run TS typechecks."
     }
   }

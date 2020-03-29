@@ -16,7 +16,7 @@ export const useStyles = createUseStyles(({ palette, spacing }: IApplicationThem
     },
     alignSelf: "normal",
     background: palette.primary.dark,
-    boxShadow: `0px 2px 4px -1px rgba(0, 0, 0, 0.25), 0px 4px 5px 0px rgba(0, 0, 0, 0.15), 0px 1px 10px 0px rgba(0, 0, 0, 0.10)`,
+    boxShadow: "0px 2px 4px -1px rgba(0, 0, 0, 0.25), 0px 4px 5px 0px rgba(0, 0, 0, 0.15), 0px 1px 10px 0px rgba(0, 0, 0, 0.10)",
     boxSizing: "border-box",
     display: "flex",
     flexDirection: "row",

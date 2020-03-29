@@ -4,14 +4,10 @@
     "emitDecoratorMetadata": false,
     "esModuleInterop": false,
     "experimentalDecorators": true,
-    "sourceMap": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "module": "es6",
-    "inlineSources": false,
-    "tsBuildInfoFile": "../target/cache/incremental",
-    "incremental": true,
     "target": "esnext",
     "moduleResolution": "node",
     "jsx": "preserve",
@@ -23,7 +19,7 @@
       "dom"
     ],
     "baseUrl": "./",
-    "outDir": "../target/dist:raw",
+    "outDir": "../target/dist:ts",
     "paths": {
       "@Build/*": [ "../cli/build/*" ],
       "@Macro/*": [ "../cli/build/macroses/*" ],
