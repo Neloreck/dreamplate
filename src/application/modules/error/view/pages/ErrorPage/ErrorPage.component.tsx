@@ -7,10 +7,10 @@ import { useManager } from "dreamstate";
 import { ReactElement, useCallback } from "react";
 
 // Data.
-import { RouterContextManager } from "@Main/data/store";
+import { RouterContextManager } from "@Core/data/store";
 
 // View.
-import { MainHeader } from "@Main/view/components/MainHeader";
+import { MainHeader } from "@Core/view/components/MainHeader";
 import { useStyles } from "./ErrorPage.style";
 
 import "@Lib/components/custom/CustomButton";

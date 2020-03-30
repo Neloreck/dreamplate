@@ -8,7 +8,7 @@ import { ReactElement, useEffect, useLayoutEffect } from "react";
 import { Route, RouteProps } from "react-router";
 
 // Data.
-import { AuthContextManager, IAuthContext, IRouterContext, RouterContextManager } from "@Main/data/store";
+import { AuthContextManager, IAuthContext, IRouterContext, RouterContextManager } from "@Core/data/store";
 
 // Props.
 export interface IPrivateRouteProps extends RouteProps {

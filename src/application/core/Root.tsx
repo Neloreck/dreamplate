@@ -9,10 +9,10 @@ import { hot } from "react-hot-loader/root";
 import { Router as ReactRouter } from "react-router";
 
 // Data.
-import { AuthContextManager, RouterContextManager, ThemeContextManager } from "@Main/data/store";
+import { AuthContextManager, RouterContextManager, ThemeContextManager } from "@Core/data/store";
 
 // Application.
-import { RootProvider } from "@Main/RootProvider";
+import { RootProvider } from "@Core/RootProvider";
 
 // View.
 import "@Lib/components/custom/CustomLoader";

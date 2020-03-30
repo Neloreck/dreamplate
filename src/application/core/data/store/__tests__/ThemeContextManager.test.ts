@@ -3,7 +3,7 @@ import { TThemeType, IApplicationTheme, toggleTheme } from "@Lib/theme";
 import { encrypt, setLocalStorageItem } from "@Lib/utils";
 
 // Data.
-import { ThemeContextManager } from "@Main/data/store";
+import { ThemeContextManager } from "@Core/data/store";
 
 describe("Theme context manager.", () => {
 

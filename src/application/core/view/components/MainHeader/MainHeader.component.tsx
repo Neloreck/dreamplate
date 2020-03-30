@@ -7,7 +7,7 @@ import { useManager } from "dreamstate";
 import { ReactElement } from "react";
 
 // Data.
-import { ThemeContextManager } from "@Main/data/store";
+import { ThemeContextManager } from "@Core/data/store";
 
 // View.
 import { useStyles } from "./MainHeader.style";

@@ -8,7 +8,7 @@ import { ReactElement, ReactNode, Suspense } from "react";
 import { JssProvider, ThemeProvider } from "react-jss";
 
 // Data.
-import { ThemeContextManager } from "@Main/data/store";
+import { ThemeContextManager } from "@Core/data/store";
 
 /**
  * Root provider for application.

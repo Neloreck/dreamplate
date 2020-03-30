@@ -1,5 +1,5 @@
 // Data.
-import { RouterContextManager } from "@Main/data/store";
+import { RouterContextManager } from "@Core/data/store";
 
 describe("Auth context manager.", () => {
 

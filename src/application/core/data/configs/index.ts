@@ -3,4 +3,4 @@
  * @module @application/main
  */
 
-export * from "@Main/data/configs/ApplicationConfig";
+export * from "@Core/data/configs/ApplicationConfig";

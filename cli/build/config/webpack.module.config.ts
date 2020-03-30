@@ -96,7 +96,7 @@ export const MODULE_CONFIG: {
       "@Application": path.resolve(PROJECT_ROOT_PATH, "src/application/"),
       "@Build": path.resolve(BUILD_CONFIGURATION_PATH),
       "@Lib": path.resolve(PROJECT_ROOT_PATH, "src/lib/"),
-      "@Main": path.resolve(PROJECT_ROOT_PATH, "src/application/main/"),
+      "@Core": path.resolve(PROJECT_ROOT_PATH, "src/application/core/"),
       "@Modules": path.resolve(PROJECT_ROOT_PATH, "src/application/modules/"),
       // Make explicit global-level dependencies.
       ...generateGlobalDependenciesAlias()

@@ -52,7 +52,7 @@ export const JEST_CONFIG = {
     "@Build/(.*)$": "<rootDir>/cli/build/$1",
     "@Lib/(.*)$": "<rootDir>/src/lib/$1",
     "@Macro/(.*)$": "<rootDir>/cli/build/macroses/$1",
-    "@Main/(.*)$": "<rootDir>/src/application/main/$1",
+    "@Core/(.*)$": "<rootDir>/src/application/core/$1",
     "@Modules/(.*)$": "<rootDir>/src/application/modules/$1",
     "@Test/(.*)$": "<rootDir>/cli/test/$1",
     "\\.(css|scss|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":

@@ -1,5 +1,5 @@
 // Data.
-import { AuthContextManager } from "@Main/data/store";
+import { AuthContextManager } from "@Core/data/store";
 
 describe("Auth context manager.", () => {
 
