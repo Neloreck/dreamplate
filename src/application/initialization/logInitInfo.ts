@@ -12,6 +12,6 @@ import { log } from "@Macro/log.macro";
  */
 export const logInitInfo = () => {
 
-  log.info("🔶 Starting application in DEV mode.");
-  log.info("🔶 First init timestamp:", Date.now());
+  log.info("🔶Starting application in DEV mode.");
+  log.info("First init timestamp:", Date.now());
 };

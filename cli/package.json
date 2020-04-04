@@ -6,5 +6,7 @@
     "typedoc": "^0.17.3",
     "typedoc-plugin-external-module-name": "^3.0.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/node": "^13.11.0"
+  }
 }

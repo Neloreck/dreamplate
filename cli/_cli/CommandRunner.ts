@@ -14,14 +14,14 @@ export class CommandRunner {
   private readonly cmd: string;
   private readonly cmdAdditionalArgs: Array<string> = [];
   private readonly script: TExecutableScript;
-  private readonly config: any;
+  private readonly config: any; // todo: Implement cli configuration if it will be needed.
 
   private finished: boolean = false;
   private startTime: number = NaN;
 
   private childProcess: ChildProcess | null = null;
 
-  public constructor(cmd: string, cmdAdditionalArgs: Array<string>, script: TExecutableScript | IExecutableScriptDescriptor, config?: any) {
+  public constructor(cmd: string, cmdAdditionalArgs: Array<string>, script: TExecutableScript | IExecutableScriptDescriptor, config?: object) {
 
     this.cmd = cmd;
     this.cmdAdditionalArgs = cmdAdditionalArgs;
@@ -35,32 +35,27 @@ export class CommandRunner {
   public async run(): Promise<void> {
 
     if (this.script) {
+      const hasMultipleSubscripts: boolean = Array.isArray(this.script);
 
-      this.onStart();
+      this.onStart(!hasMultipleSubscripts);
 
       try {
-
-        if (Array.isArray(this.script)) {
-          await this.executeCommands(this.script);
+        if (hasMultipleSubscripts) {
+          await this.executeCommands(this.script as Array<string>);
         } else {
-          await this.executeCommand(this.script);
+          await this.executeCommand(this.script as string);
         }
 
         this.onSuccess();
-
       } catch (error) {
         this.onError(error);
       } finally {
         this.finished = true;
       }
-
     } else {
-
-      const errorMessage: string = `Script '${this.cmd}' was not found. \n\n`;
-
-      process.stdout.write(errorMessage);
-
-      throw new Error(errorMessage);
+      // Handle cases with wrong script arg and return non-zero code.
+      process.stdout.write(`\nError running script. Command '${red(this.cmd)}' was not found. \n\n`);
+      throw new Error(`Provided script with name '${this.cmd}' was not found in cli.json file.`);
     }
   }
 
@@ -73,20 +68,18 @@ export class CommandRunner {
     const hasMany: boolean = (scriptsToExecute.length > 0);
 
     if (hasMany && this.cmdAdditionalArgs.length) {
+      process.stderr.write("\nCannot parse additional args for multi-scripts.\n");
       throw new Error("Cannot provide additional args for multi-scripts.");
     }
 
     for (const scriptToExecute of scriptsToExecute) {
-
       try {
-
         const scriptArgs: Array<string> = scriptToExecute.split(" ");
         await this.runProcess(scriptArgs);
 
         if (hasMany) {
           this.onPartialSuccess(scriptToExecute);
         }
-
       } catch (error) {
         this.onPartialError(scriptToExecute);
         throw error;
@@ -98,11 +91,8 @@ export class CommandRunner {
   protected async executeCommand(scriptToExecute: string): Promise<void> {
 
     try {
-
       const scriptArgs: Array<string> = scriptToExecute.split(" ");
-
       await this.runProcess(scriptArgs);
-
     } catch (error) {
       this.onPartialError(scriptToExecute);
       throw error;
@@ -110,9 +100,8 @@ export class CommandRunner {
   }
 
   protected runProcess(args: Array<string>): Promise<void> {
-
+    // Promise wrapper for nested callbacks handling.
     return new Promise((resolve: () => void, reject: (error: Error) => void): void => {
-
       try {
         this.childProcess = spawn(args[0], args.slice(1).concat(this.cmdAdditionalArgs),  {
           cwd: process.cwd(),
@@ -123,29 +112,27 @@ export class CommandRunner {
         });
 
         const checkCode = (code: number, ...args: any): void => {
-
           if (code === 0) {
             resolve();
             this.childProcess = null;
           } else {
             this.childProcess = null;
             reject(new Error("Command exited with non 0 code: " + code + "."));
-            process.exit();
           }
         };
 
         const checkError = (data: string): void => {
           reject(new Error(data.toString()));
-          (this.childProcess as ChildProcess).kill("99");
+          (this.childProcess as ChildProcess).kill(99);
         };
 
         this.childProcess.on("SIGINT", () => {
           reject(new Error("Process was interrupted manually."));
-          (this.childProcess as ChildProcess).kill("2");
+          (this.childProcess as ChildProcess).kill(2);
         });
 
         [ "uncaughtException", "unhandledRejection", "SIGUSR1", "SIGUSR2" ]
-          .forEach((it: string) => this.childProcess!.on(<any>it, checkError));
+          .forEach((it: string) => this.childProcess!.on(it as any, checkError));
 
         this.childProcess.on("exit", checkCode);
 
@@ -159,7 +146,7 @@ export class CommandRunner {
    * Process events.
    */
 
-  protected onProcessShutdown(signal: string): void {
+  protected onProcessShutdown(signal: NodeJS.Signals): void {
 
     if (this.childProcess) {
       this.childProcess.kill(signal);
@@ -171,7 +158,7 @@ export class CommandRunner {
    * Event handlers.
    */
 
-  protected onStart(): void {
+  protected onStart(addSeparator?: boolean): void {
 
     this.startTime = Date.now();
 
@@ -179,6 +166,10 @@ export class CommandRunner {
       process.stdout.write(green("\n=============================================================================\n"));
       process.stdout.write(`${green("=")} ${this.cmd} ${green("@")} ${process.cwd()} \n`);
       process.stdout.write(green("=============================================================================\n"));
+
+      if (addSeparator) {
+        process.stdout.write("\n");
+      }
     }
   }
 
@@ -208,12 +199,12 @@ export class CommandRunner {
   protected onPartialSuccess(cmd: string): void {
 
     if (!CommandRunner.PARENT) {
-      process.stdout.write(green(`\n + Done Command [${cmd}]. \n\n`));
+      process.stdout.write(green(`\n + Done Command [${cmd}]. \n`));
     }
   }
 
   protected onPartialError(cmd: string): void {
-    process.stdout.write(red(`\n - Failed Command [${cmd}]. \n`));
+    process.stdout.write(red(`\n - Exit Command [${cmd}]. \n`));
   }
 
 }

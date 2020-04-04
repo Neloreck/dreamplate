@@ -26,8 +26,8 @@ const createChunkCacheGroups = (definitions: Array<IModuleDefinition>) => {
   const entries: { [index: string]: any } = {};
 
   for (const it of definitions) {
-    entries[it.name + "_npm"] = ({
-      maxSize: 900_00,
+    entries["app/" + it.name + "_lib"] = ({
+      maxSize: 750_000,
       name: createChunkGroupNameGenerator(),
       priority: 120,
       reuseExistingChunk: true,
@@ -91,27 +91,27 @@ export const PLUGIN_CONFIG: {
     runtimeChunk: "single",
     splitChunks: {
       cacheGroups: {
-        api: {
+        "lib/api": {
           name: createChunkGroupNameGenerator(),
           priority: 80,
           reuseExistingChunk: false,
           test: /\/src\/api/
         },
-        components: {
+        "lib/components": {
           minSize: 5_000,
           name: createChunkGroupNameGenerator(),
           priority: 90,
           reuseExistingChunk: true,
           test: /(\/lib\/components)|(\/node_modules\/lit-.*)/
         },
-        core: {
+        "lib/core": {
           maxSize: 500_000,
           name: createChunkGroupNameGenerator(),
           priority: 100,
           reuseExistingChunk: true,
           test: new RegExp(`/node_modules/(${PROJECT_CORE_DEPENDENCIES.reduce((accumulator: string, it: string) => accumulator ? accumulator + "|" + it : it )})\/`)
         },
-        global: {
+        "lib/global": {
           name: createChunkGroupNameGenerator(),
           priority: 70,
           reuseExistingChunk: false,

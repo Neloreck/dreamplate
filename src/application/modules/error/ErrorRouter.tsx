@@ -5,9 +5,10 @@
 
 import { ReactElement } from "react";
 import { hot } from "react-hot-loader/root";
-import { Redirect, Route, Switch } from "react-router";
+import { Route, Switch } from "react-router";
 
 // View.
+import { DefaultErrorFallback } from "@Core/view/layouts";
 import { ErrorPage } from "@Modules/error/view/pages/ErrorPage";
 
 export function ErrorRouter(): ReactElement {
@@ -17,7 +18,7 @@ export function ErrorRouter(): ReactElement {
 
       <Route path={"/error"} component={ErrorPage} exact={true}/>
 
-      <Route render={() => <Redirect to={"/error"}/>}/>
+      <Route render={() => <DefaultErrorFallback reload={false}/>}/>
 
     </Switch>
   );

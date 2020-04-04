@@ -87,6 +87,11 @@ export const DEV_SERVER_CONTENT_BASE: string = PROJECT_DIST_PATH;
  * Project modules config.
  */
 
+// Entries that will be always build.
+export const REQUIRED_ENTRIES: Array<string> = [
+  "error"
+];
+
 export const SELECTED_ENTRIES: Array<string> | null = process.env.ENTRIES ? JSON.parse(process.env.ENTRIES) : null;
 
 export const MODULES_CONFIG: IModulesDefinition = (() => {
@@ -94,7 +99,6 @@ export const MODULES_CONFIG: IModulesDefinition = (() => {
   const config = require(path.resolve(MODULES_ROOT_PATH, "modules.json"));
 
   if (SELECTED_ENTRIES) {
-
     // Check if requested modules exist.
     SELECTED_ENTRIES.forEach((it: string) => {
       if (config.modules.some((module: { name: string }) => module.name === it)) {
@@ -105,7 +109,8 @@ export const MODULES_CONFIG: IModulesDefinition = (() => {
     });
 
     // Select only requested modules.
-    config.modules = config.modules.filter((it: { name: string }) => SELECTED_ENTRIES.includes(it.name));
+    config.modules = config.modules
+      .filter((it: { name: string }) => SELECTED_ENTRIES.concat(REQUIRED_ENTRIES).includes(it.name));
   }
 
   return config;

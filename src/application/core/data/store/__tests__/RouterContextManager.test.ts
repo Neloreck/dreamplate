@@ -7,15 +7,8 @@ describe("Auth context manager.", () => {
 
     const manager: RouterContextManager = new RouterContextManager();
 
-    expect(manager.context.routingState.path).toBe("/");
-
-    expect(RouterContextManager.HISTORY).not.toBeNull();
-
-    // @ts-ignore privacy.
-    manager.onProvisionStarted();
-
-    // @ts-ignore privacy.
-    manager.onProvisionEnded();
+    expect(manager.context.path).toBe("/");
+    expect(manager.history).not.toBeNull();
   });
 
   it("Should use history for navigation.", async () => {
@@ -24,25 +17,17 @@ describe("Auth context manager.", () => {
     const manager: RouterContextManager = new RouterContextManager();
 
     // Push.
-
-    RouterContextManager.HISTORY.push = mock;
-
+    manager.history.push = mock;
     manager.push("/push");
-
     expect(mock).toBeCalledWith("/push");
 
     // Replace.
-
-    RouterContextManager.HISTORY.replace = mock;
-
+    manager.history.replace = mock;
     manager.replace("/replace");
-
     expect(mock).toBeCalledWith("/replace");
 
     // Go back..
-
-    RouterContextManager.HISTORY.goBack = mock;
-
+    manager.history.goBack = mock;
     manager.goBack();
 
     expect(mock).toBeCalled();

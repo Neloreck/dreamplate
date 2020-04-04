@@ -3,14 +3,14 @@
  * @module @application/main
  */
 
-import { ReactElement, useEffect } from "react";
+import { ReactElement, useLayoutEffect } from "react";
 
 // Lib.
 import { Redirect } from "react-router";
 
-export function DefaultErrorFallback(): ReactElement {
+export function DefaultErrorFallback({ reload = true }): ReactElement {
 
-  useEffect(() => window.location.reload(), []);
+  useLayoutEffect(() => reload ? window.location.reload() : void(0), []);
 
-  return <Redirect to={"/error"}/>;
+  return <Redirect to={`/error?from=${window.location.pathname}`}/>;
 }

@@ -2,7 +2,7 @@
   "name": "boilerplate-root",
   "private": true,
   "dependencies": {
-    "dreamstate": "^2.4.1",
+    "dreamstate": "^2.4.3",
     "history": "^4.10.1",
     "jss": "^10.1.1",
     "lit-element": "^2.3.1",
@@ -11,6 +11,6 @@
   },
   "devDependencies": {
     "@types/history": "^4.7.5",
-    "@types/react-router": "^5.1.4"
+    "@types/react-router": "^5.1.5"
   }
 }

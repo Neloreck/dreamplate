@@ -9,7 +9,7 @@ export class TestRunner {
 
   public static async main(args: Array<string>): Promise<void> {
 
-    process.stdout.write(`\nStarting jest testing. \n\n`);
+    process.stdout.write(`Starting jest testing. \n\n`);
 
     await jest.run([
       ...args.slice(2),

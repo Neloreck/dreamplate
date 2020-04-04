@@ -31,7 +31,7 @@ export function ErrorPage({
       <main className={content}>
 
         <custom-card class={labelCard}>
-          Page was not found.
+          { IS_DEV ? "Page was not found or current path is not serving by dev server." : "Page was not found." }
         </custom-card>
 
         <custom-button onClick={onHomeNavigated}>

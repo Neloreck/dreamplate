@@ -2,27 +2,54 @@
   "config": {
   },
   "scripts": {
-    "list": {
+    "help": {
       "exec": "ts-node --project ./cli/tsconfig.json ./cli/utils/print_commands_list.ts",
-      "description": "Show custom CLI commands list."
+      "description": "Show help for all custom CLI commands list or only for provided arguments."
+    },
+    "setup": {
+      "exec": "npx lerna bootstrap",
+      "description": "Setup project modules and install dependencies."
+    },
+    "clean": {
+      "exec": "npx rimraf ./target && echo 'Cleaned up target directory.'",
+      "description": "Remove project built assets."
     },
     "purge": {
       "exec": [
-        "npx rimraf ./target",
-        "echo 'Target cleaned up.'"
+        "./run clean",
+        "npx lerna clean -y "
       ],
-      "description": "Remove project built assets."
+      "description": "Remove project built assets and purge all npm modules."
     },
     "=============================================================================================================": "",
-    "start": {
+    "start-dev-server": {
       "exec": "ts-node --project ./cli/tsconfig.json ./cli/build/DevRunner.ts",
+      "private": true,
       "description": "Start project serving (webpack dev server)."
     },
-    "build": {
-      "exec": "npm run cli purge && ts-node --project ./cli/tsconfig.json ./cli/build/BuildRunner.ts",
+    "build-bundle": {
+      "exec": "./run clean && ts-node --project ./cli/tsconfig.json ./cli/build/BuildRunner.ts",
+      "private": true,
       "description": "Build project assets and related source files. Following arguments can include module names."
     },
-    "===========================================================================================================": "==",
+    "============================================================================================================": "==",
+    "start": {
+      "exec": "npx cross-env NODE_ENV=production ./run start-dev-server",
+      "description": "Start webpack dev server in production mode."
+    },
+    "start:dev": {
+      "exec": "npx cross-env NODE_ENV=development ./run start-dev-server",
+      "description": "Start webpack dev server in dev mode."
+    },
+    "build": {
+      "exec":"npx cross-env NODE_ENV=production ./run build-bundle",
+      "description": "Build project bundles in production mode."
+    },
+    "build:dev": {
+      "exec":"npx cross-env NODE_ENV=development ./run build-bundle",
+      "description": "Build project bundles in dev mode."
+    },
+    "==========================================================================================================": "===",
     "docs:generate": {
       "exec": [
         "rm -rf ./docs",
@@ -30,12 +57,12 @@
       ],
       "description": "Generate project sources docs with typedoc."
     },
-    "==========================================================================================================": "===",
+    "=========================================================================================================": "====",
     "test": {
       "exec": [
-        "npm run cli typecheck",
-        "npm run cli lint",
-        "npm run cli jest"
+        "./run typecheck",
+        "./run jest",
+        "./run lint"
       ],
       "description": "Run full tests that include unit tests, linting and typechecks."
     },

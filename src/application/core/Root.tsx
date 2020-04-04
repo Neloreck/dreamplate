@@ -3,10 +3,9 @@
  * @module @application/main
  */
 
-import { Provide } from "dreamstate";
-import { PureComponent, ReactNode } from "react";
+import { createProvider } from "dreamstate";
+import { FunctionComponent, ReactElement, ReactNode } from "react";
 import { hot } from "react-hot-loader/root";
-import { Router as ReactRouter } from "react-router";
 
 // Data.
 import { AuthContextManager, RouterContextManager, ThemeContextManager } from "@Core/data/store";
@@ -23,26 +22,18 @@ import "@Lib/components/layout/ModalRoot";
  * Application root.
  * Render global router and provider with data shared for all modules.
  */
-@Provide(ThemeContextManager, RouterContextManager, AuthContextManager)
-export class Root extends PureComponent {
 
-  public render(): ReactNode {
 
-    const { children } = this.props;
+const GlobalProvider: FunctionComponent = createProvider(ThemeContextManager, RouterContextManager, AuthContextManager);
 
-    return (
+export function Root({ children = null as ReactNode }): ReactElement {
+  return (
+    <GlobalProvider>
       <RootProvider>
-
-        <ReactRouter history={RouterContextManager.HISTORY}>
-
-          { children }
-
-        </ReactRouter>
-
+        { children }
       </RootProvider>
-    );
-  }
-
+    </GlobalProvider>
+  );
 }
 
 /**

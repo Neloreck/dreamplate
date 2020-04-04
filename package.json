@@ -9,15 +9,7 @@
   "license": "ISC",
   "scripts": {
     "setup": "npx lerna bootstrap",
-    "clean": "npm run cli purge && npx lerna clean -y ",
-    "test": "npm run cli test",
-    "===============================================================": "===============================================",
-    "start": "npx cross-env NODE_ENV=production npm run cli start",
-    "start:dev": "npx cross-env NODE_ENV=development npm run cli start",
-    "build": "npx cross-env NODE_ENV=production npm run cli build",
-    "build:dev": "npx cross-env NODE_ENV=development npm run cli build",
-    "================================================================": "=============================================",
-    "cli": "npx ts-node --project ./cli/tsconfig.json ./cli/CliRunner.ts"
+    "help": "./run help"
   },
   "dependencies": {
     "@babel/runtime": "7.9.2",

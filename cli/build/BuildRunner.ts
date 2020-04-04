@@ -23,7 +23,7 @@ export class BuildRunner {
     const compiler: Compiler = Webpack(WEBPACK_CONFIG);
 
     process.stdout.write(
-      `Started building client bundle in ${green(process.env.NODE_ENV || "unselected")} mode.\n` +
+      `Started building client bundle in ${green(process.env.NODE_ENV || "unselected")} mode.\n\n` +
       `Project root: '${green(PROJECT_ROOT_PATH)}'.\n` +
       `Project output: '${green(PROJECT_OUTPUT_PATH)}'.\n` +
       (args.length > 2 ? `Modules for serving: ${green(JSON.stringify(args.slice(2)))}.\n\n` : "\n")

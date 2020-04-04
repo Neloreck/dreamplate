@@ -3,7 +3,7 @@
  * @module @application/main
  */
 
-import { ContextManager, TStateSetter } from "dreamstate";
+import { ContextManager } from "dreamstate";
 import { createBrowserHistory, History, Location, Path } from "history";
 
 // Lib.
@@ -20,9 +20,7 @@ export interface IRouterContext {
     push(path: Path): void;
     goBack(): void;
   };
-  routingState: {
-    path: string;
-  };
+  path: string;
 }
 
 /**
@@ -31,7 +29,7 @@ export interface IRouterContext {
  */
 export class RouterContextManager extends ContextManager<IRouterContext> {
 
-  public static readonly HISTORY: History = createBrowserHistory();
+  public readonly history: History = createBrowserHistory();
 
   public context: IRouterContext = {
     routingActions: {
@@ -41,14 +39,10 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
       push: this.push.bind(this),
       replace: this.replace.bind(this)
     },
-    routingState: {
-     path: RouterContextManager.HISTORY.location.pathname
-    }
+    path: this.history.location.pathname
   };
 
   private unsubscribeFromHistory!: () => void;
-
-  private readonly setState: TStateSetter<IRouterContext, "routingState"> = ContextManager.getSetter(this, "routingState");
 
   /**
    * Replace path in page history.
@@ -57,7 +51,7 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
 
     log.info("Replace path:", path);
 
-    RouterContextManager.HISTORY.replace(path);
+    this.history.replace(path);
   }
 
   /**
@@ -67,7 +61,7 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
 
     log.info("Push path:", path);
 
-    RouterContextManager.HISTORY.push(path);
+    this.history.push(path);
   }
 
   /**
@@ -97,23 +91,21 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
 
     log.info("Go back.");
 
-    RouterContextManager.HISTORY.goBack();
+    this.history.goBack();
   }
 
   protected onProvisionStarted(): void {
 
-    const { routingState: { path } } = this.context;
+    const { path } = this.context;
 
     log.info("Routing provision started @", path);
 
-    this.unsubscribeFromHistory = RouterContextManager.HISTORY.listen((location: Location) => this.setState({ path: location.pathname }));
+    this.unsubscribeFromHistory = this.history.listen((location: Location) => this.setContext({ path: location.pathname }));
   }
 
   protected onProvisionEnded(): void {
 
-    const { routingState: { path } } = this.context;
-
-    log.info("Routing provision ended @", path);
+    log.info("Routing provision ended.");
 
     this.unsubscribeFromHistory();
   }

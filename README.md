@@ -2,27 +2,27 @@
 
 ### Install:
 
-- `npm run setup` [project packages installation]
+- `npm run setup`
 
 ### NPM Scripts
 
 - `npm run setup` [project packages sync, install all package.json sub-projects dependencies]
 
-- `npm run clean` [purge project-built files, uninstall all sub-projects dependencies]
+- `npm run help` [get cli commands list and description]
 
-- `npm run build` [build project in production mode]
+### CLI Scripts
 
-- `npm run build:dev` [build project in development mode]
+- `/run build` [build project in production mode]
 
-- `npm run start` [start project in production mode]
+- `./run build:dev` [build project in development mode]
 
-- `npm run start:dev` [build project in production mode]
+- `./run start` [start project in production mode]
 
-- `npm run test` [run unit tests, linter and type checker]
+- `./run start:dev` [build project in production mode]
 
-- `npm run cli COMMAND_NAME` [run specific cli script]
+- `./run test` [run unit tests, linter and type checker]
 
-- `npm run cli COMMAND_NAME` [print cli commands list]
+- `./run COMMAND_NAME` [run specific cli script]
 
 ### What is used:
     

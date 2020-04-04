@@ -3,7 +3,7 @@
  * @module @application/main
  */
 
-import { Bind, ContextManager, TStateSetter } from "dreamstate";
+import { Bind, ContextManager } from "dreamstate";
 import { CreateGenerateIdOptions } from "jss";
 
 // Lib.
@@ -18,9 +18,7 @@ export interface IThemeContext {
   themeActions: {
     toggleTheme(): void;
   };
-  themeState: {
-    theme: IApplicationTheme;
-  };
+  theme: IApplicationTheme;
 }
 
 /**
@@ -37,12 +35,8 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
     themeActions: {
       toggleTheme: this.toggleTheme.bind(this)
     },
-    themeState: {
-      theme: createDefaultTheme(getFromLocalStorage("theme_type") || GTheme.DEFAULT_THEME_TYPE)
-    }
+    theme: createDefaultTheme(getFromLocalStorage("theme_type") || GTheme.DEFAULT_THEME_TYPE)
   };
-
-  private readonly setState: TStateSetter<IThemeContext, "themeState"> = ContextManager.getSetter(this, "themeState");
 
   /**
    * Toggle application theme mode and save it into local storage.
@@ -50,7 +44,7 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
    */
   public toggleTheme(): void {
 
-    const { theme } = this.context.themeState;
+    const { theme } = this.context;
 
     const nextThemeType: TThemeType = (theme.palette.type === "light" ? "dark" : "light");
     const nextTheme: IApplicationTheme = toggleTheme(theme, nextThemeType);
@@ -66,7 +60,7 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
     document.body.style.backgroundColor = nextTheme.palette.background.default;
     document.body.style.color = nextTheme.palette.text.primary;
 
-    this.setState({ theme: nextTheme });
+    this.setContext({ theme: nextTheme });
   }
 
   /**
@@ -74,7 +68,7 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
    */
   protected onProvisionStarted(): void {
 
-    const { themeState: { theme } } = this.context;
+    const { theme } = this.context;
 
     log.info(`Theme provision started [${theme.palette.type}].`);
 
@@ -94,15 +88,15 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
   @Bind()
   private onLocalStorageDataChanged(event: StorageEvent): void {
 
-    const { theme } = this.context.themeState;
+    const { theme } = this.context;
     const { key, newValue } = event;
 
     if (key === encrypt("theme_type")) {
-
+      // Listen to changes from all tabs.
       if (newValue) {
-        this.setState({ theme: toggleTheme(theme, parse(newValue) as TThemeType) });
+        this.setContext({ theme: toggleTheme(theme, parse(newValue) === "dark" ? "dark" : "light") });
       } else {
-        this.setState({ theme: createDefaultTheme(GTheme.DEFAULT_THEME_TYPE) });
+        this.setContext({ theme: createDefaultTheme(GTheme.DEFAULT_THEME_TYPE) });
       }
     }
   }
