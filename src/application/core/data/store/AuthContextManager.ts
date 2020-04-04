@@ -15,9 +15,7 @@ import { log } from "@Macro/log.macro";
 export interface IAuthContext {
   authActions: {
   };
-  authState: {
-    user: ILoadable<TOptional<string>>;
-  };
+  user: ILoadable<TOptional<string>>;
 }
 
 /**
@@ -29,14 +27,12 @@ export class AuthContextManager extends ContextManager<IAuthContext> {
   public context: IAuthContext = {
     authActions: {
     },
-    authState: {
-      user: createLoadable(null)
-    }
+    user: createLoadable(null)
   };
 
   protected onProvisionStarted(): void {
 
-    const { authState: { user } } = this.context;
+    const { user } = this.context;
 
     log.info("Auth provision started @", user.value);
   }
