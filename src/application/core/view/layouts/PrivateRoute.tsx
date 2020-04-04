@@ -28,7 +28,7 @@ const DEFAULT_REDIRECT: string = "/authentication/login";
 export function PrivateRoute({
   reversed = false,
   redirect = true,
-  authContext: { authState: { user } } = useManager(AuthContextManager),
+  authContext: { user } = useManager(AuthContextManager),
   routerContext: { routingActions: { replace },  path } = useManager(RouterContextManager),
   ...routeProps
 }: IPrivateRouteProps): ReactElement {
