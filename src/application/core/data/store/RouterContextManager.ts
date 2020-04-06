@@ -3,7 +3,7 @@
  * @module @application/main
  */
 
-import { ContextManager } from "dreamstate";
+import {ContextManager, Hmr} from "dreamstate";
 import { createBrowserHistory, History, Location, Path } from "history";
 
 // Lib.
@@ -27,6 +27,7 @@ export interface IRouterContext {
  * Context manager related to routing management.
  * It is responsible for routing, navigation and history.
  */
+@Hmr(module)
 export class RouterContextManager extends ContextManager<IRouterContext> {
 
   public readonly history: History = createBrowserHistory();

@@ -3,7 +3,7 @@
  * @module @application/main
  */
 
-import { Bind, ContextManager } from "dreamstate";
+import { Bind, ContextManager, Hmr } from "dreamstate";
 import { CreateGenerateIdOptions } from "jss";
 
 // Lib.
@@ -25,6 +25,7 @@ export interface IThemeContext {
  * Context manager related to theme management.
  * It is responsible for theming, styling and generation configuration.
  */
+@Hmr(module)
 export class ThemeContextManager extends ContextManager<IThemeContext> {
 
   public static readonly JSS_ID_GENERATION_CONFIG: CreateGenerateIdOptions = {
@@ -79,6 +80,7 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
    * Unsubscribe from events after provision end.
    */
   protected onProvisionEnded(): void {
+    log.info("Theme provision ended.");
     window.removeEventListener("storage", this.onLocalStorageDataChanged);
   }
 

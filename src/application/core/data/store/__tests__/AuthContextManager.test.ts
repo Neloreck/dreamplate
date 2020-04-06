@@ -12,7 +12,6 @@ describe("Auth context manager.", () => {
 
     // @ts-ignore privacy.
     manager.onProvisionStarted();
-
     // @ts-ignore privacy.
     manager.onProvisionEnded();
   });
