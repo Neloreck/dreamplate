@@ -1,8 +1,3 @@
-/**
- * @packageDocumentation
- * @module @application/main
- */
-
 import { useManager } from "dreamstate";
 import { ReactElement, useEffect, useLayoutEffect } from "react";
 import { Route, RouteProps } from "react-router";

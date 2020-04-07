@@ -1,8 +1,3 @@
-/**
- * @packageDocumentation
- * @module @application/about
- */
-
 import { ReactElement } from "react";
 import { hot } from "react-hot-loader/root";
 import { Route, Switch } from "react-router";

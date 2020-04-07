@@ -1,8 +1,3 @@
-/**
- * @packageDocumentation
- * @module @application/home
- */
-
 import { createUseStyles } from "react-jss";
 
 // Lib.

@@ -1,8 +1,3 @@
-/**
- * @packageDocumentation
- * @module @application/home
- */
-
 // View.
 import { renderRoot } from "@Core/view/utils";
 import { HomeRouter, HotHomeRouter } from "@Modules/home/HomeRouter";

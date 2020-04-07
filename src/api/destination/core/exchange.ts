@@ -1,8 +1,3 @@
-/**
- * @packageDocumentation
- * @module @lib/api
- */
-
 // Lib.
 import { ERequestMethod } from "@Lib/api/types";
 

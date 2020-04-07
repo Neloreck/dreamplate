@@ -1,8 +1,3 @@
-/**
- * @packageDocumentation
- * @module @lib/utils
- */
-
 import { FunctionComponent, lazy } from "react";
 
 // Lib.

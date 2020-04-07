@@ -1,8 +1,3 @@
-/**
- * @packageDocumentation
- * @module @application/main
- */
-
 import { ReactElement, useLayoutEffect } from "react";
 
 // Lib.

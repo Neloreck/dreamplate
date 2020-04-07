@@ -1,8 +1,3 @@
-/**
- * @packageDocumentation
- * @module @application/main
- */
-
 import {ContextManager, createLoadable, Hmr, ILoadable} from "dreamstate";
 
 // Lib.

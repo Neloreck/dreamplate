@@ -1,8 +1,3 @@
-/**
- * @packageDocumentation
- * @module @lib/testing
- */
-
 import { mount, shallow, ShallowWrapper } from "enzyme";
 import { createElement, ReactElement } from "react";
 import { JssProvider, SheetsRegistry, ThemeProvider } from "react-jss";

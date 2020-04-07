@@ -1,9 +1,4 @@
 /**
- * @packageDocumentation
- * @module @lib/ts
- */
-
-/**
  * jpg images module declaration.
  */
 declare module "*.jpg" {

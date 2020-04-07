@@ -1,8 +1,3 @@
-/**
- * @packageDocumentation
- * @module @lib/components
- */
-
 import { css, CSSResult, html, LitElement, TemplateResult } from "lit-element";
 
 // Lib.

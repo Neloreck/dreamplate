@@ -1,8 +1,3 @@
-/**
- * @packageDocumentation
- * @module @application/error
- */
-
 import { useManager } from "dreamstate";
 import { ReactElement, useCallback } from "react";
 

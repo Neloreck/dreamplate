@@ -2,9 +2,7 @@
   "name": "cli",
   "private": true,
   "dependencies": {
-    "colors": "^1.4.0",
-    "typedoc": "^0.17.3",
-    "typedoc-plugin-external-module-name": "^3.0.0"
+    "colors": "^1.4.0"
   },
   "devDependencies": {
     "@types/node": "^13.11.0"

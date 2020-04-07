@@ -1,9 +1,4 @@
 /**
- * @packageDocumentation
- * @module @lib/testing
- */
-
-/**
  * Create mocked context nested data/actions object.
  */
 export const createMockContextProperty = (dataKey: string) => new Proxy({}, { get: (target: {}, property: string) => {

@@ -1,8 +1,3 @@
-/**
- * @packageDocumentation
- * @module @lib/theme
- */
-
 import { IApplicationTheme, TThemeType } from "@Lib/theme/types";
 
 /**

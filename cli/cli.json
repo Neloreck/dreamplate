@@ -50,14 +50,6 @@
       "description": "Build project bundles in dev mode."
     },
     "==========================================================================================================": "===",
-    "docs:generate": {
-      "exec": [
-        "rm -rf ./docs",
-        "cd ./cli && npx typedoc --tsconfig ../src/tsconfig.json --readme ../src/README.md ../src/"
-      ],
-      "description": "Generate project sources docs with typedoc."
-    },
-    "=========================================================================================================": "====",
     "test": {
       "exec": [
         "./run typecheck",

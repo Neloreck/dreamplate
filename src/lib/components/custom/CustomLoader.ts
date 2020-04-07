@@ -1,8 +1,3 @@
-/**
- * @packageDocumentation
- * @module @lib/components
- */
-
 import { css, CSSResult, LitElement, unsafeCSS } from "lit-element";
 
 // Lib.

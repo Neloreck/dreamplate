@@ -1,8 +1,3 @@
-/**
- * @packageDocumentation
- * @module @lib/theme
- */
-
 import { TThemeType, IApplicationTheme } from "@Lib/theme/types";
 import { createDefaultTheme, toggleTheme } from "@Lib/theme/utils";
 

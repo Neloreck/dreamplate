@@ -1,9 +1,4 @@
 /**
- * @packageDocumentation
- * @module @lib/api
- */
-
-/**
  * Core api config.
  * Should be scoped to separate api modules there.
  */

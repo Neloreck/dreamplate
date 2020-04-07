@@ -1,8 +1,3 @@
-/**
- * @packageDocumentation
- * @module @lib/utils
- */
-
 import { TCallable } from "@Lib/ts";
 
 /**

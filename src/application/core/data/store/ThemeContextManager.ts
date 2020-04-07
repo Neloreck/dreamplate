@@ -1,8 +1,3 @@
-/**
- * @packageDocumentation
- * @module @application/main
- */
-
 import { Bind, ContextManager, Hmr } from "dreamstate";
 import { CreateGenerateIdOptions } from "jss";
 

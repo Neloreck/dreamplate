@@ -1,8 +1,3 @@
-/**
- * @packageDocumentation
- * @module @application/main
- */
-
 import { createProvider } from "dreamstate";
 import { FunctionComponent, ReactElement, ReactNode } from "react";
 import { hot } from "react-hot-loader/root";

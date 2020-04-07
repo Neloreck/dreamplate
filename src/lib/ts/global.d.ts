@@ -1,8 +1,3 @@
-/**
- * @packageDocumentation
- * @module @lib/ts
- */
-
 import * as GlobalReact from "react";
 
 // Lib.

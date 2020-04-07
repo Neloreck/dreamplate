@@ -1,9 +1,4 @@
 /**
- * @packageDocumentation
- * @module @lib/utils
- */
-
-/**
  * Encrypt function for local storage.
  */
 export const encrypt = (value: string): string => btoa(value);

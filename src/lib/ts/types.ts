@@ -1,9 +1,4 @@
 /**
- * @packageDocumentation
- * @module @lib/ts
- */
-
-/**
  * Callable method with generic params and return.
  */
 export type TCallable<A = any, R = any> = (...args: Array<A>) => R;

@@ -1,8 +1,3 @@
-/**
- * @packageDocumentation
- * @module @application/main
- */
-
 import {ContextManager, Hmr} from "dreamstate";
 import { createBrowserHistory, History, Location, Path } from "history";
 

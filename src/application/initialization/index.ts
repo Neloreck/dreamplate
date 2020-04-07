@@ -1,8 +1,3 @@
-/**
- * @packageDocumentation
- * @module @initialization
- */
-
 import { initTheme } from "@Application/initialization/initTheme";
 import { logInitInfo } from "@Application/initialization/logInitInfo";
 

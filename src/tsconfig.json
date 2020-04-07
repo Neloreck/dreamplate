@@ -37,11 +37,5 @@
   "types": [
     "node"
   ],
-  "exclude": [],
-  "typedocOptions": {
-    "out": "../docs",
-    "exclude": [ "**/node_modules/**", "**/cli/**", "**/*.test.*", "**/index*", "/**/__tests__/**" ],
-    "mode": "modules",
-    "name": "Dreamplate"
-  }
+  "exclude": []
 }

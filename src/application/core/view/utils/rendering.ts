@@ -1,8 +1,3 @@
-/**
- * @packageDocumentation
- * @module @application/main
- */
-
 import { ComponentType, createElement } from "react";
 import { render } from "react-dom";
 

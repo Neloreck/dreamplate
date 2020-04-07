@@ -1,8 +1,3 @@
-/**
- * @packageDocumentation
- * @module @application/error
- */
-
 // View.
 import { renderRoot } from "@Core/view/utils";
 import { ErrorRouter, HotErrorRouter } from "@Modules/error/ErrorRouter";

@@ -1,8 +1,3 @@
-/**
- * @packageDocumentation
- * @module @lib/theme
- */
-
 export type TThemeType = "light" | "dark";
 
 export interface IApplicationTheme {

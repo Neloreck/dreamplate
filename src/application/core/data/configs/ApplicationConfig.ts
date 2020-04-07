@@ -1,8 +1,3 @@
-/**
- * @packageDocumentation
- * @module @application/main
- */
-
 // Build.
 import { APPLICATION_ROOT, MODAL_ROOT } from "@Build/build_constants";
 

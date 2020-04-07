@@ -1,8 +1,3 @@
-/**
- * @packageDocumentation
- * @module @application/main
- */
-
 import { useManager } from "dreamstate";
 import { ReactElement, ReactNode, Suspense } from "react";
 import { JssProvider, ThemeProvider } from "react-jss";
