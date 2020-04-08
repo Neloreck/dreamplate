@@ -29,7 +29,6 @@ export function HomePage({
   classes: { content, cardLink, linkCard } = useStyles(),
   routerContext: { routingActions: { hardPush } } = useManager(RouterContextManager)
 }): ReactElement {
-
   const onAboutNavigated = useCallback(() => hardPush("/about"), []);
 
   return (

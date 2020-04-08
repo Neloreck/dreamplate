@@ -13,7 +13,6 @@ const PRODUCTION_REGEX_PATTERN: RegExp = new RegExp("[\\t ]*\\/\\* ?" + PRODUCTI
  * Strip code blocks in some project modes.
  */
 function StripBlockLoader(content: string): string {
-
   content = content.replace(IS_PRODUCTION ? DEV_REGEX_PATTERN : PRODUCTION_REGEX_PATTERN, "");
 
   // @ts-ignore

@@ -1,5 +1,7 @@
-import { CommandRunner, Run } from "./_cli";
-import * as cliConfig from "./cli.json";
+import { CommandRunner } from "./CommandRunner";
+import { Run } from "./Run";
+
+import * as cliConfig from "../cli.json";
 
 @Run()
 export class CliRunner {

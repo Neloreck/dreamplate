@@ -2,9 +2,7 @@
 import { RouterContextManager } from "@Core/data/store";
 
 describe("Auth context manager.", () => {
-
   it("Should initialize history and itself.", async () => {
-
     const manager: RouterContextManager = new RouterContextManager();
 
     expect(manager.context.path).toBe("/");
@@ -12,7 +10,6 @@ describe("Auth context manager.", () => {
   });
 
   it("Should use history for navigation.", async () => {
-
     const mock = jest.fn();
     const manager: RouterContextManager = new RouterContextManager();
 

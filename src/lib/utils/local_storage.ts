@@ -18,7 +18,6 @@ export const parse = <T>(value: string): T | null => JSON.parse(decrypt(value));
  * Key and value are encrypted in B64.
  */
 export const getFromLocalStorage = <T>(key: string): T | null => {
-
   const raw: string | null = localStorage.getItem(encrypt(key)) || null;
 
   return raw === null ? null : parse(raw);

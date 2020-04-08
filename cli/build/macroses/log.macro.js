@@ -21,7 +21,6 @@ const EMOJI_LIST = [
  * Get deterministic hashcode from string to randomize emoji chars.
  */
 function getHashCode(target) {
-
   let hash = 0;
 
   if (target.length === 0) {
@@ -44,14 +43,12 @@ function getCapitalLettersOrString(target) {
 }
 
 function log({ references, babel, state }) {
-
   const { types } = babel;
   const { log } = references;
 
   log.forEach(reference => {
 
     if (types.isMemberExpression(reference.parentPath)) {
-
       const expression = reference.parentPath.parentPath;
 
       // Handle logging only in dev mode.

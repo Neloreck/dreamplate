@@ -24,15 +24,12 @@ export function PrivateRoute({
   reversed = false,
   redirect = true,
   authContext: { user } = useManager(AuthContextManager),
-  routerContext: { routingActions: { replace },  path } = useManager(RouterContextManager),
+  routerContext: { routingActions: { replace }, path } = useManager(RouterContextManager),
   ...routeProps
 }: IPrivateRouteProps): ReactElement {
-
   // First mount.
   useLayoutEffect(() => {
-
     if (!user.isLoading && (reversed ? user.value : !user.value)) {
-
       if (redirect === true) {
         replace(DEFAULT_REDIRECT + "?next=" + path);
       } else {
@@ -43,9 +40,7 @@ export function PrivateRoute({
 
   // Every update.
   useEffect(() => {
-
     if (!user.isLoading && (reversed ? user.value : !user.value)) {
-
       // todo: Own NEXT implementation for redirect.
       const next: string = "/"; // getQueryParams().next;
 

@@ -6,8 +6,8 @@ import { IApplicationTheme, TThemeType } from "@Lib/theme/types";
 export const createDefaultTheme = (themeType: TThemeType): IApplicationTheme => ({
   palette: {
     background: {
-      default:  (themeType === "dark" ? GTheme.DEFAULT_BACKGROUND_DARK : GTheme.DEFAULT_BACKGROUND_LIGHT),
-      paper:  (themeType === "dark" ? GTheme.DEFAULT_BACKGROUND_PAPER_DARK : GTheme.DEFAULT_BACKGROUND_PAPER_LIGHT),
+      default: (themeType === "dark" ? GTheme.DEFAULT_BACKGROUND_DARK : GTheme.DEFAULT_BACKGROUND_LIGHT),
+      paper: (themeType === "dark" ? GTheme.DEFAULT_BACKGROUND_PAPER_DARK : GTheme.DEFAULT_BACKGROUND_PAPER_LIGHT),
     },
     primary: {
       dark: GTheme.DEFAULT_PRIMARY_DARK,
@@ -35,7 +35,6 @@ export const createDefaultTheme = (themeType: TThemeType): IApplicationTheme => 
  * Theme type is opposite or provided as second param.
  */
 export const toggleTheme = ({ palette, spacing }: IApplicationTheme, requestedType?: TThemeType): IApplicationTheme => {
-
   const nextType: TThemeType = (requestedType || (palette.type === "light" ? "dark" : "light"));
   const isDark: boolean = (nextType === "dark");
 

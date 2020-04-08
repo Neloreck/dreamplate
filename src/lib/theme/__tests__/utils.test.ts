@@ -2,9 +2,7 @@ import { TThemeType, IApplicationTheme } from "@Lib/theme/types";
 import { createDefaultTheme, toggleTheme } from "@Lib/theme/utils";
 
 describe("Theming utils should work properly.", () => {
-
   it("Should correctly create default theme based on default colors.", () => {
-
     const theme: IApplicationTheme = createDefaultTheme(GTheme.DEFAULT_THEME_TYPE);
 
     expect(GTheme.DEFAULT_THEME_TYPE).toBe("light");
@@ -29,11 +27,9 @@ describe("Theming utils should work properly.", () => {
   });
 
   it("Should correctly toggle theme colors.", () => {
-
     let theme: IApplicationTheme = createDefaultTheme(GTheme.DEFAULT_THEME_TYPE);
 
     for (let it = 0; it < 10; it ++) {
-
       const previousType: TThemeType = theme.palette.type;
 
       theme = toggleTheme(theme);

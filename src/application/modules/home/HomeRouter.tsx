@@ -7,7 +7,6 @@ import { DefaultErrorFallback } from "@Core/view/layouts";
 import { HomePage } from "@Modules/home/view/pages/HomePage";
 
 export function HomeRouter(): ReactElement {
-
   return (
     <Switch>
 

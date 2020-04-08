@@ -1,4 +1,4 @@
-import {ContextManager, Hmr} from "dreamstate";
+import { ContextManager, Hmr } from "dreamstate";
 import { createBrowserHistory, History, Location, Path } from "history";
 
 // Lib.
@@ -44,7 +44,6 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
    * Replace path in page history.
    */
   public replace(path: Path): void {
-
     log.info("Replace path:", path);
 
     this.history.replace(path);
@@ -54,7 +53,6 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
    * Push path in page history.
    */
   public push(path: Path): void {
-
     log.info("Push path:", path);
 
     this.history.push(path);
@@ -64,7 +62,6 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
    * Hard push path in page history with page reload.
    */
   public hardPush(path: Path): void {
-
     log.info("Hard push path:", path);
 
     window.location.pathname = path;
@@ -74,7 +71,6 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
    * Hard replace path in page history with page reload.
    */
   public hardReplace(path: Path): void {
-
     log.info("Hard replace path:", path);
 
     window.location.replace(path);
@@ -84,14 +80,12 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
    * Go back in page history.
    */
   public goBack(): void {
-
     log.info("Go back.");
 
     this.history.goBack();
   }
 
   protected onProvisionStarted(): void {
-
     const { path } = this.context;
 
     log.info("Routing provision started @", path);
@@ -100,7 +94,6 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
   }
 
   protected onProvisionEnded(): void {
-
     log.info("Routing provision ended.");
 
     this.unsubscribeFromHistory();

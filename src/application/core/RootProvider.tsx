@@ -14,7 +14,6 @@ export function RootProvider({
   theme = useManager(ThemeContextManager).theme,
   history = RouterContextManager.current().history
 }): ReactElement {
-
   return (
     <ReactRouter history={history}>
 

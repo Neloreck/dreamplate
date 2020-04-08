@@ -9,7 +9,6 @@ import { log } from "@Macro/log.macro";
  * Measure method execution time and log execution info.
  */
 export const DebugMeasure = (): MethodDecorator => <T>(target: any, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<T>): any => {
-
   // todo: Update.
 
   /* <production> */
@@ -25,7 +24,6 @@ export const DebugMeasure = (): MethodDecorator => <T>(target: any, propertyKey:
   }
 
   const measureFunction = (...params: Array<any>): any => {
-
     const start: number = Date.now();
     const returnValue = originalFunction(...params);
     const duration: number = Date.now() - start;
@@ -49,7 +47,6 @@ export const DebugMeasure = (): MethodDecorator => <T>(target: any, propertyKey:
  * Expose class to a window for temporary debugging.
  */
 export const DebugExpose = (name?: string): ClassDecorator => (descriptor: object): any => {
-
   /* <production> */
   throw new Error("Debugging utils are only available for DEV environment.");
   /* </production> */
@@ -59,7 +56,6 @@ export const DebugExpose = (name?: string): ClassDecorator => (descriptor: objec
     // @ts-ignore
     window.exposed = {};
   }
-
 
   return {
     ...descriptor,
@@ -72,6 +68,7 @@ export const DebugExpose = (name?: string): ClassDecorator => (descriptor: objec
           // @ts-ignore
           window.exposed[name || target.name] = this;
         }
+
       }
     )
   };

@@ -14,7 +14,6 @@ export function AboutPage({
   classes: { content } = useStyles(),
   routerContext: { routingActions: { hardPush } } = useManager(RouterContextManager)
 }): ReactElement {
-
   const onHomeNavigated = useCallback(() => hardPush("/home"), []);
 
   return (

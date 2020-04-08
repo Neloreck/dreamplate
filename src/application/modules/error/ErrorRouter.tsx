@@ -7,7 +7,6 @@ import { DefaultErrorFallback } from "@Core/view/layouts";
 import { ErrorPage } from "@Modules/error/view/pages/ErrorPage";
 
 export function ErrorRouter(): ReactElement {
-
   return (
     <Switch>
 

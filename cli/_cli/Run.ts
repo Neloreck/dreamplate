@@ -3,7 +3,6 @@ let called: boolean = false;
 export function Run(shouldCall?: boolean) {
 
   return (targetClass: { main: (argv: Array<string>) => void } ): void  => {
-
     if (shouldCall === false) {
       return;
     }

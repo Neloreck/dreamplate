@@ -9,7 +9,6 @@ const BREAKPOINT = {
 };
 
 function handleUp(reference, types) {
-
   const requiredArgument = reference.parentPath.node.arguments[0];
 
   if (!requiredArgument) {
@@ -20,7 +19,6 @@ function handleUp(reference, types) {
 }
 
 function handleDown(reference, types) {
-
   const requiredArgument = reference.parentPath.node.arguments[0];
 
   if (!requiredArgument) {
@@ -31,7 +29,6 @@ function handleDown(reference, types) {
 }
 
 function style({ references, babel }) {
-
   const { up, down } = references;
 
   if (up) {

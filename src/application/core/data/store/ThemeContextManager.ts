@@ -39,7 +39,6 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
    * Apply it to document body.
    */
   public toggleTheme(): void {
-
     const { theme } = this.context;
 
     const nextThemeType: TThemeType = (theme.palette.type === "light" ? "dark" : "light");
@@ -63,7 +62,6 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
    * Send generic message on manager provision start and subscribe to events.
    */
   protected onProvisionStarted(): void {
-
     const { theme } = this.context;
 
     log.info(`Theme provision started [${theme.palette.type}].`);
@@ -84,7 +82,6 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
    */
   @Bind()
   private onLocalStorageDataChanged(event: StorageEvent): void {
-
     const { theme } = this.context;
     const { key, newValue } = event;
 

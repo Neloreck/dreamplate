@@ -10,7 +10,6 @@ export class BuildRunner {
   public static readonly STATS_PRINT_CONFIG: object = { colors: true };
 
   public static main(args: Array<string>): void {
-
     /**
      * Handle entries selection for optional serving.
      */
@@ -19,7 +18,6 @@ export class BuildRunner {
     }
 
     const { PROJECT_OUTPUT_PATH, PROJECT_ROOT_PATH, WEBPACK_CONFIG } = require("./config");
-
     const compiler: Compiler = Webpack(WEBPACK_CONFIG);
 
     process.stdout.write(

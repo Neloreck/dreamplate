@@ -15,7 +15,6 @@ export function ErrorPage({
   classes: { content, labelCard } = useStyles(),
   routerContext: { routingActions: { hardPush } } = useManager(RouterContextManager)
 }): ReactElement {
-
   const onHomeNavigated = useCallback(() => hardPush("/home"), []);
 
   return (

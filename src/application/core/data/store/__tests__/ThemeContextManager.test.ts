@@ -6,9 +6,7 @@ import { encrypt, setLocalStorageItem } from "@Lib/utils";
 import { ThemeContextManager } from "@Core/data/store";
 
 describe("Theme context manager.", () => {
-
   it("Should properly initialize.", () => {
-
     const manager: ThemeContextManager = new ThemeContextManager();
 
     const { theme } = manager.context;
@@ -23,7 +21,6 @@ describe("Theme context manager.", () => {
   });
 
   it("Should toggle theme correctly.", () => {
-
     const manager: ThemeContextManager = new ThemeContextManager();
 
     // @ts-ignore privacy.
@@ -37,7 +34,6 @@ describe("Theme context manager.", () => {
   });
 
   it("Should load preset from local storage.", () => {
-
     setLocalStorageItem("theme_type", "dark");
 
     const manager: ThemeContextManager = new ThemeContextManager();
@@ -46,7 +42,6 @@ describe("Theme context manager.", () => {
   });
 
   it("Should handle events from other tabs.", () => {
-
     const manager: ThemeContextManager = new ThemeContextManager();
 
     const defaultThemeValue: TThemeType = manager.context.theme.palette.type;

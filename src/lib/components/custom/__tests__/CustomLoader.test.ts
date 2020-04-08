@@ -3,9 +3,7 @@ import { CustomLoader } from "@Lib/components/custom/CustomLoader";
 import { forMillis } from "@Lib/utils/delay";
 
 describe("Custom loader web component.", () => {
-
   it("Should have proper default parameters.", async () => {
-
     const loader: CustomLoader = new CustomLoader();
 
     expect(loader.width).toBe(50);
@@ -24,7 +22,6 @@ describe("Custom loader web component.", () => {
   });
 
   it("Should properly change width and affect only one property.", async () => {
-
     const loader: CustomLoader = new CustomLoader();
 
     loader.width = 1000;
@@ -43,7 +40,6 @@ describe("Custom loader web component.", () => {
   });
 
   it("Should wait for a short time before triggering loader.", async () => {
-
     const loader: CustomLoader = new CustomLoader();
 
     expect(loader.getAttribute("loading")).toBeNull();

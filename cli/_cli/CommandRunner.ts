@@ -22,7 +22,6 @@ export class CommandRunner {
   private childProcess: ChildProcess | null = null;
 
   public constructor(cmd: string, cmdAdditionalArgs: Array<string>, script: TExecutableScript | IExecutableScriptDescriptor, config?: object) {
-
     this.cmd = cmd;
     this.cmdAdditionalArgs = cmdAdditionalArgs;
     this.script = typeof script === "object" ? (script as IExecutableScriptDescriptor).exec : script;
@@ -33,7 +32,6 @@ export class CommandRunner {
   }
 
   public async run(): Promise<void> {
-
     if (this.script) {
       const hasMultipleSubscripts: boolean = Array.isArray(this.script);
 
@@ -64,7 +62,6 @@ export class CommandRunner {
    */
 
   protected async executeCommands(scriptsToExecute: Array<string>): Promise<void> {
-
     const hasMany: boolean = (scriptsToExecute.length > 0);
 
     if (hasMany && this.cmdAdditionalArgs.length) {
@@ -89,7 +86,6 @@ export class CommandRunner {
   }
 
   protected async executeCommand(scriptToExecute: string): Promise<void> {
-
     try {
       const scriptArgs: Array<string> = scriptToExecute.split(" ");
       await this.runProcess(scriptArgs);
@@ -147,7 +143,6 @@ export class CommandRunner {
    */
 
   protected onProcessShutdown(signal: NodeJS.Signals): void {
-
     if (this.childProcess) {
       this.childProcess.kill(signal);
       this.childProcess = null;
@@ -159,7 +154,6 @@ export class CommandRunner {
    */
 
   protected onStart(addSeparator?: boolean): void {
-
     this.startTime = Date.now();
 
     if (!CommandRunner.PARENT) {
@@ -174,7 +168,6 @@ export class CommandRunner {
   }
 
   protected onSuccess(): void {
-
     if (!CommandRunner.PARENT) {
       process.stdout.write(green("\n=============================================================================\n"));
       process.stdout.write(`${green("=")} Command [${this.cmd}] successfully executed in ${(Date.now() - this.startTime) / 1000} sec.\n`);
@@ -183,7 +176,6 @@ export class CommandRunner {
   }
 
   protected onError(error: Error): void {
-
     const errorMessage: string = `= Process execution error for command '${this.cmd}'.\n= Script: [${this.script}].\n` +
       `= Error: ${error.message}\n`;
 
@@ -197,7 +189,6 @@ export class CommandRunner {
   }
 
   protected onPartialSuccess(cmd: string): void {
-
     if (!CommandRunner.PARENT) {
       process.stdout.write(green(`\n + Done Command [${cmd}]. \n`));
     }

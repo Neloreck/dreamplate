@@ -95,7 +95,6 @@ export const REQUIRED_ENTRIES: Array<string> = [
 export const SELECTED_ENTRIES: Array<string> | null = process.env.ENTRIES ? JSON.parse(process.env.ENTRIES) : null;
 
 export const MODULES_CONFIG: IModulesDefinition = (() => {
-
   const config = require(path.resolve(MODULES_ROOT_PATH, "modules.json"));
 
   if (SELECTED_ENTRIES) {

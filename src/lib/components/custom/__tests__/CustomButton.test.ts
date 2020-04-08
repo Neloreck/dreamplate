@@ -2,9 +2,7 @@
 import { CustomButton } from "@Lib/components/custom/CustomButton";
 
 describe("Custom button web component.", () => {
-
   it("Should have proper default parameters.", async () => {
-
     const customButton: CustomButton = new CustomButton();
 
     document.body.appendChild(customButton);
@@ -20,7 +18,6 @@ describe("Custom button web component.", () => {
   });
 
   it("Should properly nest children.", async () => {
-
     const mockLabel: string = "Random Label " + Math.random();
     const mockDiv: HTMLDivElement = document.createElement("div");
 

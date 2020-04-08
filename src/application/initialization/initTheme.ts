@@ -7,12 +7,10 @@ import { TOptional } from "@Lib/ts";
  * Apply theme to body.
  */
 export const initTheme = () => {
-
   const rawStr: TOptional<string> = localStorage.getItem(btoa("theme_type")) || null;
   const bodyStyle: CSSStyleDeclaration = document.body.style;
 
   if (rawStr) {
-
     const theme: TThemeType = JSON.parse(atob(rawStr));
 
     bodyStyle.backgroundColor = (theme === "dark" ? GTheme.DEFAULT_BACKGROUND_DARK : GTheme.DEFAULT_BACKGROUND_LIGHT);

@@ -8,7 +8,6 @@ import { coreApiConfig } from "@Api/destination/core/coreApiConfig";
  * Generic request method with project scoped transformations.
  */
 const doRequest = async (method: ERequestMethod, mapping: string, request?: object | URLSearchParams, headers?: Headers): Promise<object> => {
-
   const requestBody: string | undefined | URLSearchParams = request instanceof URLSearchParams ? request : request && JSON.stringify(request);
 
   const rawRequest: RequestInit = {

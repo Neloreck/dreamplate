@@ -14,7 +14,6 @@ export function MainHeader({
   classes: { root } = useStyles(),
   themeContext: { themeActions: { toggleTheme } } = useManager(ThemeContextManager)
 }): ReactElement {
-
   return (
     <header className={root}>
 

@@ -24,7 +24,6 @@ export const getThemedComponent = <T>(element: ShallowWrapper<T>) => mount(eleme
  * Utility for class component with @styled testing.
  */
 export const withMockedJss = (element: ReactElement, wrapper?: any) => {
-
   const sheets: SheetsRegistry = new SheetsRegistry();
 
   const Wrapper = (props: { children: ReactElement }) => {

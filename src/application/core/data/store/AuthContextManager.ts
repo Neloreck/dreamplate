@@ -1,4 +1,4 @@
-import {ContextManager, createLoadable, Hmr, ILoadable} from "dreamstate";
+import { ContextManager, createLoadable, Hmr, ILoadable } from "dreamstate";
 
 // Lib.
 import { TOptional } from "@Lib/ts";
@@ -27,7 +27,6 @@ export class AuthContextManager extends ContextManager<IAuthContext> {
   };
 
   protected onProvisionStarted(): void {
-
     const { user } = this.context;
 
     log.info("Auth provision started @", user.value);

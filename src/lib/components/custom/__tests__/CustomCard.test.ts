@@ -2,9 +2,8 @@
 import { CustomCard } from "@Lib/components/custom/CustomCard";
 
 describe("Spinner loader web component.", () => {
-
   it("Should have proper default parameters.", async () => {
-
+    // todo: Expect something.
     const card: CustomCard = new CustomCard();
 
     document.body.appendChild(card);
@@ -15,7 +14,6 @@ describe("Spinner loader web component.", () => {
   });
 
   it("Should handle nested slots.", async () => {
-
     const mockLabel: string = "Random Label " + Math.random();
     const mockDiv: HTMLDivElement = document.createElement("div");
 

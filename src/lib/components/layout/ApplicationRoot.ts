@@ -28,7 +28,6 @@ export class ApplicationRoot extends LitElement {
   }
 
   public firstUpdated(): void {
-
     log.pushSeparator();
     log.info("🔶 Rendering begun.");
     log.info("🔶 First render timestamp:", Date.now());

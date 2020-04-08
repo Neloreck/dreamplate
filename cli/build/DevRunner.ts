@@ -9,7 +9,6 @@ import { Run } from "../_cli";
 export class DevRunner {
 
   public static main(args: Array<string>): void {
-
     /**
      * Handle entries selection for optional serving.
      */
@@ -18,7 +17,6 @@ export class DevRunner {
     }
 
     const { WEBPACK_CONFIG, DEV_SERVER_PORT, DEV_SERVER_HOST, PROJECT_ROOT_PATH, PROJECT_OUTPUT_PATH } = require("./config");
-
     const compiler: Compiler = Webpack(WEBPACK_CONFIG);
     const server = new DevServer(compiler as any, WEBPACK_CONFIG.devServer);
 
