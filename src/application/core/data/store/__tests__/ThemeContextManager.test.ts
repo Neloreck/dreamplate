@@ -23,9 +23,6 @@ describe("Theme context manager.", () => {
   it("Should toggle theme correctly.", () => {
     const manager: ThemeContextManager = new ThemeContextManager();
 
-    // @ts-ignore privacy.
-    manager.setState = (nextState: object) => manager.context.themeState = Object.assign({}, manager.context.themeState, nextState);
-
     expect(manager.context.theme.palette.type).toBe("light");
 
     manager.toggleTheme();
@@ -48,7 +45,10 @@ describe("Theme context manager.", () => {
     const nextTheme: IApplicationTheme = toggleTheme(manager.context.theme);
 
     // @ts-ignore privacy.
-    manager.onLocalStorageDataChanged({ key: encrypt("theme_type"), newValue: encrypt(JSON.stringify(nextTheme.palette.type)) });
+    manager.onLocalStorageDataChanged({
+      key: encrypt("theme_type"),
+      newValue: encrypt(JSON.stringify(nextTheme.palette.type))
+    });
 
     expect(manager.context.theme.palette.type).toBe(nextTheme.palette.type);
     expect(manager.context.theme.palette.type).not.toBe(defaultThemeValue);

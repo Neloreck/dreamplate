@@ -1,12 +1,12 @@
 import * as GlobalReact from "react";
 
-// Lib.
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { ICustomIntrinsicElements } from "@Lib/components/types";
-
 // Constants.
 import * as colors from "@Build/globals/colors";
 import * as theme from "@Build/globals/theme";
+
+// Lib.
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { ICustomIntrinsicElements } from "@Lib/components/types";
 
 declare global {
 

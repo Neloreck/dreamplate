@@ -12,7 +12,7 @@
 
 ### CLI Scripts
 
-- `/run build` [build project in production mode]
+- `./run build` [build project in production mode]
 
 - `./run build:dev` [build project in development mode]
 

@@ -1,5 +1,16 @@
 {
   "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./src/tsconfig.json"
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/errors",
+    "plugin:import/typescript"
+  ],
   "plugins": [
     "@typescript-eslint",
     "react",
@@ -12,11 +23,26 @@
       "version": "detect"
     }
   },
-  "parserOptions": {
-    "project": "./src/tsconfig.json"
-  },
   "rules": {
+    "eol-last": [ "error", "always" ],
+    "no-duplicate-imports": "error",
+    "max-len": [ "error", { "code": 120 } ],
     "key-spacing": [ 2, { "beforeColon": false, "afterColon": true } ],
+    "no-constructor-return": "error",
+    "arrow-spacing": "error",
+    "camelcase": "error",
+    "yoda": "error",
+    "arrow-parens": [ "error", "always" ],
+    "space-unary-ops": [
+      "error", {
+        "words": true,
+        "nonwords": false,
+        "overrides": {
+          "++": true,
+          "--": true
+        }
+      }
+    ],
     "no-multiple-empty-lines": "error",
     "no-multi-spaces": "error",
     "react/jsx-no-target-blank": 0,
@@ -64,14 +90,50 @@
         "propertyDeclaration": true,
         "parameter": false
       }
+    ],
+    "import/order": [
+      "error",
+      {
+        "groups": [ "builtin", "external", "parent", "sibling", "index" ],
+        "pathGroups": [
+          {
+            "pattern": "@Lib/**",
+            "group": "external",
+            "position": "after"
+          },
+          {
+            "pattern": "@Macro/**",
+            "group": "external",
+            "position": "after"
+          },
+          {
+            "pattern": "@Api/**",
+            "group": "external",
+            "position": "after"
+          },
+          {
+            "pattern": "@Core/data/**",
+            "group": "external",
+            "position": "after"
+          },
+          {
+            "pattern": "@Modules/*/data/**",
+            "group": "external",
+            "position": "after"
+          },
+          {
+            "pattern": "@Core/view/**",
+            "group": "external",
+            "position": "after"
+          },
+          {
+            "pattern": "@Modules/*/view/**",
+            "group": "external",
+            "position": "after"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["builtin"]
+      }
     ]
-  },
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:import/errors",
-    "plugin:import/typescript"
-  ]
+  }
 }

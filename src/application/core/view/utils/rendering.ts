@@ -2,8 +2,8 @@ import { ComponentType, createElement } from "react";
 import { render } from "react-dom";
 
 // Application.
-import { applicationConfig } from "@Core/data/configs";
 import { HotRoot, Root } from "@Core/Root";
+import { applicationConfig } from "@Core/data/configs";
 
 const RENDER_TARGET: HTMLElement = applicationConfig.targetElements.applicationRoot;
 

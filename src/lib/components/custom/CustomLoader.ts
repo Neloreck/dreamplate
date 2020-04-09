@@ -23,7 +23,8 @@ export class CustomLoader extends LitElement {
       :host([loading="true"]) {
         border-radius: 50%;
         border-style: solid;
-        border-color: ${unsafeCSS(GTheme.DEFAULT_PRIMARY_MAIN)} transparent ${unsafeCSS(GTheme.DEFAULT_PRIMARY_DARK)} transparent;
+        border-color: ${unsafeCSS(GTheme.DEFAULT_PRIMARY_MAIN)}
+         transparent ${unsafeCSS(GTheme.DEFAULT_PRIMARY_DARK)} transparent;
         animation: sl-rotation 2s linear infinite;
       }
 

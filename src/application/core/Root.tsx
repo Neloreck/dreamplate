@@ -2,11 +2,11 @@ import { createProvider } from "dreamstate";
 import { FunctionComponent, ReactElement, ReactNode } from "react";
 import { hot } from "react-hot-loader/root";
 
-// Data.
-import { AuthContextManager, RouterContextManager, ThemeContextManager } from "@Core/data/store";
-
 // Application.
 import { RootProvider } from "@Core/RootProvider";
+
+// Data.
+import { AuthContextManager, RouterContextManager, ThemeContextManager } from "@Core/data/store";
 
 // View.
 import "@Lib/components/custom/CustomLoader";

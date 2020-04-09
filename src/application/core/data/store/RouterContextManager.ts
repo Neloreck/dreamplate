@@ -90,7 +90,9 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
 
     log.info("Routing provision started @", path);
 
-    this.unsubscribeFromHistory = this.history.listen((location: Location) => this.setContext({ path: location.pathname }));
+    this.unsubscribeFromHistory = this.history.listen(
+      (location: Location) => this.setContext({ path: location.pathname })
+    );
   }
 
   protected onProvisionEnded(): void {

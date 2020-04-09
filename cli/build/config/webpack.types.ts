@@ -1,6 +1,6 @@
 export interface IModuleDefinition {
   name: string;
-  folder: string;
+  entry: string;
   path: Array<string> | string;
   title: string;
 }

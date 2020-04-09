@@ -20,7 +20,7 @@ const generateEntryPoints = (definition: IModulesDefinition) => {
 
   for (const entry of definition.modules) {
 
-    const entryPath: string = path.resolve(MODULES_ROOT_PATH, entry.folder);
+    const entryPath: string = path.resolve(MODULES_ROOT_PATH, entry.entry);
     entries[entry.name] = IS_PRODUCTION ? entryPath  : [ "react-hot-loader/patch", entryPath ];
   }
 

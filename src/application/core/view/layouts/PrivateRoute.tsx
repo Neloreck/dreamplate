@@ -44,7 +44,11 @@ export function PrivateRoute({
       // todo: Own NEXT implementation for redirect.
       const next: string = "/"; // getQueryParams().next;
 
-      replace(typeof next === "string" ? next as string : (typeof redirect === "string" ? redirect as string : "/todo"));
+      replace(
+        typeof next === "string"
+          ? next as string
+          : typeof redirect === "string" ? redirect as string : "/todo"
+      );
     }
   });
 

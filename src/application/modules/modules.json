@@ -1,13 +1,13 @@
 {
   "modules": [
     {
-      "folder": "./about",
+      "entry": "./about",
       "name": "about",
       "path": "/about",
       "title": "About"
     },
     {
-      "folder": "./home",
+      "entry": "./home",
       "name": "home",
       "path": [
         "/$",
@@ -16,7 +16,7 @@
       "title": "Dreamplate"
     },
     {
-      "folder": "./error",
+      "entry": "./error",
       "name": "error",
       "path": [
         "/*",

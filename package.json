@@ -1,7 +1,7 @@
 {
   "name": "dreamplate",
   "version": "0.0.0",
-  "private": false,
+  "private": true,
   "repository": "https://github.com/neloreck/dreamplate",
   "description": "Dreamplate project.",
   "main": "./src/application/modules/modules.json",
@@ -12,7 +12,7 @@
     "help": "./run help"
   },
   "dependencies": {
-    "@babel/runtime": "7.9.2",
+    "@babel/runtime": "^7.9.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
