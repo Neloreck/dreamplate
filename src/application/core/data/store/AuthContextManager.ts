@@ -1,4 +1,4 @@
-import { ContextManager, createLoadable, Hmr, ILoadable } from "dreamstate";
+import { ContextManager, createLoadable, ILoadable } from "dreamstate";
 
 // Lib.
 import { TOptional } from "@Lib/ts";
@@ -17,7 +17,6 @@ export interface IAuthContext {
  * Context manager related to auth and user management.
  * It is responsible for auth, security and account management.
  */
-@Hmr(module)
 export class AuthContextManager extends ContextManager<IAuthContext> {
 
   public context: IAuthContext = {

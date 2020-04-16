@@ -19,19 +19,30 @@ const ScriptExtHtmlPlugin = require("script-ext-html-webpack-plugin");
 const StatsWriterPlugin = require("webpack-stats-plugin").StatsWriterPlugin;
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
-const createChunkGroupNameGenerator = () => (module: any, chunks: any, cacheGroupKey: string): string => cacheGroupKey;
+const createChunkGroupNameGenerator = () =>
+  IS_PRODUCTION
+    ? (module: any, chunks: any, cacheGroupKey: string): string => cacheGroupKey // Rely on hash there.
+    : true;
 
 const createChunkCacheGroups = (definitions: Array<IModuleDefinition>) => {
 
   const entries: { [index: string]: any } = {};
 
   for (const it of definitions) {
-    entries["app/" + it.name + "_lib"] = ({
+    entries[`modules/${it.name}/l`] = ({
       maxSize: 750_000,
       name: createChunkGroupNameGenerator(),
-      priority: 120,
+      priority: 60,
       reuseExistingChunk: true,
       test: new RegExp(`\/modules\/${it.name}\/node_modules\/`)
+    });
+
+    entries[`modules/${it.name}/s`] = ({
+      maxSize: 250_000,
+      name: createChunkGroupNameGenerator(),
+      priority: 30,
+      reuseExistingChunk: true,
+      test: new RegExp(`\/modules\/${it.name}\/`)
     });
   }
 
@@ -70,7 +81,7 @@ export const PLUGIN_CONFIG: {
   OPTIMIZATION: {
     minimizer: [
       new TerserPlugin({
-        sourceMap: !IS_PRODUCTION,
+        sourceMap: false,
         terserOptions: {
           compress: {
             drop_console: IS_PRODUCTION,
@@ -91,40 +102,43 @@ export const PLUGIN_CONFIG: {
     runtimeChunk: "single",
     splitChunks: {
       cacheGroups: {
-        "lib/api": {
-          name: createChunkGroupNameGenerator(),
+        "core/api": {
           priority: 80,
+          name: createChunkGroupNameGenerator(),
           reuseExistingChunk: false,
           test: /\/src\/api/
         },
-        "lib/components": {
+        "core/components": {
           minSize: 5_000,
           name: createChunkGroupNameGenerator(),
           priority: 90,
           reuseExistingChunk: true,
           test: /(\/lib\/components)|(\/node_modules\/lit-.*)/
         },
-        "lib/core": {
+        "core/lib": {
           maxSize: 500_000,
           name: createChunkGroupNameGenerator(),
           priority: 100,
           reuseExistingChunk: true,
           test: new RegExp(`/node_modules/(${PROJECT_CORE_DEPENDENCIES.reduce((accumulator: string, it: string) => accumulator ? accumulator + "|" + it : it )})\/`)
         },
-        "lib/global": {
-          name: createChunkGroupNameGenerator(),
+        "core/vendors": {
           priority: 70,
+          name: createChunkGroupNameGenerator(),
           reuseExistingChunk: false,
           test: /\/src\/node_modules\//
         },
-        ...createChunkCacheGroups(MODULES_CONFIG.modules)
+        ...createChunkCacheGroups(MODULES_CONFIG.modules),
+        "shared/s": {
+          priority: 1,
+          name: createChunkGroupNameGenerator()
+        }
       },
       chunks: "all",
       maxAsyncRequests: 50,
       maxInitialRequests: 25,
       maxSize: 244_000,
-      minSize: 20_000,
-      name: true
+      minSize: 20_000
     }
   },
   PLUGINS: [

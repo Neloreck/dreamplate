@@ -7,7 +7,7 @@
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
-    "module": "es6",
+    "module": "esnext",
     "target": "esnext",
     "moduleResolution": "node",
     "jsx": "preserve",

@@ -11,7 +11,7 @@ const EMOJI_LIST = [
   "🔌", "🔋", "🔍", "🛁", "🛀", "🚿", "🔧", "🔩", "🔨", "🚪", "🚬", "💣", "🔫", "🔪", "💊", "💉", "💰", "💴", "💵", "💷",
   "💶", "📋", "📅", "📆", "📇", "📁", "📂", "📌", "📎", "🔬", "🔭", "📰", "🎨", "🎬", "🎤", "🎧", "🎼", "🎵", "🎶", "🎹",
   "🎻", "🎺", "🎷", "🎸", "👾", "🎮", "🃏", "🎴", "🀄", "🎲", "🎯", "🏈", "🏀", "⚽", "⚾", "🎾", "🎱", "🏉", "🎳", "⛳",
-  "🚵", "🚴", "🏁", "🏇", "🏆", "🎿", "🏂", "🏊", "🏄", "🎣", "🍵", "🍶", "🍼", "🍺", "🍻", "🍸", "🍹", "🍷", "🍴", "🍕",
+  "🚵", "🏁", "🏇", "🏆", "🎿", "🏂", "🏊", "🏄", "🎣", "🍵", "🍶", "🍼", "🍺", "🍻", "🍸", "🍹", "🍷", "🍴", "🍕",
   "🍔", "🍟", "🍗", "🍖", "🍝", "🍛", "🍤", "🍱", "🍣", "🍥", "🍙", "🍘", "🍚", "🍜", "🍲", "🍢", "🍡", "🍳", "🍞", "🍩",
   "🍮", "🍦", "🍨", "🍧", "🎂", "🍰", "🍪", "🍫", "🍬", "🍭", "🍯", "🍎", "🍏", "🍊", "🍋", "🍒", "🍇", "🍉", "🍓", "🍑",
   "🍈", "🍌", "🍐", "🍍", "🍠", "🍆", "🍅", "🌽"
@@ -82,11 +82,50 @@ function log({ references, babel, state }) {
         const prefix = getCapitalLettersOrString(onlyFileName);
         const prefixChar = EMOJI_LIST[Math.abs(getHashCode(onlyFileName)) % EMOJI_LIST.length];
 
+        const timeExpression = types.callExpression(
+          types.memberExpression(
+            types.newExpression(types.identifier("Date"), []),
+            types.identifier("toLocaleTimeString")
+          ),
+          [  types.stringLiteral("en-GB") ]
+        );
+
+        const millisStringExpression = types.callExpression(
+          types.memberExpression(
+            types.callExpression(
+              types.memberExpression(
+                types.newExpression(types.identifier("Date"), []),
+                types.identifier("getMilliseconds")
+              ),
+              []
+            ),
+            types.identifier("toString")
+          ),
+          []
+        );
+
+        const millisPaddedExpression = types.callExpression(
+          types.memberExpression(millisStringExpression, types.identifier("padStart")),
+          [ types.numericLiteral(3) ]
+        );
+
+        const prefixExpression = types.templateLiteral(
+          [
+            types.templateElement({ raw: "%c" }),
+            types.templateElement({ raw: ":" }),
+            types.templateElement({ raw: ` [${prefixChar}${prefix.padEnd(3)}]` }),
+          ],
+          [
+            timeExpression,
+            millisPaddedExpression
+          ]
+        );
+
         const logStatement = types.expressionStatement(
           types.callExpression(
             types.memberExpression(types.identifier("console"), types.identifier(method)),
             [
-              types.stringLiteral(`%c[${prefixChar}${prefix}]`),
+              prefixExpression,
               types.stringLiteral(PREFIX_COLOR),
               ...args
             ],

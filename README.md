@@ -2,6 +2,7 @@
 
 ### Install:
 
+- `npm install -g lerna` [optionally, install package management util globally]
 - `npm run setup`
 
 ### NPM Scripts

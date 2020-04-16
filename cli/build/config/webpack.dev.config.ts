@@ -59,7 +59,7 @@ export const DEV_CONFIG: {
   STATS: {
     assets: true,
     children: false,
-    chunkModules: true,
+    chunkModules: false,
     chunks: false,
     colors: true,
     modules: false,
