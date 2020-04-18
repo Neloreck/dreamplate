@@ -102,25 +102,26 @@ export const PLUGIN_CONFIG: {
     runtimeChunk: "single",
     splitChunks: {
       cacheGroups: {
-        "core/api": {
-          priority: 80,
-          name: createChunkGroupNameGenerator(),
-          reuseExistingChunk: false,
-          test: /\/src\/api/
-        },
-        "core/components": {
-          minSize: 5_000,
-          name: createChunkGroupNameGenerator(),
-          priority: 90,
-          reuseExistingChunk: true,
-          test: /(\/lib\/components)|(\/node_modules\/lit-.*)/
-        },
         "core/lib": {
           maxSize: 500_000,
           name: createChunkGroupNameGenerator(),
           priority: 100,
           reuseExistingChunk: true,
           test: new RegExp(`/node_modules/(${PROJECT_CORE_DEPENDENCIES.reduce((accumulator: string, it: string) => accumulator ? accumulator + "|" + it : it )})\/`)
+        },
+        "core/components": {
+          minSize: 5_000,
+          name: createChunkGroupNameGenerator(),
+          chunks: "initial",
+          priority: 90,
+          reuseExistingChunk: true,
+          test: /(\/lib\/components)|(\/node_modules\/lit-.*)/
+        },
+        "core/api": {
+          priority: 80,
+          name: createChunkGroupNameGenerator(),
+          reuseExistingChunk: false,
+          test: /\/src\/api/
         },
         "core/vendors": {
           priority: 70,
@@ -137,8 +138,8 @@ export const PLUGIN_CONFIG: {
       chunks: "all",
       maxAsyncRequests: 50,
       maxInitialRequests: 25,
-      maxSize: 244_000,
-      minSize: 20_000
+      maxSize: 300_000,
+      minSize: 5_000
     }
   },
   PLUGINS: [

@@ -71,8 +71,8 @@ export const PROJECT_CORE_DEPENDENCIES: Array<string> = [
 ];
 
 export const PROJECT_INLINE_MODULES: Array<string | RegExp> = [
- /.*\/runtime.*\.js$/, // Webpack runtime support.
- /.*\/initialization.*\.js$/, // Critical application code for inlining.
+  /.*\/runtime.*\.js$/, // Webpack runtime support.
+  /.*\/initialization.*\.js$/, // Critical application code for inlining.
 ];
 
 /**
