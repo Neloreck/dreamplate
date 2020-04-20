@@ -15,6 +15,7 @@ export interface IRouterContext {
     push(path: Path): void;
     goBack(): void;
   };
+  history: History;
   path: string;
 }
 
@@ -26,7 +27,7 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
 
   public readonly history: History = createBrowserHistory();
 
-  public context: IRouterContext = {
+  public readonly context: IRouterContext = {
     routingActions: {
       goBack: this.goBack.bind(this),
       hardPush: this.hardPush.bind(this),
@@ -34,6 +35,7 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
       push: this.push.bind(this),
       replace: this.replace.bind(this)
     },
+    history: this.history,
     path: this.history.location.pathname
   };
 

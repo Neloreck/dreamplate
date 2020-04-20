@@ -26,7 +26,7 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
     minify: !IS_DEV
   };
 
-  public context: IThemeContext = {
+  public readonly context: IThemeContext = {
     themeActions: {
       toggleTheme: this.toggleTheme.bind(this)
     },
@@ -37,7 +37,7 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
    * Toggle application theme mode and save it into local storage.
    * Apply it to document body.
    */
-  public toggleTheme(): void {
+  public async toggleTheme(): Promise<void> {
     const { theme } = this.context;
 
     const nextThemeType: TThemeType = (theme.palette.type === "light" ? "dark" : "light");

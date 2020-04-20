@@ -11,8 +11,8 @@ import { RouterContextManager, ThemeContextManager } from "@Core/data/store";
  */
 export function RootProvider({
   children = null as ReactNode,
-  theme = useManager(ThemeContextManager).theme,
-  history = RouterContextManager.current().history
+  themeContext: { theme } = useManager(ThemeContextManager),
+  routerContext: { history } = useManager(RouterContextManager)
 }): ReactElement {
   return (
     <ReactRouter history={history}>

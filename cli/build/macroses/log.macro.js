@@ -106,7 +106,10 @@ function log({ references, babel, state }) {
 
         const millisPaddedExpression = types.callExpression(
           types.memberExpression(millisStringExpression, types.identifier("padStart")),
-          [ types.numericLiteral(3) ]
+          [
+            types.numericLiteral(3),
+            types.stringLiteral("0")
+          ]
         );
 
         const prefixExpression = types.templateLiteral(

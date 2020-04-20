@@ -18,8 +18,11 @@ import "@Lib/components/layout/ModalRoot";
  * Render global router and provider with data shared for all modules.
  */
 
-
-const GlobalProvider: FunctionComponent = createProvider(ThemeContextManager, RouterContextManager, AuthContextManager);
+const GlobalProvider: FunctionComponent = createProvider([
+  ThemeContextManager,
+  RouterContextManager,
+  AuthContextManager
+]);
 
 export function Root({ children = null as ReactNode }): ReactElement {
   return (

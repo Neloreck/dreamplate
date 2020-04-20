@@ -129,11 +129,7 @@ export const PLUGIN_CONFIG: {
           reuseExistingChunk: false,
           test: /\/src\/node_modules\//
         },
-        ...createChunkCacheGroups(MODULES_CONFIG.modules),
-        "shared/s": {
-          priority: 1,
-          name: createChunkGroupNameGenerator()
-        }
+        ...createChunkCacheGroups(MODULES_CONFIG.modules)
       },
       chunks: "all",
       maxAsyncRequests: 50,
