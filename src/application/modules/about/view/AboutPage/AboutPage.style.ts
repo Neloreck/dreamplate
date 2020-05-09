@@ -7,13 +7,11 @@ export const useStyles = createUseStyles(({ palette }: IApplicationTheme) => ({
   content: {
     alignItems: "center",
     alignSelf: "normal",
-    backgroundColor: palette.background.default,
     backgroundSize: "cover",
     display: "flex",
     flexDirection: "column",
     flexGrow: 1,
     justifyContent: "center",
-    overflowY: "auto",
-    transitionDuration: "350ms"
+    overflowY: "auto"
   }
 }));

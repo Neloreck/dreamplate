@@ -112,15 +112,13 @@ function log({ references, babel, state }) {
           ]
         );
 
-        const prefixExpression = types.templateLiteral(
-          [
-            types.templateElement({ raw: "%c" }),
-            types.templateElement({ raw: ":" }),
-            types.templateElement({ raw: ` [${prefixChar}${prefix.padEnd(3)}]` }),
-          ],
+        const prefixExpression = types.callExpression(
+          types.memberExpression(types.stringLiteral("%c"), types.identifier("concat")),
           [
             timeExpression,
-            millisPaddedExpression
+            types.stringLiteral(":"),
+            millisStringExpression,
+            types.stringLiteral(` [${prefixChar}${prefix.padEnd(3)}]`)
           ]
         );
 

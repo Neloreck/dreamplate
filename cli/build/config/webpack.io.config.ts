@@ -15,13 +15,12 @@ import { IModulesDefinition } from "./webpack.types";
  * Generate entry-points based on modules.json config.
  */
 const generateEntryPoints = (definition: IModulesDefinition) => {
-
   const entries: { [index: string]: any } = {};
 
   for (const entry of definition.modules) {
-
     const entryPath: string = path.resolve(MODULES_ROOT_PATH, entry.entry);
-    entries[entry.name] = IS_PRODUCTION ? entryPath  : [ "react-hot-loader/patch", entryPath ];
+
+    entries[entry.name] = [ entryPath ].concat(IS_PRODUCTION ? [] : [ "react-hot-loader/patch" ]);
   }
 
   return entries;

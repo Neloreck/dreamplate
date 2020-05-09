@@ -2,8 +2,11 @@
 
 ### Install:
 
-- `npm install -g lerna` [optionally, install package management util globally]
-- `npm run setup`
+- `npm install`
+- `npm run setup` <br/>
+    or
+- `npm install -g lerna typescript` [optionally]
+- `./run setup`
 
 ### NPM Scripts
 

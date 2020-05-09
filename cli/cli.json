@@ -1,6 +1,4 @@
 {
-  "config": {
-  },
   "scripts": {
     "help": {
       "exec": "ts-node --project ./cli/tsconfig.json ./cli/utils/print_commands_list.ts",
@@ -50,15 +48,15 @@
       "description": "Build project bundles in dev mode."
     },
     "==========================================================================================================": "===",
-    "test": {
+    "verify": {
       "exec": [
         "./run typecheck",
-        "./run jest",
+        "./run test",
         "./run lint"
       ],
       "description": "Run full tests that include unit tests, linting and typechecks."
     },
-    "jest": {
+    "test": {
       "exec": "npx cross-env NODE_ENV=test ts-node --project ./cli/test/config/tsconfig.json ./cli/test/TestRunner.ts",
       "description": "Run jest unit tests."
     },

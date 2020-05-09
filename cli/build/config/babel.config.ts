@@ -12,7 +12,7 @@ export const BABEL_CONFIG = {
       {
         "targets": {
           "browsers": [
-            "> 5.0%",
+            "> 2.0%",
             "not dead"
           ]
         }
@@ -25,14 +25,14 @@ export const BABEL_CONFIG = {
     [
       "@babel/plugin-transform-runtime",
       {
-        "useESModules": true,
-        "version": packageConfig.devDependencies["@babel/plugin-transform-runtime"]
+        useESModules: true,
+        version: packageConfig.devDependencies["@babel/plugin-transform-runtime"]
       }
     ],
     [
       "module-resolver",
       {
-        "alias": {
+        alias: {
           "@Macro": path.resolve(__dirname,"../macroses")
         }
       }
@@ -46,28 +46,18 @@ export const BABEL_CONFIG = {
     [
       "template-html-minifier",
       {
-        "modules": {
+        modules: {
           "lit-html": [ "html" ],
           "lit-element": [ "html", { "name": "css", "encapsulation": "style" }],
         },
-        "strictCSS": true,
-        "htmlMinifier": {
-          "collapseWhitespace": true,
-          "conservativeCollapse": true,
-          "removeComments": true,
-          "caseSensitive": true,
-          "minifyCSS": true
+        strictCSS: true,
+        htmlMinifier: {
+          collapseWhitespace: true,
+          conservativeCollapse: true,
+          removeComments: true,
+          caseSensitive: true,
+          minifyCSS: true
         },
-      }
-    ],
-    [
-      "transform-imports",
-      {
-        /* Example:
-        "@material-ui/core": {
-          "transform": "@material-ui/core/${member}",
-          "preventFullImport": true
-        }*/
       }
     ]
   ]

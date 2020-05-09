@@ -65,7 +65,7 @@ export function DebugExpose(name?: string): ClassDecorator {
       finisher: (target: any) => (
         class extends target {
 
-          constructor(...params: Array<any>) {
+          public constructor(...params: Array<any>) {
             super(params);
 
             // @ts-ignore

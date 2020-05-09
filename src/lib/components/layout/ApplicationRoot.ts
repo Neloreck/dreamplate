@@ -20,6 +20,7 @@ export class ApplicationRoot extends LitElement {
         display: flex;
         align-items: center;
         flex-direction: column;
+        height: 0;
         max-height: 100vh;
         min-height: 100vh;
         overflow: auto;

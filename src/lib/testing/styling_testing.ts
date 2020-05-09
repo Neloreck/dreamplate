@@ -15,20 +15,21 @@ export function createMockClasses(): { [index: string]: string } {
 /**
  * Utility for rendering react component inside JSS context.
  */
-export function withMockedTheme (element: ReactElement) {
+export function withMockedTheme(element: ReactElement) {
   return createElement(ThemeProvider, { children: element, theme: createDefaultTheme(GTheme.DEFAULT_THEME_TYPE) });
 }
 /**
  * Utility to get nested in @Styled element.
  */
 export function getThemedComponent <T>(element: ShallowWrapper<T>) {
-  return mount(element.getElement()).children().children();
+  return mount(element.getElement()).children()
+    .children();
 }
 
 /**
  * Utility for class component with @styled testing.
  */
-export function withMockedJss (element: ReactElement, wrapper?: any) {
+export function withMockedJss(element: ReactElement, wrapper?: any) {
   const sheets: SheetsRegistry = new SheetsRegistry();
 
   const Wrapper = (props: { children: ReactElement }) => {

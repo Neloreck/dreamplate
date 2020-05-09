@@ -39,7 +39,7 @@ export const MODULE_CONFIG: {
       },
       // TS/TSX/JS/JSX.
       {
-        exclude: /(node_modules)/,
+        exclude: /node_modules\/(?!(lit-element|lit-html|dreamstate))/,
         loader: "babel-loader",
         options: BABEL_CONFIG,
         test: /\.(js|jsx|ts|tsx)$/
@@ -71,18 +71,6 @@ export const MODULE_CONFIG: {
             options: {
               // include < 5KB files in bundle file
               limit: 5000,
-              name: "images/[name].[ext]"
-            }
-          }
-        ]
-      },
-      // Images as assets.
-      {
-        test: /\.(gif|png|jpe|jpg|svg)$/i,
-        use: [
-          {
-            loader: "file-loader",
-            options: {
               name: "images/[name].[ext]"
             }
           }

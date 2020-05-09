@@ -7,7 +7,7 @@ export const createDefaultTheme = (themeType: TThemeType): IApplicationTheme => 
   palette: {
     background: {
       default: (themeType === "dark" ? GTheme.DEFAULT_BACKGROUND_DARK : GTheme.DEFAULT_BACKGROUND_LIGHT),
-      paper: (themeType === "dark" ? GTheme.DEFAULT_BACKGROUND_PAPER_DARK : GTheme.DEFAULT_BACKGROUND_PAPER_LIGHT),
+      paper: (themeType === "dark" ? GTheme.DEFAULT_BACKGROUND_PAPER_DARK : GTheme.DEFAULT_BACKGROUND_PAPER_LIGHT)
     },
     primary: {
       dark: GTheme.DEFAULT_PRIMARY_DARK,
@@ -21,7 +21,7 @@ export const createDefaultTheme = (themeType: TThemeType): IApplicationTheme => 
     },
     text: {
       primary: (themeType === "dark" ? GTheme.DEFAULT_TEXT_PRIMARY_DARK : GTheme.DEFAULT_TEXT_PRIMARY_LIGHT),
-      secondary: (themeType === "dark" ? GTheme.DEFAULT_TEXT_SECONDARY_DARK : GTheme.DEFAULT_TEXT_SECONDARY_LIGHT),
+      secondary: (themeType === "dark" ? GTheme.DEFAULT_TEXT_SECONDARY_DARK : GTheme.DEFAULT_TEXT_SECONDARY_LIGHT)
     },
     type: themeType
   },

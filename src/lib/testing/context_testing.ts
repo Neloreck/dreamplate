@@ -3,8 +3,8 @@
  */
 export function createMockContextProperty(dataKey: string) {
   return new Proxy(
-  {},
-  {
+    {},
+    {
       get: () => {
         // Create mock prop based on container-object naming.
         if (dataKey.includes("Actions")) {
@@ -23,5 +23,6 @@ export function createMockContextProperty(dataKey: string) {
 export function createMockContext<T>(): T {
   return new Proxy(
     {},
-    { get: (target: {}, property: string) => createMockContextProperty(property) }) as T;
+    { get: (target: {}, property: string) => createMockContextProperty(property) }
+  ) as T;
 }
