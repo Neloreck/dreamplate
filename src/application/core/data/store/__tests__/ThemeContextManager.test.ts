@@ -1,5 +1,5 @@
 import { getCurrent, getCurrentContext } from "dreamstate";
-import { registerWorker, unRegisterWorker } from "dreamstate/test-utils";
+import { registerService, unRegisterService } from "dreamstate/test-utils";
 
 // Lib.
 import { TThemeType, IApplicationTheme, toggleTheme } from "@Lib/theme";
@@ -9,8 +9,8 @@ import { encrypt, setLocalStorageItem } from "@Lib/utils";
 import { ThemeContextManager } from "@Core/data/store";
 
 describe("Theme context manager.", () => {
-  beforeEach(() => registerWorker(ThemeContextManager));
-  afterEach(() => unRegisterWorker(ThemeContextManager));
+  beforeEach(() => registerService(ThemeContextManager));
+  afterEach(() => unRegisterService(ThemeContextManager));
 
   it("Should properly initialize.", () => {
     const { theme } = getCurrentContext(ThemeContextManager)!;
