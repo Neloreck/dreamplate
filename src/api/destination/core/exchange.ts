@@ -1,7 +1,5 @@
-// Lib.
 import { ERequestMethod } from "@Lib/api/types";
 
-// Api.
 import { coreApiConfig } from "@Api/destination/core/coreApiConfig";
 
 type TRequestBody = object | URLSearchParams;

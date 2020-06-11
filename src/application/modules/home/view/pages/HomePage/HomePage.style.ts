@@ -1,8 +1,9 @@
 import { createUseStyles } from "react-jss";
 
-// Lib.
-import { IApplicationTheme } from "@Lib/theme";
 import { down } from "@Macro/style.macro";
+
+import { IApplicationTheme } from "@Lib/theme";
+
 
 export const useStyles = createUseStyles(({ palette, spacing }: IApplicationTheme) => ({
   cardLink: {

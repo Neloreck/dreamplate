@@ -1,10 +1,10 @@
 import { css, CSSResult, html, LitElement, TemplateResult } from "lit-element";
 
-// Lib.
-import { CustomElement, ICustomElementAttributes } from "@Lib/components";
 import { log } from "@Macro/log.macro";
 
-// Props.
+import { CustomElement, ICustomElementAttributes } from "@Lib/components";
+
+
 export interface IApplicationRootProps extends ICustomElementAttributes<ApplicationRoot> {
 }
 

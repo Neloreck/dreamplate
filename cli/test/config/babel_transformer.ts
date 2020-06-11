@@ -1,4 +1,5 @@
 import { createTransformer } from "babel-jest";
+
 import { BABEL_CONFIG } from "../../build/config/babel.config";
 
 const CONFIG = {
@@ -6,11 +7,10 @@ const CONFIG = {
   plugins: [
     // Exclude ES modules configured runtime transform plugin and supply it with default params.
     ...BABEL_CONFIG.plugins
-      .filter((it) =>
+      .filter((it: any) =>
         typeof it === "string"
           ? it !== "@babel/plugin-transform-runtime"
-          : it[0] !== "@babel/plugin-transform-runtime"
-      ),
+          : it[0] !== "@babel/plugin-transform-runtime"),
     "@babel/plugin-transform-runtime"
   ]
 };

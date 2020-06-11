@@ -1,7 +1,6 @@
 import { ContextManager } from "dreamstate";
 import { createBrowserHistory, History, Location, Path } from "history";
 
-// Lib.
 import { log } from "@Macro/log.macro";
 
 /**

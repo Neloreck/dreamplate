@@ -1,4 +1,3 @@
-// Lib.
 import { CustomButton } from "@Lib/components/custom/CustomButton";
 
 describe("Custom button web component.", () => {

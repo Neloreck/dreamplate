@@ -1,4 +1,6 @@
 {
+  "config": {
+  },
   "scripts": {
     "help": {
       "exec": "ts-node --project ./cli/tsconfig.json ./cli/utils/print_commands_list.ts",
@@ -61,7 +63,7 @@
       "description": "Run jest unit tests."
     },
     "lint": {
-      "exec": "npx eslint src/**/*.ts src/**/*.tsx",
+      "exec": "npx eslint src/**/*.ts src/**/*.tsx cli/**/*.ts",
       "description": "Run eslint for project codestyle checking."
     },
     "typecheck": {

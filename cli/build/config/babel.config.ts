@@ -1,7 +1,7 @@
 import * as path from "path";
 
-import { IS_PRODUCTION, IS_TEST } from "./webpack.constants";
 import * as packageConfig from "../../../package.json";
+import { IS_PRODUCTION, IS_TEST } from "./webpack.constants";
 
 export const BABEL_CONFIG = {
   babelrc: false,
@@ -48,7 +48,7 @@ export const BABEL_CONFIG = {
       {
         modules: {
           "lit-html": [ "html" ],
-          "lit-element": [ "html", { "name": "css", "encapsulation": "style" }],
+          "lit-element": [ "html", { "name": "css", "encapsulation": "style" } ]
         },
         strictCSS: true,
         htmlMinifier: {
@@ -57,7 +57,7 @@ export const BABEL_CONFIG = {
           removeComments: true,
           caseSensitive: true,
           minifyCSS: true
-        },
+        }
       }
     ]
   ]

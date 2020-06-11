@@ -3,7 +3,6 @@ import { ReactElement, ReactNode, Suspense } from "react";
 import { JssProvider, ThemeProvider } from "react-jss";
 import { Router as ReactRouter } from "react-router";
 
-// Data.
 import { RouterContextManager, ThemeContextManager } from "@Core/data/store";
 
 /**

@@ -16,7 +16,9 @@ export class DevRunner {
       process.env.ENTRIES = JSON.stringify(args.slice(2));
     }
 
-    const { WEBPACK_CONFIG, DEV_SERVER_PORT, DEV_SERVER_HOST, PROJECT_ROOT_PATH, PROJECT_OUTPUT_PATH } = require("./config");
+    const {
+      WEBPACK_CONFIG, DEV_SERVER_PORT, DEV_SERVER_HOST, PROJECT_ROOT_PATH, PROJECT_OUTPUT_PATH
+    } = require("./config");
     const compiler: Compiler = Webpack(WEBPACK_CONFIG);
     const server = new DevServer(compiler as any, WEBPACK_CONFIG.devServer);
 

@@ -1,4 +1,3 @@
-// Lib.
 import { CustomCard } from "@Lib/components/custom/CustomCard";
 
 describe("Spinner loader web component.", () => {

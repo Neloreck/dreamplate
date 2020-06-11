@@ -45,6 +45,7 @@
     "@typescript-eslint/no-empty-interface": 0,
     "@typescript-eslint/no-empty-function": 0,
     "@typescript-eslint/no-unused-vars": 0,
+    "@typescript-eslint/no-var-requires": 0,
     "no-console": [ "error" ],
     "keyword-spacing": 2,
     "indent": [ 2, 2 ],
@@ -58,7 +59,6 @@
     "array-bracket-spacing": [ 2, "always" ],
     "comma-dangle": [ 2, { "functions": "never" } ],
     "eol-last": [ 2, "always" ],
-    "no-duplicate-imports": 2,
     "max-len": [ 2, { "code": 120 } ],
     "key-spacing": [ 2, { "beforeColon": false, "afterColon": true } ],
     "object-curly-newline": [ 2, { "consistent": true, "multiline": true } ],
@@ -113,15 +113,18 @@
     "import/order": [
       "error",
       {
+        "alphabetize": { "order": "asc", "caseInsensitive": true },
+        "newlines-between": "always",
         "groups": [ "builtin", "external", "parent", "sibling", "index" ],
+        "pathGroupsExcludedImportTypes": [ "builtin" ],
         "pathGroups": [
           {
-            "pattern": "@Lib/**",
+            "pattern": "@Macro/**",
             "group": "external",
             "position": "after"
           },
           {
-            "pattern": "@Macro/**",
+            "pattern": "@Lib/**",
             "group": "external",
             "position": "after"
           },
@@ -131,27 +134,21 @@
             "position": "after"
           },
           {
-            "pattern": "@Core/data/**",
+            "pattern": "@Core/**",
             "group": "external",
             "position": "after"
           },
           {
-            "pattern": "@Modules/*/data/**",
+            "pattern": "@Modules/**",
             "group": "external",
             "position": "after"
           },
           {
-            "pattern": "@Core/view/**",
-            "group": "external",
-            "position": "after"
-          },
-          {
-            "pattern": "@Modules/*/view/**",
-            "group": "external",
+            "pattern": "@Lib/components/**",
+            "group": "index",
             "position": "after"
           }
-        ],
-        "pathGroupsExcludedImportTypes": ["builtin"]
+        ]
       }
     ]
   }

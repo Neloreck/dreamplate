@@ -1,6 +1,5 @@
 import { FunctionComponent, lazy } from "react";
 
-// Lib.
 import { IStringIndexed } from "@Lib/ts";
 
 /**

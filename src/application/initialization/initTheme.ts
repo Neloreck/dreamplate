@@ -1,4 +1,3 @@
-// Lib.
 import { TThemeType } from "@Lib/theme/types";
 import { TOptional } from "@Lib/ts";
 

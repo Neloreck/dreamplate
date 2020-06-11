@@ -1,10 +1,8 @@
 import { useManager } from "dreamstate";
 import { ReactElement } from "react";
 
-// Data.
 import { ThemeContextManager } from "@Core/data/store";
 
-// View.
 import { useStyles } from "./MainHeader.style";
 
 import "@Lib/components/custom/CustomButton";

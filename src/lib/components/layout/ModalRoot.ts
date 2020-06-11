@@ -1,9 +1,7 @@
 import { css, CSSResult, html, LitElement, TemplateResult } from "lit-element";
 
-// Lib.
 import { CustomElement, ICustomElementAttributes } from "@Lib/components";
 
-// Props.
 export interface IModalRootProps extends ICustomElementAttributes<ModalRoot> {
 }
 

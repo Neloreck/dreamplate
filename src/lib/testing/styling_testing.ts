@@ -2,7 +2,6 @@ import { mount, shallow, ShallowWrapper } from "enzyme";
 import { createElement, ReactElement } from "react";
 import { JssProvider, SheetsRegistry, ThemeProvider } from "react-jss";
 
-// Lib.
 import { createDefaultTheme } from "@Lib/theme";
 
 /**
