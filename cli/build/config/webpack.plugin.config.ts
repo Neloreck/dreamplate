@@ -1,6 +1,7 @@
 import { DefinePlugin, Options, Plugin, ProvidePlugin } from "webpack";
 
 import { APPLICATION_ROOT, MODAL_ROOT } from "../build_constants";
+
 import {
   BASE_PROJECT_FAVICON_PATH, BASE_PROJECT_STATIC_FILES, BASE_PROJECT_TEMPLATE_PATH, DOTENV_CONFIG_PATH, ENVIRONMENT,
   IS_PRODUCTION, MODULES_CONFIG, PROJECT_CORE_DEPENDENCIES, PROJECT_INLINE_MODULES, PROVIDE_MODULES_CONFIG,
@@ -9,15 +10,15 @@ import {
 import { IModuleDefinition } from "./webpack.types";
 
 // CJS way to import most plugins.
-const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
-const DotEnv = require("dotenv-webpack");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
-const DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const DotEnv = require("dotenv-webpack");
+const DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack-plugin");
+const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ScriptExtHtmlPlugin = require("script-ext-html-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const StatsWriterPlugin = require("webpack-stats-plugin").StatsWriterPlugin;
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const createChunkGroupNameGenerator = () =>
   IS_PRODUCTION
@@ -25,7 +26,6 @@ const createChunkGroupNameGenerator = () =>
     : true;
 
 const createChunkCacheGroups = (definitions: Array<IModuleDefinition>) => {
-
   const entries: { [index: string]: any } = {};
 
   for (const it of definitions) {
@@ -34,7 +34,7 @@ const createChunkCacheGroups = (definitions: Array<IModuleDefinition>) => {
       name: createChunkGroupNameGenerator(),
       priority: 60,
       reuseExistingChunk: true,
-      test: new RegExp(`\/modules\/${it.name}\/node_modules\/`)
+      test: new RegExp(`/modules/${it.name}/node_modules/`)
     });
 
     entries[`modules/${it.name}/s`] = ({
@@ -42,7 +42,7 @@ const createChunkCacheGroups = (definitions: Array<IModuleDefinition>) => {
       name: createChunkGroupNameGenerator(),
       priority: 30,
       reuseExistingChunk: true,
-      test: new RegExp(`\/modules\/${it.name}\/`)
+      test: new RegExp(`/modules/${it.name}/`)
     });
   }
 
@@ -75,8 +75,8 @@ const createHTMLEntry = (definition: IModuleDefinition) => (
 );
 
 export const PLUGIN_CONFIG: {
-  PLUGINS: Array<Plugin>,
-  OPTIMIZATION: Options.Optimization
+  PLUGINS: Array<Plugin>;
+  OPTIMIZATION: Options.Optimization;
 } = {
   OPTIMIZATION: {
     minimizer: [
@@ -94,7 +94,7 @@ export const PLUGIN_CONFIG: {
             beautify: !IS_PRODUCTION,
             ecma: 5
           }
-        },
+        }
       })
     ],
     moduleIds: "hashed",
@@ -107,7 +107,7 @@ export const PLUGIN_CONFIG: {
           name: createChunkGroupNameGenerator(),
           priority: 100,
           reuseExistingChunk: true,
-          test: new RegExp(`/node_modules/(${PROJECT_CORE_DEPENDENCIES.reduce((accumulator: string, it: string) => accumulator ? accumulator + "|" + it : it )})\/`)
+          test: new RegExp(`/node_modules/(${PROJECT_CORE_DEPENDENCIES.reduce((accumulator: string, it: string) => accumulator ? accumulator + "|" + it : it)})\/`)
         },
         "core/components": {
           minSize: 5_000,
@@ -152,7 +152,7 @@ export const PLUGIN_CONFIG: {
     }),
     // Async scripts load and inlining.
     new ScriptExtHtmlPlugin({ defaultAttribute: "async", inline: PROJECT_INLINE_MODULES }),
-   // Bundle analyzers/debug.
+    // Bundle analyzers/debug.
     new BundleAnalyzerPlugin({
       analyzerMode: "static",
       defaultSizes: "gzip",

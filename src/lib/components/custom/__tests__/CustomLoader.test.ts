@@ -1,4 +1,3 @@
-// Lib.
 import { CustomLoader } from "@Lib/components/custom/CustomLoader";
 import { forMillis } from "@Lib/utils/delay";
 

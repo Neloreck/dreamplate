@@ -1,11 +1,9 @@
 import { getCurrent, getCurrentContext } from "dreamstate";
 import { registerService, unRegisterService } from "dreamstate/test-utils";
 
-// Lib.
 import { TThemeType, IApplicationTheme, toggleTheme } from "@Lib/theme";
 import { encrypt, setLocalStorageItem } from "@Lib/utils";
 
-// Data.
 import { ThemeContextManager } from "@Core/data/store";
 
 describe("Theme context manager.", () => {

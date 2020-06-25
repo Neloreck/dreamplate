@@ -1,6 +1,4 @@
 import { ReactElement, useLayoutEffect } from "react";
-
-// Lib.
 import { Redirect } from "react-router";
 
 export function DefaultErrorFallback({ reload = true }): ReactElement {

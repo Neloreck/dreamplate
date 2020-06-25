@@ -1,6 +1,5 @@
 import { createUseStyles } from "react-jss";
 
-// Lib.
 import { IApplicationTheme } from "@Lib/theme";
 
 export const useStyles = createUseStyles(({ palette }: IApplicationTheme) => ({

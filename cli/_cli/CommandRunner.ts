@@ -1,4 +1,5 @@
 import { ChildProcess, spawn } from "child_process";
+
 import { green, red } from "colors";
 
 export interface IExecutableScriptDescriptor {
@@ -21,14 +22,19 @@ export class CommandRunner {
 
   private childProcess: ChildProcess | null = null;
 
-  public constructor(cmd: string, cmdAdditionalArgs: Array<string>, script: TExecutableScript | IExecutableScriptDescriptor, config?: object) {
+  public constructor(
+    cmd: string,
+    cmdAdditionalArgs: Array<string>,
+    script: TExecutableScript | IExecutableScriptDescriptor,
+    config?: object
+  ) {
     this.cmd = cmd;
     this.cmdAdditionalArgs = cmdAdditionalArgs;
     this.script = typeof script === "object" ? (script as IExecutableScriptDescriptor).exec : script;
     this.config = config;
 
     [ "exit", "uncaughtException", "unhandledRejection", "SIGUSR1", "SIGUSR2", "SIGINT" ]
-      .forEach((it: string) => process.on(<any>it, this.onProcessShutdown.bind(this)));
+      .forEach((it: string) => process.on(it as any, this.onProcessShutdown.bind(this)));
   }
 
   public async run(): Promise<void> {
@@ -72,6 +78,7 @@ export class CommandRunner {
     for (const scriptToExecute of scriptsToExecute) {
       try {
         const scriptArgs: Array<string> = scriptToExecute.split(" ");
+
         await this.runProcess(scriptArgs);
 
         if (hasMany) {
@@ -81,13 +88,13 @@ export class CommandRunner {
         this.onPartialError(scriptToExecute);
         throw error;
       }
-
     }
   }
 
   protected async executeCommand(scriptToExecute: string): Promise<void> {
     try {
       const scriptArgs: Array<string> = scriptToExecute.split(" ");
+
       await this.runProcess(scriptArgs);
     } catch (error) {
       this.onPartialError(scriptToExecute);
@@ -99,7 +106,7 @@ export class CommandRunner {
     // Promise wrapper for nested callbacks handling.
     return new Promise((resolve: () => void, reject: (error: Error) => void): void => {
       try {
-        this.childProcess = spawn(args[0], args.slice(1).concat(this.cmdAdditionalArgs),  {
+        this.childProcess = spawn(args[0], args.slice(1).concat(this.cmdAdditionalArgs), {
           cwd: process.cwd(),
           detached: false,
           env: { ...process.env, PARENT: "DREAMPLATE-CLI" },
@@ -131,7 +138,6 @@ export class CommandRunner {
           .forEach((it: string) => this.childProcess!.on(it as any, checkError));
 
         this.childProcess.on("exit", checkCode);
-
       } catch (error) {
         reject(error);
       }
@@ -157,8 +163,11 @@ export class CommandRunner {
     this.startTime = Date.now();
 
     if (!CommandRunner.PARENT) {
+      const script: string = Array.isArray(this.script) ? this.script.join(green(" => ")) : this.script;
+
       process.stdout.write(green("\n=============================================================================\n"));
       process.stdout.write(`${green("=")} ${this.cmd} ${green("@")} ${process.cwd()} \n`);
+      process.stdout.write(`${green("=")} ${script}\n`);
       process.stdout.write(green("=============================================================================\n"));
 
       if (addSeparator) {
@@ -169,8 +178,10 @@ export class CommandRunner {
 
   protected onSuccess(): void {
     if (!CommandRunner.PARENT) {
+      const duration: number = (Date.now() - this.startTime) / 1000;
+
       process.stdout.write(green("\n=============================================================================\n"));
-      process.stdout.write(`${green("=")} Command [${this.cmd}] successfully executed in ${(Date.now() - this.startTime) / 1000} sec.\n`);
+      process.stdout.write(`${green("=")} Command [${this.cmd}] successfully executed in ${duration} sec.\n`);
       process.stdout.write(green("=============================================================================\n\n"));
     }
   }

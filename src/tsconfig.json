@@ -37,5 +37,10 @@
   "types": [
     "node"
   ],
-  "exclude": []
+  "include": [
+    ".",
+    "../cli"
+  ],
+  "exclude": [
+  ]
 }

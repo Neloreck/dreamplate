@@ -1,10 +1,9 @@
-import type * as GlobalReact from "react";
 
 // Constants.
 import type * as colors from "@Build/globals/colors";
 import type * as theme from "@Build/globals/theme";
+import type * as GlobalReact from "react";
 
-// Lib.
 import { ICustomIntrinsicElements } from "@Lib/components/types";
 
 declare global {

@@ -1,7 +1,6 @@
 import { getCurrent } from "dreamstate";
 import { registerService, unRegisterService } from "dreamstate/test-utils";
 
-// Data.
 import { AuthContextManager } from "@Core/data/store";
 
 describe("Auth context manager.", () => {

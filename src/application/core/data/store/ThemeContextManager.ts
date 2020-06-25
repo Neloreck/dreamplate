@@ -1,10 +1,11 @@
 import { Bind, ContextManager } from "dreamstate";
 import { CreateGenerateIdOptions } from "jss";
 
-// Lib.
+import { log } from "@Macro/log.macro";
+
 import { createDefaultTheme, IApplicationTheme, toggleTheme, TThemeType } from "@Lib/theme";
 import { encrypt, getFromLocalStorage, parse, setLocalStorageItem } from "@Lib/utils";
-import { log } from "@Macro/log.macro";
+
 
 /**
  * Theme context description.

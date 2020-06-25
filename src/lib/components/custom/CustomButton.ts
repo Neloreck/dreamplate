@@ -1,9 +1,7 @@
 import { css, CSSResult, html, LitElement, TemplateResult, unsafeCSS } from "lit-element";
 
-// Lib.
 import { CustomElement, ICustomElementAttributes } from "@Lib/components";
 
-// Props.
 export type TCustomButtonSize = "xs" | "sm" | "md" | "lg" | "xl";
 
 export type TCustomButtonColor = "primary" | "secondary" | "grayscale";

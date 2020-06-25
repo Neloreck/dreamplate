@@ -1,9 +1,7 @@
 import { css, CSSResult, LitElement, unsafeCSS } from "lit-element";
 
-// Lib.
 import { CustomElement, ICustomElementAttributes, Property } from "@Lib/components";
 
-// Props.
 export interface ICustomLoader extends ICustomElementAttributes<CustomLoader> {
   width?: number;
   height?: number;

@@ -2,10 +2,8 @@ import "@Test/utils/mock_custom_elements";
 
 import { shallow } from "enzyme";
 
-// Lib.
 import { createMockClasses, createMockContext } from "@Lib/testing";
 
-// View.
 import { ErrorPage } from "./ErrorPage.component";
 
 describe("Error page component rendering.", () => {

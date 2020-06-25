@@ -1,7 +1,3 @@
-/**
- * Inline initialization greeter and notifier.
- */
-
 import { log } from "@Macro/log.macro";
 
 /**

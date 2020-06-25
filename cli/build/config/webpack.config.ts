@@ -4,8 +4,8 @@ import { ENVIRONMENT } from "./webpack.constants";
 import { DEV_CONFIG } from "./webpack.dev.config";
 import { IO_CONFIG } from "./webpack.io.config";
 import { MODULE_CONFIG } from "./webpack.module.config";
-import { PLUGIN_CONFIG } from "./webpack.plugin.config";
 import { PERFORMANCE_CONFIG } from "./webpack.performance.config";
+import { PLUGIN_CONFIG } from "./webpack.plugin.config";
 
 /**
  * Restrict build with environment declaration to prevent unexpected issues.

@@ -5,7 +5,6 @@ import { shallow } from "enzyme";
 // Test.
 import { createMockClasses, createMockContext } from "@Lib/testing";
 
-// View.
 import { HomePage } from "./HomePage.component";
 
 describe("Home page component rendering.", () => {

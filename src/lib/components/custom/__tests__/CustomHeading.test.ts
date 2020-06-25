@@ -1,4 +1,3 @@
-// Lib.
 import { CustomHeading } from "@Lib/components/custom/CustomHeading";
 
 describe("Spinner loader web component.", () => {

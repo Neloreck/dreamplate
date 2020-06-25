@@ -1,14 +1,14 @@
 import * as path from "path";
 import { Module, Resolve } from "webpack";
 
+import * as packageConfig from "../../../package.json";
+import { BABEL_CONFIG } from "./babel.config";
 import {
   BUILD_CONFIGURATION_PATH,
   IS_PRODUCTION,
   PROJECT_ROOT_NODE_MODULES_PATH,
   PROJECT_ROOT_PATH
 } from "./webpack.constants";
-import { BABEL_CONFIG } from "./babel.config";
-import * as packageConfig from "../../../package.json";
 
 interface IAliasDescription {
   [index: string]: string;
@@ -18,13 +18,12 @@ const generateGlobalDependenciesAlias = (): IAliasDescription => {
   return Object
     .keys(packageConfig.dependencies)
     .reduce((acc: { [idx: string]: string }, pkg: string) =>
-      (acc[pkg] = path.resolve(PROJECT_ROOT_NODE_MODULES_PATH, pkg), acc), {}
-    );
+      (acc[pkg] = path.resolve(PROJECT_ROOT_NODE_MODULES_PATH, pkg), acc), {});
 };
 
 export const MODULE_CONFIG: {
-  RESOLVE: Resolve,
-  MODULE: Module
+  RESOLVE: Resolve;
+  MODULE: Module;
 } = {
   MODULE: {
     rules: [
@@ -35,7 +34,7 @@ export const MODULE_CONFIG: {
         test: /\.(ts|tsx|js|jsx)$/,
         use: [
           { loader: path.resolve(BUILD_CONFIGURATION_PATH, "loaders/stripBlockLoader.ts") }
-        ],
+        ]
       },
       // TS/TSX/JS/JSX.
       {
