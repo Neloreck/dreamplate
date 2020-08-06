@@ -1,6 +1,7 @@
 import * as path from "path";
 
 import * as packageConfig from "../../../package.json";
+
 import { IS_PRODUCTION, IS_TEST } from "./webpack.constants";
 
 export const BABEL_CONFIG = {

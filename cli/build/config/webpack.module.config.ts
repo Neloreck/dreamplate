@@ -1,7 +1,9 @@
 import * as path from "path";
+
 import { Module, Resolve } from "webpack";
 
 import * as packageConfig from "../../../package.json";
+
 import { BABEL_CONFIG } from "./babel.config";
 import {
   BUILD_CONFIGURATION_PATH,

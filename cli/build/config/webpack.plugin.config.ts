@@ -84,12 +84,12 @@ export const PLUGIN_CONFIG: {
         sourceMap: false,
         terserOptions: {
           compress: {
-            drop_console: IS_PRODUCTION,
+            "drop_console": IS_PRODUCTION,
             ecma: 5,
             passes: IS_PRODUCTION ? 5 : 1
           },
-          keep_classnames: !IS_PRODUCTION,
-          keep_fnames: !IS_PRODUCTION,
+          "keep_classnames": !IS_PRODUCTION,
+          "keep_fnames": !IS_PRODUCTION,
           output: {
             beautify: !IS_PRODUCTION,
             ecma: 5
@@ -107,7 +107,12 @@ export const PLUGIN_CONFIG: {
           name: createChunkGroupNameGenerator(),
           priority: 100,
           reuseExistingChunk: true,
-          test: new RegExp(`/node_modules/(${PROJECT_CORE_DEPENDENCIES.reduce((accumulator: string, it: string) => accumulator ? accumulator + "|" + it : it)})\/`)
+          test: new RegExp(
+            `/node_modules/(${
+              PROJECT_CORE_DEPENDENCIES.reduce((accumulator: string, it: string) =>
+                accumulator ? accumulator + "|" + it : it)
+            })/`
+          )
         },
         "core/components": {
           minSize: 5_000,

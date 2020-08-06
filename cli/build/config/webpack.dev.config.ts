@@ -14,13 +14,10 @@ import { IModulesDefinition } from "./webpack.types";
  * Generate fallback redirects/urls for dev server history usage.
  */
 const createFallbackRewrites = (definition: IModulesDefinition) => {
-
-  const rewrites: Array<{ from: RegExp, to: string }> = [];
+  const rewrites: Array<{ from: RegExp; to: string }> = [];
 
   for (const module of definition.modules) {
-
     if (Array.isArray(module.path)) {
-
       for (const from of module.path) {
         rewrites.push({ from: new RegExp(from), to: `/html/${module.name}.html` });
       }
@@ -33,9 +30,9 @@ const createFallbackRewrites = (definition: IModulesDefinition) => {
 };
 
 export const DEV_CONFIG: {
-  DEV_SERVER: object,
-  STATS: Options.Stats,
-  DEV_TOOL: Options.Devtool
+  DEV_SERVER: object;
+  STATS: Options.Stats;
+  DEV_TOOL: Options.Devtool;
 } = {
   DEV_SERVER: {
     clientLogLevel: "error",

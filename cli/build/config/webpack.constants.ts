@@ -1,9 +1,10 @@
 import * as path from "path";
 
-import { IModulesDefinition, TEnvironmentType } from "./webpack.types";
-import { asConstantsObject } from "../globals/utils";
 import * as colors from "../globals/colors";
 import * as theme from "../globals/theme";
+import { asConstantsObject } from "../globals/utils";
+
+import { IModulesDefinition, TEnvironmentType } from "./webpack.types";
 
 /**
  * Environment configuration.
@@ -28,7 +29,7 @@ export const PROJECT_OUTPUT_PATH: string = path.resolve(PROJECT_ROOT_PATH, "targ
 export const PROJECT_DIST_PATH: string = path.resolve(PROJECT_OUTPUT_PATH, "dist/");
 
 export const DOTENV_CONFIG_PATH: string = path.resolve(BUILD_CONFIGURATION_PATH, `env/.${ENVIRONMENT}.env`);
-export const TS_CONFIG_PATH: string = path.resolve(PROJECT_ROOT_PATH, `src/tsconfig.json`);
+export const TS_CONFIG_PATH: string = path.resolve(PROJECT_ROOT_PATH, "src/tsconfig.json");
 export const BASE_PROJECT_TEMPLATE_PATH: string = path.resolve(BUILD_CONFIGURATION_PATH, "template/base.hbs");
 export const BASE_PROJECT_FAVICON_PATH: string = path.resolve(BUILD_CONFIGURATION_PATH, "template/favicon.ico");
 
@@ -55,7 +56,7 @@ export const RUNTIME_CONSTANTS = {
   IS_TEST,
   // Build time constants for inlining.
   GColor: asConstantsObject(colors),
-  GTheme: asConstantsObject(theme),
+  GTheme: asConstantsObject(theme)
 };
 
 export const PROVIDE_MODULES_CONFIG = {
@@ -72,7 +73,7 @@ export const PROJECT_CORE_DEPENDENCIES: Array<string> = [
 
 export const PROJECT_INLINE_MODULES: Array<string | RegExp> = [
   /.*\/runtime.*\.js$/, // Webpack runtime support.
-  /.*\/initialization.*\.js$/, // Critical application code for inlining.
+  /.*\/initialization.*\.js$/ // Critical application code for inlining.
 ];
 
 /**

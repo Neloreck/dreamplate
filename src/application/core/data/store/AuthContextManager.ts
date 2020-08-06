@@ -4,7 +4,6 @@ import { log } from "@Macro/log.macro";
 
 import { TOptional } from "@Lib/ts";
 
-
 /**
  * Auth context description.
  */

@@ -1,4 +1,5 @@
 import * as path from "path";
+
 import * as React from "react";
 
 import { RUNTIME_CONSTANTS } from "../../build/config";
@@ -17,7 +18,7 @@ export const JEST_CONFIG = {
   coverageDirectory: "<rootDir>/target/test/coverage",
   coveragePathIgnorePatterns: [
     "/node_modules/"
-   ],
+  ],
   globals: {
     ...RUNTIME_CONSTANTS,
     IS_TEST: true,
@@ -36,7 +37,7 @@ export const JEST_CONFIG = {
   // globalSetup: null,
   // globalTeardown: null,
   moduleDirectories: [
-     "node_modules"
+    "node_modules"
   ],
   moduleFileExtensions: [
     "ts",
@@ -56,7 +57,7 @@ export const JEST_CONFIG = {
     "@Modules/(.*)$": "<rootDir>/src/application/modules/$1",
     "@Test/(.*)$": "<rootDir>/cli/test/$1",
     "\\.(css|scss|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
-      "<rootDir>/src/__test__/mocks/nonJSModule.js",
+      "<rootDir>/src/__test__/mocks/nonJSModule.js"
   },
   // notify: false,
   // notifyMode: "always",
@@ -84,9 +85,9 @@ export const JEST_CONFIG = {
   // testEnvironmentOptions: {},
   // testLocationInResults: false,
   testMatch: [
-     "**/__tests__/**/*.ts?(x)",
-     "**/?(*.)+(spec|test).ts?(x)"
-   ],
+    "**/__tests__/**/*.ts?(x)",
+    "**/?(*.)+(spec|test).ts?(x)"
+  ],
   testPathIgnorePatterns: [
     "/node_modules/"
   ],
@@ -101,7 +102,7 @@ export const JEST_CONFIG = {
     "/node_modules/(?!(lit-element|lit-html)).+\\.js$"
   ],
   // unmockedModulePathPatterns: undefined,
-  verbose: true,
+  verbose: true
   // watchPathIgnorePatterns: [],
   // watchman: true,
 };

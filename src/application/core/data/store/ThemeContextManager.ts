@@ -6,7 +6,6 @@ import { log } from "@Macro/log.macro";
 import { createDefaultTheme, IApplicationTheme, toggleTheme, TThemeType } from "@Lib/theme";
 import { encrypt, getFromLocalStorage, parse, setLocalStorageItem } from "@Lib/utils";
 
-
 /**
  * Theme context description.
  */

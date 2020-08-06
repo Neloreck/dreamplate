@@ -1,4 +1,5 @@
 import * as path from "path";
+
 import { Entry, Output } from "webpack";
 
 import {
@@ -27,8 +28,8 @@ const generateEntryPoints = (definition: IModulesDefinition) => {
 };
 
 export const IO_CONFIG: {
-  ENTRY: Entry | Array<string>,
-  OUTPUT: Output
+  ENTRY: Entry | Array<string>;
+  OUTPUT: Output;
 } = {
   ENTRY: {
     initialization: INITIALIZATION_ROOT_PATH,
