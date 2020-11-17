@@ -1,6 +1,6 @@
 import * as jest from "jest";
 
-import { Run } from "../_cli";
+import { Run } from "../utils";
 
 import { JEST_CONFIG } from "./config/jest.config";
 

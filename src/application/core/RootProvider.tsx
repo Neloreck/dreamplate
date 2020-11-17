@@ -15,21 +15,13 @@ export function RootProvider({
 }): ReactElement {
   return (
     <ReactRouter history={history}>
-
       <JssProvider id={ThemeContextManager.JSS_ID_GENERATION_CONFIG}>
-
         <ThemeProvider theme={theme}>
-
-          <Suspense fallback={<custom-loader width={100} height={100}/>}>
-
+          <Suspense fallback={<div> Loading </div>}>
             { children }
-
           </Suspense>
-
         </ThemeProvider>
-
       </JssProvider>
-
     </ReactRouter>
   );
 }

@@ -3,7 +3,7 @@
   },
   "scripts": {
     "help": {
-      "exec": "ts-node --project ./cli/tsconfig.json ./cli/utils/print_commands_list.ts",
+      "exec": "./cli/utils/print_commands_list.sh",
       "description": "Show help for all custom CLI commands list or only for provided arguments."
     },
     "setup": {

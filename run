@@ -1,3 +1,119 @@
-#bin bash
+#!/bin/bash
+cd "$(dirname "$0")"
 
-npx ts-node --project ./cli/tsconfig.json ./cli/_cli/CliRunner.ts "$@"
+RED="\033[2;31m"
+GREEN="\033[2;32m"
+NC="\033[0m"
+
+echo_green() {
+  echo -e "${GREEN}$1${NC}"
+}
+
+echo_red() {
+  echo -e "${RED}$1${NC}"
+}
+
+echo_separator() {
+  echo ""
+}
+
+check_dependencies() {
+  if ! which "jq" 1>/dev/null 2>&1
+  then
+    echo_red "Failed to run CLI script, 'jq' must be installed"
+    return 1;
+  fi
+
+  if ! which "npm" 1>/dev/null 2>&1
+  then
+    echo_red "Failed to run CLI script, 'npm' must be installed"
+    return 1;
+  fi
+}
+
+check_dependencies || exit 1
+
+EXECUTED=0
+SCRIPT_NAME=${1:-help}
+SCRIPT_BODY=$(jq -c '.scripts."'$SCRIPT_NAME'"' ./cli/cli.json)
+[ -z ${RUN_SCRIPT_CALL_SRC+x} ] && IS_RECURSIVE_CALL=false || IS_RECURSIVE_CALL=true
+
+# Recursion / system signals
+export RUN_SCRIPT_CALL_SRC=1
+trap 'echo_separator; echo_red " - $SCRIPT_NAME interrupted"; exit 130;' INT
+
+# Initial execution information context info
+if [[ $IS_RECURSIVE_CALL == false ]]
+then
+  echo_green "============================================================================="
+  echo_green "= $SCRIPT_NAME @ $(realpath .)"
+  echo_green "============================================================================="
+  echo_separator
+else
+  echo "$(tput setaf 2) * $SCRIPT_NAME $(tput sgr 0)"
+  echo_separator
+fi
+
+# Script execution
+if [[ $SCRIPT_BODY == "null" ]]
+then
+  echo "Script '$SCRIPT_NAME' was not found"
+else
+  if [[ $(jq "type" <<< $SCRIPT_BODY) = '"object"' ]]
+  # Script is configuration object
+  then
+    SCRIPT_BODY=$(jq ".exec" <<< $SCRIPT_BODY)
+
+    if [[ $(jq "type" <<< $SCRIPT_BODY) = '"array"' ]]
+    # Script is complex array
+    then
+      while read -r script;
+      do
+        eval $script && EXECUTED=1 || EXECUTED=0
+
+        if [[ $EXECUTED == 0 ]]
+        then
+          break
+        fi
+      done <<< "$(jq -r '.[]' <<< "$SCRIPT_BODY")"
+    # Script is simple string
+    else
+      SCRIPT_BODY=$(jq -r "." <<< $SCRIPT_BODY)
+      eval $SCRIPT_BODY "${@:2}" && EXECUTED=1
+    fi
+  # Script is plain string
+  else
+    SCRIPT_BODY=$(jq -r "." <<< $SCRIPT_BODY)
+    eval $SCRIPT_BODY "${@:2}" && EXECUTED=1
+  fi
+fi
+
+# Script execution resulting info
+if [[ $IS_RECURSIVE_CALL == false ]]
+then
+  if [[ "$EXECUTED" == 1 ]]
+  then
+    echo_separator
+    echo_green "============================================================================="
+    echo_green "= Successfully finished command '$SCRIPT_NAME'"
+    echo_green "============================================================================="
+    exit 0
+  else
+    echo_separator
+    echo_red "============================================================================"
+    echo_red "= Failed to run script '$SCRIPT_NAME'"
+    echo_red "============================================================================="
+    exit 1
+  fi
+else
+  if [[ "$EXECUTED" == 1 ]]
+  then
+    echo_green " + '$SCRIPT_NAME' successful"
+    echo_separator
+    exit 0
+  else
+    echo_red " - '$SCRIPT_NAME' failed"
+    echo_separator
+    exit 1
+  fi
+fi

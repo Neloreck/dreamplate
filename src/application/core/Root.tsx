@@ -5,10 +5,6 @@ import { hot } from "react-hot-loader/root";
 import { AuthContextManager, RouterContextManager, ThemeContextManager } from "@Core/data/store";
 import { RootProvider } from "@Core/RootProvider";
 
-import "@Lib/components/custom/CustomLoader";
-import "@Lib/components/layout/ApplicationRoot";
-import "@Lib/components/layout/ModalRoot";
-
 /**
  * Application root.
  * Render global router and provider with data shared for all modules.

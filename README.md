@@ -32,11 +32,10 @@
     
 - Custom CLI
 - Webpack, lazy loading, tree shaking, chunks + modular architecture, aliases
-- Web components (lit-element, lit-html)
 - React, dreamstate as contextStore
 - JSS, theming with own context management
 - Typescript (proposal decorators, OOP style, newest features, babel loader)
-- Jest for unit testing (enzyme-react, web-components tests)
+- Jest for unit testing (enzyme-react tests + simple tests)
 - HMR with live editing
 - HBS (template, global styles)
 

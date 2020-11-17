@@ -1,5 +1,3 @@
-import "@Test/utils/mock_custom_elements";
-
 import { shallow } from "enzyme";
 
 import { createMockClasses, createMockContext } from "@Lib/testing";

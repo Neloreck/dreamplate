@@ -114,14 +114,6 @@ export const PLUGIN_CONFIG: {
             })/`
           )
         },
-        "core/components": {
-          minSize: 5_000,
-          name: createChunkGroupNameGenerator(),
-          chunks: "initial",
-          priority: 90,
-          reuseExistingChunk: true,
-          test: /(\/lib\/components)|(\/node_modules\/lit-.*)/
-        },
         "core/api": {
           priority: 80,
           name: createChunkGroupNameGenerator(),

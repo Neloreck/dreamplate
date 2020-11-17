@@ -1,10 +1,6 @@
-
-// Constants.
 import type * as colors from "@Build/globals/colors";
 import type * as theme from "@Build/globals/theme";
 import type * as GlobalReact from "react";
-
-import { ICustomIntrinsicElements } from "@Lib/components/types";
 
 declare global {
 
@@ -32,14 +28,4 @@ declare global {
    * Global colors definitions for build time evaluation.
    */
   const GTheme: typeof theme;
-
-  /**
-   * Declare JSX elements to globals.
-   */
-  namespace JSX {
-
-    // eslint-disable-next-line @typescript-eslint/interface-name-prefix
-    interface IntrinsicElements extends ICustomIntrinsicElements {
-    }
-  }
 }

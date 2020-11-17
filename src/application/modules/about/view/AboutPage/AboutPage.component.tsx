@@ -1,12 +1,24 @@
 import { useManager } from "dreamstate";
 import { ReactElement, useCallback } from "react";
+import { createUseStyles } from "react-jss";
+
+import { IApplicationTheme } from "@Lib/theme";
 
 import { RouterContextManager } from "@Core/data/store";
 import { MainHeader } from "@Core/view/components/MainHeader";
 
-import { useStyles } from "./AboutPage.style";
-
-import "@Lib/components/custom/CustomButton";
+export const useStyles = createUseStyles(({ palette }: IApplicationTheme) => ({
+  content: {
+    alignItems: "center",
+    alignSelf: "normal",
+    backgroundSize: "cover",
+    display: "flex",
+    flexDirection: "column",
+    flexGrow: 1,
+    justifyContent: "center",
+    overflowY: "auto"
+  }
+}));
 
 export function AboutPage({
   classes: { content } = useStyles(),
@@ -16,19 +28,15 @@ export function AboutPage({
 
   return (
     <>
-
       <MainHeader/>
 
       <main className={content}>
-
         About page.
 
-        <custom-button onClick={onHomeNavigated}>
+        <button onClick={onHomeNavigated}>
           Go home
-        </custom-button>
-
+        </button>
       </main>
-
     </>
   );
 }

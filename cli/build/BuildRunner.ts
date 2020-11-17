@@ -2,7 +2,7 @@ import { green, red } from "colors";
 import { Compiler } from "webpack";
 import * as Webpack from "webpack";
 
-import { Run } from "../_cli";
+import { Run } from "../utils";
 
 @Run()
 export class BuildRunner {

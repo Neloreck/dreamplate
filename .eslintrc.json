@@ -142,11 +142,6 @@
             "pattern": "@Modules/**",
             "group": "external",
             "position": "after"
-          },
-          {
-            "pattern": "@Lib/components/**",
-            "group": "index",
-            "position": "after"
           }
         ]
       }

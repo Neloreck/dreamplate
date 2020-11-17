@@ -42,24 +42,6 @@ export const BABEL_CONFIG = {
     "react-hot-loader/babel",
     "@babel/plugin-transform-react-constant-elements",
     [ "@babel/plugin-proposal-decorators", { "decoratorsBeforeExport": true } ],
-    [ "@babel/plugin-proposal-class-properties", { "loose": true } ],
-    // Minify lit-elements html/css tags.
-    [
-      "template-html-minifier",
-      {
-        modules: {
-          "lit-html": [ "html" ],
-          "lit-element": [ "html", { "name": "css", "encapsulation": "style" } ]
-        },
-        strictCSS: true,
-        htmlMinifier: {
-          collapseWhitespace: true,
-          conservativeCollapse: true,
-          removeComments: true,
-          caseSensitive: true,
-          minifyCSS: true
-        }
-      }
-    ]
+    [ "@babel/plugin-proposal-class-properties", { "loose": true } ]
   ]
 };

@@ -1,13 +1,30 @@
 import { useManager } from "dreamstate";
 import { ReactElement, useCallback } from "react";
+import { createUseStyles } from "react-jss";
+
+import { IApplicationTheme } from "@Lib/theme";
 
 import { RouterContextManager } from "@Core/data/store";
 import { MainHeader } from "@Core/view/components/MainHeader";
 
-import { useStyles } from "./ErrorPage.style";
-
-import "@Lib/components/custom/CustomButton";
-import "@Lib/components/custom/CustomCard";
+export const useStyles = createUseStyles(({ palette }: IApplicationTheme) => ({
+  content: {
+    alignItems: "center",
+    alignSelf: "normal",
+    backgroundColor: palette.background.default,
+    backgroundSize: "cover",
+    display: "flex",
+    flexDirection: "column",
+    flexGrow: 1,
+    flexWrap: "nowrap",
+    justifyContent: "center",
+    overflowY: "auto",
+    transitionDuration: "500ms"
+  },
+  labelCard: {
+    backgroundColor: palette.secondary.light
+  }
+}));
 
 export function ErrorPage({
   classes: { content, labelCard } = useStyles(),
@@ -17,21 +34,15 @@ export function ErrorPage({
 
   return (
     <>
-
       <MainHeader/>
 
       <main className={content}>
-
-        <custom-card class={labelCard}>
+        <div className={labelCard}>
           { IS_DEV ? "Page was not found or current path is not serving by dev server." : "Page was not found." }
-        </custom-card>
+        </div>
 
-        <custom-button onClick={onHomeNavigated}>
-          Go Home
-        </custom-button>
-
+        <button onClick={onHomeNavigated}> Go Home </button>
       </main>
-
     </>
   );
 }
