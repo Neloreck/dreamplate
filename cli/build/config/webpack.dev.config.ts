@@ -1,4 +1,4 @@
-import { Options } from "webpack";
+import { WebpackOptionsNormalized } from "webpack";
 
 import {
   BACKEND_PUBLIC_PATH,
@@ -30,9 +30,9 @@ const createFallbackRewrites = (definition: IModulesDefinition) => {
 };
 
 export const DEV_CONFIG: {
-  DEV_SERVER: object;
-  STATS: Options.Stats;
-  DEV_TOOL: Options.Devtool;
+  DEV_SERVER: WebpackOptionsNormalized["devServer"];
+  STATS: WebpackOptionsNormalized["stats"];
+  DEV_TOOL: WebpackOptionsNormalized["devtool"];
 } = {
   DEV_SERVER: {
     clientLogLevel: "error",

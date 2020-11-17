@@ -1,6 +1,6 @@
 import * as path from "path";
 
-import { Entry, Output } from "webpack";
+import { WebpackOptionsNormalized } from "webpack";
 
 import {
   BACKEND_PUBLIC_PATH,
@@ -28,18 +28,20 @@ const generateEntryPoints = (definition: IModulesDefinition) => {
 };
 
 export const IO_CONFIG: {
-  ENTRY: Entry | Array<string>;
-  OUTPUT: Output;
+  ENTRY: WebpackOptionsNormalized["entry"];
+  OUTPUT: WebpackOptionsNormalized["output"];
 } = {
   ENTRY: {
-    initialization: INITIALIZATION_ROOT_PATH,
+    initialization: {
+      import: [ INITIALIZATION_ROOT_PATH ]
+    },
     ...generateEntryPoints(MODULES_CONFIG)
   },
   OUTPUT: {
     chunkFilename: "js/[name]_[chunkhash:8].js",
-    filename: "js/[name]_[hash:8].js",
+    filename: "js/[name]_[fullhash].js",
     path: PROJECT_DIST_PATH,
     publicPath: BACKEND_PUBLIC_PATH,
-    sourceMapFilename: "source_maps/[filebase].map[query]"
+    sourceMapFilename: "source_maps/[base].map[query]"
   }
 };

@@ -1,4 +1,4 @@
-import { DefinePlugin, Options, Plugin, ProvidePlugin } from "webpack";
+import { DefinePlugin, WebpackOptionsNormalized, ProvidePlugin } from "webpack";
 
 import { APPLICATION_ROOT, MODAL_ROOT } from "../build_constants";
 
@@ -20,18 +20,12 @@ const TerserPlugin = require("terser-webpack-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const StatsWriterPlugin = require("webpack-stats-plugin").StatsWriterPlugin;
 
-const createChunkGroupNameGenerator = () =>
-  IS_PRODUCTION
-    ? (module: any, chunks: any, cacheGroupKey: string): string => cacheGroupKey // Rely on hash there.
-    : true;
-
 const createChunkCacheGroups = (definitions: Array<IModuleDefinition>) => {
   const entries: { [index: string]: any } = {};
 
   for (const it of definitions) {
     entries[`modules/${it.name}/l`] = ({
       maxSize: 750_000,
-      name: createChunkGroupNameGenerator(),
       priority: 60,
       reuseExistingChunk: true,
       test: new RegExp(`/modules/${it.name}/node_modules/`)
@@ -39,7 +33,6 @@ const createChunkCacheGroups = (definitions: Array<IModuleDefinition>) => {
 
     entries[`modules/${it.name}/s`] = ({
       maxSize: 250_000,
-      name: createChunkGroupNameGenerator(),
       priority: 30,
       reuseExistingChunk: true,
       test: new RegExp(`/modules/${it.name}/`)
@@ -75,8 +68,8 @@ const createHTMLEntry = (definition: IModuleDefinition) => (
 );
 
 export const PLUGIN_CONFIG: {
-  PLUGINS: Array<Plugin>;
-  OPTIMIZATION: Options.Optimization;
+  PLUGINS: WebpackOptionsNormalized["plugins"];
+  OPTIMIZATION: WebpackOptionsNormalized["optimization"];
 } = {
   OPTIMIZATION: {
     minimizer: [
@@ -97,14 +90,13 @@ export const PLUGIN_CONFIG: {
         }
       })
     ],
-    moduleIds: "hashed",
-    noEmitOnErrors: IS_PRODUCTION,
+    moduleIds: "deterministic",
+    emitOnErrors: !IS_PRODUCTION,
     runtimeChunk: "single",
     splitChunks: {
       cacheGroups: {
         "core/lib": {
           maxSize: 500_000,
-          name: createChunkGroupNameGenerator(),
           priority: 100,
           reuseExistingChunk: true,
           test: new RegExp(
@@ -116,13 +108,11 @@ export const PLUGIN_CONFIG: {
         },
         "core/api": {
           priority: 80,
-          name: createChunkGroupNameGenerator(),
           reuseExistingChunk: false,
           test: /\/src\/api/
         },
         "core/vendors": {
           priority: 70,
-          name: createChunkGroupNameGenerator(),
           reuseExistingChunk: false,
           test: /\/src\/node_modules\//
         },

@@ -1,6 +1,6 @@
 import * as path from "path";
 
-import { Module, Resolve } from "webpack";
+import { WebpackOptionsNormalized } from "webpack";
 
 import * as packageConfig from "../../../package.json";
 
@@ -24,8 +24,8 @@ const generateGlobalDependenciesAlias = (): IAliasDescription => {
 };
 
 export const MODULE_CONFIG: {
-  RESOLVE: Resolve;
-  MODULE: Module;
+  RESOLVE: WebpackOptionsNormalized["resolve"];
+  MODULE: WebpackOptionsNormalized["module"];
 } = {
   MODULE: {
     rules: [
@@ -44,15 +44,6 @@ export const MODULE_CONFIG: {
         loader: "babel-loader",
         options: BABEL_CONFIG,
         test: /\.(js|jsx|ts|tsx)$/
-      },
-      // Fonts.
-      {
-        loader: "url-loader",
-        query: {
-          limit: 512,
-          name: "fonts/[name].[ext]"
-        },
-        test: /\.(woff|woff2|eot|ttf)$/
       },
       // HBS.
       {
