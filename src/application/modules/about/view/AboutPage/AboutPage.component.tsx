@@ -7,8 +7,11 @@ import { IApplicationTheme } from "@Lib/theme";
 import { RouterContextManager } from "@Core/data/store";
 import { MainHeader } from "@Core/view/components/MainHeader";
 
-export const useStyles = createUseStyles(({ palette }: IApplicationTheme) => ({
+export const useStyles = createUseStyles(({ spacing }: IApplicationTheme) => ({
   content: {
+    "& > button": {
+      margin: spacing.unit * 2
+    },
     alignItems: "center",
     alignSelf: "normal",
     backgroundSize: "cover",
@@ -16,7 +19,8 @@ export const useStyles = createUseStyles(({ palette }: IApplicationTheme) => ({
     flexDirection: "column",
     flexGrow: 1,
     justifyContent: "center",
-    overflowY: "auto"
+    overflowY: "auto",
+    padding: spacing.unit * 2
   }
 }));
 

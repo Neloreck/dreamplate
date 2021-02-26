@@ -4,14 +4,13 @@ exports[`Main header component rendering. Should match snapshot.: Default HOC la
 <header
   className="root"
 >
-  <custom-heading
-    size={4}
-    text="Dreamplate"
-  />
-  <custom-button
+  <h2>
+     Dreamplate 
+  </h2>
+  <button
     onClick={[Function]}
   >
      Toggle 
-  </custom-button>
+  </button>
 </header>
 `;

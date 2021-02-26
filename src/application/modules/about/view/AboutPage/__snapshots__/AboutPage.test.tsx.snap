@@ -7,11 +7,11 @@ exports[`About page component rendering. Should match HOC snapshot.: Default HOC
     className="content"
   >
     About page.
-    <custom-button
+    <button
       onClick={[Function]}
     >
       Go home
-    </custom-button>
+    </button>
   </main>
 </Fragment>
 `;

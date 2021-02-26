@@ -1,12 +1,12 @@
-
 import { shallow } from "enzyme";
+import { Classes } from "jss";
 
 import { createMockClasses, createMockContext } from "@Lib/testing";
 
 import { ErrorPage } from "./ErrorPage.component";
 
 describe("Error page component rendering.", () => {
-  const classes: Record<string, string> = createMockClasses();
+  const classes: Classes = createMockClasses();
 
   it("Should match snapshot.", () => {
     const wrapper = shallow(<ErrorPage classes={classes} routerContext={createMockContext()}/>);

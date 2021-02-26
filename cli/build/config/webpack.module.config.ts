@@ -25,7 +25,7 @@ const generateGlobalDependenciesAlias = (): IAliasDescription => {
 
 export const MODULE_CONFIG: {
   RESOLVE: WebpackOptionsNormalized["resolve"];
-  MODULE: WebpackOptionsNormalized["module"];
+  MODULE: Partial<WebpackOptionsNormalized["module"]>;
 } = {
   MODULE: {
     rules: [

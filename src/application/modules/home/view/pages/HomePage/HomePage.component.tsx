@@ -10,13 +10,15 @@ import { RouterContextManager } from "@Core/data/store";
 import { MainHeader } from "@Core/view/components/MainHeader";
 
 export const useStyles = createUseStyles(({ palette, spacing }: IApplicationTheme) => ({
-  cardLink: {
+  link: {
     "& a": {
       color: palette.text.primary
     },
     backgroundColor: palette.background.paper,
     display: "flex",
     justifyContent: "center",
+    margin: spacing.unit * 2,
+    padding: spacing.unit * 2,
     minWidth: spacing.unit * 15
   },
   content: {
@@ -26,9 +28,10 @@ export const useStyles = createUseStyles(({ palette, spacing }: IApplicationThem
     flexDirection: "column",
     flexGrow: 1,
     justifyContent: "center",
+    padding: spacing.unit * 2,
     overflowY: "auto"
   },
-  linkCard: {
+  linksList: {
     [down("sm")]: {
       flexDirection: "column"
     },
@@ -51,7 +54,7 @@ const renderReferenceCard = (className: string, label: string, href: string): Re
 );
 
 export function HomePage({
-  classes: { content, cardLink, linkCard } = useStyles(),
+  classes: { content, link, linksList } = useStyles(),
   routerContext: { routingActions: { hardPush } } = useManager(RouterContextManager)
 }): ReactElement {
   const onAboutNavigated = useCallback(() => hardPush("/about"), []);
@@ -62,17 +65,16 @@ export function HomePage({
 
       <main className={content}>
 
-        <div className={linkCard}>
-          { renderReferenceCard(cardLink, "React", "https://reactjs.org/") }
-          { renderReferenceCard(cardLink, "Typescript", "https://www.typescriptlang.org/") }
-          { renderReferenceCard(cardLink, "DreamState", "https://github.com/Neloreck/dreamstate/") }
+        <div className={linksList}>
+          { renderReferenceCard(link, "React", "https://reactjs.org/") }
+          { renderReferenceCard(link, "Typescript", "https://www.typescriptlang.org/") }
+          { renderReferenceCard(link, "DreamState", "https://github.com/Neloreck/dreamstate/") }
         </div>
 
         <button onClick={onAboutNavigated}>
           About
         </button>
       </main>
-
     </>
   );
 }

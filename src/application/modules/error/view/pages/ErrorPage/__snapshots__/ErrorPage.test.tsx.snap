@@ -6,16 +6,16 @@ exports[`Error page component rendering. Should match snapshot.: Default HOC lay
   <main
     className="content"
   >
-    <custom-card
-      class="labelCard"
+    <div
+      className="labelCard"
     >
       Page was not found.
-    </custom-card>
-    <custom-button
+    </div>
+    <button
       onClick={[Function]}
     >
-      Go Home
-    </custom-button>
+       Go Home 
+    </button>
   </main>
 </Fragment>
 `;

@@ -7,10 +7,10 @@ exports[`Home page component rendering. Should match snapshot.: Default HOC layo
     className="content"
   >
     <div
-      className="linkCard"
+      className="linksList"
     >
-      <custom-card
-        class="cardLink"
+      <div
+        className="link"
       >
         <a
           href="https://reactjs.org/"
@@ -19,9 +19,9 @@ exports[`Home page component rendering. Should match snapshot.: Default HOC layo
         >
           React
         </a>
-      </custom-card>
-      <custom-card
-        class="cardLink"
+      </div>
+      <div
+        className="link"
       >
         <a
           href="https://www.typescriptlang.org/"
@@ -30,9 +30,9 @@ exports[`Home page component rendering. Should match snapshot.: Default HOC layo
         >
           Typescript
         </a>
-      </custom-card>
-      <custom-card
-        class="cardLink"
+      </div>
+      <div
+        className="link"
       >
         <a
           href="https://github.com/Neloreck/dreamstate/"
@@ -41,14 +41,13 @@ exports[`Home page component rendering. Should match snapshot.: Default HOC layo
         >
           DreamState
         </a>
-      </custom-card>
+      </div>
     </div>
-    <custom-button
-      color="grayscale"
+    <button
       onClick={[Function]}
     >
       About
-    </custom-button>
+    </button>
   </main>
 </Fragment>
 `;

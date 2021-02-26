@@ -1,4 +1,5 @@
 import { mount, shallow, ShallowWrapper } from "enzyme";
+import { Classes } from "jss";
 import { createElement, ReactElement } from "react";
 import { JssProvider, SheetsRegistry, ThemeProvider } from "react-jss";
 
@@ -7,7 +8,7 @@ import { createDefaultTheme } from "@Lib/theme";
 /**
  * Create mock classes object for testing.
  */
-export function createMockClasses(): { [index: string]: string } {
+export function createMockClasses(): Classes {
   return new Proxy({}, { get: (target: {}, property: string): string => property });
 }
 

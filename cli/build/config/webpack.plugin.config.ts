@@ -53,7 +53,7 @@ const createHTMLEntry = (definition: IModuleDefinition) => (
     },
     favicon: BASE_PROJECT_FAVICON_PATH,
     filename: `html/${definition.name}.html`,
-    inject: true,
+    inject: "body",
     minify: {
       collapseWhitespace: IS_PRODUCTION,
       minifyCSS: true,
