@@ -101,7 +101,7 @@ then
   else
     echo_separator
     echo_red "============================================================================"
-    echo_red "= Failed to run script '$SCRIPT_NAME'"
+    echo_red "= Script execution was not successful '$SCRIPT_NAME'"
     echo_red "============================================================================="
     exit 1
   fi

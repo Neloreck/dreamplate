@@ -5,6 +5,12 @@
 
 import { log } from "@Macro/log.macro";
 
+import { IStringIndexed, TAnyObject } from "@Lib/ts";
+
+interface IAugmentedWindow extends Window {
+  exposed?: IStringIndexed<unknown>;
+}
+
 /**
  * Measure method execution time and log execution info.
  */
@@ -35,8 +41,7 @@ export function DebugMeasure(): MethodDecorator {
     };
 
     if (descriptor.value) {
-      // @ts-ignore
-      descriptor.value = measureFunction;
+      (descriptor.value as any) = measureFunction;
     } else {
       descriptor.get = measureFunction;
     }
@@ -49,15 +54,15 @@ export function DebugMeasure(): MethodDecorator {
  * Expose class to a window for temporary debugging.
  */
 export function DebugExpose(name?: string): ClassDecorator {
-  return (descriptor: object): any => {
+  return (descriptor: TAnyObject): any => {
     /* <production> */
     throw new Error("Debugging utils are only available for DEV environment.");
     /* </production> */
 
-    // @ts-ignore
-    if (!window.exposed) {
-      // @ts-ignore
-      window.exposed = {};
+    const exposingTarget: IAugmentedWindow = window as IAugmentedWindow;
+
+    if (!exposingTarget.exposed) {
+      exposingTarget.exposed = {};
     }
 
     return {
@@ -66,10 +71,9 @@ export function DebugExpose(name?: string): ClassDecorator {
         class extends target {
 
           public constructor(...params: Array<any>) {
-            super(params);
+            super(...params);
 
-            // @ts-ignore
-            window.exposed[name || target.name] = this;
+            exposingTarget.exposed![name || target.name] = this;
           }
 
         }

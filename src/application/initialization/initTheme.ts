@@ -5,7 +5,7 @@ import { TOptional } from "@Lib/ts";
  * Try to parse local storage-encrypted configs (if it is enabled).
  * Apply theme to body.
  */
-export const initTheme = () => {
+export const initTheme = (): void => {
   const rawStr: TOptional<string> = localStorage.getItem(btoa("theme_type")) || null;
   const bodyStyle: CSSStyleDeclaration = document.body.style;
 

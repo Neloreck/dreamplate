@@ -7,7 +7,7 @@ import { Run } from "../utils";
 @Run()
 export class BuildRunner {
 
-  public static readonly STATS_PRINT_CONFIG: object = { colors: true };
+  public static readonly STATS_PRINT_CONFIG: Record<string, any> = { colors: true };
 
   public static main(args: Array<string>): void {
     /**

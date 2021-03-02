@@ -1,8 +1,9 @@
 import { ERequestMethod } from "@Lib/api/types";
+import { TAnyObject } from "@Lib/ts";
 
 import { coreApiConfig } from "@Api/destination/core/coreApiConfig";
 
-type TRequestBody = object | URLSearchParams;
+type TRequestBody = TAnyObject | URLSearchParams;
 
 /**
  * Generic request method with project scoped transformations.
@@ -11,9 +12,9 @@ type TRequestBody = object | URLSearchParams;
 async function doRequest(
   method: ERequestMethod,
   mapping: string,
-  body?: object | URLSearchParams,
+  body?: TAnyObject | URLSearchParams,
   headers?: Headers
-): Promise<object> {
+): Promise<TAnyObject> {
   const requestBody: undefined | string | URLSearchParams = body instanceof URLSearchParams
     ? body
     : body && JSON.stringify(body);
@@ -43,14 +44,14 @@ async function doRequest(
   }
 }
 
-export const getRequest = async (mapping: string, urlParams?: {}, headers?: Headers): Promise<object> =>
+export const getRequest = async (mapping: string, urlParams?: TAnyObject, headers?: Headers): Promise<TAnyObject> =>
   await doRequest(ERequestMethod.GET, mapping, urlParams, headers);
 
-export const postRequest = async (mapping: string, body: TRequestBody, headers?: Headers): Promise<object> =>
+export const postRequest = async (mapping: string, body: TRequestBody, headers?: Headers): Promise<TAnyObject> =>
   await doRequest(ERequestMethod.POST, mapping, body, headers);
 
-export const deleteRequest = async (mapping: string, body: TRequestBody, headers?: Headers): Promise<object> =>
+export const deleteRequest = async (mapping: string, body: TRequestBody, headers?: Headers): Promise<TAnyObject> =>
   await doRequest(ERequestMethod.DELETE, mapping, body, headers);
 
-export const putRequest = async (mapping: string, body: TRequestBody, headers?: Headers): Promise<object> =>
+export const putRequest = async (mapping: string, body: TRequestBody, headers?: Headers): Promise<TAnyObject> =>
   await doRequest(ERequestMethod.PUT, mapping, body, headers);

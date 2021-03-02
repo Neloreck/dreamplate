@@ -1,7 +1,9 @@
+import { TAnyObject } from "@Lib/ts";
+
 /**
  * Create mocked context nested data/actions object.
  */
-export function createMockContextProperty(dataKey: string) {
+export function createMockContextProperty<T>(dataKey: string): T {
   return new Proxy(
     {},
     {
@@ -14,7 +16,7 @@ export function createMockContextProperty(dataKey: string) {
         }
       }
     }
-  );
+  ) as T;
 }
 
 /**
@@ -23,6 +25,6 @@ export function createMockContextProperty(dataKey: string) {
 export function createMockContext<T>(): T {
   return new Proxy(
     {},
-    { get: (target: {}, property: string) => createMockContextProperty(property) }
+    { get: (target: TAnyObject, property: string) => createMockContextProperty(property) }
   ) as T;
 }
