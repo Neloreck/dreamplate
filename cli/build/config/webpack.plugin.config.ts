@@ -3,11 +3,23 @@ import { DefinePlugin, WebpackOptionsNormalized, ProvidePlugin } from "webpack";
 import { APPLICATION_ROOT, MODAL_ROOT } from "../build_constants";
 
 import {
-  BASE_PROJECT_FAVICON_PATH, BASE_PROJECT_STATIC_FILES, BASE_PROJECT_TEMPLATE_PATH, DOTENV_CONFIG_PATH, ENVIRONMENT,
-  IS_PRODUCTION, MODULES_CONFIG, PROJECT_CORE_DEPENDENCIES, PROJECT_INLINE_MODULES, PROVIDE_MODULES_CONFIG,
-  REPORT_BUNDLE_ANALYZER_PATH, REPORT_BUNDLE_STATS_PATH, RUNTIME_CONSTANTS, TS_CONFIG_PATH
+  BASE_PROJECT_FAVICON_PATH,
+  BASE_PROJECT_STATIC_FILES,
+  BASE_PROJECT_TEMPLATE_PATH,
+  DOTENV_CONFIG_PATH,
+  ENVIRONMENT,
+  IS_PRODUCTION,
+  MODULES_CONFIG,
+  PROJECT_CORE_DEPENDENCIES,
+  PROJECT_INLINE_MODULES, PROJECT_ROOT_PATH,
+  PROVIDE_MODULES_CONFIG,
+  REPORT_BUNDLE_ANALYZER_PATH,
+  REPORT_BUNDLE_STATS_PATH,
+  RUNTIME_CONSTANTS,
+  TS_CONFIG_PATH
 } from "./webpack.constants";
 import { IModuleDefinition } from "./webpack.types";
+import * as path from "path";
 
 // CJS way to import most plugins.
 const CopyWebpackPlugin = require("copy-webpack-plugin");
@@ -74,7 +86,6 @@ export const PLUGIN_CONFIG: {
   OPTIMIZATION: {
     minimizer: [
       new TerserPlugin({
-        sourceMap: false,
         terserOptions: {
           compress: {
             "drop_console": IS_PRODUCTION,
@@ -130,12 +141,20 @@ export const PLUGIN_CONFIG: {
     ...MODULES_CONFIG.modules.map(createHTMLEntry),
     new DuplicatePackageCheckerPlugin({ verbose: true }),
     new DotEnv({ path: DOTENV_CONFIG_PATH }),
-    new DefinePlugin(RUNTIME_CONSTANTS as {}),
+    new DefinePlugin(RUNTIME_CONSTANTS),
     new ProvidePlugin(PROVIDE_MODULES_CONFIG),
-    new CopyWebpackPlugin(BASE_PROJECT_STATIC_FILES.map((it: string) => ({ from: it, to: "." }))),
+    new CopyWebpackPlugin({
+      patterns: BASE_PROJECT_STATIC_FILES.map((it: string) => ({ from: it, to: "." }))
+    }),
     new ForkTsCheckerWebpackPlugin({
-      eslint: true,
-      tsconfig: TS_CONFIG_PATH
+      eslint: {
+        enabled: true,
+        files: path.resolve(PROJECT_ROOT_PATH, "./src/**/*.{ts,tsx,js,jsx}")
+      },
+      typescript: {
+        enabled: true,
+        configFile: TS_CONFIG_PATH
+      }
     }),
     // Async scripts load and inlining.
     new ScriptExtHtmlPlugin({ defaultAttribute: "async", inline: PROJECT_INLINE_MODULES }),

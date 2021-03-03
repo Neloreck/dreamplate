@@ -16,12 +16,13 @@ const PRODUCTION_REGEX_PATTERN: RegExp = new RegExp("[\\t ]*\\/\\* ?" +
 /**
  * Strip code blocks in some project modes.
  */
-function StripBlockLoader(content: string): string {
+function StripBlockLoader(
+  this: { cacheable?: (isIt: boolean) => void },
+  content: string
+): string {
   content = content.replace(IS_PRODUCTION ? DEV_REGEX_PATTERN : PRODUCTION_REGEX_PATTERN, "");
 
-  // @ts-ignore
   if (this.cacheable) {
-    // @ts-ignore
     this.cacheable(true);
   }
 
