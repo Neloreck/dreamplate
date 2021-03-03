@@ -1,4 +1,4 @@
-import { ComponentType, createElement } from "react";
+import { ComponentType, createElement, ReactElement } from "react";
 import { render } from "react-dom";
 
 import { applicationConfig } from "@Core/data/configs";
@@ -10,10 +10,10 @@ const RENDER_TARGET: HTMLElement = applicationConfig.targetElements.applicationR
  * Render application root node wrapped with global context based on current environment.
  */
 export function renderRoot(children: ComponentType, wrapper?: ComponentType): void {
-  const content = createElement(HotRoot, {}, createElement(children));
+  const content: ReactElement = createElement(children);
 
   render(
-    wrapper ? createElement(wrapper, {}, content) : content,
+    createElement(HotRoot, {}, wrapper ? createElement(wrapper, {}, content) : content),
     RENDER_TARGET
   );
 }
