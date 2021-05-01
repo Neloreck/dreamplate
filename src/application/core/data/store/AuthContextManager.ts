@@ -31,4 +31,8 @@ export class AuthContextManager extends ContextManager<IAuthContext> {
     log.info("Auth provision started @", user.value);
   }
 
+  protected onProvisionEnded(): void {
+    log.info("Auth provision ended");
+  }
+
 }
