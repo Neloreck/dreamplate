@@ -37,14 +37,14 @@ const createChunkCacheGroups = (definitions: Array<IModuleDefinition>) => {
 
   for (const it of definitions) {
     entries[`modules/${it.name}/l`] = ({
-      maxSize: 750_000,
+      maxSize: 750 * 1000,
       priority: 60,
       reuseExistingChunk: true,
       test: new RegExp(`/modules/${it.name}/node_modules/`)
     });
 
     entries[`modules/${it.name}/s`] = ({
-      maxSize: 250_000,
+      maxSize: 250 * 1000,
       priority: 30,
       reuseExistingChunk: true,
       test: new RegExp(`/modules/${it.name}/`)
@@ -107,7 +107,7 @@ export const PLUGIN_CONFIG: {
     splitChunks: {
       cacheGroups: {
         "core/lib": {
-          maxSize: 500_000,
+          maxSize: 500 * 1000,
           priority: 100,
           reuseExistingChunk: true,
           test: new RegExp(
@@ -132,8 +132,8 @@ export const PLUGIN_CONFIG: {
       chunks: "all",
       maxAsyncRequests: 50,
       maxInitialRequests: 25,
-      maxSize: 300_000,
-      minSize: 5_000
+      maxSize: 300 * 1000,
+      minSize: 5 * 1000
     }
   },
   PLUGINS: [

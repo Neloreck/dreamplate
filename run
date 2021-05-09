@@ -46,7 +46,7 @@ trap 'echo_separator; echo_red " - $SCRIPT_NAME interrupted"; exit 130;' INT
 if [[ $IS_RECURSIVE_CALL == false ]]
 then
   echo_green "============================================================================="
-  echo_green "= $SCRIPT_NAME @ $(realpath .)"
+  echo_green "= $SCRIPT_NAME"
   echo_green "============================================================================="
   echo_separator
 else
