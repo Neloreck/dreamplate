@@ -1,5 +1,5 @@
 import { renderRoot } from "@Core/view/utils";
 
-import { HotAboutRouter } from "@Modules/about/AboutRouter";
+import { AboutRouter } from "@Modules/about/AboutRouter";
 
-renderRoot(HotAboutRouter);
+renderRoot(AboutRouter);

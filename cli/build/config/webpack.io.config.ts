@@ -5,7 +5,6 @@ import { WebpackOptionsNormalized } from "webpack";
 import {
   BACKEND_PUBLIC_PATH,
   INITIALIZATION_ROOT_PATH,
-  IS_PRODUCTION,
   MODULES_CONFIG,
   MODULES_ROOT_PATH,
   PROJECT_DIST_PATH
@@ -21,7 +20,7 @@ const generateEntryPoints = (definition: IModulesDefinition) => {
   for (const entry of definition.modules) {
     const entryPath: string = path.resolve(MODULES_ROOT_PATH, entry.entry);
 
-    entries[entry.name] = [ entryPath ].concat(IS_PRODUCTION ? [] : [ "react-hot-loader/patch" ]);
+    entries[entry.name] = [ entryPath ];
   }
 
   return entries;

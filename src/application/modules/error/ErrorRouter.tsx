@@ -1,5 +1,4 @@
 import { ReactElement } from "react";
-import { hot } from "react-hot-loader/root";
 import { Route, Switch } from "react-router";
 
 import { DefaultErrorFallback } from "@Core/view/layouts";
@@ -17,5 +16,3 @@ export function ErrorRouter(): ReactElement {
     </Switch>
   );
 }
-
-export const HotErrorRouter: typeof ErrorRouter = hot(ErrorRouter);

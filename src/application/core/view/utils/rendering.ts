@@ -2,7 +2,7 @@ import { ComponentType, createElement, ReactElement } from "react";
 import { render } from "react-dom";
 
 import { applicationConfig } from "@Core/data/configs";
-import { HotRoot } from "@Core/Root";
+import { Root } from "@Core/Root";
 
 const RENDER_TARGET: HTMLElement = applicationConfig.targetElements.applicationRoot;
 
@@ -13,7 +13,7 @@ export function renderRoot(children: ComponentType, wrapper?: ComponentType): vo
   const content: ReactElement = createElement(children);
 
   render(
-    createElement(HotRoot, {}, wrapper ? createElement(wrapper, {}, content) : content),
+    createElement(Root, {}, wrapper ? createElement(wrapper, {}, content) : content),
     RENDER_TARGET
   );
 }

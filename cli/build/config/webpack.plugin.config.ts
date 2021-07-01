@@ -24,6 +24,7 @@ import {
 import { IModuleDefinition } from "./webpack.types";
 
 // CJS way to import most plugins.
+const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const DotEnv = require("dotenv-webpack");
 const DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack-plugin");
@@ -175,29 +176,33 @@ export const PLUGIN_CONFIG: {
     /**
      * Add analyzers if ENV param is enabled.
      */
-  ].concat(ANALYZE_ENABLED ? [
-    new BundleAnalyzerPlugin({
-      analyzerMode: "static",
-      defaultSizes: "gzip",
-      openAnalyzer: false,
-      reportFilename: REPORT_BUNDLE_ANALYZER_PATH
-    }),
-    new StatsWriterPlugin({
-      filename: REPORT_BUNDLE_STATS_PATH,
-      stats: {
-        all: true,
-        assets: true,
-        assetsByChunkName: true,
-        children: false,
-        chunks: false,
-        entrypoints: true,
-        hash: true,
-        logging: false,
-        modules: false,
-        namedChunkGroups: false,
-        outputPath: false,
-        publicPath: false,
-        version: false
-      }
-    }) ]: [])
+  ].concat(IS_PRODUCTION ? [
+  ] :[
+    new ReactRefreshWebpackPlugin()
+  ])
+    .concat(ANALYZE_ENABLED ? [
+      new BundleAnalyzerPlugin({
+        analyzerMode: "static",
+        defaultSizes: "gzip",
+        openAnalyzer: false,
+        reportFilename: REPORT_BUNDLE_ANALYZER_PATH
+      }),
+      new StatsWriterPlugin({
+        filename: REPORT_BUNDLE_STATS_PATH,
+        stats: {
+          all: true,
+          assets: true,
+          assetsByChunkName: true,
+          children: false,
+          chunks: false,
+          entrypoints: true,
+          hash: true,
+          logging: false,
+          modules: false,
+          namedChunkGroups: false,
+          outputPath: false,
+          publicPath: false,
+          version: false
+        }
+      }) ]: [])
 };

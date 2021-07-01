@@ -39,7 +39,7 @@ export const BABEL_CONFIG = {
       }
     ],
     "macros",
-    "react-hot-loader/babel",
+    "react-refresh/babel",
     "@babel/plugin-transform-react-constant-elements",
     [ "@babel/plugin-proposal-decorators", { "decoratorsBeforeExport": true } ],
     [ "@babel/plugin-proposal-class-properties" ]
