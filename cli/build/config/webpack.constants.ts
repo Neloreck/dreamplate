@@ -44,6 +44,7 @@ export const BACKEND_PUBLIC_PATH: string = "/";
  * Report configuration.
  */
 
+export const ANALYZE_ENABLED: boolean = process.env.ANALYZE === "true";
 export const REPORT_BUNDLE_ANALYZER_PATH: string = path.resolve(PROJECT_OUTPUT_PATH, "info/report.html");
 export const REPORT_BUNDLE_STATS_PATH: string = "../info/report.json";
 
@@ -57,10 +58,6 @@ export const RUNTIME_CONSTANTS = {
   // Build time constants for inlining.
   GColor: asConstantsObject(colors),
   GTheme: asConstantsObject(theme)
-};
-
-export const PROVIDE_MODULES_CONFIG = {
-  React: "react"
 };
 
 export const PROJECT_CORE_DEPENDENCIES: Array<string> = [

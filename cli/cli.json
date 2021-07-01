@@ -42,11 +42,11 @@
       "description": "Start webpack dev server in dev mode."
     },
     "build": {
-      "exec":"npx cross-env NODE_ENV=production ./run build-bundle",
+      "exec":"npx cross-env NODE_ENV=production ANALYZE=true ./run build-bundle",
       "description": "Build project bundles in production mode."
     },
     "build:dev": {
-      "exec":"npx cross-env NODE_ENV=development ./run build-bundle",
+      "exec":"npx cross-env NODE_ENV=development ANALYZE=true ./run build-bundle",
       "description": "Build project bundles in dev mode."
     },
     "==========================================================================================================": "===",

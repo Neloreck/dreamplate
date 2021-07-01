@@ -1,3 +1,5 @@
+import * as path from "path";
+
 import { DefinePlugin, WebpackOptionsNormalized, ProvidePlugin } from "webpack";
 
 import { APPLICATION_ROOT, MODAL_ROOT } from "../build_constants";
@@ -11,15 +13,15 @@ import {
   IS_PRODUCTION,
   MODULES_CONFIG,
   PROJECT_CORE_DEPENDENCIES,
-  PROJECT_INLINE_MODULES, PROJECT_ROOT_PATH,
-  PROVIDE_MODULES_CONFIG,
+  PROJECT_INLINE_MODULES,
+  PROJECT_ROOT_PATH,
+  ANALYZE_ENABLED,
   REPORT_BUNDLE_ANALYZER_PATH,
   REPORT_BUNDLE_STATS_PATH,
   RUNTIME_CONSTANTS,
   TS_CONFIG_PATH
 } from "./webpack.constants";
 import { IModuleDefinition } from "./webpack.types";
-import * as path from "path";
 
 // CJS way to import most plugins.
 const CopyWebpackPlugin = require("copy-webpack-plugin");
@@ -32,8 +34,11 @@ const TerserPlugin = require("terser-webpack-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const StatsWriterPlugin = require("webpack-stats-plugin").StatsWriterPlugin;
 
-const createChunkCacheGroups = (definitions: Array<IModuleDefinition>) => {
-  const entries: { [index: string]: any } = {};
+/**
+ * Create separate chunks/dependencies for each module group with shared core/base.
+ */
+function createChunkCacheGroups(definitions: Array<IModuleDefinition>): Record<string, any> {
+  const entries: Record<string, any> = {};
 
   for (const it of definitions) {
     entries[`modules/${it.name}/l`] = ({
@@ -52,10 +57,13 @@ const createChunkCacheGroups = (definitions: Array<IModuleDefinition>) => {
   }
 
   return entries;
-};
+}
 
-const createHTMLEntry = (definition: IModuleDefinition) => (
-  new HtmlWebpackPlugin({
+/**
+ * For each module create separate HTML entry with own dependencies.
+ */
+function createHTMLEntry(definition: IModuleDefinition): typeof HtmlWebpackPlugin {
+  return new HtmlWebpackPlugin({
     ENVIRONMENT,
     chunks: [ "initialization", definition.name ],
     constants: {
@@ -76,9 +84,12 @@ const createHTMLEntry = (definition: IModuleDefinition) => (
       trimCustomFragments: true
     },
     template: BASE_PROJECT_TEMPLATE_PATH
-  })
-);
+  });
+}
 
+/**
+ * Webpack plugins configuration.
+ */
 export const PLUGIN_CONFIG: {
   PLUGINS: WebpackOptionsNormalized["plugins"];
   OPTIMIZATION: WebpackOptionsNormalized["optimization"];
@@ -137,12 +148,15 @@ export const PLUGIN_CONFIG: {
     }
   },
   PLUGINS: [
-    // Generate HTML for each modules.
+    /**
+     * Generate HTML for each module.
+     * Maintain separate submodule with own base template for each application.
+     */
     ...MODULES_CONFIG.modules.map(createHTMLEntry),
     new DuplicatePackageCheckerPlugin({ verbose: true }),
     new DotEnv({ path: DOTENV_CONFIG_PATH }),
     new DefinePlugin(RUNTIME_CONSTANTS),
-    new ProvidePlugin(PROVIDE_MODULES_CONFIG),
+    new ProvidePlugin({ React: "react" }),
     new CopyWebpackPlugin({
       patterns: BASE_PROJECT_STATIC_FILES.map((it: string) => ({ from: it, to: "." }))
     }),
@@ -157,8 +171,11 @@ export const PLUGIN_CONFIG: {
       }
     }),
     // Async scripts load and inlining.
-    new ScriptExtHtmlPlugin({ defaultAttribute: "async", inline: PROJECT_INLINE_MODULES }),
-    // Bundle analyzers/debug.
+    new ScriptExtHtmlPlugin({ defaultAttribute: "async", inline: PROJECT_INLINE_MODULES })
+    /**
+     * Add analyzers if ENV param is enabled.
+     */
+  ].concat(ANALYZE_ENABLED ? [
     new BundleAnalyzerPlugin({
       analyzerMode: "static",
       defaultSizes: "gzip",
@@ -182,6 +199,5 @@ export const PLUGIN_CONFIG: {
         publicPath: false,
         version: false
       }
-    })
-  ]
+    }) ]: [])
 };
