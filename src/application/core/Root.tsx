@@ -1,10 +1,10 @@
-import { createProvider } from "dreamstate";
+import { ScopeProvider, createProvider } from "dreamstate";
 import { createElement, FunctionComponent, ReactElement, ReactNode } from "react";
 import { hot } from "react-hot-loader/root";
 
 import { TAnyObject } from "@Lib/ts";
 
-import { AuthContextManager, RouterContextManager, ThemeContextManager } from "@Core/data/store";
+import { AuthManager, RouterManager, ThemeManager } from "@Core/data/store";
 import { RootProvider } from "@Core/RootProvider";
 
 /**
@@ -13,18 +13,20 @@ import { RootProvider } from "@Core/RootProvider";
  */
 
 const GlobalProvider: FunctionComponent = createProvider([
-  ThemeContextManager,
-  RouterContextManager,
-  AuthContextManager
+  ThemeManager,
+  RouterManager,
+  AuthManager
 ]);
 
 export function Root({ children = null as ReactNode }): ReactElement {
   return (
-    <GlobalProvider>
-      <RootProvider>
-        { children }
-      </RootProvider>
-    </GlobalProvider>
+    <ScopeProvider>
+      <GlobalProvider>
+        <RootProvider>
+          { children }
+        </RootProvider>
+      </GlobalProvider>
+    </ScopeProvider>
   );
 }
 

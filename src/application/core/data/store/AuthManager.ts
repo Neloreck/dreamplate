@@ -4,6 +4,7 @@ import { log } from "@Macro/log.macro";
 
 import { TOptional } from "@Lib/ts";
 
+
 /**
  * Auth context description.
  */
@@ -17,7 +18,7 @@ export interface IAuthContext {
  * Context manager related to auth and user management.
  * It is responsible for auth, security and account management.
  */
-export class AuthContextManager extends ContextManager<IAuthContext> {
+export class AuthManager extends ContextManager<IAuthContext> {
 
   public readonly context: IAuthContext = {
     authActions: {
@@ -25,13 +26,13 @@ export class AuthContextManager extends ContextManager<IAuthContext> {
     user: createLoadable(null)
   };
 
-  protected onProvisionStarted(): void {
+  public onProvisionStarted(): void {
     const { user } = this.context;
 
     log.info("Auth provision started @", user.value);
   }
 
-  protected onProvisionEnded(): void {
+  public onProvisionEnded(): void {
     log.info("Auth provision ended");
   }
 

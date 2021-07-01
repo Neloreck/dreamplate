@@ -4,7 +4,7 @@ import { createUseStyles } from "react-jss";
 
 import { IApplicationTheme } from "@Lib/theme";
 
-import { ThemeContextManager } from "@Core/data/store";
+import { ThemeManager } from "@Core/data/store";
 
 export const useStyles = createUseStyles(({ palette, spacing }: IApplicationTheme) => ({
   root: {
@@ -28,7 +28,7 @@ export const useStyles = createUseStyles(({ palette, spacing }: IApplicationThem
 
 export function MainHeader({
   classes: { root } = useStyles(),
-  themeContext: { themeActions: { toggleTheme } } = useManager(ThemeContextManager)
+  themeContext: { themeActions: { toggleTheme } } = useManager(ThemeManager)
 }): ReactElement {
   return (
     <header className={root}>

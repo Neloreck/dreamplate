@@ -22,7 +22,7 @@ export interface IRouterContext {
  * Context manager related to routing management.
  * It is responsible for routing, navigation and history.
  */
-export class RouterContextManager extends ContextManager<IRouterContext> {
+export class RouterManager extends ContextManager<IRouterContext> {
 
   public readonly history: History = createBrowserHistory();
 
@@ -39,6 +39,22 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
   };
 
   private unsubscribeFromHistory!: () => void;
+
+  public onProvisionStarted(): void {
+    const { path } = this.context;
+
+    log.info("Routing provision started @", path);
+
+    this.unsubscribeFromHistory = this.history.listen(
+      (location: Location) => this.setContext({ path: location.pathname })
+    );
+  }
+
+  public onProvisionEnded(): void {
+    log.info("Routing provision ended.");
+
+    this.unsubscribeFromHistory();
+  }
 
   /**
    * Replace path in page history.
@@ -83,22 +99,6 @@ export class RouterContextManager extends ContextManager<IRouterContext> {
     log.info("Go back.");
 
     this.history.goBack();
-  }
-
-  protected onProvisionStarted(): void {
-    const { path } = this.context;
-
-    log.info("Routing provision started @", path);
-
-    this.unsubscribeFromHistory = this.history.listen(
-      (location: Location) => this.setContext({ path: location.pathname })
-    );
-  }
-
-  protected onProvisionEnded(): void {
-    log.info("Routing provision ended.");
-
-    this.unsubscribeFromHistory();
   }
 
 }

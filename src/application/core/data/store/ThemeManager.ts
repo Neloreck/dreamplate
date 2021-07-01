@@ -20,7 +20,7 @@ export interface IThemeContext {
  * Context manager related to theme management.
  * It is responsible for theming, styling and generation configuration.
  */
-export class ThemeContextManager extends ContextManager<IThemeContext> {
+export class ThemeManager extends ContextManager<IThemeContext> {
 
   public static readonly JSS_ID_GENERATION_CONFIG: CreateGenerateIdOptions = {
     minify: !IS_DEV
@@ -32,6 +32,25 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
     },
     theme: createDefaultTheme(getFromLocalStorage("theme_type") || GTheme.DEFAULT_THEME_TYPE)
   };
+
+  /**
+   * Send generic message on manager provision start and subscribe to events.
+   */
+  public onProvisionStarted(): void {
+    const { theme } = this.context;
+
+    log.info(`Theme provision started [${theme.palette.type}].`);
+
+    window.addEventListener("storage", this.onLocalStorageDataChanged);
+  }
+
+  /**
+   * Unsubscribe from events after provision end.
+   */
+  public onProvisionEnded(): void {
+    log.info("Theme provision ended.");
+    window.removeEventListener("storage", this.onLocalStorageDataChanged);
+  }
 
   /**
    * Toggle application theme mode and save it into local storage.
@@ -55,25 +74,6 @@ export class ThemeContextManager extends ContextManager<IThemeContext> {
     document.body.style.color = nextTheme.palette.text.primary;
 
     this.setContext({ theme: nextTheme });
-  }
-
-  /**
-   * Send generic message on manager provision start and subscribe to events.
-   */
-  protected onProvisionStarted(): void {
-    const { theme } = this.context;
-
-    log.info(`Theme provision started [${theme.palette.type}].`);
-
-    window.addEventListener("storage", this.onLocalStorageDataChanged);
-  }
-
-  /**
-   * Unsubscribe from events after provision end.
-   */
-  protected onProvisionEnded(): void {
-    log.info("Theme provision ended.");
-    window.removeEventListener("storage", this.onLocalStorageDataChanged);
   }
 
   /**

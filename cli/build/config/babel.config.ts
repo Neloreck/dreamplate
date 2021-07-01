@@ -20,7 +20,7 @@ export const BABEL_CONFIG = {
       }
     ],
     "@babel/preset-typescript",
-    "@babel/preset-react"
+    [ "@babel/preset-react", { runtime: "automatic" } ]
   ],
   plugins: [
     [
@@ -42,6 +42,6 @@ export const BABEL_CONFIG = {
     "react-hot-loader/babel",
     "@babel/plugin-transform-react-constant-elements",
     [ "@babel/plugin-proposal-decorators", { "decoratorsBeforeExport": true } ],
-    [ "@babel/plugin-proposal-class-properties", { "loose": true } ]
+    [ "@babel/plugin-proposal-class-properties" ]
   ]
 };

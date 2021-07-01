@@ -1,4 +1,4 @@
-import { createTransformer } from "babel-jest";
+import { default as babelJest } from "babel-jest";
 
 import { BABEL_CONFIG } from "../../build/config/babel.config";
 
@@ -18,4 +18,4 @@ const CONFIG = {
 /**
  * Custom transformer for jest tests with provided config.
  */
-module.exports = createTransformer(CONFIG);
+module.exports = babelJest.createTransformer!(CONFIG);

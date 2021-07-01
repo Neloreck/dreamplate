@@ -6,7 +6,7 @@ import { down } from "@Macro/style.macro";
 
 import { IApplicationTheme } from "@Lib/theme";
 
-import { RouterContextManager } from "@Core/data/store";
+import { RouterManager } from "@Core/data/store";
 import { MainHeader } from "@Core/view/components/MainHeader";
 
 export const useStyles = createUseStyles(({ palette, spacing }: IApplicationTheme) => ({
@@ -55,7 +55,7 @@ const renderReferenceCard = (className: string, label: string, href: string): Re
 
 export function HomePage({
   classes: { content, link, linksList } = useStyles(),
-  routerContext: { routingActions: { hardPush } } = useManager(RouterContextManager)
+  routerContext: { routingActions: { hardPush } } = useManager(RouterManager)
 }): ReactElement {
   const onAboutNavigated = useCallback(() => hardPush("/about"), []);
 

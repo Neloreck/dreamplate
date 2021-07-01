@@ -4,7 +4,7 @@ import { createUseStyles } from "react-jss";
 
 import { IApplicationTheme } from "@Lib/theme";
 
-import { RouterContextManager } from "@Core/data/store";
+import { RouterManager } from "@Core/data/store";
 import { MainHeader } from "@Core/view/components/MainHeader";
 
 export const useStyles = createUseStyles(({ palette }: IApplicationTheme) => ({
@@ -28,7 +28,7 @@ export const useStyles = createUseStyles(({ palette }: IApplicationTheme) => ({
 
 export function ErrorPage({
   classes: { content, labelCard } = useStyles(),
-  routerContext: { routingActions: { hardPush } } = useManager(RouterContextManager)
+  routerContext: { routingActions: { hardPush } } = useManager(RouterManager)
 }): ReactElement {
   const onHomeNavigated = useCallback(() => hardPush("/home"), []);
 

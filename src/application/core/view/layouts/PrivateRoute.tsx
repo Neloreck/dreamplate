@@ -2,7 +2,7 @@ import { useManager } from "dreamstate";
 import { ReactElement, useEffect, useLayoutEffect } from "react";
 import { Route, RouteProps } from "react-router";
 
-import { AuthContextManager, IAuthContext, IRouterContext, RouterContextManager } from "@Core/data/store";
+import { AuthManager, IAuthContext, IRouterContext, RouterManager } from "@Core/data/store";
 
 export interface IPrivateRouteProps extends RouteProps {
   authContext: IAuthContext;
@@ -21,8 +21,8 @@ const DEFAULT_REDIRECT: string = "/authentication/login";
 export function PrivateRoute({
   reversed = false,
   redirect = true,
-  authContext: { user } = useManager(AuthContextManager),
-  routerContext: { routingActions: { replace }, path } = useManager(RouterContextManager),
+  authContext: { user } = useManager(AuthManager),
+  routerContext: { routingActions: { replace }, path } = useManager(RouterManager),
   ...routeProps
 }: IPrivateRouteProps): ReactElement {
   // First mount.
