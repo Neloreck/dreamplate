@@ -1,5 +1,5 @@
 import { ERequestMethod } from "@Lib/api/types";
-import { TAnyObject } from "@Lib/ts";
+import { TAnyObject } from "@Lib/types";
 
 import { coreApiConfig } from "@Api/destination/core/coreApiConfig";
 

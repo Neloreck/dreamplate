@@ -1,4 +1,4 @@
-let called: boolean = false;
+let isCalled: boolean = false;
 
 export function Run(shouldCall?: boolean) {
   return (targetClass: { main: (argv: Array<string>) => void }): void => {
@@ -6,10 +6,10 @@ export function Run(shouldCall?: boolean) {
       return;
     }
 
-    if (targetClass.main && !called) {
+    if (targetClass.main && !isCalled) {
       targetClass.main(process.argv);
-      called = true;
-    } else if (called) {
+      isCalled = true;
+    } else if (isCalled) {
       throw new Error("Entrypoint: already called.");
     } else if (!targetClass.main) {
       throw new Error("Entrypoint: not found entry - 'public static main(): void'.");

@@ -4,7 +4,7 @@ import { render } from "react-dom";
 import { applicationConfig } from "@Core/data/configs";
 import { Root } from "@Core/Root";
 
-const RENDER_TARGET: HTMLElement = applicationConfig.targetElements.applicationRoot;
+const RENDER_TARGET: HTMLElement = applicationConfig.TARGET_DOM_ELEMENTS.applicationRoot;
 
 /**
  * Render application root node wrapped with global context based on current environment.

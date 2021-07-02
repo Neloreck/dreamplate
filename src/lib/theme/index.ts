@@ -1,2 +1,2 @@
-export * from "./types";
-export * from "./utils";
+export * from "@Lib/theme/types";
+export * from "@Lib/theme/utils";

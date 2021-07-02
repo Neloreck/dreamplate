@@ -1,14 +1,17 @@
-import { TCallable } from "@Lib/ts";
+import { TCallable } from "@Lib/types";
 
 /**
  * Resolve promise after millis provided.
  * Used like 'await forMillis(200)'.
  */
-export const forMillis = (time: number): Promise<void> =>
-  new Promise((resolve: TCallable) => setTimeout(resolve, time));
+export function forMillis(time: number): Promise<void> {
+  return new Promise((resolve: TCallable) => setTimeout(resolve, time));
+}
 
 /**
  * Resolve promise after seconds provided.
  * Used like 'await forSeconds(5)'.
  */
-export const forSeconds = (time: number): Promise<void> => forMillis(time * 1000);
+export function forSeconds(time: number): Promise<void> {
+  return forMillis(time * 1000);
+}

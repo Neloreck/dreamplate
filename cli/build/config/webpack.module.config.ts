@@ -1,31 +1,27 @@
 import * as path from "path";
 
-import { WebpackOptionsNormalized } from "webpack";
+import { Configuration } from "webpack";
 
 import * as packageConfig from "../../../package.json";
 
 import { BABEL_CONFIG } from "./babel.config";
 import {
   BUILD_CONFIGURATION_PATH,
-  IS_PRODUCTION,
   PROJECT_ROOT_NODE_MODULES_PATH,
   PROJECT_ROOT_PATH
 } from "./webpack.constants";
 
-interface IAliasDescription {
-  [index: string]: string;
-}
 
-const generateGlobalDependenciesAlias = (): IAliasDescription => {
+function generateGlobalDependenciesAlias(): Record<string, string> {
   return Object
     .keys(packageConfig.dependencies)
     .reduce((acc: { [idx: string]: string }, pkg: string) =>
       (acc[pkg] = path.resolve(PROJECT_ROOT_NODE_MODULES_PATH, pkg), acc), {});
-};
+}
 
 export const MODULE_CONFIG: {
-  RESOLVE: WebpackOptionsNormalized["resolve"];
-  MODULE: Partial<WebpackOptionsNormalized["module"]>;
+  RESOLVE: Configuration["resolve"];
+  MODULE: Partial<Configuration["module"]>;
 } = {
   MODULE: {
     rules: [
@@ -40,7 +36,7 @@ export const MODULE_CONFIG: {
       },
       // TS/TSX/JS/JSX.
       {
-        exclude: /node_modules\/(?!(lit-element|lit-html|dreamstate))/,
+        exclude: /node_modules/,
         loader: "babel-loader",
         options: BABEL_CONFIG,
         test: /\.(js|jsx|ts|tsx)$/
@@ -93,9 +89,3 @@ export const MODULE_CONFIG: {
     ]
   }
 };
-
-if (IS_PRODUCTION) {
-  // Production alias.
-} else {
-  (MODULE_CONFIG.RESOLVE.alias as any)["react-dom"] = "@hot-loader/react-dom";
-}

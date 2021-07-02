@@ -1,4 +1,4 @@
-import { TOptional } from "@Lib/ts";
+import { TOptional } from "@Lib/types";
 import { setLocalStorageItem, removeLocalStorageItem, getFromLocalStorage } from "@Lib/utils";
 import { forSeconds } from "@Lib/utils/delay";
 

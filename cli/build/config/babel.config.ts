@@ -4,6 +4,9 @@ import * as packageConfig from "../../../package.json";
 
 import { IS_PRODUCTION, IS_TEST } from "./webpack.constants";
 
+/**
+ * Babel configuration for project codebase.
+ */
 export const BABEL_CONFIG = {
   babelrc: false,
   minified: IS_PRODUCTION && !IS_TEST,

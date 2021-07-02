@@ -1,3 +1,7 @@
+/**
+ * Inline globals for build-time injection.
+ */
+
 export const BLACK: string = "#000";
 
 export const LIGHT_BLACK = "#444444";

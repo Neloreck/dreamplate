@@ -99,7 +99,7 @@ export const JEST_CONFIG = {
     "^.+\\.(j|t)sx?$": BABEL_TRANSFORMER_PATH
   },
   transformIgnorePatterns: [
-    "/node_modules/(?!(lit-element|lit-html)).+\\.js$"
+    "/node_modules/.+\\.js$"
   ],
   // unmockedModulePathPatterns: undefined,
   verbose: true

@@ -4,7 +4,7 @@ import { createElement, ReactElement } from "react";
 import { ThemeProvider } from "react-jss";
 
 import { createDefaultTheme } from "@Lib/theme";
-import { TAnyObject } from "@Lib/ts";
+import { TAnyObject } from "@Lib/types";
 
 /**
  * Create mock classes object for testing.

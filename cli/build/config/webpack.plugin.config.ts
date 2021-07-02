@@ -1,6 +1,6 @@
 import * as path from "path";
 
-import { DefinePlugin, WebpackOptionsNormalized, ProvidePlugin } from "webpack";
+import { DefinePlugin, Configuration, ProvidePlugin } from "webpack";
 
 import { APPLICATION_ROOT, MODAL_ROOT } from "../build_constants";
 
@@ -92,8 +92,8 @@ function createHTMLEntry(definition: IModuleDefinition): typeof HtmlWebpackPlugi
  * Webpack plugins configuration.
  */
 export const PLUGIN_CONFIG: {
-  PLUGINS: WebpackOptionsNormalized["plugins"];
-  OPTIMIZATION: WebpackOptionsNormalized["optimization"];
+  PLUGINS: Configuration["plugins"];
+  OPTIMIZATION: Configuration["optimization"];
 } = {
   OPTIMIZATION: {
     minimizer: [

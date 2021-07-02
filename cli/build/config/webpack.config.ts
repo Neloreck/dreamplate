@@ -31,6 +31,6 @@ export const WEBPACK_CONFIG: Configuration = {
   stats: DEV_CONFIG.STATS,
   performance: PERFORMANCE_CONFIG,
   target: "web"
-} as any; // For dev server, todo;
+} as Configuration;
 
 export default WEBPACK_CONFIG;

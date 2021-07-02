@@ -2,7 +2,7 @@ import { ContextManager, createLoadable, Loadable } from "dreamstate";
 
 import { log } from "@Macro/log.macro";
 
-import { TOptional } from "@Lib/ts";
+import { TOptional } from "@Lib/types";
 
 
 /**

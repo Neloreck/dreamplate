@@ -5,7 +5,7 @@
 
 import { log } from "@Macro/log.macro";
 
-import { IStringIndexed, TAnyObject } from "@Lib/ts";
+import { IStringIndexed, TAnyObject } from "@Lib/types";
 
 interface IAugmentedWindow extends Window {
   exposed?: IStringIndexed<unknown>;

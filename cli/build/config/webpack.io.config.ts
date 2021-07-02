@@ -1,6 +1,6 @@
 import * as path from "path";
 
-import { WebpackOptionsNormalized } from "webpack";
+import { Configuration } from "webpack";
 
 import {
   BACKEND_PUBLIC_PATH,
@@ -27,8 +27,8 @@ const generateEntryPoints = (definition: IModulesDefinition) => {
 };
 
 export const IO_CONFIG: {
-  ENTRY: WebpackOptionsNormalized["entry"];
-  OUTPUT: WebpackOptionsNormalized["output"];
+  ENTRY: Configuration["entry"];
+  OUTPUT: Configuration["output"];
 } = {
   ENTRY: {
     initialization: {

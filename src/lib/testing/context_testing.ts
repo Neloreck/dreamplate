@@ -1,4 +1,4 @@
-import { TAnyObject } from "@Lib/ts";
+import { TAnyObject } from "@Lib/types";
 
 /**
  * Create mocked context nested data/actions object.
