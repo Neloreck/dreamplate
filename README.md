@@ -32,11 +32,11 @@
     
 - Custom CLI
 - Webpack, lazy loading, tree shaking, chunks + modular architecture, aliases
-- React, dreamstate as contextStore
+- React, dreamstate as store manager
 - JSS, theming with own context management
 - Typescript (proposal decorators, OOP style, newest features, babel loader)
 - Jest for unit testing (enzyme-react tests + simple tests)
-- HMR with live editing
+- React fast refresh for HMR
 - HBS (template, global styles)
 
 ### Architecture and general approach:
@@ -46,7 +46,6 @@ Current architecture is intended to separate logical modules/scopes with reducin
 File 'src/application/modules/modules.json' is used for separating modules and declaration of application routes.
 
 Such approach allows to:
-
   - Reduce initial load without importing lazy components right after first JS evaluation
   - Reduce bundle size with improved npm modules caching related to specific routes
   - Reduce general codebase complexity with better modular system
@@ -57,11 +56,9 @@ Such approach allows to:
 * Shared application level code: src/application/main
 * Specific module code: src/application/modules/{MODULE_NAME}
 
-### General project structure tree
+### General project tree
 
 - **cli** [project commands and everything runnable]
-
-- __cli_ [internal implementation]
 
 - _build_ [webpack build configuration and scripts]
    - config [configuration]
@@ -96,25 +93,8 @@ Such approach allows to:
 
 Typically module is separated as VIEW and DATA sub-modules. Each one includes only view or data logic and tries to keep this pattern.
 
-## Imports declaration priority in file head (code-style)
-
-- node_modules
-- @Lib
-- @Api
-- @Data
-- @View
-- 'styles'
-- 'props/types'
-
 ## Futures
-
-- Config type and production/dev as separated flags from env modes
-- Benchmark for testing?
-- Build something from wasm as experiment and use wasm-loader
-- Workers investigation
 - Translations experiments
-- Better config for eslint
 
 ## Side packages (waiting for)
-
 - Hooks implementation for react-router (less VDOM tree pollution)
