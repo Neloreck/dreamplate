@@ -1,7 +1,7 @@
 /**
  * Callable method with generic params and return.
  */
-export type TCallable<A = any, R = any> = (...args: Array<A>) => R;
+export type TCallable = (...args: Array<unknown>) => void;
 
 /**
  * Optional generic.
@@ -17,10 +17,3 @@ export type TAnyObject<T = any> = Record<string, T>;
  * Any empty object.
  */
 export type TEmptyObject = Record<string, never>;
-
-/**
- * String indexed generic.
- */
-export interface IStringIndexed<T> {
-  [index: string]: T;
-}

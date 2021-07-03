@@ -1,11 +1,18 @@
 {
   "extends": "../src/tsconfig.json",
   "compilerOptions": {
+    "target": "es5",
+    "suppressImplicitAnyIndexErrors": true,
     "resolveJsonModule": true,
     "module": "commonjs",
+    "lib": [
+      "es5",
+      "es6",
+      "es7",
+      "es2018",
+      "dom"
+    ],
     "incremental": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "lib": [ "es5", "es6",  "es7",  "es2018", "dom" ],
     "baseUrl": "./"
   }
 }

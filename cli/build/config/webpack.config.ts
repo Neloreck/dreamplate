@@ -1,6 +1,6 @@
 import { Configuration } from "webpack";
 
-import { ENVIRONMENT } from "./webpack.constants";
+import { ENVIRONMENT, IS_PRODUCTION } from "./webpack.constants";
 import { DEV_CONFIG } from "./webpack.dev.config";
 import { IO_CONFIG } from "./webpack.io.config";
 import { MODULE_CONFIG } from "./webpack.module.config";
@@ -22,7 +22,7 @@ export const WEBPACK_CONFIG: Configuration = {
   devServer: DEV_CONFIG.DEV_SERVER,
   devtool: DEV_CONFIG.DEV_TOOL,
   entry: IO_CONFIG.ENTRY,
-  mode: ENVIRONMENT,
+  mode: IS_PRODUCTION ? "production" : "development",
   module: MODULE_CONFIG.MODULE,
   optimization: PLUGIN_CONFIG.OPTIMIZATION,
   output: IO_CONFIG.OUTPUT,

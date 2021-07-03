@@ -4,10 +4,10 @@
  */
 
 import { log } from "#/macroses/log.macro";
-import { IStringIndexed, TAnyObject } from "@/lib/types";
+import { TAnyObject } from "@/lib/types";
 
 interface IAugmentedWindow extends Window {
-  exposed?: IStringIndexed<unknown>;
+  exposed?: Record<string, unknown>;
 }
 
 /**
