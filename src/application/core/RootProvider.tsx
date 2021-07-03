@@ -3,7 +3,7 @@ import { ReactElement, ReactNode, Suspense } from "react";
 import { JssProvider, ThemeProvider } from "react-jss";
 import { Router as ReactRouter } from "react-router";
 
-import { RouterManager, ThemeManager } from "@Core/data/store";
+import { RouterManager, ThemeManager } from "@/core/data/store";
 
 /**
  * Root provider for application.

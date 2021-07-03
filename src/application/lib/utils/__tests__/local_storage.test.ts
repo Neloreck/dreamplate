@@ -1,6 +1,6 @@
-import { TOptional } from "@Lib/types";
-import { setLocalStorageItem, removeLocalStorageItem, getFromLocalStorage } from "@Lib/utils";
-import { forSeconds } from "@Lib/utils/delay";
+import { TOptional } from "@/lib/types";
+import { setLocalStorageItem, removeLocalStorageItem, getFromLocalStorage } from "@/lib/utils";
+import { forSeconds } from "@/lib/utils/delay";
 
 describe("Local storage utils test.", () => {
   const EXPECTED_KEY: string = "some-value-key-" + Math.random() * 1000;

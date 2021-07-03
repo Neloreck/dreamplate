@@ -2,7 +2,7 @@ import * as path from "path";
 
 import { DefinePlugin, Configuration, ProvidePlugin } from "webpack";
 
-import { APPLICATION_ROOT, MODAL_ROOT } from "../build_constants";
+import { APPLICATION_ROOT, MODAL_ROOT } from "../globals/build_constants";
 
 import {
   BASE_PROJECT_FAVICON_PATH,
@@ -19,7 +19,7 @@ import {
   REPORT_BUNDLE_ANALYZER_PATH,
   REPORT_BUNDLE_STATS_PATH,
   RUNTIME_CONSTANTS,
-  TS_CONFIG_PATH
+  TS_CONFIG_PATH, MAX_CORE_CHUNK_SIZE, DEV_SERVER_REFRESH
 } from "./webpack.constants";
 import { IModuleDefinition } from "./webpack.types";
 
@@ -67,6 +67,7 @@ function createHTMLEntry(definition: IModuleDefinition): typeof HtmlWebpackPlugi
   return new HtmlWebpackPlugin({
     ENVIRONMENT,
     chunks: [ "initialization", definition.name ],
+    chunksSortMode: "manual",
     constants: {
       APPLICATION_ROOT,
       APPLICATION_TITLE: definition.title,
@@ -104,8 +105,6 @@ export const PLUGIN_CONFIG: {
             ecma: 5,
             passes: IS_PRODUCTION ? 5 : 1
           },
-          "keep_classnames": !IS_PRODUCTION,
-          "keep_fnames": !IS_PRODUCTION,
           output: {
             beautify: !IS_PRODUCTION,
             ecma: 5
@@ -118,10 +117,10 @@ export const PLUGIN_CONFIG: {
     runtimeChunk: "single",
     splitChunks: {
       cacheGroups: {
-        "core/lib": {
-          maxSize: 500 * 1000,
+        "core": {
+          maxSize: MAX_CORE_CHUNK_SIZE,
           priority: 100,
-          reuseExistingChunk: true,
+          reuseExistingChunk: false,
           test: new RegExp(
             `/node_modules/(${
               PROJECT_CORE_DEPENDENCIES.reduce((accumulator: string, it: string) =>
@@ -129,17 +128,19 @@ export const PLUGIN_CONFIG: {
             })/`
           )
         },
-        "core/api": {
-          priority: 80,
-          reuseExistingChunk: false,
-          test: /\/src\/api/
-        },
-        "core/vendors": {
+        "vendor": {
           priority: 70,
+          maxSize: MAX_CORE_CHUNK_SIZE,
           reuseExistingChunk: false,
           test: /\/src\/node_modules\//
         },
-        ...createChunkCacheGroups(MODULES_CONFIG.modules)
+        ...createChunkCacheGroups(MODULES_CONFIG.modules),
+        "shared": {
+          priority: 10,
+          maxSize: MAX_CORE_CHUNK_SIZE,
+          reuseExistingChunk: true,
+          test: /node_modules/
+        }
       },
       chunks: "all",
       maxAsyncRequests: 50,
@@ -172,13 +173,18 @@ export const PLUGIN_CONFIG: {
       }
     }),
     // Async scripts load and inlining.
-    new ScriptExtHtmlPlugin({ defaultAttribute: "async", inline: PROJECT_INLINE_MODULES })
+    new ScriptExtHtmlPlugin({ inline: PROJECT_INLINE_MODULES })
     /**
      * Add analyzers if ENV param is enabled.
      */
-  ].concat(IS_PRODUCTION ? [
+  ].concat(DEV_SERVER_REFRESH ? [
+    new ReactRefreshWebpackPlugin({
+      exclude: [
+        /\/application\/initialization/,
+        /node_modules/
+      ]
+    })
   ] :[
-    new ReactRefreshWebpackPlugin()
   ])
     .concat(ANALYZE_ENABLED ? [
       new BundleAnalyzerPlugin({

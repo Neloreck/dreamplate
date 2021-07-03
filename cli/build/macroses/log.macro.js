@@ -1,4 +1,5 @@
 const path = require("path");
+
 const { createMacro } = require("babel-plugin-macros");
 
 const IS_DEV = (process.env.NODE_ENV === "development");
@@ -28,7 +29,7 @@ function getHashCode(target) {
   }
 
   for (let it = 0; it < target.length; it ++) {
-    hash  = ((hash << 5) - hash) + target.charCodeAt(it);
+    hash = ((hash << 5) - hash) + target.charCodeAt(it);
     hash |= 0; // Convert to 32bit integer.
   }
 
@@ -46,27 +47,24 @@ function log({ references, babel, state }) {
   const { types } = babel;
   const { log } = references;
 
-  log.forEach(reference => {
-
+  log.forEach((reference) => {
     if (types.isMemberExpression(reference.parentPath)) {
       const expression = reference.parentPath.parentPath;
 
       // Handle logging only in dev mode.
       if (IS_DEV) {
-
         const method = reference.parent.property.name;
-        const args =  expression.node.arguments;
+        const args = expression.node.arguments;
 
         // Handle custom methods keys.
         if (method === "pushSeparator") {
-
           const logStatement = types.expressionStatement(
             types.callExpression(
               types.memberExpression(types.identifier("console"), types.identifier("info")),
               [
                 types.stringLiteral("%c=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="),
-                types.stringLiteral(PREFIX_COLOR),
-              ],
+                types.stringLiteral(PREFIX_COLOR)
+              ]
             )
           );
 
@@ -87,7 +85,7 @@ function log({ references, babel, state }) {
             types.newExpression(types.identifier("Date"), []),
             types.identifier("toLocaleTimeString")
           ),
-          [  types.stringLiteral("en-GB") ]
+          [ types.stringLiteral("en-GB") ]
         );
 
         const millisStringExpression = types.callExpression(
@@ -129,7 +127,7 @@ function log({ references, babel, state }) {
               prefixExpression,
               types.stringLiteral(PREFIX_COLOR),
               ...args
-            ],
+            ]
           )
         );
 
@@ -138,9 +136,11 @@ function log({ references, babel, state }) {
         expression.remove();
       }
     } else {
-      throw new Error("Logging macro call is not member expression, you should access console methods from logging object.");
+      throw new Error(
+        "Logging macro call is not member expression, you should access console methods from logging object."
+      );
     }
-  })
+  });
 }
 
 module.exports = createMacro(log);

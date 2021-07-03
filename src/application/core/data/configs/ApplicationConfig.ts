@@ -1,4 +1,4 @@
-import { APPLICATION_ROOT, MODAL_ROOT } from "@Build/build_constants";
+import { APPLICATION_ROOT, MODAL_ROOT } from "#/globals/build_constants";
 
 /**
  * Application configuration and info with global scope.

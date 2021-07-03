@@ -15,12 +15,10 @@ import { IModulesDefinition } from "./webpack.types";
  * Generate entry-points based on modules.json config.
  */
 const generateEntryPoints = (definition: IModulesDefinition) => {
-  const entries: { [index: string]: any } = {};
+  const entries: Record<string, any> = {};
 
   for (const entry of definition.modules) {
-    const entryPath: string = path.resolve(MODULES_ROOT_PATH, entry.entry);
-
-    entries[entry.name] = [ entryPath ];
+    entries[entry.name] = path.resolve(MODULES_ROOT_PATH, entry.entry);
   }
 
   return entries;

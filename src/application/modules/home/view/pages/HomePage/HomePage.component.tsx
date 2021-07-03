@@ -2,12 +2,10 @@ import { useManager } from "dreamstate";
 import { ReactElement, ReactNode, useCallback } from "react";
 import { createUseStyles } from "react-jss";
 
-import { down } from "@Macro/style.macro";
-
-import { IApplicationTheme } from "@Lib/theme";
-
-import { RouterManager } from "@Core/data/store";
-import { MainHeader } from "@Core/view/components/MainHeader";
+import { down } from "#/macroses/style.macro";
+import { RouterManager } from "@/core/data/store";
+import { MainHeader } from "@/core/view/components/MainHeader";
+import { IApplicationTheme } from "@/lib/theme";
 
 export const useStyles = createUseStyles(({ palette, spacing }: IApplicationTheme) => ({
   link: {

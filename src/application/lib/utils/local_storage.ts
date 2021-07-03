@@ -1,4 +1,4 @@
-import { TOptional } from "@Lib/types";
+import { TOptional } from "@/lib/types";
 
 /**
  * Encrypt function for local storage.

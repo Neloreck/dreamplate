@@ -1,5 +1,5 @@
-import { TThemeType, IApplicationTheme } from "@Lib/theme/types";
-import { createDefaultTheme, toggleTheme } from "@Lib/theme/utils";
+import { TThemeType, IApplicationTheme } from "@/lib/theme/types";
+import { createDefaultTheme, toggleTheme } from "@/lib/theme/utils";
 
 describe("Theming utils should work properly.", () => {
   it("Should correctly create default theme based on default colors.", () => {

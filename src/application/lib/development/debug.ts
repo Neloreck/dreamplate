@@ -3,9 +3,8 @@
  * Restricted in non DEV mode.
  */
 
-import { log } from "@Macro/log.macro";
-
-import { IStringIndexed, TAnyObject } from "@Lib/types";
+import { log } from "#/macroses/log.macro";
+import { IStringIndexed, TAnyObject } from "@/lib/types";
 
 interface IAugmentedWindow extends Window {
   exposed?: IStringIndexed<unknown>;

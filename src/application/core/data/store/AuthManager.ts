@@ -1,9 +1,7 @@
 import { ContextManager, createLoadable, Loadable } from "dreamstate";
 
-import { log } from "@Macro/log.macro";
-
-import { TOptional } from "@Lib/types";
-
+import { log } from "#/macroses/log.macro";
+import { TOptional } from "@/lib/types";
 
 /**
  * Auth context description.

@@ -2,7 +2,7 @@ import { useManager } from "dreamstate";
 import { ReactElement, useEffect, useLayoutEffect } from "react";
 import { Route, RouteProps } from "react-router";
 
-import { AuthManager, IAuthContext, IRouterContext, RouterManager } from "@Core/data/store";
+import { AuthManager, IAuthContext, IRouterContext, RouterManager } from "@/core/data/store";
 
 export interface IPrivateRouteProps extends RouteProps {
   authContext: IAuthContext;
@@ -25,7 +25,6 @@ export function PrivateRoute({
   routerContext: { routingActions: { replace }, path } = useManager(RouterManager),
   ...routeProps
 }: IPrivateRouteProps): ReactElement {
-  // First mount.
   useLayoutEffect(() => {
     if (!user.isLoading && (reversed ? user.value : !user.value)) {
       if (redirect === true) {
@@ -36,7 +35,6 @@ export function PrivateRoute({
     }
   }, []);
 
-  // Every update.
   useEffect(() => {
     if (!user.isLoading && (reversed ? user.value : !user.value)) {
       // todo: Own NEXT implementation for redirect.

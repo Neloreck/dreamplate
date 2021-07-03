@@ -1,5 +1,5 @@
-import { TThemeType } from "@Lib/theme/types";
-import { TOptional } from "@Lib/types";
+import { TThemeType } from "@/lib/theme/types";
+import { TOptional } from "@/lib/types";
 
 /**
  * Try to parse local storage-encrypted configs (if it is enabled).

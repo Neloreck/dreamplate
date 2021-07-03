@@ -1,6 +1,7 @@
-import type * as colors from "@Build/globals/colors";
-import type * as theme from "@Build/globals/theme";
 import type * as GlobalReact from "react";
+
+import type * as colors from "#/globals/colors";
+import type * as theme from "#/globals/theme";
 
 declare global {
 

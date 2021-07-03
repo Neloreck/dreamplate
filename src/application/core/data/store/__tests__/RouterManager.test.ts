@@ -1,6 +1,6 @@
 import { mockManagerWithScope } from "dreamstate/test-utils";
 
-import { RouterManager } from "@Core/data/store";
+import { RouterManager } from "@/core/data/store";
 
 describe("Auth context manager.", () => {
   it("Should initialize history and itself.", async () => {

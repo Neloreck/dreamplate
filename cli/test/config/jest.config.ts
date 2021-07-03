@@ -48,14 +48,8 @@ export const JEST_CONFIG = {
     "node"
   ],
   moduleNameMapper: {
-    "@Api/(.*)$": "<rootDir>/src/api/$1",
-    "@Application/(.*)$": "<rootDir>/src/application/$1",
-    "@Build/(.*)$": "<rootDir>/cli/build/$1",
-    "@Lib/(.*)$": "<rootDir>/src/lib/$1",
-    "@Macro/(.*)$": "<rootDir>/cli/build/macroses/$1",
-    "@Core/(.*)$": "<rootDir>/src/application/core/$1",
-    "@Modules/(.*)$": "<rootDir>/src/application/modules/$1",
-    "@Test/(.*)$": "<rootDir>/cli/test/$1",
+    "#/(.*)$": "<rootDir>/cli/build/$1",
+    "@/(.*)$": "<rootDir>/src/application/$1",
     "\\.(css|scss|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
       "<rootDir>/src/__test__/mocks/nonJSModule.js"
   },

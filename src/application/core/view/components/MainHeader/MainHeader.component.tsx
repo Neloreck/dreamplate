@@ -2,9 +2,8 @@ import { useManager } from "dreamstate";
 import { ReactElement } from "react";
 import { createUseStyles } from "react-jss";
 
-import { IApplicationTheme } from "@Lib/theme";
-
-import { ThemeManager } from "@Core/data/store";
+import { ThemeManager } from "@/core/data/store";
+import { IApplicationTheme } from "@/lib/theme";
 
 export const useStyles = createUseStyles(({ palette, spacing }: IApplicationTheme) => ({
   root: {

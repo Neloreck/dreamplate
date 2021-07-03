@@ -1,1 +1,1 @@
-export * from "@Core/view/utils/rendering";
+export * from "@/core/view/utils/rendering";

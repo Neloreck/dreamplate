@@ -1,7 +1,7 @@
 import { shallow } from "enzyme";
 import { Classes } from "jss";
 
-import { createMockClasses, createMockContext } from "@Lib/testing";
+import { createMockClasses, createMockContext } from "@/lib/testing";
 
 import { MainHeader } from "./MainHeader.component";
 

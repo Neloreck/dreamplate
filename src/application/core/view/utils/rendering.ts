@@ -1,8 +1,8 @@
 import { ComponentType, createElement, ReactElement } from "react";
 import { render } from "react-dom";
 
-import { applicationConfig } from "@Core/data/configs";
-import { Root } from "@Core/Root";
+import { applicationConfig } from "@/core/data/configs";
+import { Root } from "@/core/Root";
 
 const RENDER_TARGET: HTMLElement = applicationConfig.TARGET_DOM_ELEMENTS.applicationRoot;
 

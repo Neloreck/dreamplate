@@ -69,9 +69,11 @@ export const PROJECT_CORE_DEPENDENCIES: Array<string> = [
 ];
 
 export const PROJECT_INLINE_MODULES: Array<string | RegExp> = [
-  /.*\/runtime.*\.js$/, // Webpack runtime support.
-  /.*\/initialization.*\.js$/ // Critical application code for inlining.
+  /.*\/initialization.*/, // Critical application code for inlining.
+  /.*\/runtime.*$/ // Webpack runtime support.
 ];
+
+export const MAX_CORE_CHUNK_SIZE: number = IS_PRODUCTION ? 500 * 1000 : 3000 * 1000;
 
 /**
  * Dev server configuration.
@@ -80,6 +82,7 @@ export const PROJECT_INLINE_MODULES: Array<string | RegExp> = [
 export const DEV_SERVER_HOST: string = "0.0.0.0";
 export const DEV_SERVER_PORT: number = 3000;
 export const DEV_SERVER_CONTENT_BASE: string = PROJECT_DIST_PATH;
+export const DEV_SERVER_REFRESH: boolean = process.env.REFRESH === "true";
 
 /**
  * Project modules config.

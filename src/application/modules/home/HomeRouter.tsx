@@ -1,9 +1,8 @@
 import { ReactElement } from "react";
 import { Route, Switch } from "react-router";
 
-import { DefaultErrorFallback } from "@Core/view/layouts";
-
-import { HomePage } from "@Modules/home/view/pages/HomePage";
+import { DefaultErrorFallback } from "@/core/view/layouts";
+import { HomePage } from "@/modules/home/view/pages/HomePage";
 
 export function HomeRouter(): ReactElement {
   return (

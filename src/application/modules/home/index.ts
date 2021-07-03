@@ -1,5 +1,4 @@
-import { renderRoot } from "@Core/view/utils";
-
-import { HomeRouter } from "@Modules/home/HomeRouter";
+import { renderRoot } from "@/core/view/utils";
+import { HomeRouter } from "@/modules/home/HomeRouter";
 
 renderRoot(HomeRouter);

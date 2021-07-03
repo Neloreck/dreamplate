@@ -21,16 +21,8 @@
     "baseUrl": "./",
     "outDir": "../target/dist:ts",
     "paths": {
-      "@Build/*": [ "../cli/build/*" ],
-      "@Macro/*": [ "../cli/build/macroses/*" ],
-      "@Test/*": [ "../cli/test/*" ],
-      "@Application/*": [ "./application/*" ],
-      "@Core": [ "./application/core/index" ],
-      "@Core/*": [ "./application/core/*" ],
-      "@Modules/*": [ "./application/modules/*" ],
-      "@Modules": [ "./application/modules/index" ],
-      "@Api/*": [ "./api/*" ],
-      "@Lib/*": [ "./lib/*" ]
+      "#/*": [ "../cli/build/*" ],
+      "@/*": [ "./application/*" ]
     },
     "resolveJsonModule": true
   },
@@ -40,7 +32,5 @@
   "include": [
     ".",
     "../cli"
-  ],
-  "exclude": [
   ]
 }

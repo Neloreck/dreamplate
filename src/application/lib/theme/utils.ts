@@ -1,4 +1,4 @@
-import { IApplicationTheme, TThemeType } from "@Lib/theme/types";
+import { IApplicationTheme, TThemeType } from "@/lib/theme/types";
 
 /**
  * Create default theme.

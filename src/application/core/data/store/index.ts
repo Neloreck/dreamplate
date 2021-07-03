@@ -1,3 +1,3 @@
-export * from "@Core/data/store/AuthManager";
-export * from "@Core/data/store/ThemeManager";
-export * from "@Core/data/store/RouterManager";
+export * from "@/core/data/store/AuthManager";
+export * from "@/core/data/store/ThemeManager";
+export * from "@/core/data/store/RouterManager";

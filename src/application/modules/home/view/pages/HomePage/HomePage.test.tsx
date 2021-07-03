@@ -1,9 +1,8 @@
 import { shallow } from "enzyme";
 import { Classes } from "jss";
 
-import { createMockClasses, createMockContext } from "@Lib/testing";
-
-import { HomePage } from "./HomePage.component";
+import { createMockClasses, createMockContext } from "@/lib/testing";
+import { HomePage } from "@/modules/home/view/pages/HomePage/HomePage.component";
 
 describe("Home page component rendering.", () => {
   const classes: Classes = createMockClasses();

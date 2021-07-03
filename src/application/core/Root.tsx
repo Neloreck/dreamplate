@@ -1,8 +1,8 @@
 import { ScopeProvider, createProvider } from "dreamstate";
 import { FunctionComponent, ReactElement, ReactNode } from "react";
 
-import { AuthManager, RouterManager, ThemeManager } from "@Core/data/store";
-import { RootProvider } from "@Core/RootProvider";
+import { AuthManager, RouterManager, ThemeManager } from "@/core/data/store";
+import { RootProvider } from "@/core/RootProvider";
 
 /**
  * Application root.

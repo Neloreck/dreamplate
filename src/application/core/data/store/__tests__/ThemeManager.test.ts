@@ -1,9 +1,8 @@
 import { mockManagerWithScope } from "dreamstate/test-utils";
 
-import { TThemeType, IApplicationTheme, toggleTheme } from "@Lib/theme";
-import { encrypt, setLocalStorageItem } from "@Lib/utils";
-
-import { ThemeManager } from "@Core/data/store";
+import { ThemeManager } from "@/core/data/store";
+import { TThemeType, IApplicationTheme, toggleTheme } from "@/lib/theme";
+import { encrypt, setLocalStorageItem } from "@/lib/utils";
 
 describe("Theme context manager.", () => {
   it("Should properly initialize.", () => {

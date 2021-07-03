@@ -11,11 +11,14 @@ import {
   PROJECT_ROOT_PATH
 } from "./webpack.constants";
 
-
+/**
+ * Generate global alias for top-level dependencies.
+ * Allows avoid defining react everywhere for JSX usage.
+ */
 function generateGlobalDependenciesAlias(): Record<string, string> {
   return Object
     .keys(packageConfig.dependencies)
-    .reduce((acc: { [idx: string]: string }, pkg: string) =>
+    .reduce((acc: Record<string, string>, pkg: string) =>
       (acc[pkg] = path.resolve(PROJECT_ROOT_NODE_MODULES_PATH, pkg), acc), {});
 }
 
@@ -25,7 +28,6 @@ export const MODULE_CONFIG: {
 } = {
   MODULE: {
     rules: [
-      // Strip DEV code.
       {
         enforce: "pre",
         exclude: /(node_modules|\.spec\.js)/,
@@ -34,14 +36,12 @@ export const MODULE_CONFIG: {
           { loader: path.resolve(BUILD_CONFIGURATION_PATH, "loaders/stripBlockLoader.ts") }
         ]
       },
-      // TS/TSX/JS/JSX.
       {
         exclude: /node_modules/,
         loader: "babel-loader",
         options: BABEL_CONFIG,
-        test: /\.(js|jsx|ts|tsx)$/
+        test: /\.(js|mjs|jsx|ts|tsx)$/
       },
-      // HBS.
       {
         loader: "handlebars-loader",
         options: {
@@ -50,15 +50,13 @@ export const MODULE_CONFIG: {
         },
         test: /\.hbs$/
       },
-      // IMAGES AS B64.
       {
         test: /\.(gif|png|jpe|jpg|svg)$/i,
         use: [
           {
             loader: "url-loader",
             options: {
-              // include < 5KB files in bundle file
-              limit: 5000,
+              limit: 5000, // include < 5KB files in bundle file
               name: "images/[name].[ext]"
             }
           }
@@ -68,13 +66,8 @@ export const MODULE_CONFIG: {
   },
   RESOLVE: {
     alias: {
-      "@Api": path.resolve(PROJECT_ROOT_PATH, "src/api/"),
-      "@Application": path.resolve(PROJECT_ROOT_PATH, "src/application/"),
-      "@Build": path.resolve(BUILD_CONFIGURATION_PATH),
-      "@Lib": path.resolve(PROJECT_ROOT_PATH, "src/lib/"),
-      "@Core": path.resolve(PROJECT_ROOT_PATH, "src/application/core/"),
-      "@Modules": path.resolve(PROJECT_ROOT_PATH, "src/application/modules/"),
-      // Make explicit global-level dependencies.
+      "#": path.resolve(BUILD_CONFIGURATION_PATH, "./"),
+      "@": path.resolve(PROJECT_ROOT_PATH, "src/application/"),
       ...generateGlobalDependenciesAlias()
     },
     extensions: [

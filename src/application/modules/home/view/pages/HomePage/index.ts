@@ -1,1 +1,1 @@
-export * from "./HomePage.component";
+export * from "@/modules/home/view/pages/HomePage/HomePage.component";

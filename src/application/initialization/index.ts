@@ -1,5 +1,5 @@
-import { initTheme } from "@Application/initialization/initTheme";
-import { logInitInfo } from "@Application/initialization/logInitInfo";
+import { initTheme } from "@/initialization/initTheme";
+import { logInitInfo } from "@/initialization/logInitInfo";
 
 /* <dev> */
 

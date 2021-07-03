@@ -1,6 +1,6 @@
 import { mockManagerWithScope } from "dreamstate/test-utils";
 
-import { AuthManager } from "@Core/data/store";
+import { AuthManager } from "@/core/data/store";
 
 describe("Auth context manager.", () => {
   it("Should initialize without default user and flags.", () => {

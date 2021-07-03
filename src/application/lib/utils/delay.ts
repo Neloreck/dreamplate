@@ -1,4 +1,4 @@
-import { TCallable } from "@Lib/types";
+import { TCallable } from "@/lib/types";
 
 /**
  * Resolve promise after millis provided.
