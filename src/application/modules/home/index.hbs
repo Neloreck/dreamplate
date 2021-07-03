@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{{> metaInfo }}
+	{{> globalStyles }}
+	{{> resetStyles }}
+
+	<title> {{ htmlWebpackPlugin.options.constants.APPLICATION_TITLE }} </title>
+</head>
+
+<body>
+<div id="{{ htmlWebpackPlugin.options.constants.APPLICATION_ROOT }}">
+	<noscript>
+		This application cannot work without javascript. Please, enable it in the browser/page settings.
+	</noscript>
+</div>
+
+<div id="{{ htmlWebpackPlugin.options.constants.PORTAL_ROOT }}" hidden></div>
+</body>
+</html>

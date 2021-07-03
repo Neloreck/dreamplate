@@ -1,7 +1,7 @@
 /**
  * Callable method with generic params and return.
  */
-export type TCallable = (...args: Array<unknown>) => void;
+export type TCallable = () => void;
 
 /**
  * Optional generic.

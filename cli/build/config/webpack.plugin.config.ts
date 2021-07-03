@@ -1,8 +1,9 @@
+import * as fs from "fs";
 import * as path from "path";
 
-import { DefinePlugin, Configuration, ProvidePlugin } from "webpack";
+import { DefinePlugin, Configuration, ProvidePlugin, SourceMapDevToolPlugin } from "webpack";
 
-import { APPLICATION_ROOT, MODAL_ROOT } from "../globals/build_constants";
+import { APPLICATION_ROOT, PORTAL_ROOT } from "../globals/build_constants";
 
 import {
   BASE_PROJECT_FAVICON_PATH,
@@ -19,7 +20,7 @@ import {
   REPORT_BUNDLE_ANALYZER_PATH,
   REPORT_BUNDLE_STATS_PATH,
   RUNTIME_CONSTANTS,
-  TS_CONFIG_PATH, MAX_CORE_CHUNK_SIZE, DEV_SERVER_REFRESH
+  TS_CONFIG_PATH, MAX_CORE_CHUNK_SIZE, DEV_SERVER_REFRESH, MODULES_ROOT_PATH, BACKEND_PUBLIC_PATH, PROJECT_DIST_PATH
 } from "./webpack.constants";
 import { IModuleDefinition } from "./webpack.types";
 
@@ -64,6 +65,9 @@ function createChunkCacheGroups(definitions: Array<IModuleDefinition>): Record<s
  * For each module create separate HTML entry with own dependencies.
  */
 function createHTMLEntry(definition: IModuleDefinition): typeof HtmlWebpackPlugin {
+  const modulePath: string = path.resolve(MODULES_ROOT_PATH, definition.entry);
+  const moduleTemplatePath: string = path.resolve(modulePath, "index.hbs");
+
   return new HtmlWebpackPlugin({
     ENVIRONMENT,
     chunks: [ "initialization", definition.name ],
@@ -71,7 +75,7 @@ function createHTMLEntry(definition: IModuleDefinition): typeof HtmlWebpackPlugi
     constants: {
       APPLICATION_ROOT,
       APPLICATION_TITLE: definition.title,
-      MODAL_ROOT
+      PORTAL_ROOT
     },
     favicon: BASE_PROJECT_FAVICON_PATH,
     filename: `html/${definition.name}.html`,
@@ -85,7 +89,7 @@ function createHTMLEntry(definition: IModuleDefinition): typeof HtmlWebpackPlugi
       removeTagWhitespace: true,
       trimCustomFragments: true
     },
-    template: BASE_PROJECT_TEMPLATE_PATH
+    template: fs.existsSync(moduleTemplatePath) ? moduleTemplatePath : BASE_PROJECT_TEMPLATE_PATH
   });
 }
 
@@ -172,20 +176,26 @@ export const PLUGIN_CONFIG: {
         configFile: TS_CONFIG_PATH
       }
     }),
-    // Async scripts load and inlining.
     new ScriptExtHtmlPlugin({ inline: PROJECT_INLINE_MODULES })
-    /**
-     * Add analyzers if ENV param is enabled.
-     */
-  ].concat(DEV_SERVER_REFRESH ? [
-    new ReactRefreshWebpackPlugin({
-      exclude: [
-        /\/application\/initialization/,
-        /node_modules/
-      ]
-    })
-  ] :[
-  ])
+  ]
+    .concat(IS_PRODUCTION ? [] : [
+      new SourceMapDevToolPlugin({
+        filename: "source_maps/[base].map[query]",
+        publicPath: BACKEND_PUBLIC_PATH,
+        exclude: [
+          ...PROJECT_INLINE_MODULES
+        ],
+        fileContext: "public"
+      })
+    ])
+    .concat(DEV_SERVER_REFRESH ? [
+      new ReactRefreshWebpackPlugin({
+        exclude: [
+          /\/application\/initialization/,
+          /node_modules/
+        ]
+      })
+    ] :[])
     .concat(ANALYZE_ENABLED ? [
       new BundleAnalyzerPlugin({
         analyzerMode: "static",
@@ -210,5 +220,6 @@ export const PLUGIN_CONFIG: {
           publicPath: false,
           version: false
         }
-      }) ]: [])
+      })
+    ]: [])
 };

@@ -38,7 +38,6 @@ export const IO_CONFIG: {
     chunkFilename: "js/[name]_[chunkhash:8].js",
     filename: "js/[name]_[fullhash].js",
     path: PROJECT_DIST_PATH,
-    publicPath: BACKEND_PUBLIC_PATH,
-    sourceMapFilename: "source_maps/[base].map[query]"
+    publicPath: BACKEND_PUBLIC_PATH
   }
 };

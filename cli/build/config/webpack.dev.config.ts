@@ -52,7 +52,7 @@ export const DEV_CONFIG: {
     port: DEV_SERVER_PORT,
     publicPath: BACKEND_PUBLIC_PATH
   },
-  DEV_TOOL: IS_PRODUCTION ? false : "source-map",
+  DEV_TOOL: false,
   STATS: {
     assets: true,
     children: false,
