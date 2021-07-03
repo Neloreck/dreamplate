@@ -1,40 +1,36 @@
 # Dreamplate client application starter
 
 ### Install:
-
 - `npm install`
-- `npm run setup` <br/>
+- `./run setup` <br/>
     or
-- `npm install -g lerna typescript` [optionally]
+- `npm install -g lerna typescript`
 - `./run setup`
 
-### NPM Scripts
+### Start working:
+- `./run start:dev`
+- `Open browser and go to 'http://localhost:3000`
 
-- `npm run setup` [project packages sync, install all package.json sub-projects dependencies]
-
-- `npm run help` [get cli commands list and description]
+### Build app:
+- `./run build`
+- `Open target/dist folder and check output`
 
 ### CLI Scripts
-
+- `./run help` [print avaliable commands with description]
 - `./run build` [build project in production mode]
-
 - `./run build:dev` [build project in development mode]
-
 - `./run start` [start project in production mode]
-
 - `./run start:dev` [build project in production mode]
-
 - `./run test` [run unit tests, linter and type checker]
-
 - `./run COMMAND_NAME` [run specific cli script]
 
 ### What is used:
-    
 - Custom CLI
-- Webpack, lazy loading, tree shaking, chunks + modular architecture, aliases
-- React, dreamstate as store manager
-- JSS, theming with own context management
-- Typescript (proposal decorators, OOP style, newest features, babel loader)
+- Webpack (babel loader)
+- React 
+- dreamstate (store manager)
+- JSS, theming with basoc functionality
+- Typescript
 - Jest for unit testing (enzyme-react tests + simple tests)
 - React fast refresh for HMR
 - HBS (template, global styles)
@@ -93,7 +89,7 @@ Such approach allows to:
 
 Typically module is separated as VIEW and DATA sub-modules. Each one includes only view or data logic and tries to keep this pattern.
 
-## Futures
+## Future
 - Translations experiments
 
 ## Side packages (waiting for)
