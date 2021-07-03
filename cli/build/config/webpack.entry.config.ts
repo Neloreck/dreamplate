@@ -3,11 +3,9 @@ import * as path from "path";
 import { Configuration } from "webpack";
 
 import {
-  BACKEND_PUBLIC_PATH,
   INITIALIZATION_ROOT_PATH,
   MODULES_CONFIG,
-  MODULES_ROOT_PATH,
-  PROJECT_DIST_PATH
+  MODULES_ROOT_PATH
 } from "./webpack.constants";
 import { IModulesDefinition } from "./webpack.types";
 
@@ -24,20 +22,9 @@ const generateEntryPoints = (definition: IModulesDefinition) => {
   return entries;
 };
 
-export const IO_CONFIG: {
-  ENTRY: Configuration["entry"];
-  OUTPUT: Configuration["output"];
-} = {
-  ENTRY: {
-    initialization: {
-      import: [ INITIALIZATION_ROOT_PATH ]
-    },
-    ...generateEntryPoints(MODULES_CONFIG)
+export const ENTRY_CONFIG: Configuration["entry"] = {
+  initialization: {
+    import: [ INITIALIZATION_ROOT_PATH ]
   },
-  OUTPUT: {
-    chunkFilename: "js/[name]_[chunkhash:8].js",
-    filename: "js/[name]_[fullhash].js",
-    path: PROJECT_DIST_PATH,
-    publicPath: BACKEND_PUBLIC_PATH
-  }
+  ...generateEntryPoints(MODULES_CONFIG)
 };

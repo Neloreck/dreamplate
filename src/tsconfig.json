@@ -2,7 +2,7 @@
   "compilerOptions": {
     "strict": true,
     "emitDecoratorMetadata": false,
-    "esModuleInterop": false,
+    "esModuleInterop": true,
     "experimentalDecorators": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,

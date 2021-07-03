@@ -1,11 +1,15 @@
 import { Configuration } from "webpack";
 
 import { ENVIRONMENT, IS_PRODUCTION } from "./webpack.constants";
-import { DEV_CONFIG } from "./webpack.dev.config";
-import { IO_CONFIG } from "./webpack.io.config";
+import { DEV_SERVER_CONFIG } from "./webpack.devServer.config";
+import { ENTRY_CONFIG } from "./webpack.entry.config";
 import { MODULE_CONFIG } from "./webpack.module.config";
+import { OPTIMIZATION_CONFIG } from "./webpack.optimization.config";
+import { OUTPUT_CONFIG } from "./webpack.output.config";
 import { PERFORMANCE_CONFIG } from "./webpack.performance.config";
 import { PLUGIN_CONFIG } from "./webpack.plugin.config";
+import { RESOLVE_CONFIG } from "./webpack.resolve.config";
+import { STATS_CONFIG } from "./webpack.stats.config";
 
 /**
  * Restrict build with environment declaration to prevent unexpected issues.
@@ -19,16 +23,16 @@ if (!ENVIRONMENT) {
  * Bundled from multiple computed scripts.
  */
 export const WEBPACK_CONFIG: Configuration = {
-  devServer: DEV_CONFIG.DEV_SERVER,
-  devtool: DEV_CONFIG.DEV_TOOL,
-  entry: IO_CONFIG.ENTRY,
+  devServer: DEV_SERVER_CONFIG,
+  devtool: false,
+  entry: ENTRY_CONFIG,
   mode: IS_PRODUCTION ? "production" : "development",
-  module: MODULE_CONFIG.MODULE,
-  optimization: PLUGIN_CONFIG.OPTIMIZATION,
-  output: IO_CONFIG.OUTPUT,
-  plugins: PLUGIN_CONFIG.PLUGINS,
-  resolve: MODULE_CONFIG.RESOLVE,
-  stats: DEV_CONFIG.STATS,
+  module: MODULE_CONFIG,
+  optimization: OPTIMIZATION_CONFIG,
+  output: OUTPUT_CONFIG,
+  plugins: PLUGIN_CONFIG,
+  resolve: RESOLVE_CONFIG,
+  stats: STATS_CONFIG,
   performance: PERFORMANCE_CONFIG,
   target: "web"
 } as Configuration;
