@@ -63,7 +63,7 @@
       "description": "Run jest unit tests."
     },
     "lint": {
-      "exec": "npx eslint src/**/*.ts src/**/*.tsx cli/**/*.ts",
+      "exec": "npx eslint -c ./src/.eslintrc.json --ignore-path ./src/.eslintignore src/**/*.ts src/**/*.tsx cli/**/*.ts",
       "description": "Run eslint for project codestyle checking."
     },
     "typecheck": {

@@ -30,6 +30,8 @@ export const PROJECT_DIST_PATH: string = path.resolve(PROJECT_OUTPUT_PATH, "dist
 
 export const DOTENV_CONFIG_PATH: string = path.resolve(BUILD_CONFIGURATION_PATH, `env/.${ENVIRONMENT}.env`);
 export const TS_CONFIG_PATH: string = path.resolve(PROJECT_ROOT_PATH, "src/tsconfig.json");
+export const ESLINT_CONFIG_PATH: string = path.resolve(PROJECT_ROOT_PATH, "src/.eslintrc.json");
+export const ESLINT_IGNORE_PATH: string = path.resolve(PROJECT_ROOT_PATH, "src/.eslintignore");
 export const BASE_PROJECT_TEMPLATE_PATH: string = path.resolve(BUILD_CONFIGURATION_PATH, "template/base.hbs");
 export const BASE_PROJECT_FAVICON_PATH: string = path.resolve(BUILD_CONFIGURATION_PATH, "template/favicon.ico");
 

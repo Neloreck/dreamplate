@@ -20,7 +20,11 @@ import {
   REPORT_BUNDLE_ANALYZER_PATH,
   REPORT_BUNDLE_STATS_PATH,
   RUNTIME_CONSTANTS,
-  TS_CONFIG_PATH, MAX_CORE_CHUNK_SIZE, DEV_SERVER_REFRESH, MODULES_ROOT_PATH, BACKEND_PUBLIC_PATH, PROJECT_DIST_PATH
+  TS_CONFIG_PATH,
+  MAX_CORE_CHUNK_SIZE,
+  DEV_SERVER_REFRESH,
+  MODULES_ROOT_PATH,
+  BACKEND_PUBLIC_PATH, ESLINT_CONFIG_PATH, ESLINT_IGNORE_PATH
 } from "./webpack.constants";
 import { IModuleDefinition } from "./webpack.types";
 
@@ -169,7 +173,11 @@ export const PLUGIN_CONFIG: {
     new ForkTsCheckerWebpackPlugin({
       eslint: {
         enabled: true,
-        files: path.resolve(PROJECT_ROOT_PATH, "./src/**/*.{ts,tsx,js,jsx}")
+        files: path.resolve(PROJECT_ROOT_PATH, "./src/**/*.{ts,tsx,js,jsx}"),
+        options: {
+          configFile: ESLINT_CONFIG_PATH,
+          ignorePath: ESLINT_IGNORE_PATH
+        }
       },
       typescript: {
         enabled: true,
