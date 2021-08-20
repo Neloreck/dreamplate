@@ -1,6 +1,5 @@
 import { green, red } from "colors";
-import { Compiler } from "webpack";
-import * as Webpack from "webpack";
+import { default as Webpack, Compiler } from "webpack";
 
 import { Run } from "../utils";
 

@@ -1,7 +1,6 @@
 import { green } from "colors";
-import { Compiler } from "webpack";
-import * as Webpack from "webpack";
-import * as DevServer from "webpack-dev-server";
+import { default as Webpack, Compiler } from "webpack";
+import { default as DevServer } from "webpack-dev-server";
 
 import { Run } from "../utils";
 

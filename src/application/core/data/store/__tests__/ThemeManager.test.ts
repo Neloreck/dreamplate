@@ -1,4 +1,4 @@
-import { mockManagerWithScope } from "dreamstate/test-utils";
+import { mockManager } from "dreamstate/test-utils";
 
 import { ThemeManager } from "@/core/data/store";
 import { TThemeType, IApplicationTheme, toggleTheme } from "@/lib/theme";
@@ -6,42 +6,42 @@ import { encrypt, setLocalStorageItem } from "@/lib/utils";
 
 describe("Theme context manager.", () => {
   it("Should properly initialize.", () => {
-    const [ themeManager ] = mockManagerWithScope(ThemeManager);
-    const { theme } = themeManager.context;
+    const manager: ThemeManager = mockManager(ThemeManager);
+    const { theme } = manager.context;
 
     expect(theme.palette.type).toBe(GTheme.DEFAULT_THEME_TYPE);
   });
 
   it("Should toggle theme correctly.", () => {
-    const [ themeManager ] = mockManagerWithScope(ThemeManager);
+    const manager: ThemeManager = mockManager(ThemeManager);
 
-    expect(themeManager.context.theme.palette.type).toBe("light");
+    expect(manager.context.theme.palette.type).toBe("light");
 
-    themeManager.toggleTheme();
+    manager.toggleTheme();
 
-    expect(themeManager.context.theme.palette.type).toBe("dark");
+    expect(manager.context.theme.palette.type).toBe("dark");
   });
 
   it("Should load preset from local storage.", () => {
     setLocalStorageItem("theme_type", "dark");
 
-    const [ themeManager ] = mockManagerWithScope(ThemeManager);
+    const manager: ThemeManager = mockManager(ThemeManager);
 
-    expect(themeManager.context.theme.palette.type).toBe("dark");
+    expect(manager.context.theme.palette.type).toBe("dark");
   });
 
   it("Should handle events from other tabs.", async () => {
-    const [ themeManager ] = mockManagerWithScope(ThemeManager);
+    const manager: ThemeManager = mockManager(ThemeManager);
 
-    const defaultThemeValue: TThemeType = themeManager.context.theme.palette.type;
-    const nextTheme: IApplicationTheme = toggleTheme(themeManager.context.theme);
+    const defaultThemeValue: TThemeType = manager.context.theme.palette.type;
+    const nextTheme: IApplicationTheme = toggleTheme(manager.context.theme);
 
-    themeManager["onLocalStorageDataChanged"]({
+    manager["onLocalStorageDataChanged"]({
       key: encrypt("theme_type"),
       newValue: encrypt(JSON.stringify(nextTheme.palette.type))
     } as StorageEvent);
 
-    expect(themeManager.context.theme.palette.type).toBe(nextTheme.palette.type);
-    expect(themeManager.context.theme.palette.type).not.toBe(defaultThemeValue);
+    expect(manager.context.theme.palette.type).toBe(nextTheme.palette.type);
+    expect(manager.context.theme.palette.type).not.toBe(defaultThemeValue);
   });
 });

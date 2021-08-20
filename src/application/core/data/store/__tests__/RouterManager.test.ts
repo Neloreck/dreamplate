@@ -1,31 +1,31 @@
-import { mockManagerWithScope } from "dreamstate/test-utils";
+import { mockManager } from "dreamstate/test-utils";
 
 import { RouterManager } from "@/core/data/store";
 
 describe("Auth context manager.", () => {
   it("Should initialize history and itself.", async () => {
-    const [ routerManager ]= mockManagerWithScope(RouterManager)!;
+    const manager: RouterManager = mockManager(RouterManager);
 
-    expect(routerManager.context.path).toBe("/");
-    expect(routerManager.history).not.toBeNull();
+    expect(manager.context.path).toBe("/");
+    expect(manager.history).not.toBeNull();
   });
 
   it("Should use history for navigation.", async () => {
     const mock = jest.fn();
-    const [ routerManager ]= mockManagerWithScope(RouterManager)!;
+    const manager: RouterManager = mockManager(RouterManager);
 
-    routerManager.history.push = mock;
-    routerManager.push("/push");
+    manager.history.push = mock;
+    manager.push("/push");
 
     expect(mock).toHaveBeenCalledWith("/push");
 
-    routerManager.history.replace = mock;
-    routerManager.replace("/replace");
+    manager.history.replace = mock;
+    manager.replace("/replace");
 
     expect(mock).toHaveBeenCalledWith("/replace");
 
-    routerManager.history.goBack = mock;
-    routerManager.goBack();
+    manager.history.goBack = mock;
+    manager.goBack();
 
     expect(mock).toHaveBeenCalled();
   });
