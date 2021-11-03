@@ -67,7 +67,8 @@
       "description": "Run eslint for project codestyle checking."
     },
     "format": {
-      "exec": "npx prettier --write \"**/*.(js|ts|tsx)\" && npx eslint . --ext .ts,.tsx --fix"
+      "exec": "npx prettier --write \"**/*.(js|ts|tsx)\" && npx eslint . --ext .ts,.tsx --fix",
+      "description": "Run prettier combined with eslint to format codebase."
     },
     "typecheck": {
       "exec": "npx tsc -p src --noEmit",
