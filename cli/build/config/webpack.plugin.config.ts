@@ -90,7 +90,7 @@ export const PLUGIN_CONFIG: Configuration["plugins"] = [
       enabled: true,
       files: path.resolve(PROJECT_ROOT_PATH, "./src/**/*.{ts,tsx,js,jsx}"),
       options: {
-        configFile: ESLINT_CONFIG_PATH,
+        overrideConfigFile: ESLINT_CONFIG_PATH,
         ignorePath: ESLINT_IGNORE_PATH
       }
     },

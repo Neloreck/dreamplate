@@ -27,7 +27,8 @@ export const useStyles = createUseStyles(({ palette, spacing }: IApplicationThem
     flexGrow: 1,
     justifyContent: "center",
     padding: spacing.unit * 2,
-    overflowY: "auto"
+    overflowY: "auto",
+    overflowX: "hidden"
   },
   linksList: {
     [down("sm")]: {

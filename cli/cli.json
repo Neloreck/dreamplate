@@ -34,11 +34,11 @@
     },
     "============================================================================================================": "==",
     "start": {
-      "exec": "npx cross-env NODE_ENV=production REFRESH=true ./run start-dev-server",
+      "exec": "npx cross-env NODE_ENV=production ./run start-dev-server",
       "description": "Start webpack dev server in production mode."
     },
     "start:dev": {
-      "exec": "npx cross-env NODE_ENV=development ./run start-dev-server",
+      "exec": "npx cross-env NODE_ENV=development REFRESH=true ./run start-dev-server",
       "description": "Start webpack dev server in dev mode."
     },
     "build": {

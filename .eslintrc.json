@@ -237,6 +237,7 @@
     ],
     "react/jsx-no-target-blank": "off",
     "react/prop-types": "off",
+    "react/no-children-prop": "off",
     "react/react-in-jsx-scope": "off",
     "semi": "error",
     "sort-imports": [
