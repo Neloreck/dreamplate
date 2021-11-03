@@ -12,7 +12,7 @@ export function initTheme(): void {
   if (rawStr) {
     const theme: TThemeType = JSON.parse(atob(rawStr));
 
-    bodyStyle.backgroundColor = (theme === "dark" ? GTheme.DEFAULT_BACKGROUND_DARK : GTheme.DEFAULT_BACKGROUND_LIGHT);
-    bodyStyle.color = (theme === "dark" ? GColor.WHITE : GColor.BLACK);
+    bodyStyle.backgroundColor = theme === "dark" ? GTheme.DEFAULT_BACKGROUND_DARK : GTheme.DEFAULT_BACKGROUND_LIGHT;
+    bodyStyle.color = theme === "dark" ? GColor.WHITE : GColor.BLACK;
   }
 }

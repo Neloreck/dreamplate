@@ -17,9 +17,7 @@ export function RootProvider({
     <ReactRouter history={history}>
       <JssProvider id={ThemeManager.JSS_ID_GENERATION_CONFIG}>
         <ThemeProvider theme={theme}>
-          <Suspense fallback={<div> Loading </div>}>
-            { children }
-          </Suspense>
+          <Suspense fallback={<div> Loading </div>}>{children}</Suspense>
         </ThemeProvider>
       </JssProvider>
     </ReactRouter>

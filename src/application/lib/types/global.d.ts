@@ -4,7 +4,6 @@ import type * as colors from "#/globals/colors";
 import type * as theme from "#/globals/theme";
 
 declare global {
-
   /**
    * Global definition for dev mode flag.
    */

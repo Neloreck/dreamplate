@@ -22,7 +22,7 @@ export function withMockedTheme(element: ReactElement): ReactElement {
 /**
  * Utility to get nested in @Styled element.
  */
-export function getThemedComponent <T>(element: ShallowWrapper<T>): ReactWrapper {
+export function getThemedComponent<T>(element: ShallowWrapper<T>): ReactWrapper {
   return mount(element.getElement()).children()
     .children();
 }

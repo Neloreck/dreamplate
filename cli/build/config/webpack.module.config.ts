@@ -3,10 +3,7 @@ import * as path from "path";
 import { Configuration } from "webpack";
 
 import { BABEL_CONFIG } from "./babel.config";
-import {
-  BUILD_CONFIGURATION_PATH,
-  PROJECT_ROOT_PATH
-} from "./webpack.constants";
+import { BUILD_CONFIGURATION_PATH, PROJECT_ROOT_PATH } from "./webpack.constants";
 
 export const MODULE_CONFIG: Partial<Configuration["module"]> = {
   rules: [
@@ -14,9 +11,7 @@ export const MODULE_CONFIG: Partial<Configuration["module"]> = {
       enforce: "pre",
       exclude: /(node_modules|\.spec\.js)/,
       test: /\.(ts|tsx|js|jsx)$/,
-      use: [
-        { loader: path.resolve(BUILD_CONFIGURATION_PATH, "loaders/stripBlockLoader.ts") }
-      ]
+      use: [ { loader: path.resolve(BUILD_CONFIGURATION_PATH, "loaders/stripBlockLoader.ts") } ]
     },
     {
       exclude: /node_modules/,

@@ -9,19 +9,13 @@ import { RootProvider } from "@/core/RootProvider";
  * Render global router and provider with data shared for all modules.
  */
 
-const GlobalProvider: FunctionComponent = createProvider([
-  ThemeManager,
-  RouterManager,
-  AuthManager
-]);
+const GlobalProvider: FunctionComponent = createProvider([ ThemeManager, RouterManager, AuthManager ]);
 
 export function Root({ children = null as ReactNode }): ReactElement {
   return (
     <ScopeProvider>
       <GlobalProvider>
-        <RootProvider>
-          { children }
-        </RootProvider>
+        <RootProvider>{children}</RootProvider>
       </GlobalProvider>
     </ScopeProvider>
   );

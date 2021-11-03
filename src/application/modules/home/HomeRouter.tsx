@@ -7,11 +7,9 @@ import { HomePage } from "@/modules/home/view/pages/HomePage";
 export function HomeRouter(): ReactElement {
   return (
     <Switch>
+      <Route path={[ "/", "/home" ]} component={HomePage} exact={true} />
 
-      <Route path={[ "/", "/home" ]} component={HomePage} exact={true}/>
-
-      <Route component={DefaultErrorFallback}/>
-
+      <Route component={DefaultErrorFallback} />
     </Switch>
   );
 }

@@ -16,7 +16,11 @@ export class DevRunner {
     }
 
     const {
-      WEBPACK_CONFIG, DEV_SERVER_PORT, DEV_SERVER_HOST, PROJECT_ROOT_PATH, PROJECT_OUTPUT_PATH
+      WEBPACK_CONFIG,
+      DEV_SERVER_PORT,
+      DEV_SERVER_HOST,
+      PROJECT_ROOT_PATH,
+      PROJECT_OUTPUT_PATH
     } = require("./config");
     const compiler: Compiler = Webpack(WEBPACK_CONFIG);
     const server = new DevServer(compiler as any, WEBPACK_CONFIG.devServer);
@@ -25,9 +29,9 @@ export class DevRunner {
 
     process.stdout.write(
       `\nStarted dev server for client bundle in ${green(process.env.NODE_ENV || "unselected")} mode. \n` +
-      `Project root: '${green(PROJECT_ROOT_PATH)}'.\n` +
-      `Project output: '${green(PROJECT_OUTPUT_PATH)}'.\n` +
-      (args.length > 2 ? `Modules for serving: ${green(JSON.stringify(args.slice(2)))}.\n\n` : "\n")
+        `Project root: '${green(PROJECT_ROOT_PATH)}'.\n` +
+        `Project output: '${green(PROJECT_OUTPUT_PATH)}'.\n` +
+        (args.length > 2 ? `Modules for serving: ${green(JSON.stringify(args.slice(2)))}.\n\n` : "\n")
     );
   }
 

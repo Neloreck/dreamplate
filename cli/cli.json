@@ -66,6 +66,9 @@
       "exec": "npx eslint -c ./src/.eslintrc.json --ignore-path ./src/.eslintignore src/**/*.ts src/**/*.tsx cli/**/*.ts",
       "description": "Run eslint for project codestyle checking."
     },
+    "format": {
+      "exec": "npx prettier --write \"**/*.(js|ts|tsx)\" && npx eslint . --ext .ts,.tsx --fix"
+    },
     "typecheck": {
       "exec": "npx tsc -p src --noEmit",
       "description": "Run TS typechecks."

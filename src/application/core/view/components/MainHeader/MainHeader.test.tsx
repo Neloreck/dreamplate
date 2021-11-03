@@ -9,7 +9,7 @@ describe("Main header component rendering.", () => {
   const mockClasses: Classes = createMockClasses();
 
   it("Should match snapshot.", () => {
-    const wrapper = shallow(<MainHeader classes={mockClasses} themeContext={createMockContext()}/>);
+    const wrapper = shallow(<MainHeader classes={mockClasses} themeContext={createMockContext()} />);
 
     expect(wrapper).toMatchSnapshot("Default HOC layout.");
   });

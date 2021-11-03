@@ -8,7 +8,7 @@ describe("Home page component rendering.", () => {
   const classes: Classes = createMockClasses();
 
   it("Should match snapshot.", () => {
-    const wrapper = shallow(<HomePage classes={classes} routerContext={createMockContext()}/>);
+    const wrapper = shallow(<HomePage classes={classes} routerContext={createMockContext()} />);
 
     expect(wrapper).toMatchSnapshot("Default HOC layout.");
   });

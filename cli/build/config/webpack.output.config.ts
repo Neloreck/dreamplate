@@ -1,9 +1,6 @@
 import { Configuration } from "webpack";
 
-import {
-  BACKEND_PUBLIC_PATH,
-  PROJECT_DIST_PATH
-} from "./webpack.constants";
+import { BACKEND_PUBLIC_PATH, PROJECT_DIST_PATH } from "./webpack.constants";
 
 export const OUTPUT_CONFIG: Configuration["output"] = {
   chunkFilename: "js/[name]_[chunkhash:8].js",

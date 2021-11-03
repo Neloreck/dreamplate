@@ -66,7 +66,7 @@ export function DebugExpose(name?: string): ClassDecorator {
 
     return {
       ...descriptor,
-      finisher: (target: any) => (
+      finisher: (target: any) =>
         class extends target {
 
           public constructor(...params: Array<any>) {
@@ -76,7 +76,6 @@ export function DebugExpose(name?: string): ClassDecorator {
           }
 
         }
-      )
     };
   };
 }

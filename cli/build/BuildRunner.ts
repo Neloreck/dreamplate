@@ -21,18 +21,20 @@ export class BuildRunner {
 
     process.stdout.write(
       `Started building client bundle in ${green(process.env.NODE_ENV || "unselected")} mode.\n\n` +
-      `Project root: '${green(PROJECT_ROOT_PATH)}'.\n` +
-      `Project output: '${green(PROJECT_OUTPUT_PATH)}'.\n` +
-      (args.length > 2 ? `Modules for serving: ${green(JSON.stringify(args.slice(2)))}.\n\n` : "\n")
+        `Project root: '${green(PROJECT_ROOT_PATH)}'.\n` +
+        `Project output: '${green(PROJECT_OUTPUT_PATH)}'.\n` +
+        (args.length > 2 ? `Modules for serving: ${green(JSON.stringify(args.slice(2)))}.\n\n` : "\n")
     );
 
     compiler.run((error: any, stats: any): void => {
       if (error) {
-        process.stdout.write(red("\nFailed to build client bundle: " + "\n" +
-          error.toString(BuildRunner.STATS_PRINT_CONFIG) + "\n"));
+        process.stdout.write(
+          red("\nFailed to build client bundle: " + "\n" + error.toString(BuildRunner.STATS_PRINT_CONFIG) + "\n")
+        );
       } else {
-        process.stdout.write(green("\nSuccessfully built client bundle: " + "\n" +
-          stats.toString(BuildRunner.STATS_PRINT_CONFIG) + "\n"));
+        process.stdout.write(
+          green("\nSuccessfully built client bundle: " + "\n" + stats.toString(BuildRunner.STATS_PRINT_CONFIG) + "\n")
+        );
       }
     });
   }

@@ -22,7 +22,9 @@ import {
   TS_CONFIG_PATH,
   DEV_SERVER_REFRESH,
   MODULES_ROOT_PATH,
-  BACKEND_PUBLIC_PATH, ESLINT_CONFIG_PATH, ESLINT_IGNORE_PATH
+  BACKEND_PUBLIC_PATH,
+  ESLINT_CONFIG_PATH,
+  ESLINT_IGNORE_PATH
 } from "./webpack.constants";
 import { IModuleDefinition } from "./webpack.types";
 
@@ -74,9 +76,9 @@ function createHTMLEntry(definition: IModuleDefinition): typeof HtmlWebpackPlugi
  */
 export const PLUGIN_CONFIG: Configuration["plugins"] = [
   /**
-     * Generate HTML for each module.
-     * Maintain separate submodule with own base template for each application.
-     */
+   * Generate HTML for each module.
+   * Maintain separate submodule with own base template for each application.
+   */
   ...MODULES_CONFIG.modules.map(createHTMLEntry),
   new DuplicatePackageCheckerPlugin({ verbose: true }),
   new DotEnv({ path: DOTENV_CONFIG_PATH }),
@@ -101,48 +103,54 @@ export const PLUGIN_CONFIG: Configuration["plugins"] = [
   }),
   new ScriptExtHtmlPlugin({ inline: PROJECT_INLINE_MODULES })
 ]
-  .concat(IS_PRODUCTION ? [] : [
-    new SourceMapDevToolPlugin({
-      filename: "source_maps/[base].map[query]",
-      publicPath: BACKEND_PUBLIC_PATH,
-      exclude: [
-        ...PROJECT_INLINE_MODULES
-      ],
-      fileContext: "public"
-    })
-  ])
-  .concat(DEV_SERVER_REFRESH ? [
-    new ReactRefreshWebpackPlugin({
-      exclude: [
-        /\/application\/initialization/,
-        /node_modules/
+  .concat(
+    IS_PRODUCTION
+      ? []
+      : [
+        new SourceMapDevToolPlugin({
+          filename: "source_maps/[base].map[query]",
+          publicPath: BACKEND_PUBLIC_PATH,
+          exclude: [ ...PROJECT_INLINE_MODULES ],
+          fileContext: "public"
+        })
       ]
-    })
-  ] :[])
-  .concat(ANALYZE_ENABLED ? [
-    new BundleAnalyzerPlugin({
-      analyzerMode: "static",
-      defaultSizes: "gzip",
-      openAnalyzer: false,
-      reportFilename: REPORT_BUNDLE_ANALYZER_PATH
-    }),
-    new StatsWriterPlugin({
-      filename: REPORT_BUNDLE_STATS_PATH,
-      stats: {
-        all: true,
-        assets: true,
-        assetsByChunkName: true,
-        children: false,
-        chunks: false,
-        entrypoints: true,
-        hash: true,
-        logging: false,
-        modules: false,
-        namedChunkGroups: false,
-        outputPath: false,
-        publicPath: false,
-        version: false
-      }
-    })
-  ]: []);
-
+  )
+  .concat(
+    DEV_SERVER_REFRESH
+      ? [
+        new ReactRefreshWebpackPlugin({
+          exclude: [ /\/application\/initialization/, /node_modules/ ]
+        })
+      ]
+      : []
+  )
+  .concat(
+    ANALYZE_ENABLED
+      ? [
+        new BundleAnalyzerPlugin({
+          analyzerMode: "static",
+          defaultSizes: "gzip",
+          openAnalyzer: false,
+          reportFilename: REPORT_BUNDLE_ANALYZER_PATH
+        }),
+        new StatsWriterPlugin({
+          filename: REPORT_BUNDLE_STATS_PATH,
+          stats: {
+            all: true,
+            assets: true,
+            assetsByChunkName: true,
+            children: false,
+            chunks: false,
+            entrypoints: true,
+            hash: true,
+            logging: false,
+            modules: false,
+            namedChunkGroups: false,
+            outputPath: false,
+            publicPath: false,
+            version: false
+          }
+        })
+      ]
+      : []
+  );

@@ -13,8 +13,5 @@ export function renderRoot(
 ): void {
   const content: ReactElement = createElement(children);
 
-  render(
-    createElement(Root, {}, content),
-    target
-  );
+  render(createElement(Root, {}, content), target);
 }

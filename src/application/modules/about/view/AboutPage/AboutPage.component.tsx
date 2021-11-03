@@ -31,14 +31,11 @@ export function AboutPage({
 
   return (
     <>
-      <MainHeader/>
+      <MainHeader />
 
       <main className={content}>
         About page.
-
-        <button onClick={onHomeNavigated}>
-          Go home
-        </button>
+        <button onClick={onHomeNavigated}>Go home</button>
       </main>
     </>
   );

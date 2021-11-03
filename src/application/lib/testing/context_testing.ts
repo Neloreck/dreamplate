@@ -23,8 +23,5 @@ export function createMockContextProperty<T>(dataKey: string): T {
  * Create mock context object for testing.
  */
 export function createMockContext<T>(): T {
-  return new Proxy(
-    {},
-    { get: (target: TAnyObject, property: string) => createMockContextProperty(property) }
-  ) as T;
+  return new Proxy({}, { get: (target: TAnyObject, property: string) => createMockContextProperty(property) }) as T;
 }

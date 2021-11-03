@@ -42,12 +42,8 @@ export const useStyles = createUseStyles(({ palette, spacing }: IApplicationThem
 
 const renderReferenceCard = (className: string, label: string, href: string): ReactNode => (
   <div className={className}>
-    <a
-      href={href}
-      target={"_blank"}
-      rel={"noopener noreferrer"}
-    >
-      { label }
+    <a href={href} target={"_blank"} rel={"noopener noreferrer"}>
+      {label}
     </a>
   </div>
 );
@@ -60,19 +56,16 @@ export function HomePage({
 
   return (
     <>
-      <MainHeader/>
+      <MainHeader />
 
       <main className={content}>
-
         <div className={linksList}>
-          { renderReferenceCard(link, "React", "https://reactjs.org/") }
-          { renderReferenceCard(link, "Typescript", "https://www.typescriptlang.org/") }
-          { renderReferenceCard(link, "DreamState", "https://github.com/Neloreck/dreamstate/") }
+          {renderReferenceCard(link, "React", "https://reactjs.org/")}
+          {renderReferenceCard(link, "Typescript", "https://www.typescriptlang.org/")}
+          {renderReferenceCard(link, "DreamState", "https://github.com/Neloreck/dreamstate/")}
         </div>
 
-        <button onClick={onAboutNavigated}>
-          About
-        </button>
+        <button onClick={onAboutNavigated}>About</button>
       </main>
     </>
   );

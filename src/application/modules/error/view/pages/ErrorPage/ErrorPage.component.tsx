@@ -33,11 +33,11 @@ export function ErrorPage({
 
   return (
     <>
-      <MainHeader/>
+      <MainHeader />
 
       <main className={content}>
         <div className={labelCard}>
-          { IS_DEV ? "Page was not found or current path is not serving by dev server." : "Page was not found." }
+          {IS_DEV ? "Page was not found or current path is not serving by dev server." : "Page was not found."}
         </div>
 
         <button onClick={onHomeNavigated}> Go Home </button>

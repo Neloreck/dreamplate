@@ -11,8 +11,8 @@ import { IModulesDefinition, TEnvironmentType } from "./webpack.types";
  */
 
 export const ENVIRONMENT: TEnvironmentType = process.env.NODE_ENV as TEnvironmentType;
-export const IS_TEST: boolean = (ENVIRONMENT === "test");
-export const IS_PRODUCTION: boolean = (ENVIRONMENT === "production" || IS_TEST);
+export const IS_TEST: boolean = ENVIRONMENT === "test";
+export const IS_PRODUCTION: boolean = ENVIRONMENT === "production" || IS_TEST;
 
 /**
  * Project paths configuration.
@@ -91,9 +91,7 @@ export const DEV_SERVER_REFRESH: boolean = process.env.REFRESH === "true";
  */
 
 // Entries that will be always build.
-export const REQUIRED_ENTRIES: Array<string> = [
-  "error"
-];
+export const REQUIRED_ENTRIES: Array<string> = [ "error" ];
 
 export const SELECTED_ENTRIES: Array<string> | null = process.env.ENTRIES ? JSON.parse(process.env.ENTRIES) : null;
 
@@ -111,8 +109,8 @@ export const MODULES_CONFIG: IModulesDefinition = (() => {
     });
 
     // Select only requested modules.
-    config.modules = config.modules
-      .filter((it: { name: string }) => SELECTED_ENTRIES.concat(REQUIRED_ENTRIES).includes(it.name));
+    config.modules = config.modules.filter((it: { name: string }) =>
+      SELECTED_ENTRIES.concat(REQUIRED_ENTRIES).includes(it.name));
   }
 
   return config;

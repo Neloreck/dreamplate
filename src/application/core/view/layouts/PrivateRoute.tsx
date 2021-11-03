@@ -41,12 +41,10 @@ export function PrivateRoute({
       const next: string = "/"; // getQueryParams().next;
 
       replace(
-        typeof next === "string"
-          ? next as string
-          : typeof redirect === "string" ? redirect as string : "/todo"
+        typeof next === "string" ? (next as string) : typeof redirect === "string" ? (redirect as string) : "/todo"
       );
     }
   });
 
-  return <Route {...routeProps}/>;
+  return <Route {...routeProps} />;
 }

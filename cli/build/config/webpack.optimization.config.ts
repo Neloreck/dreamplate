@@ -1,11 +1,6 @@
 import { Configuration } from "webpack";
 
-import {
-  IS_PRODUCTION,
-  MODULES_CONFIG,
-  PROJECT_CORE_DEPENDENCIES,
-  MAX_CORE_CHUNK_SIZE
-} from "./webpack.constants";
+import { IS_PRODUCTION, MODULES_CONFIG, PROJECT_CORE_DEPENDENCIES, MAX_CORE_CHUNK_SIZE } from "./webpack.constants";
 import { IModuleDefinition } from "./webpack.types";
 
 // CJS way to import most plugins.
@@ -18,19 +13,19 @@ function createChunkCacheGroups(definitions: Array<IModuleDefinition>): Record<s
   const entries: Record<string, any> = {};
 
   for (const it of definitions) {
-    entries[`modules/${it.name}/l`] = ({
+    entries[`modules/${it.name}/l`] = {
       maxSize: 750 * 1000,
       priority: 60,
       reuseExistingChunk: true,
       test: new RegExp(`/modules/${it.name}/node_modules/`)
-    });
+    };
 
-    entries[`modules/${it.name}/s`] = ({
+    entries[`modules/${it.name}/s`] = {
       maxSize: 250 * 1000,
       priority: 30,
       reuseExistingChunk: true,
       test: new RegExp(`/modules/${it.name}/`)
-    });
+    };
   }
 
   return entries;
@@ -44,7 +39,7 @@ export const OPTIMIZATION_CONFIG: Configuration["optimization"] = {
     new TerserPlugin({
       terserOptions: {
         compress: {
-          "drop_console": IS_PRODUCTION,
+          ["drop_console"]: IS_PRODUCTION,
           ecma: 5,
           passes: IS_PRODUCTION ? 5 : 1
         },
@@ -60,25 +55,23 @@ export const OPTIMIZATION_CONFIG: Configuration["optimization"] = {
   runtimeChunk: "single",
   splitChunks: {
     cacheGroups: {
-      "core": {
+      core: {
         maxSize: MAX_CORE_CHUNK_SIZE,
         priority: 100,
         reuseExistingChunk: false,
         test: new RegExp(
-          `/node_modules/(${
-            PROJECT_CORE_DEPENDENCIES.reduce((accumulator: string, it: string) =>
-              accumulator ? accumulator + "|" + it : it)
-          })/`
+          `/node_modules/(${PROJECT_CORE_DEPENDENCIES.reduce((accumulator: string, it: string) =>
+            accumulator ? accumulator + "|" + it : it)})/`
         )
       },
-      "vendor": {
+      vendor: {
         priority: 70,
         maxSize: MAX_CORE_CHUNK_SIZE,
         reuseExistingChunk: false,
         test: /\/src\/node_modules\//
       },
       ...createChunkCacheGroups(MODULES_CONFIG.modules),
-      "shared": {
+      shared: {
         priority: 10,
         maxSize: MAX_CORE_CHUNK_SIZE,
         reuseExistingChunk: true,

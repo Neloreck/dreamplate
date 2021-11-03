@@ -4,11 +4,11 @@ import { IApplicationTheme, TThemeType } from "@/lib/theme/types";
  * Create default theme.
  */
 export function createDefaultTheme(themeType: TThemeType): IApplicationTheme {
-  return ({
+  return {
     palette: {
       background: {
-        default: (themeType === "dark" ? GTheme.DEFAULT_BACKGROUND_DARK : GTheme.DEFAULT_BACKGROUND_LIGHT),
-        paper: (themeType === "dark" ? GTheme.DEFAULT_BACKGROUND_PAPER_DARK : GTheme.DEFAULT_BACKGROUND_PAPER_LIGHT)
+        default: themeType === "dark" ? GTheme.DEFAULT_BACKGROUND_DARK : GTheme.DEFAULT_BACKGROUND_LIGHT,
+        paper: themeType === "dark" ? GTheme.DEFAULT_BACKGROUND_PAPER_DARK : GTheme.DEFAULT_BACKGROUND_PAPER_LIGHT
       },
       primary: {
         dark: GTheme.DEFAULT_PRIMARY_DARK,
@@ -21,15 +21,15 @@ export function createDefaultTheme(themeType: TThemeType): IApplicationTheme {
         main: GTheme.DEFAULT_SECONDARY_MAIN
       },
       text: {
-        primary: (themeType === "dark" ? GTheme.DEFAULT_TEXT_PRIMARY_DARK : GTheme.DEFAULT_TEXT_PRIMARY_LIGHT),
-        secondary: (themeType === "dark" ? GTheme.DEFAULT_TEXT_SECONDARY_DARK : GTheme.DEFAULT_TEXT_SECONDARY_LIGHT)
+        primary: themeType === "dark" ? GTheme.DEFAULT_TEXT_PRIMARY_DARK : GTheme.DEFAULT_TEXT_PRIMARY_LIGHT,
+        secondary: themeType === "dark" ? GTheme.DEFAULT_TEXT_SECONDARY_DARK : GTheme.DEFAULT_TEXT_SECONDARY_LIGHT
       },
       type: themeType
     },
     spacing: {
       unit: GTheme.DEFAULT_SPACING_UNIT
     }
-  });
+  };
 }
 
 /**
@@ -37,8 +37,8 @@ export function createDefaultTheme(themeType: TThemeType): IApplicationTheme {
  * Theme type is opposite or provided as second param.
  */
 export function toggleTheme({ palette, spacing }: IApplicationTheme, requestedType?: TThemeType): IApplicationTheme {
-  const nextType: TThemeType = (requestedType || (palette.type === "light" ? "dark" : "light"));
-  const isDark: boolean = (nextType === "dark");
+  const nextType: TThemeType = requestedType || (palette.type === "light" ? "dark" : "light");
+  const isDark: boolean = nextType === "dark";
 
   return {
     palette: {

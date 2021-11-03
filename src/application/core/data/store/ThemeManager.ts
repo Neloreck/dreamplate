@@ -58,7 +58,7 @@ export class ThemeManager extends ContextManager<IThemeContext> {
   public async toggleTheme(): Promise<void> {
     const { theme } = this.context;
 
-    const nextThemeType: TThemeType = (theme.palette.type === "light" ? "dark" : "light");
+    const nextThemeType: TThemeType = theme.palette.type === "light" ? "dark" : "light";
     const nextTheme: IApplicationTheme = toggleTheme(theme, nextThemeType);
 
     log.info(`Toggle theme mode to '${nextThemeType}'.`);

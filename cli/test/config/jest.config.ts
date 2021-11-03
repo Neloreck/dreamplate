@@ -16,9 +16,7 @@ export const JEST_CONFIG = {
   collectCoverage: true,
   // collectCoverageFrom: null,
   coverageDirectory: "<rootDir>/target/test/coverage",
-  coveragePathIgnorePatterns: [
-    "/node_modules/"
-  ],
+  coveragePathIgnorePatterns: [ "/node_modules/" ],
   globals: {
     ...RUNTIME_CONSTANTS,
     IS_TEST: true,
@@ -36,17 +34,8 @@ export const JEST_CONFIG = {
   // forceCoverageMatch: [],
   // globalSetup: null,
   // globalTeardown: null,
-  moduleDirectories: [
-    "node_modules"
-  ],
-  moduleFileExtensions: [
-    "ts",
-    "tsx",
-    "js",
-    "jsx",
-    "json",
-    "node"
-  ],
+  moduleDirectories: [ "node_modules" ],
+  moduleFileExtensions: [ "ts", "tsx", "js", "jsx", "json", "node" ],
   moduleNameMapper: {
     "#/(.*)$": "<rootDir>/cli/build/$1",
     "@/(.*)$": "<rootDir>/src/application/$1",
@@ -63,28 +52,16 @@ export const JEST_CONFIG = {
   // resolver: null,
   // restoreMocks: false,
   rootDir: ROOT_PATH,
-  roots: [
-    "<rootDir>"
-  ],
+  roots: [ "<rootDir>" ],
   // runner: "jest-runner",
-  setupFiles: [
-    "<rootDir>/cli/test/config/setup_tests.ts"
-  ],
-  setupFilesAfterEnv: [
-  ],
-  snapshotSerializers: [
-    "enzyme-to-json/serializer"
-  ],
+  setupFiles: [ "<rootDir>/cli/test/config/setup_tests.ts" ],
+  setupFilesAfterEnv: [],
+  snapshotSerializers: [ "enzyme-to-json/serializer" ],
   testEnvironment: "jsdom",
   // testEnvironmentOptions: {},
   // testLocationInResults: false,
-  testMatch: [
-    "**/__tests__/**/*.ts?(x)",
-    "**/?(*.)+(spec|test).ts?(x)"
-  ],
-  testPathIgnorePatterns: [
-    "/node_modules/"
-  ],
+  testMatch: [ "**/__tests__/**/*.ts?(x)", "**/?(*.)+(spec|test).ts?(x)" ],
+  testPathIgnorePatterns: [ "/node_modules/" ],
   // testResultsProcessor: null,
   // testRunner: "jasmine2",
   // testURL: "about:blank",
@@ -92,9 +69,7 @@ export const JEST_CONFIG = {
   transform: {
     "^.+\\.(j|t)sx?$": BABEL_TRANSFORMER_PATH
   },
-  transformIgnorePatterns: [
-    "/node_modules/.+\\.js$"
-  ],
+  transformIgnorePatterns: [ "/node_modules/.+\\.js$" ],
   // unmockedModulePathPatterns: undefined,
   verbose: true
   // watchPathIgnorePatterns: [],

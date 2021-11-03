@@ -12,11 +12,8 @@ export const BABEL_CONFIG = {
     [
       "@babel/preset-env",
       {
-        "targets": {
-          "browsers": [
-            "> 2.0%",
-            "not dead"
-          ]
+        targets: {
+          browsers: [ "> 2.0%", "not dead" ]
         }
       }
     ],
@@ -29,16 +26,13 @@ export const BABEL_CONFIG = {
       "module-resolver",
       {
         alias: {
-          "#": path.resolve(__dirname,"../")
+          "#": path.resolve(__dirname, "../")
         }
       }
     ],
     "macros",
     "@babel/plugin-transform-react-constant-elements",
     "@babel/plugin-proposal-class-properties",
-    [ "@babel/plugin-proposal-decorators", { "decoratorsBeforeExport": true } ]
-  ].concat(DEV_SERVER_REFRESH ? [
-    "react-refresh/babel"
-  ] : [
-  ])
+    [ "@babel/plugin-proposal-decorators", { decoratorsBeforeExport: true } ]
+  ].concat(DEV_SERVER_REFRESH ? [ "react-refresh/babel" ] : [])
 };

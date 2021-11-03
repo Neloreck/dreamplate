@@ -1,14 +1,13 @@
-import { ContextManager, createLoadable, Loadable } from "dreamstate";
+import { ContextManager, createLoadable, Loadable, createActions } from "dreamstate";
 
 import { log } from "#/macroses/log.macro";
-import { TOptional } from "@/lib/types";
+import { TOptional, TAnyObject } from "@/lib/types";
 
 /**
  * Auth context description.
  */
 export interface IAuthContext {
-  authActions: {
-  };
+  authActions: TAnyObject;
   user: Loadable<TOptional<string>>;
 }
 
@@ -19,8 +18,7 @@ export interface IAuthContext {
 export class AuthManager extends ContextManager<IAuthContext> {
 
   public readonly context: IAuthContext = {
-    authActions: {
-    },
+    authActions: createActions({}),
     user: createLoadable(null)
   };
 
