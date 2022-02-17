@@ -1,4 +1,4 @@
-import { ComponentType, createElement, ReactElement } from "react";
+import { ComponentType, createElement, ReactElement, StrictMode } from "react";
 import { render } from "react-dom";
 
 import { applicationConfig } from "@/core/data/configs";
@@ -12,6 +12,7 @@ export function renderRoot(
   target: HTMLElement = applicationConfig.TARGET_DOM_ELEMENTS.applicationRoot
 ): void {
   const content: ReactElement = createElement(children);
+  const root: ReactElement = createElement(StrictMode, {}, createElement(Root, {}, content));
 
-  render(createElement(Root, {}, content), target);
+  render(root, target);
 }
