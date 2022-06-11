@@ -8,7 +8,7 @@ import { OPTIMIZATION_CONFIG } from "./webpack.optimization.config";
 import { OUTPUT_CONFIG } from "./webpack.output.config";
 import { PERFORMANCE_CONFIG } from "./webpack.performance.config";
 import { PLUGIN_CONFIG } from "./webpack.plugin.config";
-import { RESOLVE_CONFIG } from "./webpack.resolve.config";
+import { RESOLVE_CONFIG, RESOLVE_LOADER_CONFIG } from "./webpack.resolve.config";
 import { STATS_CONFIG } from "./webpack.stats.config";
 
 /**
@@ -32,6 +32,7 @@ export const WEBPACK_CONFIG: Configuration = {
   output: OUTPUT_CONFIG,
   plugins: PLUGIN_CONFIG,
   resolve: RESOLVE_CONFIG,
+  resolveLoader: RESOLVE_LOADER_CONFIG,
   stats: STATS_CONFIG,
   performance: PERFORMANCE_CONFIG,
   target: "web"

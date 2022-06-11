@@ -1,5 +1,5 @@
 #!/bin/bash
-cd "$(dirname "$0")"
+cd "$(dirname "$0")" || exit
 
 RED="\033[2;31m"
 GREEN="\033[2;32m"

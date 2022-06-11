@@ -89,6 +89,7 @@ export const PLUGIN_CONFIG: Configuration["plugins"] = [
     patterns: [ { from: BASE_PROJECT_STATIC_PATH } ]
   }),
   new ForkTsCheckerWebpackPlugin({
+    devServer: false,
     typescript: {
       enabled: true,
       configFile: TS_CONFIG_PATH
