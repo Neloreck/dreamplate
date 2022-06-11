@@ -1,6 +1,7 @@
 import { useManager } from "dreamstate";
 import { ReactElement } from "react";
 import { createUseStyles } from "react-jss";
+import { Link } from "react-router-dom";
 
 import { RouterManager } from "@/core/data/store";
 import { MainHeader } from "@/core/view/components";
@@ -33,9 +34,9 @@ export function AboutPage({
 
       <main className={content}>
         About page.
-        <a href={history.createHref("/home")}>
+        <Link to={history.createHref("/home")} reloadDocument>
           <button>Go home</button>
-        </a>
+        </Link>
       </main>
     </>
   );

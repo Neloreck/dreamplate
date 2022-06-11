@@ -223,7 +223,7 @@ function getHashCode(target) {
     return hash;
   }
 
-  for (let it = 0; it < target.length; it++) {
+  for (let it = 0; it < target.length; it ++) {
     hash = (hash << 5) - hash + target.charCodeAt(it);
     hash |= 0; // Convert to 32bit integer.
   }
@@ -277,7 +277,7 @@ function log({ references, babel, state }) {
             types.newExpression(types.identifier("Date"), []),
             types.identifier("toLocaleTimeString")
           ),
-          [types.stringLiteral("en-GB")]
+          [ types.stringLiteral("en-GB") ]
         );
 
         const millisStringExpression = types.callExpression(
@@ -296,7 +296,7 @@ function log({ references, babel, state }) {
 
         const millisPaddedExpression = types.callExpression(
           types.memberExpression(millisStringExpression, types.identifier("padStart")),
-          [types.numericLiteral(3), types.stringLiteral("0")]
+          [ types.numericLiteral(3), types.stringLiteral("0") ]
         );
 
         const prefixExpression = types.callExpression(
@@ -304,7 +304,7 @@ function log({ references, babel, state }) {
           [
             timeExpression,
             types.stringLiteral(":"),
-            millisStringExpression,
+            millisPaddedExpression,
             types.stringLiteral(` [${prefixChar}${prefix.padEnd(3)}]`)
           ]
         );

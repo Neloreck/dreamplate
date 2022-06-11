@@ -1,6 +1,7 @@
 import { useManager } from "dreamstate";
 import { ReactElement, ReactNode } from "react";
 import { createUseStyles } from "react-jss";
+import { Link } from "react-router-dom";
 
 import { down } from "#/macroses/style.macro";
 import { RouterManager } from "@/core/data/store";
@@ -63,9 +64,9 @@ export function HomePage({
           {renderReferenceCard(link, "DreamState", "https://github.com/Neloreck/dreamstate/")}
         </div>
 
-        <a href={history.createHref("/about")}>
+        <Link to={history.createHref("/about")} reloadDocument>
           <button>About</button>
-        </a>
+        </Link>
       </main>
     </>
   );

@@ -1,6 +1,7 @@
 import { useManager } from "dreamstate";
 import { ReactElement } from "react";
 import { createUseStyles } from "react-jss";
+import { Link } from "react-router-dom";
 
 import { RouterManager } from "@/core/data/store";
 import { MainHeader } from "@/core/view/components";
@@ -38,9 +39,9 @@ export function ErrorPage({
           {IS_DEV ? "Page was not found or current path is not serving by dev server." : "Page was not found."}
         </div>
 
-        <a href={history.createHref("/home")}>
+        <Link to={history.createHref("/home")} reloadDocument>
           <button> Go Home </button>
-        </a>
+        </Link>
       </main>
     </>
   );

@@ -121,7 +121,7 @@ importers:
       webpack-dev-server: 4.9.2_gkh3o7gdsall36kyfdv2sybo54
       webpack-stats-plugin: 1.0.3
 
-  src:
+  src/application:
     specifiers:
       '@babel/runtime': ^7.14.6
       '@types/jest': ^26.0.23

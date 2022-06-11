@@ -1,6 +1,6 @@
 packages:
     - "."
     - "cli/"
-    - "src/"
+    - "src/application"
     - "src/application/modules/*"
 
