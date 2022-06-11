@@ -24,7 +24,8 @@ import {
   MODULES_ROOT_PATH,
   BACKEND_PUBLIC_PATH,
   ESLINT_CONFIG_PATH,
-  ESLINT_IGNORE_PATH
+  ESLINT_IGNORE_PATH,
+  BASE_PROJECT_STATIC_PATH
 } from "./webpack.constants";
 import { IModuleDefinition } from "./webpack.types";
 
@@ -35,7 +36,7 @@ const DotEnv = require("dotenv-webpack");
 const DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ScriptExtHtmlPlugin = require("script-ext-html-webpack-plugin");
+const InlineChunkHtmlPlugin = require("react-dev-utils/InlineChunkHtmlPlugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const StatsWriterPlugin = require("webpack-stats-plugin").StatsWriterPlugin;
 
@@ -85,23 +86,15 @@ export const PLUGIN_CONFIG: Configuration["plugins"] = [
   new DefinePlugin(RUNTIME_CONSTANTS),
   new ProvidePlugin({ React: "react" }),
   new CopyWebpackPlugin({
-    patterns: BASE_PROJECT_STATIC_FILES.map((it: string) => ({ from: it, to: "." }))
+    patterns: [ { from: BASE_PROJECT_STATIC_PATH } ]
   }),
   new ForkTsCheckerWebpackPlugin({
-    eslint: {
-      enabled: true,
-      files: path.resolve(PROJECT_ROOT_PATH, "./src/**/*.{ts,tsx,js,jsx}"),
-      options: {
-        overrideConfigFile: ESLINT_CONFIG_PATH,
-        ignorePath: ESLINT_IGNORE_PATH
-      }
-    },
     typescript: {
       enabled: true,
       configFile: TS_CONFIG_PATH
     }
   }),
-  new ScriptExtHtmlPlugin({ inline: PROJECT_INLINE_MODULES })
+  new InlineChunkHtmlPlugin(HtmlWebpackPlugin, PROJECT_INLINE_MODULES)
 ]
   .concat(
     IS_PRODUCTION

@@ -4,6 +4,7 @@ import { IS_PRODUCTION, MODULES_CONFIG, PROJECT_CORE_DEPENDENCIES, MAX_CORE_CHUN
 import { IModuleDefinition } from "./webpack.types";
 
 // CJS way to import most plugins.
+const JsonMinimizerPlugin = require("json-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 
 /**
@@ -38,17 +39,17 @@ export const OPTIMIZATION_CONFIG: Configuration["optimization"] = {
   minimizer: [
     new TerserPlugin({
       terserOptions: {
+        ecma: 5,
         compress: {
           ["drop_console"]: IS_PRODUCTION,
-          ecma: 5,
           passes: IS_PRODUCTION ? 5 : 1
         },
         output: {
-          beautify: !IS_PRODUCTION,
-          ecma: 5
+          comments: IS_PRODUCTION ? false : "some"
         }
       }
-    })
+    }),
+    new JsonMinimizerPlugin()
   ],
   moduleIds: "deterministic",
   emitOnErrors: !IS_PRODUCTION,

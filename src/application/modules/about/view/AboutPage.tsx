@@ -1,9 +1,9 @@
 import { useManager } from "dreamstate";
-import { ReactElement, useCallback } from "react";
+import { ReactElement } from "react";
 import { createUseStyles } from "react-jss";
 
 import { RouterManager } from "@/core/data/store";
-import { MainHeader } from "@/core/view/components/MainHeader";
+import { MainHeader } from "@/core/view/components";
 import { IApplicationTheme } from "@/lib/theme";
 
 export const useStyles = createUseStyles(({ spacing }: IApplicationTheme) => ({
@@ -25,17 +25,17 @@ export const useStyles = createUseStyles(({ spacing }: IApplicationTheme) => ({
 
 export function AboutPage({
   classes: { content } = useStyles(),
-  routerContext: { routingActions: { hardPush } } = useManager(RouterManager)
+  routerContext: { history } = useManager(RouterManager)
 }): ReactElement {
-  const onHomeNavigated = useCallback(() => hardPush("/home"), []);
-
   return (
     <>
       <MainHeader />
 
       <main className={content}>
         About page.
-        <button onClick={onHomeNavigated}>Go home</button>
+        <a href={history.createHref("/home")}>
+          <button>Go home</button>
+        </a>
       </main>
     </>
   );

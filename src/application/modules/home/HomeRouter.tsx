@@ -1,15 +1,15 @@
 import { ReactElement } from "react";
-import { Route, Switch } from "react-router";
+import { Route, Routes } from "react-router-dom";
 
 import { DefaultErrorFallback } from "@/core/view/layouts";
-import { HomePage } from "@/modules/home/view/pages/HomePage";
+import { HomePage } from "@/modules/home/view/pages";
 
 export function HomeRouter(): ReactElement {
   return (
-    <Switch>
-      <Route path={[ "/", "/home" ]} component={HomePage} exact={true} />
-
-      <Route component={DefaultErrorFallback} />
-    </Switch>
+    <Routes>
+      <Route path={"/"} element={<HomePage />} />
+      <Route path={"/home"} element={<HomePage />} />
+      <Route path={"*"} element={<DefaultErrorFallback />} />
+    </Routes>
   );
 }

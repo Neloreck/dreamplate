@@ -20,7 +20,8 @@
       "name": "error",
       "path": [
         "/*",
-        "/error"
+        "/error",
+        "/not_found"
       ],
       "title": "Error"
     }

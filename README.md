@@ -9,7 +9,7 @@
 
 ### Start working:
 - `./run start:dev`
-- `Open browser and go to 'http://localhost:3000`
+- `Open browser and go to 'https://localhost:3000`
 
 ### Build app:
 - `./run build`
@@ -31,7 +31,7 @@
 - dreamstate (store manager)
 - JSS, theming with basoc functionality
 - Typescript
-- Jest for unit testing (enzyme-react tests + simple tests)
+- Jest for unit testing
 - React fast refresh for HMR
 - HBS (template, global styles)
 

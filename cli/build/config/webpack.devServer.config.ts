@@ -28,20 +28,20 @@ const createFallbackRewrites = (definition: IModulesDefinition) => {
 };
 
 export const DEV_SERVER_CONFIG: Record<string, any> = {
-  clientLogLevel: "error",
-  compress: IS_PRODUCTION,
-  contentBase: DEV_SERVER_CONTENT_BASE,
-  headers: {
-    // "Cache-Control": "max-age=60"
+  devMiddleware: {
+    publicPath: BACKEND_PUBLIC_PATH
   },
   historyApiFallback: {
     rewrites: createFallbackRewrites(MODULES_CONFIG)
   },
+  client: {
+    logging: "error",
+    overlay: false,
+    progress: !IS_PRODUCTION
+  },
+  server: "https",
+  static: DEV_SERVER_CONTENT_BASE,
   host: DEV_SERVER_HOST,
-  hot: true,
-  // http2: true, // Unsupported for node 10+.
-  https: false,
-  inline: !IS_PRODUCTION,
   port: DEV_SERVER_PORT,
-  publicPath: BACKEND_PUBLIC_PATH
+  hot: true
 };

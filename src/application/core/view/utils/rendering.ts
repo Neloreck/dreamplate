@@ -1,5 +1,5 @@
-import { ComponentType, createElement, ReactElement, StrictMode } from "react";
-import { render } from "react-dom";
+import { ComponentType, createElement, ReactElement, StrictMode, ReactNode } from "react";
+import { createRoot } from "react-dom/client";
 
 import { applicationConfig } from "@/core/data/configs";
 import { Root } from "@/core/Root";
@@ -12,7 +12,7 @@ export function renderRoot(
   target: HTMLElement = applicationConfig.TARGET_DOM_ELEMENTS.applicationRoot
 ): void {
   const content: ReactElement = createElement(children);
-  const root: ReactElement = createElement(StrictMode, {}, createElement(Root, {}, content));
+  const node: ReactNode = createElement(StrictMode, {}, createElement(Root, {}, content));
 
-  render(root, target);
+  createRoot(target!).render(node as any);
 }

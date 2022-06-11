@@ -1,8 +1,0 @@
-{
-  "packages": [
-    ".",
-    "./src/",
-    "./src/application/modules/*"
-  ],
-  "version": "0.0.0"
-}

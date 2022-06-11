@@ -1,9 +1,9 @@
 import { useManager } from "dreamstate";
-import { ReactElement, useCallback } from "react";
+import { ReactElement } from "react";
 import { createUseStyles } from "react-jss";
 
 import { RouterManager } from "@/core/data/store";
-import { MainHeader } from "@/core/view/components/MainHeader";
+import { MainHeader } from "@/core/view/components";
 import { IApplicationTheme } from "@/lib/theme";
 
 export const useStyles = createUseStyles(({ palette }: IApplicationTheme) => ({
@@ -27,10 +27,8 @@ export const useStyles = createUseStyles(({ palette }: IApplicationTheme) => ({
 
 export function ErrorPage({
   classes: { content, labelCard } = useStyles(),
-  routerContext: { routingActions: { hardPush } } = useManager(RouterManager)
+  routerContext: { history } = useManager(RouterManager)
 }): ReactElement {
-  const onHomeNavigated = useCallback(() => hardPush("/home"), []);
-
   return (
     <>
       <MainHeader />
@@ -40,7 +38,9 @@ export function ErrorPage({
           {IS_DEV ? "Page was not found or current path is not serving by dev server." : "Page was not found."}
         </div>
 
-        <button onClick={onHomeNavigated}> Go Home </button>
+        <a href={history.createHref("/home")}>
+          <button> Go Home </button>
+        </a>
       </main>
     </>
   );

@@ -1,5 +1,5 @@
 import { ScopeProvider, createProvider } from "dreamstate";
-import { FunctionComponent, ReactElement, ReactNode } from "react";
+import { ReactElement, ReactNode } from "react";
 
 import { AuthManager, RouterManager, ThemeManager } from "@/core/data/store";
 import { RootProvider } from "@/core/RootProvider";
@@ -9,7 +9,7 @@ import { RootProvider } from "@/core/RootProvider";
  * Render global router and provider with data shared for all modules.
  */
 
-const GlobalProvider: FunctionComponent = createProvider([ ThemeManager, RouterManager, AuthManager ]);
+const GlobalProvider = createProvider([ ThemeManager, RouterManager, AuthManager ]);
 
 export function Root({ children = null as ReactNode }): ReactElement {
   return (

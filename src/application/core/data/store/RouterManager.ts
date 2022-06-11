@@ -1,5 +1,5 @@
 import { ContextManager } from "dreamstate";
-import { createBrowserHistory, History, Location, Path } from "history";
+import { createBrowserHistory, History, Update, To } from "history";
 
 import { log } from "#/macroses/log.macro";
 
@@ -8,11 +8,8 @@ import { log } from "#/macroses/log.macro";
  */
 export interface IRouterContext {
   routingActions: {
-    replace(path: Path): void;
-    hardPush(path: Path): void;
-    hardReplace(path: Path): void;
-    push(path: Path): void;
-    goBack(): void;
+    setUrl<T extends string | URL>(url: T): T;
+    replaceUrl<T extends string | URL>(url: T): T;
   };
   history: History;
   path: string;
@@ -28,11 +25,8 @@ export class RouterManager extends ContextManager<IRouterContext> {
 
   public readonly context: IRouterContext = {
     routingActions: {
-      goBack: this.goBack.bind(this),
-      hardPush: this.hardPush.bind(this),
-      hardReplace: this.hardReplace.bind(this),
-      push: this.push.bind(this),
-      replace: this.replace.bind(this)
+      setUrl: <T extends string | URL>(url: T) => this.setUrl(url),
+      replaceUrl: <T extends string | URL>(url: T) => this.replaceUrl(url)
     },
     history: this.history,
     path: this.history.location.pathname
@@ -45,8 +39,8 @@ export class RouterManager extends ContextManager<IRouterContext> {
 
     log.info("Routing provision started @", path);
 
-    this.unsubscribeFromHistory = this.history.listen((location: Location) =>
-      this.setContext({ path: location.pathname }));
+    this.unsubscribeFromHistory = this.history.listen((update: Update) =>
+      this.setContext({ path: update.location.pathname }));
   }
 
   public onProvisionEnded(): void {
@@ -56,48 +50,21 @@ export class RouterManager extends ContextManager<IRouterContext> {
   }
 
   /**
-   * Replace path in page history.
+   * Set current page href.
    */
-  public replace(path: Path): void {
-    log.info("Replace path:", path);
+  public setUrl<T extends string | URL>(url: T): T {
+    window.location.href = url as string;
 
-    this.history.replace(path);
+    return url;
   }
 
   /**
-   * Push path in page history.
+   * Replace current page href.
    */
-  public push(path: Path): void {
-    log.info("Push path:", path);
+  public replaceUrl<T extends string | URL>(href: T): T {
+    window.location.replace(href);
 
-    this.history.push(path);
-  }
-
-  /**
-   * Hard push path in page history with page reload.
-   */
-  public hardPush(path: Path): void {
-    log.info("Hard push path:", path);
-
-    window.location.href = path;
-  }
-
-  /**
-   * Hard replace path in page history with page reload.
-   */
-  public hardReplace(path: Path): void {
-    log.info("Hard replace path:", path);
-
-    window.location.replace(path);
-  }
-
-  /**
-   * Go back in page history.
-   */
-  public goBack(): void {
-    log.info("Go back.");
-
-    this.history.goBack();
+    return href;
   }
 
 }

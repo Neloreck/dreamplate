@@ -2,6 +2,8 @@ import { green } from "colors";
 import { default as Webpack, Compiler } from "webpack";
 import { default as DevServer } from "webpack-dev-server";
 
+import { WEBPACK_CONFIG } from "#/config";
+
 import { Run } from "../utils";
 
 @Run()
@@ -15,17 +17,11 @@ export class DevRunner {
       process.env.ENTRIES = JSON.stringify(args.slice(2));
     }
 
-    const {
-      WEBPACK_CONFIG,
-      DEV_SERVER_PORT,
-      DEV_SERVER_HOST,
-      PROJECT_ROOT_PATH,
-      PROJECT_OUTPUT_PATH
-    } = require("./config");
+    const { WEBPACK_CONFIG, PROJECT_ROOT_PATH, PROJECT_OUTPUT_PATH } = require("./config");
     const compiler: Compiler = Webpack(WEBPACK_CONFIG);
-    const server = new DevServer(compiler as any, WEBPACK_CONFIG.devServer);
+    const server = new DevServer(WEBPACK_CONFIG.devServer, compiler);
 
-    server.listen(DEV_SERVER_PORT, DEV_SERVER_HOST);
+    server.start();
 
     process.stdout.write(
       `\nStarted dev server for client bundle in ${green(process.env.NODE_ENV || "unselected")} mode. \n` +

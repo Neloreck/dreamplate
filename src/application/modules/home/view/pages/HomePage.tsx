@@ -1,10 +1,10 @@
 import { useManager } from "dreamstate";
-import { ReactElement, ReactNode, useCallback } from "react";
+import { ReactElement, ReactNode } from "react";
 import { createUseStyles } from "react-jss";
 
 import { down } from "#/macroses/style.macro";
 import { RouterManager } from "@/core/data/store";
-import { MainHeader } from "@/core/view/components/MainHeader";
+import { MainHeader } from "@/core/view/components";
 import { IApplicationTheme } from "@/lib/theme";
 
 export const useStyles = createUseStyles(({ palette, spacing }: IApplicationTheme) => ({
@@ -50,10 +50,8 @@ const renderReferenceCard = (className: string, label: string, href: string): Re
 
 export function HomePage({
   classes: { content, link, linksList } = useStyles(),
-  routerContext: { routingActions: { hardPush } } = useManager(RouterManager)
+  routerContext: { history } = useManager(RouterManager)
 }): ReactElement {
-  const onAboutNavigated = useCallback(() => hardPush("/about"), []);
-
   return (
     <>
       <MainHeader />
@@ -65,7 +63,9 @@ export function HomePage({
           {renderReferenceCard(link, "DreamState", "https://github.com/Neloreck/dreamstate/")}
         </div>
 
-        <button onClick={onAboutNavigated}>About</button>
+        <a href={history.createHref("/about")}>
+          <button>About</button>
+        </a>
       </main>
     </>
   );

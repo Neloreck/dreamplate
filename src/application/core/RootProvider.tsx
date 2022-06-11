@@ -1,7 +1,7 @@
 import { useManager } from "dreamstate";
 import { ReactElement, ReactNode, Suspense } from "react";
 import { JssProvider, ThemeProvider } from "react-jss";
-import { Router as ReactRouter } from "react-router";
+import { unstable_HistoryRouter as HistoryRouter } from "react-router-dom";
 
 import { RouterManager, ThemeManager } from "@/core/data/store";
 
@@ -14,12 +14,12 @@ export function RootProvider({
   routerContext: { history } = useManager(RouterManager)
 }): ReactElement {
   return (
-    <ReactRouter history={history}>
+    <HistoryRouter history={history}>
       <JssProvider id={ThemeManager.JSS_ID_GENERATION_CONFIG}>
         <ThemeProvider theme={theme}>
           <Suspense fallback={<div> Loading </div>}>{children}</Suspense>
         </ThemeProvider>
       </JssProvider>
-    </ReactRouter>
+    </HistoryRouter>
   );
 }

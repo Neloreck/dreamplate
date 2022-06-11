@@ -21,6 +21,7 @@ export const IS_PRODUCTION: boolean = ENVIRONMENT === "production" || IS_TEST;
 export const PROJECT_ROOT_PATH: string = path.resolve(__dirname, "../../../");
 export const PROJECT_ROOT_NODE_MODULES_PATH: string = path.resolve(__dirname, "../../../node_modules");
 export const BUILD_CONFIGURATION_PATH: string = path.resolve(PROJECT_ROOT_PATH, "cli/build");
+export const SRC_PATH: string = path.resolve(PROJECT_ROOT_PATH, "src");
 
 export const MODULES_ROOT_PATH: string = path.resolve(PROJECT_ROOT_PATH, "src/application/modules");
 export const INITIALIZATION_ROOT_PATH: string = path.resolve(PROJECT_ROOT_PATH, "src/application/initialization");
@@ -34,6 +35,7 @@ export const ESLINT_CONFIG_PATH: string = path.resolve(PROJECT_ROOT_PATH, ".esli
 export const ESLINT_IGNORE_PATH: string = path.resolve(PROJECT_ROOT_PATH, ".eslintignore");
 export const BASE_PROJECT_TEMPLATE_PATH: string = path.resolve(BUILD_CONFIGURATION_PATH, "template/base.hbs");
 export const BASE_PROJECT_FAVICON_PATH: string = path.resolve(BUILD_CONFIGURATION_PATH, "template/favicon.ico");
+export const BASE_PROJECT_STATIC_PATH: string = path.resolve(SRC_PATH, "public");
 
 export const BASE_PROJECT_STATIC_FILES: Array<string> = [
   path.resolve(BUILD_CONFIGURATION_PATH, "public/robots.txt"),

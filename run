@@ -24,9 +24,9 @@ check_dependencies() {
     return 1;
   fi
 
-  if ! which "npm" 1>/dev/null 2>&1
+  if ! which "pnpm" 1>/dev/null 2>&1
   then
-    echo_red "Failed to run CLI script, 'npm' must be installed"
+    echo_red "Failed to run CLI script, 'pnpm' must be installed"
     return 1;
   fi
 }

@@ -56,7 +56,6 @@ export const JEST_CONFIG = {
   // runner: "jest-runner",
   setupFiles: [ "<rootDir>/cli/test/config/setup_tests.ts" ],
   setupFilesAfterEnv: [],
-  snapshotSerializers: [ "enzyme-to-json/serializer" ],
   testEnvironment: "jsdom",
   // testEnvironmentOptions: {},
   // testLocationInResults: false,

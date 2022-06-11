@@ -1,8 +1,13 @@
 import { ReactElement, useLayoutEffect } from "react";
-import { Redirect } from "react-router";
 
-export function DefaultErrorFallback({ reload = true }): ReactElement {
-  useLayoutEffect(() => (reload ? window.location.reload() : void 0), []);
+export function DefaultErrorFallback({ reload = true, redirect = true }): ReactElement {
+  useLayoutEffect(() => {
+    if (redirect) {
+      window.location.href = `/not_found?origin=${encodeURIComponent(window.location.href)}`;
+    } else if (reload) {
+      window.location.reload();
+    }
+  }, []);
 
-  return <Redirect to={`/error?from=${window.location.pathname}`} />;
+  return <div />;
 }
