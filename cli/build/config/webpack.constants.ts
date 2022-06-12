@@ -4,6 +4,7 @@ import * as colors from "../globals/colors";
 import * as theme from "../globals/theme";
 import { asConstantsObject } from "../globals/utils";
 
+import { EWebpackFlag } from "./webpack.flags";
 import { IModulesDefinition, TEnvironmentType } from "./webpack.types";
 
 /**
@@ -46,12 +47,14 @@ export const BASE_PROJECT_STATIC_FILES: Array<string> = [
 export const BACKEND_PUBLIC_PATH: string = "/";
 
 /**
- * Report configuration.
+ * Flags configuration.
  */
 
-export const ANALYZE_ENABLED: boolean = process.env.ANALYZE === "true";
+export const IS_ANALYZE_ENABLED: boolean = process.env[EWebpackFlag.ANALYZE] === "true";
 export const REPORT_BUNDLE_ANALYZER_PATH: string = path.resolve(PROJECT_OUTPUT_PATH, "info/report.html");
 export const REPORT_BUNDLE_STATS_PATH: string = "../info/report.json";
+
+export const IS_PROFILING_ENABLED: boolean = process.env[EWebpackFlag.PROFILE] === "true";
 
 /**
  * Globals configuration.
@@ -93,10 +96,12 @@ export const DEV_SERVER_REFRESH: boolean = process.env.REFRESH === "true";
  * Project modules config.
  */
 
-// Entries that will be always build.
+// Entries that will always be built.
 export const REQUIRED_ENTRIES: Array<string> = [ "error" ];
 
-export const SELECTED_ENTRIES: Array<string> | null = process.env.ENTRIES ? JSON.parse(process.env.ENTRIES) : null;
+export const SELECTED_ENTRIES: Array<string> | null = process.env[EWebpackFlag.ENTRIES]
+  ? JSON.parse(process.env[EWebpackFlag.ENTRIES] as string)
+  : null;
 
 export const MODULES_CONFIG: IModulesDefinition = (() => {
   const config = require(path.resolve(MODULES_ROOT_PATH, "modules.json"));

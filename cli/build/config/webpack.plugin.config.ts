@@ -15,7 +15,7 @@ import {
   MODULES_CONFIG,
   PROJECT_INLINE_MODULES,
   PROJECT_ROOT_PATH,
-  ANALYZE_ENABLED,
+  IS_ANALYZE_ENABLED,
   REPORT_BUNDLE_ANALYZER_PATH,
   REPORT_BUNDLE_STATS_PATH,
   RUNTIME_CONSTANTS,
@@ -119,7 +119,7 @@ export const PLUGIN_CONFIG: Configuration["plugins"] = [
       : []
   )
   .concat(
-    ANALYZE_ENABLED
+    IS_ANALYZE_ENABLED
       ? [
         new BundleAnalyzerPlugin({
           analyzerMode: "static",

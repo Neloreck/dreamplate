@@ -10,8 +10,5 @@
     "react-dom": "^18.1.0",
     "react-jss": "^10.9.0",
     "react-router-dom": "^6.3.0"
-  },
-  "devDependencies": {
-    "@types/jest": "^26.0.23"
   }
 }

@@ -1,8 +1,9 @@
 import { useManager } from "dreamstate";
-import { ReactElement, ReactNode } from "react";
+import { Profiler, ReactElement, ReactNode } from "react";
 import { createUseStyles } from "react-jss";
 import { Link } from "react-router-dom";
 
+import { log } from "#/macroses/log.macro";
 import { down } from "#/macroses/style.macro";
 import { RouterManager } from "@/core/data/store";
 import { MainHeader } from "@/core/view/components";
@@ -54,7 +55,7 @@ export function HomePage({
   routerContext: { history } = useManager(RouterManager)
 }): ReactElement {
   return (
-    <>
+    <Profiler id={"HomePage"} onRender={(...args: Array<unknown>) => window.console.info("Render:", ...args)}>
       <MainHeader />
 
       <main className={content}>
@@ -68,6 +69,6 @@ export function HomePage({
           <button>About</button>
         </Link>
       </main>
-    </>
+    </Profiler>
   );
 }
