@@ -3,7 +3,7 @@
   },
   "scripts": {
     "help": {
-      "exec": "./cli/help/print_commands_list.sh",
+      "exec": "./cli/scripts/print_commands_list.sh",
       "description": "Show help for all custom CLI commands list or only for provided arguments."
     },
     "setup": {
@@ -11,67 +11,54 @@
       "description": "Setup project modules and install dependencies."
     },
     "clean": {
-      "exec": "npx rimraf ./target && echo 'Cleaned up target directory.'",
+      "exec": "echo 'Cleaned up target directory.'",
       "description": "Remove project built assets."
     },
     "purge": {
       "exec": [
-        "./run clean",
-        "npx rimraf ./node_modules ./src/node_modules ./src/application/modules/**/node_modules"
+        "pnpm rimraf ./target",
+        "echo 'Dist purged'",
+        "pnpm rimraf ./node_modules ./src/node_modules ./src/application/modules/**/node_modules",
+        "echo 'Node modules purged'"
       ],
       "description": "Remove project built assets and purge all npm modules."
     },
     "=============================================================================================================": "",
-    "start-dev-server": {
-      "exec": "ts-node --project ./cli/tsconfig.json ./cli/build/DevRunner.ts",
-      "private": true,
-      "description": "Start project serving (webpack dev server)."
-    },
-    "build-bundle": {
-      "exec": "./run clean && ts-node --project ./cli/tsconfig.json ./cli/build/BuildRunner.ts",
-      "private": true,
-      "description": "Build project assets and related source files. Following arguments can include module names."
-    },
-    "============================================================================================================": "==",
     "start": {
-      "exec": "npx cross-env NODE_ENV=production ./run start-dev-server",
+      "exec": "./cli/scripts/webpack.sh start-prod-server",
       "description": "Start webpack dev server in production mode."
     },
     "start:dev": {
-      "exec": "npx cross-env NODE_ENV=development REFRESH=true ./run start-dev-server",
+      "exec": "./cli/scripts/webpack.sh start-dev-server",
       "description": "Start webpack dev server in dev mode."
     },
     "build": {
-      "exec":"npx cross-env NODE_ENV=production ANALYZE=true ./run build-bundle",
+      "exec": "./cli/scripts/webpack.sh build-prod-bundle",
       "description": "Build project bundles in production mode."
     },
     "build:dev": {
-      "exec":"npx cross-env NODE_ENV=development ANALYZE=true ./run build-bundle",
+      "exec": "./cli/scripts/webpack.sh build-dev-bundle",
       "description": "Build project bundles in dev mode."
     },
     "==========================================================================================================": "===",
     "verify": {
-      "exec": [
-        "./run typecheck",
-        "./run test",
-        "./run lint"
-      ],
+      "exec": "./cli/scripts/verify.sh",
       "description": "Run full tests that include unit tests, linting and typechecks."
     },
     "test": {
-      "exec": "npx cross-env NODE_ENV=test ts-node --project ./cli/test/config/tsconfig.json ./cli/test/TestRunner.ts",
+      "exec": "./cli/scripts/verify.sh jest",
       "description": "Run jest unit tests."
     },
     "lint": {
-      "exec": "npx eslint -c ./.eslintrc.json src/**/*.ts src/**/*.tsx cli/**/*.ts",
+      "exec": "./cli/scripts/verify.sh lint",
       "description": "Run eslint for project codestyle checking."
     },
     "format": {
-      "exec": "npx prettier --write \"**/*.(js|ts|tsx)\" && npx eslint . --ext .ts,.tsx --fix",
+      "exec": "./cli/scripts/verify.sh format",
       "description": "Run prettier combined with eslint to format codebase."
     },
     "typecheck": {
-      "exec": "npx tsc -p src --noEmit",
+      "exec": "./cli/scripts/verify.sh typecheck",
       "description": "Run TS typechecks."
     }
   }

@@ -9,11 +9,14 @@ export class BuildRunner {
   public static readonly STATS_PRINT_CONFIG: Record<string, any> = { colors: true };
 
   public static main(args: Array<string>): void {
+    const entries: Array<string> = args.slice(2).filter((it: string) => it);
+    const hasDefinedEntries: boolean = entries.length !== 0;
+
     /**
      * Handle entries selection for optional serving.
      */
-    if (args.length > 2) {
-      process.env.ENTRIES = JSON.stringify(args.slice(2));
+    if (hasDefinedEntries) {
+      process.env.ENTRIES = JSON.stringify(entries);
     }
 
     const { PROJECT_OUTPUT_PATH, PROJECT_ROOT_PATH, WEBPACK_CONFIG } = require("./config");
@@ -23,7 +26,7 @@ export class BuildRunner {
       `Started building client bundle in ${green(process.env.NODE_ENV || "unselected")} mode.\n\n` +
         `Project root: '${green(PROJECT_ROOT_PATH)}'.\n` +
         `Project output: '${green(PROJECT_OUTPUT_PATH)}'.\n` +
-        (args.length > 2 ? `Modules for serving: ${green(JSON.stringify(args.slice(2)))}.\n\n` : "\n")
+        (hasDefinedEntries ? `Modules for serving: ${green(JSON.stringify(entries))}.\n\n` : "\n")
     );
 
     compiler.run((error: any, stats: any): void => {
