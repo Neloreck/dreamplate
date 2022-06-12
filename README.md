@@ -4,7 +4,7 @@
 - `npm install`
 - `./run setup` <br/>
     or
-- `npm install -g lerna typescript`
+- `npm install -g pnpm`
 - `./run setup`
 
 ### Start working:
@@ -21,7 +21,7 @@
 - `./run build:dev` [build project in development mode]
 - `./run start` [start project in production mode]
 - `./run start:dev` [build project in production mode]
-- `./run test` [run unit tests, linter and type checker]
+- `./run verify` [run unit tests, linter and type checker]
 - `./run COMMAND_NAME` [run specific cli script]
 
 ### What is used:
@@ -91,6 +91,3 @@ Typically module is separated as VIEW and DATA sub-modules. Each one includes on
 
 ## Future
 - Translations experiments
-
-## Side packages (waiting for)
-- Hooks implementation for react-router (less VDOM tree pollution)

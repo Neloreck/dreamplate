@@ -17,8 +17,6 @@ export const RESOLVE_CONFIG: Configuration["resolve"] = {
   modules: [ "node_modules" ]
 };
 
-console.error("GOT", RESOLVE_CONFIG.alias);
-
 export const RESOLVE_LOADER_CONFIG: Configuration["resolveLoader"] = {
   modules: [ path.resolve(CLI_PATH, "node_modules") ]
 };
