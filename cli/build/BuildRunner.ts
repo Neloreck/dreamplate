@@ -1,9 +1,8 @@
 import { green, red } from "colors";
 import { Compiler, default as Webpack } from "webpack";
 
+import { setupEnvironmentFlags } from "#/globals/setup_environment";
 import { Run } from "#/utils";
-
-import { setupEnvironmentFlags } from "../globals/setup_environment";
 
 @Run()
 export class BuildRunner {
