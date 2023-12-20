@@ -1,4 +1,4 @@
-import { ComponentType, createElement, ReactElement, StrictMode, ReactNode } from "react";
+import { ComponentType, createElement, ReactElement, ReactNode, StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
 import { applicationConfig } from "@/core/data/configs";

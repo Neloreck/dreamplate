@@ -1,31 +1,31 @@
 import * as fs from "fs";
 import * as path from "path";
 
-import { DefinePlugin, Configuration, ProvidePlugin, SourceMapDevToolPlugin } from "webpack";
+import { Configuration, DefinePlugin, ProvidePlugin, SourceMapDevToolPlugin } from "webpack";
 
 import { APPLICATION_ROOT, PORTAL_ROOT } from "../globals/build_constants";
 
 import {
+  BACKEND_PUBLIC_PATH,
   BASE_PROJECT_FAVICON_PATH,
   BASE_PROJECT_STATIC_FILES,
+  BASE_PROJECT_STATIC_PATH,
   BASE_PROJECT_TEMPLATE_PATH,
+  DEV_SERVER_REFRESH,
   DOTENV_CONFIG_PATH,
   ENVIRONMENT,
+  ESLINT_CONFIG_PATH,
+  ESLINT_IGNORE_PATH,
+  IS_ANALYZE_ENABLED,
   IS_PRODUCTION,
   MODULES_CONFIG,
+  MODULES_ROOT_PATH,
   PROJECT_INLINE_MODULES,
   PROJECT_ROOT_PATH,
-  IS_ANALYZE_ENABLED,
   REPORT_BUNDLE_ANALYZER_PATH,
   REPORT_BUNDLE_STATS_PATH,
   RUNTIME_CONSTANTS,
   TS_CONFIG_PATH,
-  DEV_SERVER_REFRESH,
-  MODULES_ROOT_PATH,
-  BACKEND_PUBLIC_PATH,
-  ESLINT_CONFIG_PATH,
-  ESLINT_IGNORE_PATH,
-  BASE_PROJECT_STATIC_PATH
 } from "./webpack.constants";
 import { IModuleDefinition } from "./webpack.types";
 
@@ -49,12 +49,12 @@ function createHTMLEntry(definition: IModuleDefinition): typeof HtmlWebpackPlugi
 
   return new HtmlWebpackPlugin({
     ENVIRONMENT,
-    chunks: [ "initialization", definition.name ],
+    chunks: ["initialization", definition.name],
     chunksSortMode: "manual",
     constants: {
       APPLICATION_ROOT,
       APPLICATION_TITLE: definition.title,
-      PORTAL_ROOT
+      PORTAL_ROOT,
     },
     favicon: BASE_PROJECT_FAVICON_PATH,
     filename: `html/${definition.name}.html`,
@@ -66,9 +66,9 @@ function createHTMLEntry(definition: IModuleDefinition): typeof HtmlWebpackPlugi
       quoteCharacter: "'",
       removeComments: true,
       removeTagWhitespace: true,
-      trimCustomFragments: true
+      trimCustomFragments: true,
     },
-    template: fs.existsSync(moduleTemplatePath) ? moduleTemplatePath : BASE_PROJECT_TEMPLATE_PATH
+    template: fs.existsSync(moduleTemplatePath) ? moduleTemplatePath : BASE_PROJECT_TEMPLATE_PATH,
   });
 }
 
@@ -86,16 +86,16 @@ export const PLUGIN_CONFIG: Configuration["plugins"] = [
   new DefinePlugin(RUNTIME_CONSTANTS),
   new ProvidePlugin({ React: "react" }),
   new CopyWebpackPlugin({
-    patterns: [ { from: BASE_PROJECT_STATIC_PATH } ]
+    patterns: [{ from: BASE_PROJECT_STATIC_PATH }],
   }),
   new ForkTsCheckerWebpackPlugin({
     devServer: false,
     typescript: {
       enabled: true,
-      configFile: TS_CONFIG_PATH
-    }
+      configFile: TS_CONFIG_PATH,
+    },
   }),
-  new InlineChunkHtmlPlugin(HtmlWebpackPlugin, PROJECT_INLINE_MODULES)
+  new InlineChunkHtmlPlugin(HtmlWebpackPlugin, PROJECT_INLINE_MODULES),
 ]
   .concat(
     IS_PRODUCTION
@@ -104,17 +104,17 @@ export const PLUGIN_CONFIG: Configuration["plugins"] = [
         new SourceMapDevToolPlugin({
           filename: "source_maps/[base].map[query]",
           publicPath: BACKEND_PUBLIC_PATH,
-          exclude: [ ...PROJECT_INLINE_MODULES ],
-          fileContext: "public"
-        })
+          exclude: [...PROJECT_INLINE_MODULES],
+          fileContext: "public",
+        }),
       ]
   )
   .concat(
     DEV_SERVER_REFRESH
       ? [
         new ReactRefreshWebpackPlugin({
-          exclude: [ /\/application\/initialization/, /node_modules/ ]
-        })
+          exclude: [/\/application\/initialization/, /node_modules/],
+        }),
       ]
       : []
   )
@@ -125,7 +125,7 @@ export const PLUGIN_CONFIG: Configuration["plugins"] = [
           analyzerMode: "static",
           defaultSizes: "gzip",
           openAnalyzer: false,
-          reportFilename: REPORT_BUNDLE_ANALYZER_PATH
+          reportFilename: REPORT_BUNDLE_ANALYZER_PATH,
         }),
         new StatsWriterPlugin({
           filename: REPORT_BUNDLE_STATS_PATH,
@@ -142,9 +142,9 @@ export const PLUGIN_CONFIG: Configuration["plugins"] = [
             namedChunkGroups: false,
             outputPath: false,
             publicPath: false,
-            version: false
-          }
-        })
+            version: false,
+          },
+        }),
       ]
       : []
   );

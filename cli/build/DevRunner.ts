@@ -1,5 +1,5 @@
 import { green } from "colors";
-import { default as Webpack, Compiler } from "webpack";
+import { Compiler, default as Webpack } from "webpack";
 import { default as DevServer } from "webpack-dev-server";
 
 import { Run } from "../utils";
@@ -8,7 +8,6 @@ import { setupEnvironmentFlags } from "./globals/setup_environment";
 
 @Run()
 export class DevRunner {
-
   /**
    * Possible args:
    *   - List of modules to serve
@@ -31,5 +30,4 @@ export class DevRunner {
         (flags ? `Flags for serving: ${green(JSON.stringify(flags))}.\n` : "\n")
     );
   }
-
 }

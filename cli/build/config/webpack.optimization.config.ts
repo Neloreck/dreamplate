@@ -1,6 +1,6 @@
 import { Configuration } from "webpack";
 
-import { IS_PRODUCTION, MODULES_CONFIG, PROJECT_CORE_DEPENDENCIES, MAX_CORE_CHUNK_SIZE } from "./webpack.constants";
+import { IS_PRODUCTION, MAX_CORE_CHUNK_SIZE, MODULES_CONFIG, PROJECT_CORE_DEPENDENCIES } from "./webpack.constants";
 import { IModuleDefinition } from "./webpack.types";
 
 // CJS way to import most plugins.
@@ -18,14 +18,14 @@ function createChunkCacheGroups(definitions: Array<IModuleDefinition>): Record<s
       maxSize: 750 * 1000,
       priority: 60,
       reuseExistingChunk: true,
-      test: new RegExp(`/modules/${it.name}/node_modules/`)
+      test: new RegExp(`/modules/${it.name}/node_modules/`),
     };
 
     entries[`modules/${it.name}/s`] = {
       maxSize: 250 * 1000,
       priority: 30,
       reuseExistingChunk: true,
-      test: new RegExp(`/modules/${it.name}/`)
+      test: new RegExp(`/modules/${it.name}/`),
     };
   }
 
@@ -42,14 +42,14 @@ export const OPTIMIZATION_CONFIG: Configuration["optimization"] = {
         ecma: 5,
         compress: {
           ["drop_console"]: IS_PRODUCTION,
-          passes: IS_PRODUCTION ? 5 : 1
+          passes: IS_PRODUCTION ? 5 : 1,
         },
         output: {
-          comments: IS_PRODUCTION ? false : "some"
-        }
-      }
+          comments: IS_PRODUCTION ? false : "some",
+        },
+      },
     }),
-    new JsonMinimizerPlugin()
+    new JsonMinimizerPlugin(),
   ],
   moduleIds: "deterministic",
   emitOnErrors: !IS_PRODUCTION,
@@ -63,26 +63,26 @@ export const OPTIMIZATION_CONFIG: Configuration["optimization"] = {
         test: new RegExp(
           `/node_modules/(${PROJECT_CORE_DEPENDENCIES.reduce((accumulator: string, it: string) =>
             accumulator ? accumulator + "|" + it : it)})/`
-        )
+        ),
       },
       vendor: {
         priority: 70,
         maxSize: MAX_CORE_CHUNK_SIZE,
         reuseExistingChunk: false,
-        test: /\/src\/node_modules\//
+        test: /\/src\/node_modules\//,
       },
       ...createChunkCacheGroups(MODULES_CONFIG.modules),
       shared: {
         priority: 10,
         maxSize: MAX_CORE_CHUNK_SIZE,
         reuseExistingChunk: true,
-        test: /node_modules/
-      }
+        test: /node_modules/,
+      },
     },
     chunks: "all",
     maxAsyncRequests: 50,
     maxInitialRequests: 25,
     maxSize: 300 * 1000,
-    minSize: 5 * 1000
-  }
+    minSize: 5 * 1000,
+  },
 };

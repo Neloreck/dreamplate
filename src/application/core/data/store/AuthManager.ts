@@ -1,7 +1,7 @@
-import { ContextManager, createLoadable, Loadable, createActions } from "dreamstate";
+import { ContextManager, createActions, createLoadable, Loadable } from "dreamstate";
 
 import { log } from "#/macroses/log.macro";
-import { TOptional, TAnyObject } from "@/lib/types";
+import { TAnyObject, TOptional } from "@/lib/types";
 
 /**
  * Auth context description.
@@ -16,10 +16,9 @@ export interface IAuthContext {
  * It is responsible for auth, security and account management.
  */
 export class AuthManager extends ContextManager<IAuthContext> {
-
   public readonly context: IAuthContext = {
     authActions: createActions({}),
-    user: createLoadable(null)
+    user: createLoadable(null),
   };
 
   public onProvisionStarted(): void {
@@ -31,5 +30,4 @@ export class AuthManager extends ContextManager<IAuthContext> {
   public onProvisionEnded(): void {
     log.info("Auth provision ended");
   }
-
 }

@@ -1,7 +1,7 @@
 import { mockManager } from "dreamstate/test-utils";
 
 import { ThemeManager } from "@/core/data/store";
-import { TThemeType, IApplicationTheme, toggleTheme } from "@/lib/theme";
+import { IApplicationTheme, toggleTheme, TThemeType } from "@/lib/theme";
 import { encrypt, setLocalStorageItem } from "@/lib/utils";
 
 describe("Theme context manager.", () => {
@@ -38,7 +38,7 @@ describe("Theme context manager.", () => {
 
     manager["onLocalStorageDataChanged"]({
       key: encrypt("theme_type"),
-      newValue: encrypt(JSON.stringify(nextTheme.palette.type))
+      newValue: encrypt(JSON.stringify(nextTheme.palette.type)),
     } as StorageEvent);
 
     expect(manager.context.theme.palette.type).toBe(nextTheme.palette.type);

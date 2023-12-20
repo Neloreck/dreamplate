@@ -9,7 +9,7 @@ export const useStyles = createUseStyles(({ palette, spacing }: IApplicationThem
   root: {
     "& > header": {
       color: GColor.BLACK,
-      cursor: "default"
+      cursor: "default",
     },
     background: palette.primary.dark,
     boxShadow:
@@ -22,13 +22,13 @@ export const useStyles = createUseStyles(({ palette, spacing }: IApplicationThem
     justifyContent: "space-between",
     minHeight: spacing.unit * 10,
     padding: `${spacing.unit * 2}px ${spacing.unit * 4}px`,
-    position: "relative"
-  }
+    position: "relative",
+  },
 }));
 
 export function MainHeader({
   classes: { root } = useStyles(),
-  themeContext: { themeActions: { toggleTheme } } = useManager(ThemeManager)
+  themeContext: { themeActions: { toggleTheme } } = useManager(ThemeManager),
 }): ReactElement {
   return (
     <header className={root}>

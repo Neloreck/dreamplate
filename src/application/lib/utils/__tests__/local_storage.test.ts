@@ -1,5 +1,5 @@
 import { TOptional } from "@/lib/types";
-import { setLocalStorageItem, removeLocalStorageItem, getFromLocalStorage } from "@/lib/utils";
+import { getFromLocalStorage, removeLocalStorageItem, setLocalStorageItem } from "@/lib/utils";
 import { forSeconds } from "@/lib/utils/delay";
 
 describe("Local storage utils test.", () => {

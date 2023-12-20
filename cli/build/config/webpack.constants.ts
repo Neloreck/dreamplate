@@ -41,7 +41,7 @@ export const BASE_PROJECT_STATIC_PATH: string = path.resolve(SRC_PATH, "public")
 
 export const BASE_PROJECT_STATIC_FILES: Array<string> = [
   path.resolve(BUILD_CONFIGURATION_PATH, "public/robots.txt"),
-  path.resolve(BUILD_CONFIGURATION_PATH, "public/manifest.json")
+  path.resolve(BUILD_CONFIGURATION_PATH, "public/manifest.json"),
 ];
 
 export const BACKEND_PUBLIC_PATH: string = "/";
@@ -65,7 +65,7 @@ export const RUNTIME_CONSTANTS = {
   IS_TEST,
   // Build time constants for inlining.
   GColor: asConstantsObject(colors),
-  GTheme: asConstantsObject(theme)
+  GTheme: asConstantsObject(theme),
 };
 
 export const PROJECT_CORE_DEPENDENCIES: Array<string> = [
@@ -73,12 +73,12 @@ export const PROJECT_CORE_DEPENDENCIES: Array<string> = [
   "react-dom",
   "loose-envify",
   "object-assign",
-  "scheduler"
+  "scheduler",
 ];
 
 export const PROJECT_INLINE_MODULES: Array<string | RegExp> = [
   /.*\/initialization.*/, // Critical application code for inlining.
-  /.*\/runtime.*$/ // Webpack runtime support.
+  /.*\/runtime.*$/, // Webpack runtime support.
 ];
 
 export const MAX_CORE_CHUNK_SIZE: number = IS_PRODUCTION ? 500 * 1000 : 3000 * 1000;
@@ -97,7 +97,7 @@ export const DEV_SERVER_REFRESH: boolean = process.env.REFRESH === "true";
  */
 
 // Entries that will always be built.
-export const REQUIRED_ENTRIES: Array<string> = [ "error" ];
+export const REQUIRED_ENTRIES: Array<string> = ["error"];
 
 export const SELECTED_ENTRIES: Array<string> | null = process.env[EWebpackFlag.ENTRIES]
   ? JSON.parse(process.env[EWebpackFlag.ENTRIES] as string)

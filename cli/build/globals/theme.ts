@@ -10,7 +10,7 @@ import {
   PURPLE_200,
   PURPLE_300,
   PURPLE_400,
-  WHITE
+  WHITE,
 } from "./colors";
 
 /*

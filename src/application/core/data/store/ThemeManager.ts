@@ -20,16 +20,15 @@ export interface IThemeContext {
  * It is responsible for theming, styling and generation configuration.
  */
 export class ThemeManager extends ContextManager<IThemeContext> {
-
   public static readonly JSS_ID_GENERATION_CONFIG: CreateGenerateIdOptions = {
-    minify: !IS_DEV
+    minify: !IS_DEV,
   };
 
   public readonly context: IThemeContext = {
     themeActions: {
-      toggleTheme: this.toggleTheme.bind(this)
+      toggleTheme: this.toggleTheme.bind(this),
     },
-    theme: createDefaultTheme(getFromLocalStorage("theme_type") || GTheme.DEFAULT_THEME_TYPE)
+    theme: createDefaultTheme(getFromLocalStorage("theme_type") || GTheme.DEFAULT_THEME_TYPE),
   };
 
   /**
@@ -92,5 +91,4 @@ export class ThemeManager extends ContextManager<IThemeContext> {
       }
     }
   }
-
 }

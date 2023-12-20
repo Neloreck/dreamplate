@@ -1,6 +1,6 @@
 import * as path from "path";
 
-import { IS_PRODUCTION, IS_TEST, DEV_SERVER_REFRESH } from "./webpack.constants";
+import { DEV_SERVER_REFRESH, IS_PRODUCTION, IS_TEST } from "./webpack.constants";
 
 /**
  * Babel configuration for project codebase.
@@ -13,12 +13,12 @@ export const BABEL_CONFIG = {
       "@babel/preset-env",
       {
         targets: {
-          browsers: [ "> 2.0%", "not dead" ]
-        }
-      }
+          browsers: ["> 2.0%", "not dead"],
+        },
+      },
     ],
     "@babel/preset-typescript",
-    [ "@babel/preset-react", { runtime: "automatic" } ]
+    ["@babel/preset-react", { runtime: "automatic" }],
   ],
   plugins: [
     "@babel/plugin-transform-runtime",
@@ -26,13 +26,13 @@ export const BABEL_CONFIG = {
       "module-resolver",
       {
         alias: {
-          "#": path.resolve(__dirname, "../")
-        }
-      }
+          "#": path.resolve(__dirname, "../"),
+        },
+      },
     ],
     "macros",
     "@babel/plugin-transform-react-constant-elements",
     "@babel/plugin-proposal-class-properties",
-    [ "@babel/plugin-proposal-decorators", { decoratorsBeforeExport: true } ]
-  ].concat(DEV_SERVER_REFRESH ? [ "react-refresh/babel" ] : [])
+    ["@babel/plugin-proposal-decorators", { decoratorsBeforeExport: true }],
+  ].concat(DEV_SERVER_REFRESH ? ["react-refresh/babel"] : []),
 };

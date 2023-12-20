@@ -1,5 +1,5 @@
 import { ContextManager } from "dreamstate";
-import { createBrowserHistory, History, Update, To } from "history";
+import { createBrowserHistory, History, Update } from "history";
 
 import { log } from "#/macroses/log.macro";
 
@@ -20,16 +20,15 @@ export interface IRouterContext {
  * It is responsible for routing, navigation and history.
  */
 export class RouterManager extends ContextManager<IRouterContext> {
-
   public readonly history: History = createBrowserHistory();
 
   public readonly context: IRouterContext = {
     routingActions: {
       setUrl: <T extends string | URL>(url: T) => this.setUrl(url),
-      replaceUrl: <T extends string | URL>(url: T) => this.replaceUrl(url)
+      replaceUrl: <T extends string | URL>(url: T) => this.replaceUrl(url),
     },
     history: this.history,
-    path: this.history.location.pathname
+    path: this.history.location.pathname,
   };
 
   private unsubscribeFromHistory!: () => void;
@@ -66,5 +65,4 @@ export class RouterManager extends ContextManager<IRouterContext> {
 
     return href;
   }
-
 }

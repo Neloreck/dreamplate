@@ -16,12 +16,12 @@ export const JEST_CONFIG = {
   collectCoverage: true,
   // collectCoverageFrom: null,
   coverageDirectory: "<rootDir>/target/test/coverage",
-  coveragePathIgnorePatterns: [ "/node_modules/" ],
+  coveragePathIgnorePatterns: ["/node_modules/"],
   globals: {
     ...RUNTIME_CONSTANTS,
     IS_TEST: true,
     IS_DEV: false,
-    React
+    React,
   },
   // coverageReporters: [
   //   "json",
@@ -34,13 +34,13 @@ export const JEST_CONFIG = {
   // forceCoverageMatch: [],
   // globalSetup: null,
   // globalTeardown: null,
-  moduleDirectories: [ "node_modules" ],
-  moduleFileExtensions: [ "ts", "tsx", "js", "jsx", "json", "node" ],
+  moduleDirectories: ["node_modules"],
+  moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
   moduleNameMapper: {
     "#/(.*)$": "<rootDir>/cli/build/$1",
     "@/(.*)$": "<rootDir>/src/application/$1",
     "\\.(css|scss|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
-      "<rootDir>/src/__test__/mocks/nonJSModule.js"
+      "<rootDir>/src/__test__/mocks/nonJSModule.js",
   },
   // notify: false,
   // notifyMode: "always",
@@ -52,25 +52,25 @@ export const JEST_CONFIG = {
   // resolver: null,
   // restoreMocks: false,
   rootDir: ROOT_PATH,
-  roots: [ "<rootDir>" ],
+  roots: ["<rootDir>"],
   // runner: "jest-runner",
-  setupFiles: [ "<rootDir>/cli/test/config/setup_tests.ts" ],
+  setupFiles: ["<rootDir>/cli/test/config/setup_tests.ts"],
   setupFilesAfterEnv: [],
   testEnvironment: "jsdom",
   // testEnvironmentOptions: {},
   // testLocationInResults: false,
-  testMatch: [ "**/__tests__/**/*.ts?(x)", "**/?(*.)+(spec|test).ts?(x)" ],
-  testPathIgnorePatterns: [ "/node_modules/" ],
+  testMatch: ["**/__tests__/**/*.ts?(x)", "**/?(*.)+(spec|test).ts?(x)"],
+  testPathIgnorePatterns: ["/node_modules/"],
   // testResultsProcessor: null,
   // testRunner: "jasmine2",
   // testURL: "about:blank",
   // timers: "real",
   transform: {
-    "^.+\\.(j|t)sx?$": BABEL_TRANSFORMER_PATH
+    "^.+\\.(j|t)sx?$": BABEL_TRANSFORMER_PATH,
   },
-  transformIgnorePatterns: [ "/node_modules/.+\\.js$" ],
+  transformIgnorePatterns: ["/node_modules/.+\\.js$"],
   // unmockedModulePathPatterns: undefined,
-  verbose: true
+  verbose: true,
   // watchPathIgnorePatterns: [],
   // watchman: true,
 };

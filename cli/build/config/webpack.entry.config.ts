@@ -20,7 +20,7 @@ const generateEntryPoints = (definition: IModulesDefinition) => {
 
 export const ENTRY_CONFIG: Configuration["entry"] = {
   initialization: {
-    import: [ INITIALIZATION_ROOT_PATH ]
+    import: [INITIALIZATION_ROOT_PATH],
   },
-  ...generateEntryPoints(MODULES_CONFIG)
+  ...generateEntryPoints(MODULES_CONFIG),
 };

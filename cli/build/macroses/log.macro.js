@@ -212,7 +212,7 @@ const EMOJI_LIST = [
   "🍠",
   "🍆",
   "🍅",
-  "🌽"
+  "🌽",
 ];
 
 /**
@@ -258,8 +258,8 @@ function log({ references, babel, state }) {
           const logStatement = types.expressionStatement(
             types.callExpression(types.memberExpression(types.identifier("console"), types.identifier("info")), [
               types.stringLiteral("%c=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="),
-              types.stringLiteral(PREFIX_COLOR)
-            ])
+              types.stringLiteral(PREFIX_COLOR),
+            ]),
           );
 
           expression.replaceWith(logStatement);
@@ -277,9 +277,9 @@ function log({ references, babel, state }) {
         const timeExpression = types.callExpression(
           types.memberExpression(
             types.newExpression(types.identifier("Date"), []),
-            types.identifier("toLocaleTimeString")
+            types.identifier("toLocaleTimeString"),
           ),
-          [types.stringLiteral("en-GB")]
+          [types.stringLiteral("en-GB")],
         );
 
         const millisStringExpression = types.callExpression(
@@ -287,18 +287,18 @@ function log({ references, babel, state }) {
             types.callExpression(
               types.memberExpression(
                 types.newExpression(types.identifier("Date"), []),
-                types.identifier("getMilliseconds")
+                types.identifier("getMilliseconds"),
               ),
-              []
+              [],
             ),
-            types.identifier("toString")
+            types.identifier("toString"),
           ),
-          []
+          [],
         );
 
         const millisPaddedExpression = types.callExpression(
           types.memberExpression(millisStringExpression, types.identifier("padStart")),
-          [types.numericLiteral(3), types.stringLiteral("0")]
+          [types.numericLiteral(3), types.stringLiteral("0")],
         );
 
         const prefixExpression = types.callExpression(
@@ -307,16 +307,16 @@ function log({ references, babel, state }) {
             timeExpression,
             types.stringLiteral(":"),
             millisPaddedExpression,
-            types.stringLiteral(` [${prefixChar}${prefix.padEnd(3)}]`)
-          ]
+            types.stringLiteral(` [${prefixChar}${prefix.padEnd(3)}]`),
+          ],
         );
 
         const logStatement = types.expressionStatement(
           types.callExpression(types.memberExpression(types.identifier("console"), types.identifier(method)), [
             prefixExpression,
             types.stringLiteral(PREFIX_COLOR),
-            ...args
-          ])
+            ...args,
+          ]),
         );
 
         expression.replaceWith(logStatement);
@@ -325,7 +325,7 @@ function log({ references, babel, state }) {
       }
     } else {
       throw new Error(
-        "Logging macro call is not member expression, you should access console methods from logging object."
+        "Logging macro call is not member expression, you should access console methods from logging object.",
       );
     }
   });

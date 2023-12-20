@@ -7,7 +7,7 @@ export function asConstantsObject(target: Record<string, string | number>): Reco
 
   const constantsObject: Record<string, number | string> = { ...target };
 
-  for (const [ key, value ] of Object.entries(constantsObject)) {
+  for (const [key, value] of Object.entries(constantsObject)) {
     constantsObject[key] = `'${value}'`;
   }
 

@@ -8,8 +8,8 @@ const CONFIG = {
     // Exclude ES modules configured runtime transform plugin and supply it with default params.
     ...BABEL_CONFIG.plugins.filter((it: any) =>
       typeof it === "string" ? it !== "@babel/plugin-transform-runtime" : it[0] !== "@babel/plugin-transform-runtime"),
-    "@babel/plugin-transform-runtime"
-  ]
+    "@babel/plugin-transform-runtime",
+  ],
 };
 
 /**

@@ -1,4 +1,4 @@
-import { TThemeType, IApplicationTheme } from "@/lib/theme/types";
+import { IApplicationTheme, TThemeType } from "@/lib/theme/types";
 import { createDefaultTheme, toggleTheme } from "@/lib/theme/utils";
 
 describe("Theming utils should work properly.", () => {
@@ -29,7 +29,7 @@ describe("Theming utils should work properly.", () => {
   it("Should correctly toggle theme colors.", () => {
     let theme: IApplicationTheme = createDefaultTheme(GTheme.DEFAULT_THEME_TYPE);
 
-    for (let it = 0; it < 10; it ++) {
+    for (let it = 0; it < 10; it++) {
       const previousType: TThemeType = theme.palette.type;
 
       theme = toggleTheme(theme);

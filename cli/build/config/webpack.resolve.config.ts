@@ -2,7 +2,7 @@ import * as path from "path";
 
 import { Configuration } from "webpack";
 
-import { BUILD_CONFIGURATION_PATH, PROJECT_ROOT_PATH, CLI_PATH, IS_PROFILING_ENABLED } from "./webpack.constants";
+import { BUILD_CONFIGURATION_PATH, CLI_PATH, IS_PROFILING_ENABLED, PROJECT_ROOT_PATH } from "./webpack.constants";
 
 export const RESOLVE_CONFIG: Configuration["resolve"] = {
   alias: {
@@ -11,12 +11,12 @@ export const RESOLVE_CONFIG: Configuration["resolve"] = {
     /**
      * React DOM profiling mode switcher.
      */
-    "react-dom$": IS_PROFILING_ENABLED ? "react-dom/profiling" : "react-dom"
+    "react-dom$": IS_PROFILING_ENABLED ? "react-dom/profiling" : "react-dom",
   },
-  extensions: [ ".ts", ".tsx", ".js", ".jsx", ".json" ],
-  modules: [ "node_modules" ]
+  extensions: [".ts", ".tsx", ".js", ".jsx", ".json"],
+  modules: ["node_modules"],
 };
 
 export const RESOLVE_LOADER_CONFIG: Configuration["resolveLoader"] = {
-  modules: [ path.resolve(CLI_PATH, "node_modules") ]
+  modules: [path.resolve(CLI_PATH, "node_modules")],
 };

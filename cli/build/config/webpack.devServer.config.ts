@@ -4,7 +4,7 @@ import {
   DEV_SERVER_HOST,
   DEV_SERVER_PORT,
   IS_PRODUCTION,
-  MODULES_CONFIG
+  MODULES_CONFIG,
 } from "./webpack.constants";
 import { IModulesDefinition } from "./webpack.types";
 
@@ -29,19 +29,19 @@ const createFallbackRewrites = (definition: IModulesDefinition) => {
 
 export const DEV_SERVER_CONFIG: Record<string, any> = {
   devMiddleware: {
-    publicPath: BACKEND_PUBLIC_PATH
+    publicPath: BACKEND_PUBLIC_PATH,
   },
   historyApiFallback: {
-    rewrites: createFallbackRewrites(MODULES_CONFIG)
+    rewrites: createFallbackRewrites(MODULES_CONFIG),
   },
   client: {
     logging: "error",
     overlay: false,
-    progress: !IS_PRODUCTION
+    progress: !IS_PRODUCTION,
   },
   server: "https",
   static: DEV_SERVER_CONTENT_BASE,
   host: DEV_SERVER_HOST,
   port: DEV_SERVER_PORT,
-  hot: true
+  hot: true,
 };

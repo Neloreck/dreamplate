@@ -11,14 +11,14 @@ import { IApplicationTheme } from "@/lib/theme";
 export const useStyles = createUseStyles(({ palette, spacing }: IApplicationTheme) => ({
   link: {
     "& a": {
-      color: palette.text.primary
+      color: palette.text.primary,
     },
     backgroundColor: palette.background.paper,
     display: "flex",
     justifyContent: "center",
     margin: spacing.unit * 2,
     padding: spacing.unit * 2,
-    minWidth: spacing.unit * 15
+    minWidth: spacing.unit * 15,
   },
   content: {
     alignItems: "center",
@@ -29,16 +29,16 @@ export const useStyles = createUseStyles(({ palette, spacing }: IApplicationThem
     justifyContent: "center",
     padding: spacing.unit * 2,
     overflowY: "auto",
-    overflowX: "hidden"
+    overflowX: "hidden",
   },
   linksList: {
     [down("sm")]: {
-      flexDirection: "column"
+      flexDirection: "column",
     },
     display: "flex",
     flexDirection: "row",
-    padding: spacing.unit * 10
-  }
+    padding: spacing.unit * 10,
+  },
 }));
 
 const renderReferenceCard = (className: string, label: string, href: string): ReactNode => (
@@ -51,7 +51,7 @@ const renderReferenceCard = (className: string, label: string, href: string): Re
 
 export function HomePage({
   classes: { content, link, linksList } = useStyles(),
-  routerContext: { history } = useManager(RouterManager)
+  routerContext: { history } = useManager(RouterManager),
 }): ReactElement {
   return (
     <>

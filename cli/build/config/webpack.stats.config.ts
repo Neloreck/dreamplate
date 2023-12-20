@@ -7,5 +7,5 @@ export const STATS_CONFIG: Configuration["stats"] = {
   chunks: false,
   colors: true,
   modules: false,
-  timings: true
+  timings: true,
 };

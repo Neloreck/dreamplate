@@ -68,14 +68,12 @@ export function DebugExpose(name?: string): ClassDecorator {
       ...descriptor,
       finisher: (target: any) =>
         class extends target {
-
           public constructor(...params: Array<any>) {
             super(...params);
 
             exposingTarget.exposed![name || target.name] = this;
           }
-
-        }
+        },
     };
   };
 }

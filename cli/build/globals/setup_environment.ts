@@ -1,6 +1,6 @@
 import { EWebpackFlag } from "../config/webpack.flags";
 
-export function setupEnvironmentFlags(args: Array<string>): { entries: Array<string>, flags: Array<string> } {
+export function setupEnvironmentFlags(args: Array<string>): { entries: Array<string>; flags: Array<string> } {
   const availableFlags: Array<string> = Object.values(EWebpackFlag);
   const params: Array<string> = args.slice(2);
   const entries: Array<string> = params.filter((it: string) => it && !it.startsWith("--"));
@@ -24,6 +24,6 @@ export function setupEnvironmentFlags(args: Array<string>): { entries: Array<str
 
   return {
     entries,
-    flags
+    flags,
   };
 }

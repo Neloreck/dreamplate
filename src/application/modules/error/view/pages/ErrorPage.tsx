@@ -19,16 +19,16 @@ export const useStyles = createUseStyles(({ palette }: IApplicationTheme) => ({
     flexWrap: "nowrap",
     justifyContent: "center",
     overflowY: "auto",
-    transitionDuration: "500ms"
+    transitionDuration: "500ms",
   },
   labelCard: {
-    backgroundColor: palette.secondary.light
-  }
+    backgroundColor: palette.secondary.light,
+  },
 }));
 
 export function ErrorPage({
   classes: { content, labelCard } = useStyles(),
-  routerContext: { history } = useManager(RouterManager)
+  routerContext: { history } = useManager(RouterManager),
 }): ReactElement {
   return (
     <>

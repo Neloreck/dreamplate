@@ -5,7 +5,7 @@ const BREAKPOINT = {
   md: 960,
   sm: 600,
   xl: 1920,
-  xs: 0
+  xs: 0,
 };
 
 function handleUp(reference, types) {

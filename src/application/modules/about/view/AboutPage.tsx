@@ -10,7 +10,7 @@ import { IApplicationTheme } from "@/lib/theme";
 export const useStyles = createUseStyles(({ spacing }: IApplicationTheme) => ({
   content: {
     "& > button": {
-      margin: spacing.unit * 2
+      margin: spacing.unit * 2,
     },
     alignItems: "center",
     alignSelf: "normal",
@@ -20,13 +20,13 @@ export const useStyles = createUseStyles(({ spacing }: IApplicationTheme) => ({
     flexGrow: 1,
     justifyContent: "center",
     overflowY: "auto",
-    padding: spacing.unit * 2
-  }
+    padding: spacing.unit * 2,
+  },
 }));
 
 export function AboutPage({
   classes: { content } = useStyles(),
-  routerContext: { history } = useManager(RouterManager)
+  routerContext: { history } = useManager(RouterManager),
 }): ReactElement {
   return (
     <>

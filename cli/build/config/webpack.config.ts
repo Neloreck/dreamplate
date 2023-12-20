@@ -35,7 +35,7 @@ export const WEBPACK_CONFIG: Configuration = {
   resolveLoader: RESOLVE_LOADER_CONFIG,
   stats: STATS_CONFIG,
   performance: PERFORMANCE_CONFIG,
-  target: "web"
+  target: "web",
 } as Configuration;
 
 export default WEBPACK_CONFIG;
