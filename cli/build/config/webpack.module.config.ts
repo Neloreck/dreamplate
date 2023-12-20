@@ -2,8 +2,8 @@ import * as path from "path";
 
 import { Configuration } from "webpack";
 
-import { BABEL_CONFIG } from "./babel.config";
-import { BUILD_CONFIGURATION_PATH, PROJECT_ROOT_PATH } from "./webpack.constants";
+import { BABEL_CONFIG } from "#/build/config/babel.config";
+import { BUILD_CONFIGURATION_PATH, PROJECT_ROOT_PATH } from "#/build/config/webpack.constants";
 
 export const MODULE_CONFIG: Partial<Configuration["module"]> = {
   rules: [

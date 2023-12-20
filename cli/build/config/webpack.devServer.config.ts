@@ -5,8 +5,8 @@ import {
   DEV_SERVER_PORT,
   IS_PRODUCTION,
   MODULES_CONFIG,
-} from "./webpack.constants";
-import { IModulesDefinition } from "./webpack.types";
+} from "#/build/config/webpack.constants";
+import { IModulesDefinition } from "#/build/config/webpack.types";
 
 /**
  * Generate fallback redirects/urls for dev server history usage.

@@ -1,6 +1,6 @@
 import * as path from "path";
 
-import { DEV_SERVER_REFRESH, IS_PRODUCTION, IS_TEST } from "./webpack.constants";
+import { DEV_SERVER_REFRESH, IS_PRODUCTION, IS_TEST } from "#/build/config/webpack.constants";
 
 /**
  * Babel configuration for project codebase.
@@ -26,7 +26,7 @@ export const BABEL_CONFIG = {
       "module-resolver",
       {
         alias: {
-          "#": path.resolve(__dirname, "../"),
+          "#": path.resolve(__dirname, "../.."),
         },
       },
     ],

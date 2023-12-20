@@ -1,6 +1,6 @@
 import { default as babelJest } from "babel-jest";
 
-import { BABEL_CONFIG } from "../../build/config/babel.config";
+import { BABEL_CONFIG } from "#/build/config/babel.config";
 
 const CONFIG = {
   ...BABEL_CONFIG,

@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { createMacro } = require("babel-plugin-macros");
 
 const BREAKPOINT = {

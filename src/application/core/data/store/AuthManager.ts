@@ -1,6 +1,6 @@
 import { ContextManager, createActions, createLoadable, Loadable } from "dreamstate";
 
-import { log } from "#/macroses/log.macro";
+import { log } from "#/build/macroses/log.macro";
 import { TAnyObject, TOptional } from "@/lib/types";
 
 /**

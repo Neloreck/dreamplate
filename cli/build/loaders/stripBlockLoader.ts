@@ -1,4 +1,4 @@
-import { IS_PRODUCTION } from "../config";
+import { IS_PRODUCTION } from "#/build/config/webpack.constants";
 
 const DEV_START: string = "<dev>";
 const DEV_END: string = "</dev>";

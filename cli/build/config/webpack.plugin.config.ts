@@ -1,27 +1,25 @@
+/* eslint @typescript-eslint/no-var-requires: 0 */
+
 import * as fs from "fs";
 import * as path from "path";
 
 import { Configuration, DefinePlugin, ProvidePlugin, SourceMapDevToolPlugin } from "webpack";
 
-import { APPLICATION_ROOT, PORTAL_ROOT } from "../globals/build_constants";
+import { APPLICATION_ROOT, PORTAL_ROOT } from "#/build/globals/build_constants";
 
 import {
   BACKEND_PUBLIC_PATH,
   BASE_PROJECT_FAVICON_PATH,
-  BASE_PROJECT_STATIC_FILES,
   BASE_PROJECT_STATIC_PATH,
   BASE_PROJECT_TEMPLATE_PATH,
   DEV_SERVER_REFRESH,
   DOTENV_CONFIG_PATH,
   ENVIRONMENT,
-  ESLINT_CONFIG_PATH,
-  ESLINT_IGNORE_PATH,
   IS_ANALYZE_ENABLED,
   IS_PRODUCTION,
   MODULES_CONFIG,
   MODULES_ROOT_PATH,
   PROJECT_INLINE_MODULES,
-  PROJECT_ROOT_PATH,
   REPORT_BUNDLE_ANALYZER_PATH,
   REPORT_BUNDLE_STATS_PATH,
   RUNTIME_CONSTANTS,

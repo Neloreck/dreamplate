@@ -2,9 +2,8 @@ import { green } from "colors";
 import { Compiler, default as Webpack } from "webpack";
 import { default as DevServer } from "webpack-dev-server";
 
-import { Run } from "../utils";
-
-import { setupEnvironmentFlags } from "./globals/setup_environment";
+import { setupEnvironmentFlags } from "#/build/globals/setup_environment";
+import { Run } from "#/utils";
 
 @Run()
 export class DevRunner {
@@ -16,7 +15,8 @@ export class DevRunner {
   public static main(args: Array<string>): void {
     const { entries, flags } = setupEnvironmentFlags(args);
 
-    const { WEBPACK_CONFIG, PROJECT_ROOT_PATH, PROJECT_OUTPUT_PATH } = require("./config");
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const { WEBPACK_CONFIG, PROJECT_ROOT_PATH, PROJECT_OUTPUT_PATH } = require("#/build/config");
     const compiler: Compiler = Webpack(WEBPACK_CONFIG);
     const server = new DevServer(WEBPACK_CONFIG.devServer, compiler);
 

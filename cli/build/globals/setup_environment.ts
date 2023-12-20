@@ -1,4 +1,4 @@
-import { EWebpackFlag } from "../config/webpack.flags";
+import { EWebpackFlag } from "#/build/config/webpack.flags";
 
 export function setupEnvironmentFlags(args: Array<string>): { entries: Array<string>; flags: Array<string> } {
   const availableFlags: Array<string> = Object.values(EWebpackFlag);

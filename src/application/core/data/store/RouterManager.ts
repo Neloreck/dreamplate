@@ -1,7 +1,7 @@
 import { ContextManager } from "dreamstate";
 import { createBrowserHistory, History, Update } from "history";
 
-import { log } from "#/macroses/log.macro";
+import { log } from "#/build/macroses/log.macro";
 
 /**
  * Router context description.

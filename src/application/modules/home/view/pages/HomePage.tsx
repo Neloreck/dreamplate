@@ -3,7 +3,7 @@ import { ReactElement, ReactNode } from "react";
 import { createUseStyles } from "react-jss";
 import { Link } from "react-router-dom";
 
-import { down } from "#/macroses/style.macro";
+import { down } from "#/build/macroses/style.macro";
 import { RouterManager } from "@/core/data/store";
 import { MainHeader } from "@/core/view/components";
 import { IApplicationTheme } from "@/lib/theme";

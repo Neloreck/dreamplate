@@ -1,4 +1,4 @@
-export * from "./webpack.constants";
-export * from "./webpack.flags";
+export * from "#/build/config/webpack.constants";
+export * from "#/build/config/webpack.flags";
 
-export { WEBPACK_CONFIG } from "./webpack.config";
+export { WEBPACK_CONFIG } from "#/build/config/webpack.config";

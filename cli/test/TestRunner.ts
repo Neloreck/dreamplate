@@ -1,8 +1,7 @@
 import * as jest from "jest";
 
-import { Run } from "../utils";
-
-import { JEST_CONFIG } from "./config/jest.config";
+import { JEST_CONFIG } from "#/test/config/jest.config";
+import { Run } from "#/utils";
 
 @Run()
 export class TestRunner {

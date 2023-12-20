@@ -2,11 +2,11 @@ import * as path from "path";
 
 import { Configuration } from "webpack";
 
-import { BUILD_CONFIGURATION_PATH, CLI_PATH, IS_PROFILING_ENABLED, PROJECT_ROOT_PATH } from "./webpack.constants";
+import { CLI_PATH, IS_PROFILING_ENABLED, PROJECT_ROOT_PATH } from "./webpack.constants";
 
 export const RESOLVE_CONFIG: Configuration["resolve"] = {
   alias: {
-    "#": path.resolve(BUILD_CONFIGURATION_PATH, "./"),
+    "#": path.resolve(CLI_PATH, "./"),
     "@": path.resolve(PROJECT_ROOT_PATH, "src/application/"),
     /**
      * React DOM profiling mode switcher.

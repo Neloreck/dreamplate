@@ -37,7 +37,7 @@ export const JEST_CONFIG = {
   moduleDirectories: ["node_modules"],
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
   moduleNameMapper: {
-    "#/(.*)$": "<rootDir>/cli/build/$1",
+    "#/(.*)$": "<rootDir>/cli/$1",
     "@/(.*)$": "<rootDir>/src/application/$1",
     "\\.(css|scss|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
       "<rootDir>/src/__test__/mocks/nonJSModule.js",

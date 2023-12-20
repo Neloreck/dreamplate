@@ -2,8 +2,8 @@ import * as path from "path";
 
 import { Configuration } from "webpack";
 
-import { INITIALIZATION_ROOT_PATH, MODULES_CONFIG, MODULES_ROOT_PATH } from "./webpack.constants";
-import { IModulesDefinition } from "./webpack.types";
+import { INITIALIZATION_ROOT_PATH, MODULES_CONFIG, MODULES_ROOT_PATH } from "#/build/config/webpack.constants";
+import { IModulesDefinition } from "#/build/config/webpack.types";
 
 /**
  * Generate entry-points based on modules.json config.

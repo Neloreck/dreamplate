@@ -1,11 +1,10 @@
 import * as path from "path";
 
-import * as colors from "../globals/colors";
-import * as theme from "../globals/theme";
-import { asConstantsObject } from "../globals/utils";
-
-import { EWebpackFlag } from "./webpack.flags";
-import { IModulesDefinition, TEnvironmentType } from "./webpack.types";
+import { EWebpackFlag } from "#/build/config/webpack.flags";
+import { IModulesDefinition, TEnvironmentType } from "#/build/config/webpack.types";
+import * as colors from "#/build/globals/colors";
+import * as theme from "#/build/globals/theme";
+import { asConstantsObject } from "#/build/globals/utils";
 
 /**
  * Environment configuration.
@@ -104,6 +103,7 @@ export const SELECTED_ENTRIES: Array<string> | null = process.env[EWebpackFlag.E
   : null;
 
 export const MODULES_CONFIG: IModulesDefinition = (() => {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
   const config = require(path.resolve(MODULES_ROOT_PATH, "modules.json"));
 
   if (SELECTED_ENTRIES) {

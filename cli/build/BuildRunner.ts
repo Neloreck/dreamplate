@@ -1,7 +1,7 @@
 import { green, red } from "colors";
 import { Compiler, default as Webpack } from "webpack";
 
-import { Run } from "../utils";
+import { Run } from "#/utils";
 
 import { setupEnvironmentFlags } from "./globals/setup_environment";
 
@@ -17,6 +17,7 @@ export class BuildRunner {
   public static main(args: Array<string>): void {
     const { entries, flags } = setupEnvironmentFlags(args);
 
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
     const { PROJECT_OUTPUT_PATH, PROJECT_ROOT_PATH, WEBPACK_CONFIG } = require("./config");
     const compiler: Compiler = Webpack(WEBPACK_CONFIG);
 

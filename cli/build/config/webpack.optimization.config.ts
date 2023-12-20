@@ -1,10 +1,12 @@
 import { Configuration } from "webpack";
 
-import { IS_PRODUCTION, MAX_CORE_CHUNK_SIZE, MODULES_CONFIG, PROJECT_CORE_DEPENDENCIES } from "./webpack.constants";
-import { IModuleDefinition } from "./webpack.types";
+import { IS_PRODUCTION, MAX_CORE_CHUNK_SIZE, MODULES_CONFIG, PROJECT_CORE_DEPENDENCIES } from "#/build/config/webpack.constants";
+import { IModuleDefinition } from "#/build/config/webpack.types";
 
 // CJS way to import most plugins.
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const JsonMinimizerPlugin = require("json-minimizer-webpack-plugin");
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const TerserPlugin = require("terser-webpack-plugin");
 
 /**

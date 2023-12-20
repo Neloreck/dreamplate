@@ -1,4 +1,4 @@
-import { IS_TEST } from "../config/webpack.constants";
+import { IS_TEST } from "#/build/config/webpack.constants";
 
 export function asConstantsObject(target: Record<string, string | number>): Record<string, string | number> {
   if (IS_TEST) {
