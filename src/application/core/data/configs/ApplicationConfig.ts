@@ -1,4 +1,4 @@
-import { APPLICATION_ROOT, PORTAL_ROOT } from "#/build/globals/build_constants";
+import { APPLICATION_ROOT, PORTAL_ROOT } from "#/globals/build_constants";
 
 /**
  * Application configuration and info with global scope.

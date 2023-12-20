@@ -1,4 +1,4 @@
-import { log } from "#/build/macroses/log.macro";
+import { log } from "#/macroses/log.macro";
 
 /**
  * Log greeting and page load information.

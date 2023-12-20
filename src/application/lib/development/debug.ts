@@ -3,7 +3,7 @@
  * Restricted in non DEV mode.
  */
 
-import { log } from "#/build/macroses/log.macro";
+import { log } from "#/macroses/log.macro";
 import { TAnyObject } from "@/lib/types";
 
 interface IAugmentedWindow extends Window {

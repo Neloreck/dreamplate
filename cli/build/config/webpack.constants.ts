@@ -2,9 +2,9 @@ import * as path from "path";
 
 import { EWebpackFlag } from "#/build/config/webpack.flags";
 import { IModulesDefinition, TEnvironmentType } from "#/build/config/webpack.types";
-import * as colors from "#/build/globals/colors";
-import * as theme from "#/build/globals/theme";
-import { asConstantsObject } from "#/build/globals/utils";
+import * as colors from "#/globals/colors";
+import * as theme from "#/globals/theme";
+import { asConstantsObject } from "#/globals/utils";
 
 /**
  * Environment configuration.

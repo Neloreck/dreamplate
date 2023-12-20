@@ -5,7 +5,7 @@ import * as path from "path";
 
 import { Configuration, DefinePlugin, ProvidePlugin, SourceMapDevToolPlugin } from "webpack";
 
-import { APPLICATION_ROOT, PORTAL_ROOT } from "#/build/globals/build_constants";
+import { APPLICATION_ROOT, PORTAL_ROOT } from "#/globals/build_constants";
 
 import {
   BACKEND_PUBLIC_PATH,
