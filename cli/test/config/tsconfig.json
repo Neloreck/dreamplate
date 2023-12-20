@@ -7,7 +7,14 @@
     "module": "commonjs",
     "jsx": "react",
     "lib": [ "es5", "es6", "dom" ],
-    "baseUrl": "./"
+    "baseUrl": ".",
+    "paths": {
+      "#/*": [ "../../*" ],
+      "@/*": [ "./../../src/application/*" ]
+    }
   },
-  "exclude": []
+  "exclude": [],
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  }
 }

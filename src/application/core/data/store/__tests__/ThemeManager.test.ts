@@ -5,14 +5,14 @@ import { IApplicationTheme, toggleTheme, TThemeType } from "@/lib/theme";
 import { encrypt, setLocalStorageItem } from "@/lib/utils";
 
 describe("Theme context manager.", () => {
-  it("Should properly initialize.", () => {
+  it("should properly initialize.", () => {
     const manager: ThemeManager = mockManager(ThemeManager);
     const { theme } = manager.context;
 
     expect(theme.palette.type).toBe(GTheme.DEFAULT_THEME_TYPE);
   });
 
-  it("Should toggle theme correctly.", () => {
+  it("should toggle theme correctly.", () => {
     const manager: ThemeManager = mockManager(ThemeManager);
 
     expect(manager.context.theme.palette.type).toBe("light");
@@ -22,7 +22,7 @@ describe("Theme context manager.", () => {
     expect(manager.context.theme.palette.type).toBe("dark");
   });
 
-  it("Should load preset from local storage.", () => {
+  it("should load preset from local storage.", () => {
     setLocalStorageItem("theme_type", "dark");
 
     const manager: ThemeManager = mockManager(ThemeManager);
@@ -30,7 +30,7 @@ describe("Theme context manager.", () => {
     expect(manager.context.theme.palette.type).toBe("dark");
   });
 
-  it("Should handle events from other tabs.", async () => {
+  it("should handle events from other tabs.", async () => {
     const manager: ThemeManager = mockManager(ThemeManager);
 
     const defaultThemeValue: TThemeType = manager.context.theme.palette.type;
